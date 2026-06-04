@@ -1,1 +1,1 @@
-# moratame-sp-ui-kaizen
+# mock-moratame-sp-ui-kaizen
