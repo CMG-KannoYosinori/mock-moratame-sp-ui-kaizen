@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Drawer from '../../../components/Drawer.astro';
+import HeaderApp from '../../../components/HeaderApp.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout title="SMS認証電話番号入力" includeJqueryMobileJs includeJqueryMobileCss>
+  <Drawer />
+  <HeaderApp showGuestNav />
+  <div data-role="content" class="content">
+    <div class="container">
+      <div class="block">
+        <div class="smsAuth-hdl mb_10">
+          <p>
+            <img
+              src="https://www.moratame.net/images/banner/banner_sms_auth_sp.png"
+              alt="SMS（電話番号）認証の導入を始めました。"
+              width="100%"
+              usemap="#Map"
+            />
+          </p>
+        </div>
+
+        <form
+          action="https://www.moratame.net/s/login/sms_auth_confirm.php"
+          method="post"
+          id="authform"
+        >
+          <div class="block_inner">
+            <div>
+              サービスの品質向上・セキュリティ対策の観点から、サービスご利用にあたり、電話番号認証を導入しました。<br
+              />
+              ご自身の携帯番号を入力後、送信してください。<br />
+              携帯番号をお持ちでない場合、固定電話番号を入力していただき、音声ガイダンスを選択し送信してください。<br
+              />
+              <br />
+              送信後、SMSメッセージ、または音声ガイダンスにて配信された認証コードを入力してください。<br
+              />
+            </div>
+            <div class="error" id="errmsgfil"><span id="errmsg"></span></div>
+            <div data-role="fieldcontain">
+              <label>電話番号</label>
+              <input
+                type="tel"
+                id="mobilenumber"
+                name="mobilenumber"
+                value=""
+                placeholder="電話番号"
+                data-theme="d"
+                onkeypress="return(event.keyCode !==13)"
+              />
+              <div class="mt_10">
+                <label>配信方法</label>
+                <ul class="smsListUl">
+                  <li class="smsListLi">
+                    <div class="smsListLiPd">
+                      <label class="cbxbd1_0 c_on2">
+                        <input
+                          type="radio"
+                          id="deliveryKindSms"
+                          data-role="none"
+                          class="smsDelivery"
+                          name="deliveryKind"
+                          value="1"
+                          checked
+                        />
+                      </label>
+                      <div class="smsListTxt">
+                        <p><label for="deliveryKindSms">SMS配信</label></p>
+                      </div>
+                      <br class="flowBrClear" />
+                    </div>
+                  </li>
+                  <li class="smsListLi">
+                    <div class="smsListLiPd">
+                      <label class="cbxbd1_0">
+                        <input
+                          type="radio"
+                          id="deliveryKindVoice"
+                          data-role="none"
+                          class="smsDelivery"
+                          name="deliveryKind"
+                          value="2"
+                        />
+                      </label>
+                      <div class="smsListTxt">
+                        <p><label for="deliveryKindVoice">音声ガイダンス</label></p>
+                      </div>
+                      <br class="flowBrClear" />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <input
+              type="hidden"
+              name="url"
+              value="https://www.moratame.net/s/contents/signup05.php?ID=18462d81a145a95c84ea924f8f166fce"
+            />
+          </div>
+
+          <div class="block_inner" data-mini="true">
+            <button type="button" onclick="javascript:ajax_auth_send()">
+              SMS認証コードを送信
+            </button>
+          </div>
+        </form>
+        <div class="c-card--aside smsAuth-c-card--aside">
+          <p>
+            モラタメでは、ご登録できるアカウントは、ご本人様かつお一人様1つまでとしています。<br />詳しくは、<a
+              href="https://www.moratame.net/contents/regulation.php"
+              target="_blank"
+              class="smsAuth-normalLink">「ご利用にあたってのお約束ごと」</a
+            >をご確認ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script is:inline src="https://www.moratame.net/js/smsauthinput.js?2026061217" charset="UTF-8"></script>
+  <Footer variant="app" />
+</BaseLayout>

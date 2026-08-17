@@ -1,0 +1,234 @@
+---
+interface Props {
+  title: string;
+  pageId?: string;
+  includeJqueryMobileJs?: boolean;
+  includeJqueryMobileCss?: boolean;
+}
+
+const {
+  title,
+  pageId,
+  includeJqueryMobileJs = false,
+  includeJqueryMobileCss = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <meta content="試供品,無料,お試し,プレゼント,モラタメ" name="Keywords" />
+    <meta
+      name="Description"
+      content="試供品や新商品がもらえる・ためせる、プレゼント＆クチコミサイト！お得に話題の商品をためせて、ポイントもたまる♪"
+    />
+    <meta name="apple-itunes-app" content="app-id=565079627" />
+    <meta name="smartbanner:title" content="モラタメ" />
+    <meta name="smartbanner:author" content="株式会社エクスクリエ" />
+    <meta name="smartbanner:price" content="FREE" />
+    <meta name="smartbanner:price-suffix-google" content=" - Google Play" />
+    <meta
+      name="smartbanner:icon-google"
+      content="https://renewal-image-stg.moratame.net/img/common/appicon.webp"
+    />
+    <meta name="smartbanner:button" content="開く" />
+    <meta
+      name="smartbanner:button-url-google"
+      content="https://play.google.com/store/apps/details?id=net.moratame"
+    />
+    <meta name="smartbanner:enabled-platforms" content="android" />
+    <meta name="smartbanner:close-label" content="Close" />
+    <link
+      rel="stylesheet"
+      href="https://www.moratame.net/s/Scripts/smartbanner/smartbanner.min.css"
+    />
+    <script is:inline src="https://www.moratame.net/s/Scripts/smartbanner/smartbanner.min.js"></script>
+    <title>{title}</title>
+    <script is:inline type="text/javascript" src="https://www.moratame.net/s/js/jquery-1.11.2.min.js"></script>
+    {
+      includeJqueryMobileJs && (
+        <>
+          <script
+            is:inline
+            type="text/javascript"
+            src="https://www.moratame.net/s/js/jqm/jquery.mobile-1.3.1.min.js?2026061217"
+          />
+          <script
+            is:inline
+            type="text/javascript"
+            src="https://www.moratame.net/s/Scripts/mobile/jquery.mobile.custom.js?2026061217"
+          />
+        </>
+      )
+    }
+    <script
+      is:inline
+      type="text/javascript"
+      src="https://www.moratame.net/s/Scripts/smoothScroll.js?2026061217"></script>
+    <script is:inline src="https://www.moratame.net/js/jquery.heightLine.js"></script>
+    <script
+      is:inline
+      type="text/javascript"
+      src="https://www.moratame.net/plugins/jquery.bxslider/jquery.bxslider.min.js?2026061217"></script>
+    <script
+      is:inline
+      type="text/javascript"
+      src="https://www.moratame.net/s/js/call_the_bxSlider.js?2026061217"></script>
+    <link
+      rel="stylesheet"
+      href="https://www.moratame.net/css/bootstrap.v3.3.7--scope.css?2026061217"
+    />
+    <script is:inline type="text/javascript" src="https://www.moratame.net/js/clips.js?2026061217"></script>
+    <script is:inline type="text/javascript" src="https://www.moratame.net/js/helper-sp.js?2026061217"></script>
+    <link
+      rel="stylesheet"
+      href="https://www.moratame.net/plugins/jquery.bxslider/jquery.bxslider.css?2026061217"
+    />
+    {
+      includeJqueryMobileCss && (
+        <>
+          <link
+            rel="stylesheet"
+            href="https://www.moratame.net/s/js/jqm/jquery.mobile-1.3.1.min.css?2026061217"
+          />
+          <link
+            rel="stylesheet"
+            href="https://www.moratame.net/s/css/jquery.mobile-1.3.1-user.css?2026061217"
+          />
+        </>
+      )
+    }
+    <link
+      rel="stylesheet"
+      href="https://www.moratame.net/s/css/html5-doctor-reset-stylesheet.min.css"
+    />
+    <link rel="stylesheet" href="https://www.moratame.net/s/css/common.css?2026061217" />
+    <link rel="stylesheet" href="https://www.moratame.net/s/css/style.3078.css?2026061217" />
+    <link rel="stylesheet" href="https://www.moratame.net/s/css/style--sp.css?2026061217" />
+    <link
+      rel="stylesheet"
+      href="https://www.moratame.net/s/css/style.moratamelist-tame--sp.css?2026061217"
+    />
+    <link rel="stylesheet" href="https://www.moratame.net/s/css/tooltip.css?2026061217" />
+    <link rel="stylesheet" href="https://www.moratame.net/s/css/pickup.css?2026061217" />
+    <link rel="stylesheet" href="https://www.moratame.net/plugins/Remodal-1.1.1/dist/remodal.css" />
+    <link
+      rel="stylesheet"
+      href="https://www.moratame.net/plugins/Remodal-1.1.1/dist/remodal-default-theme.css"
+    />
+    <link rel="stylesheet" href="https://www.moratame.net/plugins/Remodal-1.1.1/dist/remodal-user.css" />
+    <script is:inline src="https://www.moratame.net/plugins/Remodal-1.1.1/dist/remodal.min.js"></script>
+    <link rel="stylesheet" href="https://www.moratame.net/css/style--common-sp-and-pc.css?2026061217" />
+    <link rel="stylesheet" href="https://www.moratame.net/css/style--common-sp-and-pc-2.css?2026061217" />
+    <link rel="stylesheet" href="https://www.moratame.net/css/mamahalo-pickup-items.css?2026061217" />
+    <script is:inline src="https://www.moratame.net/s/js/inputimg.js?2026061217"></script>
+    <script is:inline type="text/javascript">
+      jQuery(function ($) {
+        $(".ui-block-d").click(function () {
+          var mnHeight = $('#drawerMenu').height();
+          $('.ui-panel-content-wrap').css('height', mnHeight);
+        });
+      });
+    </script>
+    <script is:inline src="https://www.moratame.net/s/js/pagetop.js" type="text/javascript"></script>
+    {
+      includeJqueryMobileJs && (
+        <script is:inline>
+          $.mobile.ajaxEnabled = false;
+        </script>
+      )
+    }
+    <meta property="og:type" content="article" />
+    <meta property="fb:admins" content="100002359656883" />
+    <meta name="facebook-domain-verification" content="c0cie9dkuu426dpjng4owr5k68k8l3" />
+    <style is:global>
+      .firstV-modal {
+        position: fixed;
+        z-index: 10000;
+        max-width: 440px;
+        top: 8%;
+        left: 50%;
+        margin-left: -220px;
+      }
+      @media only screen and (max-width: 639px) {
+        .firstV-modal {
+          margin-left: 5%;
+          width: 90%;
+          left: 0;
+        }
+      }
+      .modal-ttl img {
+        display: block;
+        max-width: 434px;
+        margin: auto;
+        padding-bottom: 20px;
+        width: 100%;
+      }
+      @media only screen and (max-width: 639px) {
+        .modal-ttl img {
+          width: 100%;
+        }
+      }
+      .firstV-modal p {
+        padding: 0 30px;
+        font-size: 14px;
+        text-align: left;
+      }
+      @media only screen and (max-width: 639px) {
+        .firstV-modal p {
+          padding: 0 10px;
+          font-size: 13px;
+        }
+      }
+      .modal-txt-bold {
+        font-weight: bold;
+        font-size: 19px;
+      }
+      @media only screen and (max-width: 639px) {
+        .modal-txt-bold {
+          font-size: 15px;
+        }
+      }
+      .modal-btn img {
+        display: block;
+        max-width: 380px;
+        margin: auto;
+        padding-top: 20px;
+      }
+      @media only screen and (max-width: 639px) {
+        .modal-btn img {
+          width: 90%;
+        }
+      }
+      .firstV-modal .modalClose {
+        position: absolute;
+        right: -40px;
+        top: -10px;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+      }
+      @media only screen and (max-width: 639px) {
+        .firstV-modal .modalClose {
+          right: -25px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://www.moratame.net/css/p9255-common--sp.css?2026061217" />
+    <link rel="stylesheet" href="https://www.moratame.net/css/p9255-top--sp.css?2026061217" />
+    <slot name="head" />
+  </head>
+  <body>
+    <div data-role="page" class="page" id={pageId}>
+      <slot />
+    </div>
+    <slot name="after-page" />
+    <script is:inline type="text/javascript" src="https://www.moratame.net/s/js/moratame_s_common.js?2026061217"
+    ></script>
+    <script is:inline type="text/javascript" src="https://www.moratame.net/s/js/p9255-scripts.js?2026061217"
+    ></script>
+  </body>
+</html>

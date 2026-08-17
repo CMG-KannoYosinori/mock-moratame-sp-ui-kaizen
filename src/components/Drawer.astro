@@ -1,0 +1,378 @@
+---
+interface Props {
+  loggedIn?: boolean;
+}
+
+const { loggedIn = false } = Astro.props;
+---
+
+<div data-role="panel" id="r-panel" data-position="right" data-display="push" data-theme="x" data-animate="true">
+  <nav class="p0-0-10-0" id="drawerMenu">
+    <div>
+      <section>
+        <ul class="drwMnNav1 m-0 p0" data-role="none">
+          <li class="bxz-bb fl-l m0-5p-0-0 bdrs5">
+            <div id="display_badge_drawer"></div>
+            <a href="https://www.moratame.net/s/contents/myindex.php" rel="external">
+              <span class="icon-set01 icon_gmo-enq m5-0-0-0"></span>
+              <p class="fnt-wgt-n fz-10px tsh-none c-333">提携<br />アンケート</p>
+            </a>
+          </li>
+          <li class="bxz-bb fl-l m0-5p-0-0 bdrs5">
+            <a href="https://www.moratame.net/s/contents/history_point.php" rel="external">
+              <span class="icon-set01 icon_moratamePnt m5-0-0-0"></span>
+              <p class="fnt-wgt-n fz-10px tsh-none c-333">現在の<br />獲得ポイント</p>
+            </a>
+          </li>
+          <li class="bxz-bbm fl-l bdrs5">
+            <a class="pos-r" href="https://www.moratame.net/s/contents/myshipment.php" rel="external">
+              <span class="icon-set01 icon_post m5-0"></span>
+              <p class="fnt-wgt-n fz-10px tsh-none c-333">発送<br />スケジュール</p>
+            </a>
+          </li>
+          <br class="cl-b" />
+        </ul>
+      </section>
+      <hr class="hrList" />
+      <ul class="drwMnNavList bdrs5 m10 ov-h" data-role="none" id="toTopDrw">
+        <li id="drwMnClose">
+          <a class="drawerMenuLink" href="https://www.moratame.net/s/contents/myindex.php" rel="external"
+            >マイメニューはこちら</a
+          >
+        </li>
+      </ul>
+      <hr class="hrList" />
+      {
+        loggedIn && (
+          <>
+            <ul class="drwMnNavList bdrs5 m10 ov-h" data-role="none">
+              <li id="drwMnClose">
+                <a
+                  class="drawerMenuLink"
+                  href="https://www.moratame.net/s/favorite/clip_list.php"
+                  rel="external"
+                >
+                  クリップリスト
+                </a>
+              </li>
+              <li id="drwMnClose">
+                <a
+                  class="drawerMenuLink"
+                  href="https://www.moratame.net/s/favorite/history_list.php"
+                  rel="external"
+                >
+                  閲覧履歴
+                </a>
+              </li>
+            </ul>
+            <hr class="hrList" />
+          </>
+        )
+      }
+      <section>
+        <h3>はじめての方へ</h3>
+        <ul class="drwMnNavList bdrs5 m0-10-10 ov-h" data-role="none">
+          <li>
+            <a href="https://www.moratame.net/s/contents/about.php" rel="external">モラタメとは</a>
+          </li>
+          {
+            !loggedIn && (
+              <li>
+                <a href="https://www.moratame.net/s/contents/signup00.php" rel="external">
+                  <span class="c-newCstm">新規会員登録</span>
+                </a>
+              </li>
+            )
+          }
+          <li>
+            <a href="https://www.moratame.net/s/contents/point_support.php" rel="external"
+              >モラタメポイントについて</a
+            >
+          </li>
+        </ul>
+      </section>
+      <hr class="hrList" />
+      <section>
+        <ul data-role="none" class="pickup-bnr-area pt-10px">
+          <li class="bnr-img">
+            <a href="https://www.moratame.net/wp/sdgs" rel="external" class="ui-link" tabindex="0">
+              <img
+                src="https://image.moratame.net/images/banner/SDGs_SP.png"
+                width="710"
+                alt="寄付で社会を応援！SDGsプロジェクト"
+              />
+            </a>
+          </li>
+          <li class="bnr-img">
+            <a
+              href="https://contents.moratame.net/feature/premium/main.php"
+              rel="external"
+              class="ui-link"
+              tabindex="0"
+            >
+              <img
+                src="https://image.moratame.net/images/banner/pickup-bnr--premium.png?20211224"
+                width="710"
+                alt="さらにお得に便利に！モラタメプレミアムサービス"
+              />
+            </a>
+          </li>
+          <li class="bnr-img">
+            <a
+              href="https://www.moratame.net/rd/?p=robamimi_sidebanner_sp"
+              rel="external"
+              class="ui-link"
+              tabindex="0"
+            >
+              <img
+                src="https://image.moratame.net/images/banner/robamimi-mt-slide-sp.png"
+                width="710"
+                alt="ロバ耳"
+              />
+            </a>
+          </li>
+          <li class="bnr-img">
+            <a
+              href="https://www.moratame.net/s/detail/category.php?category=cb416"
+              rel="external"
+              class="ui-link"
+              tabindex="0"
+            >
+              <img
+                src="https://image.moratame.net/images/banner/pickup-bnr--family.20190614.png"
+                width="710"
+                alt="家族発送"
+              />
+            </a>
+          </li>
+          <li class="bnr-img">
+            <a href="https://www.moratame.net/support/anti-fraud/" rel="external" class="ui-link" tabindex="0">
+              <img
+                src="https://image.moratame.net/images/banner/anti-fraud_sp-side.jpg"
+                width="710"
+                alt="不正行為への取り組みについて"
+              />
+            </a>
+          </li>
+          <li class="bnr-img">
+            <a
+              href="https://store.line.me/stickershop/product/7935396/ja"
+              rel="external"
+              class="ui-link"
+              tabindex="0"
+              target="_blank"
+            >
+              <img
+                src="https://image.moratame.net/images/banner/pickup-bnr--stamp.png"
+                width="710"
+                alt="LINEスタンプ"
+              />
+            </a>
+          </li>
+        </ul>
+      </section>
+      <hr class="hrList" />
+      <section>
+        <div class="body">
+          <ul data-role="none" class="ctgList ctgList-HunbergerMenu">
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=4e058"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgFoodmin"></span>
+                <span>食品</span>(<span class="countCtg">17</span>)
+              </a>
+            </li>
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=f76c3"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgCosmemin"></span>
+                <span>化粧品関連</span>(<span class="countCtg">2</span>)
+              </a>
+            </li>
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=4f8fd"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgBabymin"></span>
+                <span>ベビー/キッズ</span>(<span class="countCtg">3</span>)
+              </a>
+            </li>
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=3a8af"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgOthermin"></span>
+                <span>Attoosリニューアルカテゴリ</span>(<span class="countCtg">5</span>)
+              </a>
+            </li>
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=d6572"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgFlowermin"></span>
+                <span>花/ガーデニング</span>(<span class="countCtg">1</span>)
+              </a>
+            </li>
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=cb416"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgOthermin"></span>
+                <span>家族配送</span>(<span class="countCtg">4</span>)
+              </a>
+            </li>
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=ee05a"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgOthermin"></span>
+                <span>クーポン</span>(<span class="countCtg">1</span>)
+              </a>
+            </li>
+            <li>
+              <a
+                class="p10 ui-link ui-link-black"
+                href="https://www.moratame.net/s/detail/category.php?category=27446"
+                rel="external"
+              >
+                <span class="icon-set02min icon_ctgOthermin"></span>
+                <span>リニューアルカテゴリID指定</span>(<span class="countCtg">1</span>)
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <hr class="hrList" />
+      <section>
+        <h3>お知らせ・お問い合わせ</h3>
+        <ul class="drwMnNavList bdrs5 m0-10-10" data-role="none">
+          <li class="bdrs-t5">
+            <a class="d-b pos-r" href="http://www.moratame.net/wp/support/" rel="external">
+              メンテナンス・サポート情報</a
+            >
+          </li>
+          <li>
+            <a href="https://www.moratame.net/contents/atari.php" rel="external">モラえるクイズの正解発表</a>
+          </li>
+          <li>
+            <a href="https://api-stg.moratame.net/inquiry/ja" rel="external"
+              >掲載ご希望メーカー・<br />企業の方へ</a
+            >
+          </li>
+          <li class="bdrs-b5">
+            <a href="https://www.moratame.net/wp/cs/" rel="external">カスタマーサポート</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>モラタメ公式アプリ</h3>
+        <ul class="drwMnNavList bdrs5 m10 ov-h" data-role="none">
+          <li>
+            <a
+              class="drawerMenuLink ui-link"
+              href="https://www.moratame.net/feature/app_renewal/main.html"
+              rel="external"
+              style="position: relative;"
+            >
+              <figure class="icon-sns">
+                <img
+                  class="icon-sns"
+                  src="https://renewal-image-stg.moratame.net/img2014/common/moratame-appli.png"
+                  alt="モラタメ公式アプリアイコン"
+                />
+              </figure>
+              <p class="moratame-appli">モラタメ公式アプリ</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>モラタメ公式ソーシャルメディア</h3>
+        <ul class="drwMnCtg bdrs5" data-role="none">
+          <li class="type3 drwMnCtgBdrb bxz-bb">
+            <a href="https://www.facebook.com/moratame.net/" rel="external" target="_blank" class="ui-link"
+              ><img class="icon-sns mt_10" src="https://image.moratame.net/img2014/common/fb01.png" alt="facebook"
+            /></a>
+          </li>
+          <li class="type3 drwMnCtgBdb bxz-bb">
+            <a href="https://twitter.com/moratame/" rel="external" target="_blank" class="ui-link"
+              ><img
+                class="icon-sns mt_10"
+                src="https://image.moratame.net/img2014/common/twitter01.png"
+                alt="twitter"
+            /></a>
+          </li>
+          <li class="type3 bxz-bb drwMnCtgBdr">
+            <a href="https://instagram.com/moratame_net/" rel="external" target="_blank" class="ui-link"
+              ><img
+                class="icon-sns mt_10"
+                src="https://image.moratame.net/img2014/common/instagram.png"
+                alt="instagram"
+            /></a>
+          </li>
+          <li class="type3 bxz-bb line">
+            <a href="https://line.me/ti/p/%40moratame" rel="external" target="_blank" class="ui-link"
+              ><img class="icon-sns mt_10" src="https://image.moratame.net/img2014/common/line.png" alt="line"
+            /></a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <hr class="hrList" />
+        <a class="drawerMenuLink p10" href="https://www.excrie.co.jp/about/privacy-policy/" rel="external">
+          <p class="c-333">個人情報の取扱いについて</p>
+        </a>
+        <hr class="hrList" />
+        <a class="drawerMenuLink p10" href="https://www.moratame.net/contents/hyouji.php" rel="external">
+          <p class="c-333">特定商取引に基づく表記</p>
+        </a>
+        <hr class="hrList" />
+        <a class="drawerMenuLink p10" href="https://www.moratame.net/contents/syounin.php" rel="external">
+          <p class="c-333">利用規約</p>
+        </a>
+        <hr class="hrList" />
+        <a class="drawerMenuLink p10" href="https://www.moratame.net/s/contents/regulation.php" rel="external">
+          <p class="c-333">ご利用にあたってのお約束ごと</p>
+        </a>
+        <hr class="hrList" />
+        <a class="drawerMenuLink p10" href="https://www.moratame.net/support/anti-fraud/" rel="external">
+          <p class="c-333">不正行為への取り組みについて</p>
+        </a>
+        <hr class="hrList" />
+      </section>
+      <section>
+        <script type="text/javascript" is:inline>
+          $(function () {
+            $('#toTopDrw').click(function () {
+              $('body,html').scrollTop(0);
+            });
+          });
+        </script>
+        <ul class="drwMnNavList bdrs5 m10-10-0 ov-h" id="toTopDrw">
+          <li id="drwMnClose">
+            <a class="" href="https://www.moratame.net/" rel="external">ページトップへ</a>
+          </li>
+          <li id="drwMnClose">
+            <a class="" href="https://www.moratame.net/s/contents/logout.php" rel="external">ログアウト</a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </nav>
+</div>

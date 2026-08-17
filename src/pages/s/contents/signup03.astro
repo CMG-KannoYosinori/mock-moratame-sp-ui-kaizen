@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HeaderSimple from '../../../components/HeaderSimple.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout title="新規会員登録（内容確認）" pageId="registration-page">
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://www.moratame.net/s/css/member-registration.css?2026061217"
+  />
+
+  <HeaderSimple />
+
+  <div id="contente-top" class="content">
+    <div class="container">
+      <section class="new-signup-confirm">
+        <p class="milesstone">
+          <img src="https://www.moratame.net/img/milestone-2.png" alt="step1 入力内容確認" />
+        </p>
+        <h1 class="heading-ttl">入力内容確認</h1>
+
+        <form
+          action="https://www.moratame.net/s/contents/signup04.php"
+          method="post"
+          name="new-signup-input"
+          id="new-signup-input"
+        >
+          <div class="select-area select-sex">
+            <div class="form-ttl">
+              <h2 class="element-ttl">性別</h2>
+            </div>
+            <div class="input-area">
+              <p class="confirm-text">無回答</p>
+            </div>
+          </div>
+          <div class="select-area select-birthday">
+            <div class="form-ttl">
+              <h2 class="element-ttl">生年月日</h2>
+            </div>
+            <div class="input-area">
+              <p class="confirm-text">1980年01月01日</p>
+            </div>
+          </div>
+          <div class="select-area select-email">
+            <div class="form-ttl">
+              <h2 class="element-ttl">メールアドレス</h2>
+            </div>
+            <div class="input-area">
+              <p class="confirm-text">kanno-23@dohouse.co.jp</p>
+            </div>
+          </div>
+          <div class="select-area select-password">
+            <div class="form-ttl">
+              <h2 class="element-ttl">パスワード</h2>
+            </div>
+            <div class="input-area">
+              <p class="confirm-text">excrie</p>
+            </div>
+          </div>
+          <div class="select-area select-nickname">
+            <div class="form-ttl">
+              <h2 class="element-ttl">ニックネーム</h2>
+            </div>
+            <div class="input-area">
+              <p class="confirm-text">誰かが</p>
+            </div>
+          </div>
+          <div class="select-area select-password">
+            <div class="form-ttl">
+              <h2 class="element-ttl">紹介コード</h2>
+            </div>
+            <div class="input-area">
+              <p class="confirm-text"></p>
+            </div>
+          </div>
+          <hr />
+          <div class="input-area">
+            <p class="confirm-text" style="color: #ff0000;">
+              ※ 携帯メールアドレスをご登録いただく場合、<br />moratame.netからのドメイン着信許可を設定<br
+              />してください。
+            </p>
+          </div>
+          <hr />
+          <div class="submit-btn">
+            <button type="submit">電話番号認証を行う</button>
+          </div>
+          <div class="correct-btn">
+            <a href="/s/contents/signup01.html" rel="external">
+              <button type="button">内容を修正する</button>
+            </a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <Footer variant="simple" />
+</BaseLayout>

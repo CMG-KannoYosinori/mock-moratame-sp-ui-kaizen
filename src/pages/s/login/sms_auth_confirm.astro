@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Drawer from '../../../components/Drawer.astro';
+import HeaderApp from '../../../components/HeaderApp.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout title="SMS認証コード入力" includeJqueryMobileJs includeJqueryMobileCss>
+  <Drawer />
+  <HeaderApp showGuestNav />
+  <div data-role="content" class="content">
+    <div class="title title_other">SMS認証コード入力</div>
+    <div class="container">
+      <div class="block">
+        <form
+          action="https://www.moratame.net/s/login/sms_auth_complete.php"
+          method="post"
+          id="authform"
+          onsubmit="return false;"
+        >
+          <div class="block_inner">
+            <div>
+              <p>音声ガイダンスで届いた６桁の認証コードを入力してください</p>
+            </div>
+            <div class="error" id="errmsgfil"><span id="errmsg"></span></div>
+            <div class="mt_10">
+              <label>電話番号</label>
+              <ul class="smsListUl">
+                <li class="smsListLiConfirm">
+                  <div class="smsListLiPd">
+                    <p class="f13"></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="">
+              <label>認証コード</label>
+              <ul class="smsListUl">
+                <li class="smsListLi">
+                  <div class="smsListLiPd">
+                    <input type="text" id="authcode" value="" placeholder="認証コード" data-theme="d" />
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="block_inner" data-mini="true">
+            <button type="button" onclick="javascript:ajax_auth_confirm()">認証</button>
+          </div>
+          <div class="block_inner smsAuth-back-button">
+            <input
+              type="hidden"
+              name="sms_input_url"
+              value="/s/login/sms_auth_input.html"
+              id="smsInputUrl"
+            />
+            <button type="button" formmethod="get" onclick="javascript:returnInput();"
+              >戻る</button
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script is:inline src="https://www.moratame.net/js/smsauthconfirm.js?2026061217" charset="UTF-8"></script>
+  <Footer variant="app" />
+  <div slot="after-page" class="p9255-sticky-button" style="z-index: 9999;">
+    <a
+      href="https://www.moratame.net/s/contents/signup00.php"
+      data-track-trigger="click-a"
+      data-track-name="floating-register-btn"
+    >
+      <img
+        src="https://renewal-image-stg.moratame.net/images/improvement/9255/images/9255-sticky-button.png"
+        alt=""
+        width="380"
+        height="382"
+      />
+    </a>
+    <span class="p9255-sticky-button-close">×</span>
+  </div>
+</BaseLayout>

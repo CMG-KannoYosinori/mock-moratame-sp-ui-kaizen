@@ -1,0 +1,132 @@
+---
+interface Props {
+  variant?: 'simple' | 'app';
+}
+
+const { variant = 'simple' } = Astro.props;
+---
+
+<div id="footer" data-role="footer" data-theme="x" class="ui-footer ui-bar-x" role="contentinfo">
+  <footer>
+    <div id="topscrollWrp" class="bdt_1_ccc">
+      <div id="topscroll">
+        <a href="#header"><span class="icon-set01 icon_toTop m0-5-0-0"></span>ページトップへ</a>
+      </div>
+    </div>
+    {
+      variant === 'app' && (
+        <nav>
+          <ul>
+            <li>
+              <a href="https://www.moratame.net/s/contents/about.php" rel="external" class="ui-link">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="icon-set01 icon_about m0-5-0-0"></span>
+                      </td>
+                      <td>モラタメとは</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.moratame.net/s/contents/point_support.php" rel="external" class="ui-link">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="icon-set01 icon_point m0-5-0-0"></span>
+                      </td>
+                      <td>モラタメポイントについて</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.moratame.net/wp/cs/" rel="external" class="ui-link">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="icon-set01 icon_faq m0-5-0-0"></span>
+                      </td>
+                      <td>カスタマーサポート</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      )
+    }
+    {
+      variant === 'simple' && (
+        <div class="txtArea14 bgcOther3 p15-10">
+          <p class="footer_copyBtn">
+            <a href="http://www.moratame.net/?viewsite=pc" rel="external" class="ui-link">
+              <img src="https://image.moratame.net/s/cmn/btn_01.png" width="60" height="28" alt="" />
+            </a>
+          </p>
+        </div>
+      )
+    }
+    <div class="universal-footer">
+      <div class="universal-footer__container">
+        <div class="universal-footer__row">
+          <div class="universal-footer__col-main">
+            <dl>
+              <dt class="universal-footer__col-main__definition-term">企業情報：</dt>
+              <dd class="universal-footer__col-main__definition-description">
+                <ul>
+                  <li class="universal-footer__col-main__list">
+                    <a href="https://www.excrie.co.jp/" data-role="none">会社概要</a>
+                  </li>
+                  <li class="universal-footer__col-main__list">
+                    <a href="https://www.moratame.net/contents/hyouji.php" data-role="none"
+                      >特定商取引に基づく表記</a
+                    >
+                  </li>
+                  <li class="universal-footer__col-main__list">
+                    <a href="https://api.moratame.net/inquiry/ja" data-role="none"
+                      >メーカーご担当者の方へ</a
+                    >
+                  </li>
+                </ul>
+              </dd>
+            </dl>
+            <p>
+              株式会社エクスクリエはプライバシーマークを取得しています。<span class="br br--sp">当社の</span>「<a
+                href="https://www.excrie.co.jp/about/privacy-policy/"
+                target="_blank"
+                rel="external"
+                data-role="none">個人情報保護方針</a
+              >」はこちらです。
+            </p>
+            <div class="universal-footer__col-pmark-image">
+              <a href="https://privacymark.jp/" target="_blank"
+                ><img
+                  src="https://image.moratame.net/img2014/common/pmark_s.gif"
+                  height="78"
+                  width="71"
+                  alt=""
+              /></a>
+            </div>
+            <p>
+              (c) excrie Inc. All rights reserved. 本サイトは、<a
+                href="https://www.excrie.co.jp/"
+                target="_blank"
+                rel="external"
+                data-role="none"
+                ><span class="br br--sp">株式会社エクスクリエ</span>により運営されております。</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
