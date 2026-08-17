@@ -18,7 +18,7 @@ alwaysApply: true
 - Font Awesome Kit（`kit.fontawesome.com`。ページ内未使用かつ 403）
 - kaiu-marketing などその他の計測・広告スクリプト
 
-Yahoo リタゲがニマトメカートと同じ `<script>` に同居している場合は、カート関数は残し、Yahoo 変数と `s_retargeting.js` だけ消す。
+Yahoo リタゲがニマトメカートと同じ `<script>` に同居している場合は、カート関数は残し、Yahoo 変数と `s_retargeting.js` だけ消す。`$(document).ready` の開きだけ消して閉じの `})` を残さない。
 
 ## 残すもの
 
