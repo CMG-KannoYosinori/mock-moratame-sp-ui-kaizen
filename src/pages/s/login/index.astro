@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Drawer from '../../../components/Drawer.astro';
+import HeaderApp from '../../../components/HeaderApp.astro';
+import Footer from '../../../components/Footer.astro';
+import NimatomeCart from '../../../components/NimatomeCart.astro';
+---
+
+<BaseLayout title="ログイン" includeJqueryMobileJs includeJqueryMobileCss>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+  />
+  <style slot="head" is:global>
+    .g-recaptcha {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      width: 300px;
+      margin-top: 20px;
+    }
+  </style>
+
+  <Drawer />
+  <HeaderApp showGuestNav />
+
+  <div data-role="content" class="content">
+    <div class="title title_other">ログイン</div>
+    <div class="container">
+      <div class="block">
+        <div class="title">新規会員登録</div>
+        <div id="subscribing">
+          <p class="largeBtnWrap">
+            <a href="/s/contents/signup00.html">
+              <img
+                src="https://image.moratame.net/images/common/login/btn01.png"
+                alt=""
+                width="634"
+                height="104"
+                class="fadeImg"
+              />
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="title">ログイン</div>
+        <form action="https://www.moratame.net/s/login/index2.php" method="post">
+          <div class="block_inner">
+            <div data-role="fieldcontain">
+              <label for="email">E-mail</label>
+              <input type="email" name="email" id="email" value="" placeholder="E-mail" data-theme="d" />
+            </div>
+            <div data-role="fieldcontain">
+              <label for="pass">パスワード</label>
+              <input
+                type="password"
+                name="pass"
+                id="pass"
+                value=""
+                placeholder="パスワード"
+                data-theme="d"
+              />
+            </div>
+            <input type="hidden" name="url" value="" />
+          </div>
+          <div class="answer13">
+            <ul class="answerListUl">
+              <li class="answerListLi">
+                <div class="answerListLiPd">
+                  <label class="cbxbd c_on">
+                    <input data-role="none" class="answer" type="checkbox" name="check" value="on" checked />
+                  </label>
+                  <div class="answerListTxt">
+                    <p id="flowTxtColor3">
+                      次回から自動ログインする
+                      <a href="https://www.moratame.net/wp/cs/?p=466" target="_blank">詳細</a>
+                    </p>
+                  </div>
+                  <br class="flowBrClear" />
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LdcZNkZAAAAAMblkzPJhEP5rgU6d5RKGe0SWbCM"></div>
+          <div class="block_inner" data-mini="true">
+            <button type="submit">ログインする</button>
+            <p class="btnGry mt-20px">
+              <a href="https://www.moratame.net/s/login/pass.php" rel="external">パスワードを忘れた方はこちら</a>
+            </p>
+          </div>
+        </form>
+        <script is:inline src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+        <script is:inline>
+          function modeAttoosLogin(id) {
+            $('#sns_id').val(id);
+            $('#attoos-login').submit();
+            return false;
+          }
+        </script>
+
+        <div class="p-social_login">
+          <div class="bl-8423-max-w-md bl-8423-px-4 bl-8423-mx-auto">
+            <p
+              class="p-social_login__lead bl-8423-font-bold bl-8423-mt-4 bl-8423-text-center bl-8423-bg-yellow-50 bl-8423-leading-snug bl-8423-pt-2 bl-8423-pb-4 bl-8423-relative"
+              style="font-size: 16px"
+            >
+              SNSアカウントで登録した方は<br />こちらから
+            </p>
+            <form action="https://auth.attoos.jp/uauth/receive" method="post" id="attoos-login">
+              <input
+                type="hidden"
+                name="iv"
+                value="TVlPbTEyN3JPVXI0NGhIUGY5Q3JJTVlqYWd2UlFsaXNGSUp1NEhGb1hrRT0="
+              />
+              <input type="hidden" id="site_id" name="site_id" value="NWVwblNuZUFLRit5N3VMdTJXaElHZz09" />
+              <input
+                type="hidden"
+                name="return_path"
+                value="https://www.moratame.net/login/after_attoos.php"
+              />
+              <input type="hidden" name="sns_id" id="sns_id" value="" />
+              <ul class="bl-8423-list-none" style="margin-bottom: 24px;">
+                <li class="bl-8423-mt-4">
+                  <a
+                    href="https://www.moratame.net/?redirect_yahoo_auth_end_point=1"
+                    data-role="none"
+                    class="u-btn-sns u-btn-sns--yahoo"
+                  >
+                    <img
+                      src="https://image.moratame.net/images/common/yahoo_japan_icon_w_64.png"
+                      alt=""
+                      width="64"
+                      height="36"
+                      class="bl-8423-left-2"
+                    />Yahoo! JAPAN IDでログイン
+                  </a>
+                </li>
+                <li class="bl-8423-mt-4">
+                  <a
+                    href="#"
+                    data-role="none"
+                    class="u-btn-sns u-btn-sns--apple bl-8423-text-left"
+                    onclick="javascript:return modeAttoosLogin(5);"
+                  >
+                    <i class="bi bi-apple bl-8423-left-2"></i>Sign in with Apple
+                  </a>
+                </li>
+                <li class="bl-8423-mt-4">
+                  <a
+                    href="#"
+                    data-role="none"
+                    class="u-btn-sns u-btn-sns--facebook bl-8423-text-left"
+                    onclick="javascript:return modeAttoosLogin(2);"
+                  >
+                    <i class="bi bi-facebook bl-8423-left-2"></i>Facebookでログイン
+                  </a>
+                </li>
+                <li class="bl-8423-mt-4">
+                  <a
+                    href="#"
+                    data-role="none"
+                    class="u-btn-sns u-btn-sns--line bl-8423-text-left"
+                    onclick="javascript:return modeAttoosLogin(3);"
+                  >
+                    <i class="bi bi-line bl-8423-left-2"></i>Lineでログイン
+                  </a>
+                </li>
+                <li class="bl-8423-mt-4">
+                  <a
+                    href="#"
+                    data-role="none"
+                    class="u-btn-sns u-btn-sns--google bl-8423-text-left"
+                    onclick="javascript:return modeAttoosLogin(4);"
+                  >
+                    <i class="bi bi-google bl-8423-left-2"></i>Googleでログイン
+                  </a>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+        <div style="margin-bottom: 40px;">
+          <p class="ta-c">
+            <a href="https://www.moratame.net/wp/cs/?p=99" class="td_u">Yahoo! JAPAN IDでログインとは</a>
+          </p>
+          <p class="ta_c c_red mt_10">※モラタメ.netの会員登録をして頂いた後にご利用頂けます。</p>
+        </div>
+
+        <div id="subscribing">
+          <p class="headline01 color4 pb0 mb20">まだご登録がお済みでない方</p>
+          <div class="about">
+            <h3>モラタメ.netを通してできること</h3>
+            <ul class="cf">
+              <li>
+                <p class="text color1">商品が<br />無料で<br />モラえる</p>
+                <p class="imgWrp">
+                  <img
+                    src="https://image.moratame.net/images/common/login/image01.png"
+                    alt=""
+                    width="180"
+                    height="120"
+                  />
+                </p>
+              </li>
+              <li>
+                <p class="text color3">商品が<br />送料関係費のみで<br />タメせる</p>
+                <p class="imgWrp">
+                  <img
+                    src="https://image.moratame.net/images/common/login/image02.png"
+                    alt=""
+                    width="180"
+                    height="120"
+                  />
+                </p>
+              </li>
+              <li>
+                <p class="text color5">感想を投稿するとモラタメポイントがたまる</p>
+                <p class="imgWrp">
+                  <img
+                    src="https://image.moratame.net/images/common/login/image03.png"
+                    alt=""
+                    width="180"
+                    height="120"
+                  />
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin:0 15px 20px; text-align: right;">
+          <a href="https://www.moratame.net/s/contents/about.php">モラタメ.net について詳しくはこちら</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <Footer variant="app" />
+  <NimatomeCart />
+</BaseLayout>

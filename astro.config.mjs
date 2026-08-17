@@ -2,10 +2,11 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  trailingSlash: 'never',
+  // preserve: signup00.astro → signup00.html、login/index.astro → login/index.html
+  trailingSlash: 'ignore',
   compressHTML: false,
   build: {
-    format: 'file',
+    format: 'preserve',
     inlineStylesheets: 'never',
   },
   vite: {

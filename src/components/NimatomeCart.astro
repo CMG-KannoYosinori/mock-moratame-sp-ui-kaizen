@@ -1,0 +1,209 @@
+---
+---
+
+      <!-- footer-cart -->
+      <div style="display: none;" id="sys--footer-cart" class="c-footer-cart" onClick="show_nimatome_cart_contents();">
+        <p>カート</p>
+        <p id="sys--nimatome-cart-cnt" data-nimatome-cart-cnt="0">0</p>
+      </div>
+      <!-- /footer-cart -->
+
+      <!-- remodal -->
+      <div class="remodal-bg"></div>
+      <div id="sys--remodal--cart" class="remodal remodal--matomete-bin remodal--cart" data-remodal-id="modal-cart"></div>
+      <!-- /remodal -->
+
+      <script is:inline>
+        function new_add_alert() {
+          alert('カートに入れました。内容については右下のカートをクリックして確認してください');
+        }
+
+        function nimatome_add_init_project(project_id, show_tamesu_modal_flg) {
+
+          if ($('#sys--nimatome-cart-cnt').attr('data-nimatome-cart-cnt') == 0) {
+            var modal = $('[data-remodal-id=modal]').remodal();
+            modal.open();
+          } else {
+            nimatome_add_project(project_id, show_tamesu_modal_flg);
+          }
+        }
+
+        function nimatome_add_project(project_id, show_tamesu_modal_flg) {
+          var add_cnt = 1;
+          $.ajax({
+            type: "POST",
+            url: "https://www.moratame.net/app/api/nimatome/nimatome_cart_api.php",
+            data: {
+              "process": "addProject",
+              "project_id": project_id,
+              "add_cnt": add_cnt,
+              "device": 'sp'
+            },
+            success: function (res) {
+              if (res['result']) {
+                if (show_tamesu_modal_flg) {
+                  if ($('#sys--nimatome-cart-cnt').attr('data-nimatome-cart-cnt') == 0) {
+                    var modal = $('[data-remodal-id=modal]').remodal();
+                    $('#sys--nimatome-cart-cnt').text('1');
+                    $('#sys--nimatome-cart-cnt').attr('data-nimatome-cart-cnt', 1);
+                    $('#sys--footer-cart').show();
+                    //modal.open();
+                    setTimeout('new_add_alert()', 200);
+                  } else {
+                    show_nimatome_cart_contents();
+                  }
+                } else {
+                  show_nimatome_cart_contents();
+                }
+              } else {
+                if (res['reason'] && res['reason'] == 'nologin') {
+                  location.href = res['uri_next'];
+                } else {
+                  alert('Error :' + res['msg']);
+                }
+              }
+            }
+          });
+        }
+
+        function nimatome_clear_cart_project(project_id) {
+          $.ajax({
+            type: "POST",
+            url: "https://www.moratame.net/app/api/nimatome/nimatome_cart_api.php",
+            data: {
+              "process": "clearCartProject",
+              "project_id": project_id
+            },
+            success: function (res) {
+              if (res['result']) {
+                show_nimatome_cart_contents();
+              } else {
+                alert('Error :' + res['msg']);
+              }
+            }
+          });
+        }
+
+        function show_nimatome_cart_contents() {
+          $.ajax({
+            type: "POST",
+            url: "https://www.moratame.net/app/api/nimatome/nimatome_cart_api.php",
+            data: {
+              "process": "checkCartContents"
+            },
+            success: function (res) {
+              if (!res['result']) {
+                alert('Error :' + res['msg']);
+              } else {
+                if (res['cart_sum'] == '0') {
+                  var modal = $('[data-remodal-id=modal-cart]').remodal();
+                  $('#sys--nimatome-cart-cnt').text(res['cart_sum']);
+                  $('#sys--nimatome-cart-cnt').attr('data-nimatome-cart-cnt', res['cart_sum']);
+                  $('#sys--footer-cart').hide();
+                  modal.close();
+                } else {
+                  var remodal_cart_head_html = '';
+                  remodal_cart_head_html += '<div class="remodal-heading">';
+                  remodal_cart_head_html += '  <button data-remodal-action="close" class="remodal-close"></button>';
+                  remodal_cart_head_html += '  <p>カート</p>';
+                  remodal_cart_head_html += '</div>';
+                  remodal_cart_head_html += '<div id="sys--cart-contents-remodal-row" class="remodal-row"></div>';
+                  $('#sys--remodal--cart').html(remodal_cart_head_html);
+
+                  var cart_contents_html = '';
+                  var cart_price_sum = 0;
+                  var cart_price_notax = 0;
+                  var cart_cnt = 0;
+                  for (var i = 0; i < res['rows'].length; i++) {
+                    for (var j = 0; j < res['rows'][i]['cnt']; j++) {
+                      cart_cnt += 1;
+                      if (res['cart_sum'] == '2') {
+                        cart_contents_html += '<div class="remodal-col">';
+                        cart_contents_html += '  <div class="remodal--matomete-bin__card">';
+                        cart_contents_html += '    <p class="remodal__card-heading">';
+                        cart_contents_html += '      商品' + String(cart_cnt);
+                        cart_contents_html += '      <span class="remodal__card-heading-close" onClick="nimatome_clear_cart_project(\'' + res['rows'][i]['pjt_id'] + '\');">';
+                        cart_contents_html += '      </span>';
+                        cart_contents_html += '    </p>';
+                        cart_contents_html += '    <div class="remodal--matomete-bin__img-contaner">';
+                        cart_contents_html += '      <img src="' + res['rows'][i]['img_path'] + '" alt="' + res['rows'][i]['sname'] + '" width="320" height="320">';
+                        cart_contents_html += '    </div>';
+                        cart_contents_html += '    <p class="remodal--matomete-bin__item-name">' + res['rows'][i]['disp_sname'] + '</p>';
+                        cart_contents_html += '    <p class="remodal--matomete-bin__price mt_10" style="height:auto;">';
+                        cart_contents_html += '      送料関係費<br><span class="remodal--matomete-bin__number">' + res['rows'][i]['offer_price'] + '円(税込' + res['rows'][i]['price_notax'] + '円)</span>';
+                        cart_contents_html += '    </p>';
+                        cart_contents_html += '  </div>';
+                        cart_contents_html += '</div>';
+                      } else if (res['cart_sum'] == '1') {
+                        cart_contents_html += '<div class="remodal-col">';
+                        cart_contents_html += '  <div class="remodal--matomete-bin__card">';
+                        cart_contents_html += '    <p class="remodal__card-heading">';
+                        cart_contents_html += '      商品' + String(cart_cnt);
+                        cart_contents_html += '      <span class="remodal__card-heading-close" onClick="nimatome_clear_cart_project(\'' + res['rows'][i]['pjt_id'] + '\');">';
+                        cart_contents_html += '      </span>';
+                        cart_contents_html += '    </p>';
+                        cart_contents_html += '    <div class="remodal--matomete-bin__img-contaner">';
+                        cart_contents_html += '      <img src="' + res['rows'][i]['img_path'] + '" alt="' + res['rows'][i]['sname'] + '" width="320" height="320">';
+                        cart_contents_html += '    </div>';
+                        cart_contents_html += '    <p class="remodal--matomete-bin__item-name">' + res['rows'][i]['disp_sname'] + '</p>';
+                        cart_contents_html += '    <p class="remodal--matomete-bin__price mt_10" style="height:auto;">';
+                        cart_contents_html += '      送料関係費<br><span class="remodal--matomete-bin__number">' + res['rows'][i]['offer_price'] + '円(税込' + res['rows'][i]['price_notax'] + '円)</span>';
+                        cart_contents_html += '    </p>';
+                        if (res['rows'][i]['nimatome_flg'] != '2') {
+                          cart_contents_html += '    <button data-remodal-action="close" class="remodal--matomete-bin__btn  mt_10"';
+                          cart_contents_html += '        onClick="location.href=\'https://www.moratame.net/s/detail/tamesu2.php?fst=1&quick=1&project_id=' + res['rows'][i]['pjt_id'] + '#anchor01\';">';
+                          cart_contents_html += '        この商品のみ<br>タメす！';
+                          cart_contents_html += '    </button>';
+                        }
+                        cart_contents_html += '    </div>';
+                        cart_contents_html += '  </div>';
+                        cart_contents_html += '</div>';
+                      }
+
+                      cart_price_sum += parseInt(res['rows'][i]['offer_price'].split(",").join(""));
+                      cart_price_notax += parseInt(res['rows'][i]['price_notax'].split(",").join(""));
+                    }
+                  }
+
+                  var cart_after_contents_html = ''
+                  if (res['cart_sum'] == '2') {
+                    cart_after_contents_html += '<div class="mt_10">';
+                    cart_after_contents_html += '  <p class="remodal--matomete-bin__price ta_c">';
+                    cart_after_contents_html += '    送料関係費：<span class="remodal--matomete-bin__number">' + cart_price_sum + '円(税込' + cart_price_notax + '円)</span>';
+                    cart_after_contents_html += '  </p>';
+                    cart_after_contents_html += '  <p class="remodal--matomete-bin__price ta_c">';
+                    cart_after_contents_html += '    ポイント：<span class="remodal--matomete-bin__number">&yen;+100pt</span>';
+                    cart_after_contents_html += '  </p>';
+                    cart_after_contents_html += '</div>';
+                    cart_after_contents_html += '<button data-remodal-action="close" class="remodal--matomete-bin__btn  mt_10"';
+                    cart_after_contents_html += '    onClick="location.href=\'https://www.moratame.net/s/detail/tamesu2_nimatome.php\';">まとめてタメす</button>';
+                  } else if (res['cart_sum'] == '1') {
+                    cart_contents_html += '<div class="remodal-col">';
+                    cart_contents_html += '  <div class="remodal--matomete-bin__card">';
+                    cart_contents_html += '    <p class="remodal__card-heading">';
+                    cart_contents_html += '      商品' + String(cart_cnt + 1);
+                    cart_contents_html += '    </p>';
+                    cart_contents_html += '    <div class="remodal--matomete-bin__img-contaner remodal--matomete-bin__img-contaner--right-col-no-image">';
+                    cart_contents_html += '    </div>';
+                    cart_contents_html += '    <p class="remodal--matomete-bin__price mt_10" style="height:auto;">　</p>';
+                    cart_contents_html += '    <button data-remodal-action="close" class="remodal--matomete-bin__btn  mt_10"';
+                    cart_contents_html += '        onClick="location.href=\'https://www.moratame.net/s/detail/nimatomelist.php\';">もう１商品選ぶ</button>';
+                    cart_contents_html += '  </div>';
+                    cart_contents_html += '</div>';
+
+                    $('#sys--cart-point').html('&yen;+0');
+                  }
+                  $('#sys--cart-contents-remodal-row').html(cart_contents_html);
+                  $('#sys--cart-contents-remodal-row').after(cart_after_contents_html);
+                  $('#sys--nimatome-cart-cnt').text(res['cart_sum']);
+                  $('#sys--nimatome-cart-cnt').attr('data-nimatome-cart-cnt', res['cart_sum']);
+
+                  var modal = $('[data-remodal-id=modal-cart]').remodal();
+                  $('#sys--footer-cart').show();
+                  modal.open();
+                }
+              }
+            }
+          });
+        }
+      </script>
