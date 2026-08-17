@@ -1,0 +1,48 @@
+/**
+ * jQuery Mobile パネルの代替（オフキャンバス）。
+ *
+ * セレクタは .js-drawer-panel 配下に閉じる。jQM ありページに読んでも衝突しない。
+ * 本番配置: /s/css/drawer.css
+ *
+ * メニュー項目の色・余白・アイコンは既存の本番 CSS
+ * （#drawerMenu / .drwMnNavList / .drawerMenuLink など）を使う。
+ * このファイルはパネル枠（位置・開閉・必要なら体裁寄せ）だけを持つ。
+ */
+
+/* 開閉 */
+.js-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1099;
+}
+
+.js-drawer-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  max-width: 85%;
+  height: 100%;
+  overflow: auto;
+  background: #fff;
+  z-index: 1100;
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.js-drawer-panel.is-open {
+  transform: none;
+}
+
+body.js-drawer-open {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+ * ▼ スタイルの追記はここから
+ * 開閉用のルール（上の .js-drawer-overlay / .js-drawer-panel / body.js-drawer-open）は触らない。
+ * セレクタは .js-drawer-panel 配下に閉じる（例: .js-drawer-panel #drawerMenu）。
+ * あり版の目安: 幅 17em、内側 15px（.ui-panel-inner）、data-theme="x" の背景。
+ * ========================================================================== */

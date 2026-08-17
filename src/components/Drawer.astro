@@ -1,4 +1,7 @@
 ---
+import drawerCssUrl from '../styles/drawer.css?url';
+import drawerJsUrl from '../scripts/drawer.js?url';
+
 interface Props {
   loggedIn?: boolean;
   /** jqm: jQuery Mobile パネル。css: 自前のオフキャンバス（jQM 排除スパイク用） */
@@ -399,73 +402,8 @@ const isCss = engine === 'css';
 {
   isCss && (
     <>
-      <style is:global>
-        .js-drawer-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.5);
-          z-index: 1099;
-        }
-        .js-drawer-panel {
-          position: fixed;
-          top: 0;
-          right: 0;
-          width: 280px;
-          max-width: 85%;
-          height: 100%;
-          overflow: auto;
-          background: #fff;
-          z-index: 1100;
-          transform: translateX(100%);
-          transition: transform 0.2s ease;
-          box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-        }
-        .js-drawer-panel.is-open {
-          transform: none;
-        }
-        body.js-drawer-open {
-          overflow: hidden;
-        }
-      </style>
-      <script is:inline>
-        (function () {
-          var overlay = document.getElementById('js-drawer-overlay');
-          var panel = document.getElementById('r-panel');
-          if (!overlay || !panel) return;
-
-          function openDrawer(e) {
-            e.preventDefault();
-            panel.classList.add('is-open');
-            panel.setAttribute('aria-hidden', 'false');
-            overlay.hidden = false;
-            document.body.classList.add('js-drawer-open');
-          }
-
-          function closeDrawer() {
-            panel.classList.remove('is-open');
-            panel.setAttribute('aria-hidden', 'true');
-            overlay.hidden = true;
-            document.body.classList.remove('js-drawer-open');
-          }
-
-          document.addEventListener('click', function (e) {
-            var t = e.target;
-            if (!t || !t.closest) return;
-            var openBtn = t.closest('#build-menu-button');
-            if (openBtn) {
-              openDrawer(e);
-              return;
-            }
-            if (e.target === overlay) {
-              closeDrawer();
-            }
-          });
-
-          document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeDrawer();
-          });
-        })();
-      </script>
+      <link rel="stylesheet" href={drawerCssUrl} />
+      <script is:inline src={drawerJsUrl}></script>
     </>
   )
 }
