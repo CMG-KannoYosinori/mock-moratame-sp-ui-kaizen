@@ -1,0 +1,28 @@
+---
+description: モック HTML に広告・計測タグを入れない
+alwaysApply: true
+---
+
+# 広告・計測コードは入れない
+
+このリポジトリは UI モック専用。本番 HTML をコピーしてページを追加・編集するとき、広告・計測・リタゲ用のコードは入れない。既存ファイルにあれば削除する。
+
+## 削除対象
+
+- Google Analytics / GTM（`GTM-*`、`googletagmanager`、`google-analytics`、`async-hide`）
+- KARTE（`krt`、`cdn-edge.karte.io`、`cdn-blocks.karte.io`）
+- GAM/DFP（`gpt.js`、`googletag`、`div-gpt-ad-*`）
+- BID STRAP / prebid（`adingo.jp`、`bsttag`）
+- フッターバナー用 `jquery.cycle.all.js` と `#jquery-cycle` 初期化
+- Yahoo リタゲ（`yahoo_retargeting_*`、`s_retargeting.js`）
+- Font Awesome Kit（`kit.fontawesome.com`。ページ内未使用かつ 403）
+- kaiu-marketing などその他の計測・広告スクリプト
+
+Yahoo リタゲがニマトメカートと同じ `<script>` に同居している場合は、カート関数は残し、Yahoo 変数と `s_retargeting.js` だけ消す。
+
+## 残すもの
+
+- ニマトメカートなど画面機能の JS
+- Facebook ログインボタン、SNS リンク
+- OGP / `fb:admins` / `facebook-domain-verification`
+- アプリ誘導の Smart Banner

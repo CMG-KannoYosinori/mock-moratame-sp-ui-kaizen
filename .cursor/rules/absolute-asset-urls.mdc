@@ -1,0 +1,31 @@
+---
+description: 本番にしかない静的ファイルは moratame.net の絶対 URL にする
+alwaysApply: true
+---
+
+# 静的ファイルのリンク切れを防ぐ
+
+このリポジトリには CSS / JS / 画像などの本番アセットは置かない。本番 HTML をコピーしてモックを足すとき、ルート相対パスは `https://www.moratame.net` 付きに直す。
+
+## 変換する
+
+- `/s/` `/js/` `/plugins/` `/css/` `/img/` `/app/` `/wp/` `/contents/` `/Scripts/`
+- `src` `href` `action` に加え、JS 内の `url: "/app/..."` なども同様
+- プロトコル相対 `//www.moratame.net` は `https://www.moratame.net` にする（Vite がローカルパスと誤認するため）。すでに `https://www.moratame.net` の URL は触らない。`https:https://` にしない
+
+```
+<!-- ❌ BAD -->
+<script src="/s/js/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="/css/style--sp.css">
+<script src="/plugins/Remodal-1.1.1/dist/remodal.min.js"></script>
+
+<!-- ✅ GOOD -->
+<script src="https://www.moratame.net/s/js/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="https://www.moratame.net/css/style--sp.css">
+<script src="https://www.moratame.net/plugins/Remodal-1.1.1/dist/remodal.min.js"></script>
+```
+
+## 変換しない
+
+- このリポジトリ内のモックページ同士のリンク（例: `/s/contents/signup01.html`）
+- すでに絶対 URL（`https://www.moratame.net`、`https://image.moratame.net` など）
