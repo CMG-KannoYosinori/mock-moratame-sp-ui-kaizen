@@ -7,7 +7,7 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
 import LoginContent from '../../../components/LoginContent.astro';
 ---
 
-<BaseLayout title="ログイン" includeJqueryMobileJs includeJqueryMobileCss>
+<BaseLayout title="ログイン（jQuery Mobile なし）">
   <link
     slot="head"
     rel="stylesheet"
@@ -21,9 +21,23 @@ import LoginContent from '../../../components/LoginContent.astro';
       width: 300px;
       margin-top: 20px;
     }
+    .js-mock-compare {
+      margin: 0;
+      padding: 8px 12px;
+      background: #fff8e1;
+      font-size: 13px;
+      text-align: center;
+    }
   </style>
 
-  <Drawer />
+  <p class="js-mock-compare">
+    jQuery Mobile 排除スパイク（ドロワーは CSS）。比較:
+    <a href="/s/login/index.html">あり</a>
+    ／
+    なし（このページ）
+  </p>
+
+  <Drawer engine="css" />
   <HeaderApp showGuestNav />
   <LoginContent />
   <Footer variant="app" />

@@ -1,12 +1,31 @@
 ---
 interface Props {
   loggedIn?: boolean;
+  /** jqm: jQuery Mobile パネル。css: 自前のオフキャンバス（jQM 排除スパイク用） */
+  engine?: 'jqm' | 'css';
 }
 
-const { loggedIn = false } = Astro.props;
+const { loggedIn = false, engine = 'jqm' } = Astro.props;
+const isCss = engine === 'css';
 ---
 
-<div data-role="panel" id="r-panel" data-position="right" data-display="push" data-theme="x" data-animate="true">
+{
+  isCss && (
+    <div class="js-drawer-overlay" id="js-drawer-overlay" hidden></div>
+  )
+}
+<div
+  id="r-panel"
+  data-role={isCss ? undefined : 'panel'}
+  data-position={isCss ? undefined : 'right'}
+  data-display={isCss ? undefined : 'push'}
+  data-theme={isCss ? undefined : 'x'}
+  data-animate={isCss ? undefined : 'true'}
+  class:list={[{ 'js-drawer-panel': isCss }]}
+  role={isCss ? 'dialog' : undefined}
+  aria-hidden={isCss ? 'true' : undefined}
+  aria-label={isCss ? 'メニュー' : undefined}
+>
   <nav class="p0-0-10-0" id="drawerMenu">
     <div>
       <section>
@@ -376,3 +395,77 @@ const { loggedIn = false } = Astro.props;
     </div>
   </nav>
 </div>
+
+{
+  isCss && (
+    <>
+      <style is:global>
+        .js-drawer-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1099;
+        }
+        .js-drawer-panel {
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 280px;
+          max-width: 85%;
+          height: 100%;
+          overflow: auto;
+          background: #fff;
+          z-index: 1100;
+          transform: translateX(100%);
+          transition: transform 0.2s ease;
+          box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+        }
+        .js-drawer-panel.is-open {
+          transform: none;
+        }
+        body.js-drawer-open {
+          overflow: hidden;
+        }
+      </style>
+      <script is:inline>
+        (function () {
+          var overlay = document.getElementById('js-drawer-overlay');
+          var panel = document.getElementById('r-panel');
+          if (!overlay || !panel) return;
+
+          function openDrawer(e) {
+            e.preventDefault();
+            panel.classList.add('is-open');
+            panel.setAttribute('aria-hidden', 'false');
+            overlay.hidden = false;
+            document.body.classList.add('js-drawer-open');
+          }
+
+          function closeDrawer() {
+            panel.classList.remove('is-open');
+            panel.setAttribute('aria-hidden', 'true');
+            overlay.hidden = true;
+            document.body.classList.remove('js-drawer-open');
+          }
+
+          document.addEventListener('click', function (e) {
+            var t = e.target;
+            if (!t || !t.closest) return;
+            var openBtn = t.closest('#build-menu-button');
+            if (openBtn) {
+              openDrawer(e);
+              return;
+            }
+            if (e.target === overlay) {
+              closeDrawer();
+            }
+          });
+
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeDrawer();
+          });
+        })();
+      </script>
+    </>
+  )
+}
