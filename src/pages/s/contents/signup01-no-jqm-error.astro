@@ -9,7 +9,7 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
 ---
 
 <BaseLayout
-  title="新規会員登録（jQuery Mobile なし）"
+  title="新規会員登録（jQuery Mobile なし・エラー確認用）"
   pageId="registration-page"
   fixSmartBannerOffsetToPage
 >
@@ -140,6 +140,9 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
           </li>
         </ol>
         <h1 class="heading-ttl">基本情報入力</h1>
+        <div class="form_error">
+          <div class="form_error_body">入力内容をご確認ください。</div>
+        </div>
 
         <form
           action="https://www.moratame.net/s/contents/signup02p.php"
@@ -148,6 +151,9 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
           id="new-signup-input"
         >
           <input type="hidden" name="mode" id="mode" value="" />
+          <div class="input-area" style="margin-bottom: 15px;">
+            <p class="error">入力内容に不備があります。</p>
+          </div>
 
           <div class="select-area select-sex">
             <div class="form-ttl">
@@ -252,6 +258,7 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
                   />
                 </li>
               </ul>
+              <p class="error">同一のE-mailアドレスが登録されています。<br /></p>
             </div>
           </div>
 
@@ -302,6 +309,8 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
                 </div>
               </ul>
               <p class="side-text">※ニックネームは後から変更できます。</p>
+              <p class="error">ニックネームは必須入力です。<br /></p>
+              <p class="error">同一のニックネームが登録されています。<br /></p>
             </div>
           </div>
 
@@ -319,6 +328,7 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
                   <span id="nicknamealert"></span>
                 </div>
               </ul>
+              <p class="error">紹介コードが正しくありません。<br /></p>
             </div>
           </div>
 
