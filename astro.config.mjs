@@ -9,7 +9,8 @@ export default defineConfig({
   compressHTML: false,
   build: {
     format: 'preserve',
-    inlineStylesheets: 'never',
+    // ページ／コンポーネントの <style> は HTML に埋め込む（dist/_astro のハッシュ付き CSS を納品しない）。
+    inlineStylesheets: 'always',
   },
   vite: {
     build: {
