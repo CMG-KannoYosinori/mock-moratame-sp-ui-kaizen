@@ -37,7 +37,7 @@ Live Server で見る場合は、**リポジトリ直下をルートのまま** 
 - http://127.0.0.1:5500/dist/s/login/index-no-jqm.html
 - http://127.0.0.1:5500/dist/s/login/index.html
 
-`.astro` の `<style>`（比較バナーや Layout 内の追加スタイルなど）はビルド時に HTML へ埋め込みます。`dist/_astro` のハッシュ付き CSS は出さないので、PHP 組み込み時にそのフォルダを配る必要はありません。
+`.astro` の `<style>`（Layout 内の追加スタイルなど）はビルド時に HTML へ埋め込みます。`dist/_astro` のハッシュ付き CSS は出さないので、PHP 組み込み時にそのフォルダを配る必要はありません。
 
 `/styles/`・`/scripts/`・モック同士の `/s/` はビルド時に各 HTML からの相対パスへ書き換えます。`http://127.0.0.1:5500/s/login/...` はワークスペース直下にそのパスが無いため 404（Cannot GET）になります。先に `npm run build` してください。
 

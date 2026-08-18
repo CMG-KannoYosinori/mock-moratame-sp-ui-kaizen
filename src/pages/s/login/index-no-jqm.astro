@@ -13,22 +13,6 @@ import LoginContent from '../../../components/LoginContent.astro';
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
   />
-  <style slot="head" is:global>
-    .js-mock-compare {
-      margin: 0;
-      padding: 8px 12px;
-      background: #fff8e1;
-      font-size: 13px;
-      text-align: center;
-    }
-  </style>
-
-  <p class="js-mock-compare">
-    jQuery Mobile 排除スパイク（ドロワーは CSS）。比較:
-    <a href="/s/login/index.html">あり</a>
-    ／
-    なし（このページ）
-  </p>
 
   <Drawer engine="css" />
   <HeaderApp showGuestNav />
