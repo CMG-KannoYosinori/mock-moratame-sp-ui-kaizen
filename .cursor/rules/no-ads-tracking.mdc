@@ -1,15 +1,16 @@
 ---
-description: モック HTML に広告・計測タグを入れない
+description: モック HTML に広告・計測・reCAPTCHA を入れない
 alwaysApply: true
 ---
 
-# 広告・計測コードは入れない
+# 広告・計測・reCAPTCHA は入れない
 
-このリポジトリは UI モック専用。本番 HTML をコピーしてページを追加・編集するとき、広告・計測・リタゲ用のコードは入れない。既存ファイルにあれば削除する。
+このリポジトリは UI モック専用。本番 HTML をコピーしてページを追加・編集するとき、広告・計測・リタゲ・reCAPTCHA は入れない。既存ファイルにあれば削除する。
 
 ## 削除対象
 
 - Google Analytics / GTM（`GTM-*`、`googletagmanager`、`google-analytics`、`async-hide`）
+- reCAPTCHA（`g-recaptcha`、`data-sitekey`、`www.google.com/recaptcha/api.js`、`.g-recaptcha` 用スタイル）
 - KARTE（`krt`、`cdn-edge.karte.io`、`cdn-blocks.karte.io`）
 - GAM/DFP（`gpt.js`、`googletag`、`div-gpt-ad-*`）
 - BID STRAP / prebid（`adingo.jp`、`bsttag`）
@@ -23,6 +24,6 @@ Yahoo リタゲがニマトメカートと同じ `<script>` に同居してい�
 ## 残すもの
 
 - ニマトメカートなど画面機能の JS
-- Facebook ログインボタン、SNS リンク
+- Facebook ログインボタン、SNS リンク（reCAPTCHA は SNS ログインとは別。残さない）
 - OGP / `fb:admins` / `facebook-domain-verification`
 - アプリ誘導の Smart Banner
