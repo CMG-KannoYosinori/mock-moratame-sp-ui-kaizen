@@ -4,6 +4,7 @@ interface Props {
   pageId?: string;
   includeJqueryMobileJs?: boolean;
   includeJqueryMobileCss?: boolean;
+  fixSmartBannerOffsetToPage?: boolean;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   pageId,
   includeJqueryMobileJs = false,
   includeJqueryMobileCss = false,
+  fixSmartBannerOffsetToPage = false,
 } = Astro.props;
 ---
 
@@ -41,6 +43,7 @@ const {
     />
     <meta name="smartbanner:enabled-platforms" content="android" />
     <meta name="smartbanner:close-label" content="Close" />
+    {fixSmartBannerOffsetToPage && <meta name="smartbanner:disable-positioning" content="true" />}
     <link
       rel="stylesheet"
       href="https://www.moratame.net/s/Scripts/smartbanner/smartbanner.min.css"
@@ -226,6 +229,11 @@ const {
       <slot />
     </div>
     <slot name="after-page" />
+    {
+      fixSmartBannerOffsetToPage && (
+        <script is:inline src="/scripts/smartbanner-offset.js"></script>
+      )
+    }
     <script is:inline type="text/javascript" src="https://www.moratame.net/s/js/moratame_s_common.js?2026061217"
     ></script>
     <script is:inline type="text/javascript" src="https://www.moratame.net/s/js/p9255-scripts.js?2026061217"

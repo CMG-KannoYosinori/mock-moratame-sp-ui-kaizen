@@ -8,7 +8,11 @@ const months = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0
 const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
 ---
 
-<BaseLayout title="新規会員登録（jQuery Mobile なし）" pageId="registration-page">
+<BaseLayout
+  title="新規会員登録（jQuery Mobile なし）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
   <link
     slot="head"
     rel="stylesheet"
@@ -120,19 +124,19 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
         <ol class="stepper">
           <li class="stepper__step stepper__step--active">
             <span class="stepper__dot"></span>
-            <span class="stepper__label">基本情報入力</span>
+            <span class="stepper__label">基本情報<br>入力</span>
           </li>
           <li class="stepper__step">
             <span class="stepper__dot"></span>
-            <span class="stepper__label">入力内容確認</span>
+            <span class="stepper__label">入力内容<br>確認</span>
           </li>
           <li class="stepper__step">
             <span class="stepper__dot"></span>
-            <span class="stepper__label">SMS認証</span>
+            <span class="stepper__label">SMS<br>認証</span>
           </li>
           <li class="stepper__step">
             <span class="stepper__dot"></span>
-            <span class="stepper__label">会員登録完了</span>
+            <span class="stepper__label">会員登録<br>完了</span>
           </li>
         </ol>
         <h1 class="heading-ttl">基本情報入力</h1>
