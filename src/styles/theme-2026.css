@@ -28,9 +28,9 @@
 /* ドット間をつなぐ横棒（疑似要素で両隣を結ぶ） */
 .stepper__step::before {
   position: absolute;
-  top: 7px;
-  right: calc(50% + 8px);
-  left: calc(-50% + 8px);
+  top: 4px;
+  right: calc(50% + 5px);
+  left: calc(-50% + 5px);
   height: 2px;
   content: "";
   background: #ccc;
@@ -44,14 +44,14 @@
 .stepper__dot {
   z-index: 1;
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   background: #ccc;
   border-radius: 50%;
 }
 
 .stepper__step--active .stepper__dot {
-  background: #6abf69;
+  background: #57c200;
 }
 
 .stepper__label {
@@ -61,9 +61,4 @@
   color: #999;
   text-align: center;
   white-space: nowrap;
-}
-
-.stepper__step--active .stepper__label {
-  font-weight: bold;
-  color: #6abf69;
 }
