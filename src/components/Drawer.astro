@@ -1,7 +1,4 @@
 ---
-import drawerCssUrl from '../styles/drawer.css?url';
-import drawerJsUrl from '../scripts/drawer.js?url';
-
 interface Props {
   loggedIn?: boolean;
   /** jqm: jQuery Mobile パネル。css: 自前のオフキャンバス（jQM 排除スパイク用） */
@@ -402,8 +399,8 @@ const isCss = engine === 'css';
 {
   isCss && (
     <>
-      <link rel="stylesheet" href={drawerCssUrl} />
-      <script is:inline src={drawerJsUrl}></script>
+      <link rel="stylesheet" href="/styles/drawer.css" />
+      <script is:inline src="/scripts/drawer.js"></script>
     </>
   )
 }

@@ -32,4 +32,6 @@ npm run build
 
 静的 HTML は `dist/` に出力されます。プレビューは `npm run preview` です。
 
+jQM 排除ドロワー用の CSS / JS は `src/styles/`・`src/scripts/` がソースで、ビルド時に **`dist/styles/`・`dist/scripts/`** へそのままコピーされます（`/_astro/` のハッシュ付きファイルにはしません）。HTML からは `/styles/drawer.css`・`/scripts/drawer.js` で参照します。
+
 CSS / JS は本番サイト（`www.moratame.net`）の資産を読み込みます。
