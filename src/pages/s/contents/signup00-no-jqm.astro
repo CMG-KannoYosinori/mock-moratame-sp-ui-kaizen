@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Drawer from '../../../components/Drawer.astro';
+import HeaderApp from '../../../components/HeaderApp.astro';
+import Footer from '../../../components/Footer.astro';
+import NimatomeCart from '../../../components/NimatomeCart.astro';
+---
+
+<BaseLayout title="新規ユーザー登録（jQuery Mobile なし）">
+  <link slot="head" rel="stylesheet" href="https://www.moratame.net/s/css/contents/about.css" />
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+  />
+
+  <Drawer engine="css" />
+  <HeaderApp showGuestNav />
+
+  <div data-role="content" class="content">
+    <script is:inline>
+      $(document).ready(function () {
+        $('a img').hover(
+          function () {
+            $(this).fadeTo('2000', 0.75);
+          },
+          function () {
+            $(this).fadeTo('2000', 1.0);
+          }
+        );
+      });
+    </script>
+
+    <script is:inline>
+      function modeAttoosLogin(id) {
+        $('#sns_id').val(id);
+        $('#attoos-login').submit();
+        return false;
+      }
+    </script>
+
+    <div class="p-social_login">
+      <div class="bl-8423-pb-12">
+        <div id="socialBtns" class="bl-8423-mx-auto bl-8423-max-w-md bl-8423-px-4">
+          <div class="bl-8423-justify-center">
+            <p class="bl-8423-box-border bl-8423-mt-6">
+              <a href="/s/contents/signup01.html" data-role="none" class="u-btn-sns u-btn-sns--mail">
+                <i class="bi bi-envelope bl-8423-left-2"></i>
+                メールアドレスで登録
+              </a>
+            </p>
+          </div>
+
+          <p class="bl-8423-text-lg bl-8423-mt-6 bl-8423-font-bold bl-8423-text-center">
+            または SNS アカウントで登録
+          </p>
+          <form action="https://auth.attoos.jp/uauth/receive" method="post" id="attoos-login">
+            <input type="hidden" name="iv" value="TVlPbTEyN3JPVXI0NGhIUGY5Q3JJTVlqYWd2UlFsaXNGSUp1NEhGb1hrRT0=" />
+            <input type="hidden" id="site_id" name="site_id" value="NWVwblNuZUFLRit5N3VMdTJXaElHZz09" />
+            <input
+              type="hidden"
+              name="return_path"
+              value="https://www.moratame.net/login/after_attoos.php"
+            />
+            <input type="hidden" name="sns_id" id="sns_id" value="" />
+            <ul class="bl-8423-justify-center bl-8423-list-none -bl-8423-mt-2">
+              <li class="bl-8423-box-border bl-8423-mt-6">
+                <a
+                  href="#"
+                  data-role="none"
+                  class="u-btn-sns u-btn-sns--apple"
+                  onclick="javascript:return modeAttoosLogin(5);"
+                >
+                  <i class="bi bi-apple bl-8423-left-2"></i>Sign up with Apple
+                </a>
+              </li>
+              <li class="bl-8423-box-border bl-8423-mt-6">
+                <a
+                  href="#"
+                  data-role="none"
+                  class="u-btn-sns u-btn-sns--facebook"
+                  onclick="javascript:return modeAttoosLogin(2);"
+                >
+                  <i class="bi bi-facebook bl-8423-left-2"></i>Facebookで登録
+                </a>
+              </li>
+              <li class="bl-8423-box-border bl-8423-mt-6">
+                <a
+                  href="#"
+                  data-role="none"
+                  class="u-btn-sns u-btn-sns--line"
+                  onclick="javascript:return modeAttoosLogin(3);"
+                >
+                  <i class="bi bi-line bl-8423-left-2"></i>Lineで登録
+                </a>
+              </li>
+              <li class="bl-8423-box-border bl-8423-mt-6">
+                <a
+                  href="#"
+                  data-role="none"
+                  class="u-btn-sns u-btn-sns--google"
+                  onclick="javascript:return modeAttoosLogin(4);"
+                >
+                  <i class="bi bi-google bl-8423-left-2"></i>Googleで登録
+                </a>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer variant="app" />
+  <NimatomeCart />
+</BaseLayout>
