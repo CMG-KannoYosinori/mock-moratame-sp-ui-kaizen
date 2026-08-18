@@ -14,6 +14,7 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
     rel="stylesheet"
     href="https://www.moratame.net/s/css/member-registration.css?2026061217"
   />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
   <link slot="head" rel="stylesheet" href="https://www.moratame.net/s/css/colorbox.css" />
   <script slot="head" is:inline src="https://www.moratame.net/s/js/jquery.colorbox.js" charset="UTF-8"></script>
   <script slot="head" is:inline src="https://www.moratame.net/s/js/hideShowPassword.js"></script>
@@ -116,9 +117,24 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
   <div id="contente-top" class="content">
     <div class="container">
       <section class="new-signup-input">
-        <p class="milesstone">
-          <img src="https://www.moratame.net/img/milestone-1.png" alt="step1 基本情報入力" />
-        </p>
+        <ol class="stepper">
+          <li class="stepper__step stepper__step--active">
+            <span class="stepper__dot"></span>
+            <span class="stepper__label">基本情報入力</span>
+          </li>
+          <li class="stepper__step">
+            <span class="stepper__dot"></span>
+            <span class="stepper__label">入力内容確認</span>
+          </li>
+          <li class="stepper__step">
+            <span class="stepper__dot"></span>
+            <span class="stepper__label">SMS認証</span>
+          </li>
+          <li class="stepper__step">
+            <span class="stepper__dot"></span>
+            <span class="stepper__label">会員登録完了</span>
+          </li>
+        </ol>
         <h1 class="heading-ttl">基本情報入力</h1>
         <div class="form_error">
           <div class="form_error_body">入力内容をご確認ください。</div>

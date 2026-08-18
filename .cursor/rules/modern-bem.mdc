@@ -1,0 +1,32 @@
+# Modern BEM coding rules
+
+このリポジトリの CSS は `Modern BEM`（Block / Element / Modifier）で命名・設計する。
+
+## 命名
+
+- Block: `.block-name`（kebab-case）
+- Element: `.block-name__element-name`
+- Modifier: `.block-name--modifier-name`
+
+## State vs Modifier
+
+- 静的な見た目の違い: `--`（Modifier）
+- 動的な状態: `is-*` または `data-*`
+  - 例: `.button.is-loading`、`.button[data-disabled="true"]`
+
+## 禁止
+
+- Element をさらにネストした命名（孫要素をクラス名で表現しない）
+  - NG: `.block__el__el__text`
+- 親側から別 Block の子を直接スタイリングしない（カプセル化を壊さない）
+  - NG: `.card .button { ... }`
+
+## 責務分離
+
+- 余白や配置（`position` / `margin` など）は Block 内の Element（または layout 側のクラス）に閉じ込める
+- Block ルートにページコンテキスト依存の絶対配置を持たせない
+
+## 参考
+
+- https://github.com/YoshinoriKanno/doc-modern-bem
+
