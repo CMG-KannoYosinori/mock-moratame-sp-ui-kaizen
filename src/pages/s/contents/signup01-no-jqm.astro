@@ -118,222 +118,220 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
 
   <HeaderSimple />
 
-  <div id="contente-top" class="content">
-    <div class="container">
-      <section class="new-signup-input">
-        <ol class="stepper">
-          <li class="stepper__step stepper__step--active">
-            <span class="stepper__dot"></span>
-            <span class="stepper__label">基本情報<br>入力</span>
-          </li>
-          <li class="stepper__step">
-            <span class="stepper__dot"></span>
-            <span class="stepper__label">入力内容<br>確認</span>
-          </li>
-          <li class="stepper__step">
-            <span class="stepper__dot"></span>
-            <span class="stepper__label">SMS<br>認証</span>
-          </li>
-          <li class="stepper__step">
-            <span class="stepper__dot"></span>
-            <span class="stepper__label">会員登録<br>完了</span>
-          </li>
-        </ol>
-        <h1 class="page-heading">基本情報入力</h1>
+  <div class="page-content">
+    <section class="new-signup-input">
+      <ol class="stepper">
+        <li class="stepper__step stepper__step--active">
+          <span class="stepper__dot"></span>
+          <span class="stepper__label">基本情報<br>入力</span>
+        </li>
+        <li class="stepper__step">
+          <span class="stepper__dot"></span>
+          <span class="stepper__label">入力内容<br>確認</span>
+        </li>
+        <li class="stepper__step">
+          <span class="stepper__dot"></span>
+          <span class="stepper__label">SMS<br>認証</span>
+        </li>
+        <li class="stepper__step">
+          <span class="stepper__dot"></span>
+          <span class="stepper__label">会員登録<br>完了</span>
+        </li>
+      </ol>
+      <h1 class="page-heading">基本情報入力</h1>
 
-        <form
-          action="https://www.moratame.net/s/contents/signup02p.php"
-          method="post"
-          name="new-signup-input"
-          id="new-signup-input"
-        >
-          <input type="hidden" name="mode" id="mode" value="" />
+      <form
+        action="https://www.moratame.net/s/contents/signup02p.php"
+        method="post"
+        name="new-signup-input"
+        id="new-signup-input"
+      >
+        <input type="hidden" name="mode" id="mode" value="" />
 
-          <div class="select-area select-sex">
-            <div class="form-ttl">
-              <h2 class="element-ttl">性別</h2>
-              <span class="required">必須</span>
-            </div>
-            <div class="input-area">
-              <ul class="radio-menu sexs">
-                <li>
-                  <input type="radio" name="sex[]" id="sex-1" value="11001" /><label for="sex-1">男性</label>
-                </li>
-                <li>
-                  <input type="radio" name="sex[]" id="sex-2" value="11002" checked /><label for="sex-2"
-                    >女性</label
-                  >
-                </li>
-                <li>
-                  <input type="radio" name="sex[]" id="sex-3" value="11003" /><label for="sex-3">無回答</label>
-                </li>
-              </ul>
-            </div>
+        <div class="select-area select-sex">
+          <div class="form-ttl">
+            <h2 class="element-ttl">性別</h2>
+            <span class="required">必須</span>
           </div>
+          <div class="input-area">
+            <ul class="radio-menu sexs">
+              <li>
+                <input type="radio" name="sex[]" id="sex-1" value="11001" /><label for="sex-1">男性</label>
+              </li>
+              <li>
+                <input type="radio" name="sex[]" id="sex-2" value="11002" checked /><label for="sex-2"
+                  >女性</label
+                >
+              </li>
+              <li>
+                <input type="radio" name="sex[]" id="sex-3" value="11003" /><label for="sex-3">無回答</label>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-          <div class="select-area select-birthday">
-            <div class="form-ttl">
-              <h2 class="element-ttl">生年月日</h2>
-              <span class="required">必須</span>
-            </div>
-            <div class="input-area">
-              <ul class="select-menu birthday">
-                <li>
-                  <select name="yyyy" onchange="javascript: daychange();" data-role="none">
-                    <option>年</option>
-                    {
-                      years.map((year) => (
-                        <option value={year} selected={year === 1980}>
-                          {year}
-                        </option>
-                      ))
-                    }
-                  </select>
-                </li>
-                &nbsp;
-                <li>
-                  <select name="mm" onchange="javascript: daychange();" data-role="none">
-                    <option>月</option>
-                    {
-                      months.map((month) => (
-                        <option value={month}>{month}</option>
-                      ))
-                    }
-                  </select>
-                </li>
-                &nbsp;
-                <li>
-                  <select name="dd" id="day" onchange="javascript: daychange();" data-role="none">
-                    <option>日</option>
-                    {
-                      days.map((day) => (
-                        <option id={`day${Number(day)}`} value={day}>
-                          {day}
-                        </option>
-                      ))
-                    }
-                  </select>
-                </li>
-              </ul>
-            </div>
+        <div class="select-area select-birthday">
+          <div class="form-ttl">
+            <h2 class="element-ttl">生年月日</h2>
+            <span class="required">必須</span>
           </div>
+          <div class="input-area">
+            <ul class="select-menu birthday">
+              <li>
+                <select name="yyyy" onchange="javascript: daychange();" data-role="none">
+                  <option>年</option>
+                  {
+                    years.map((year) => (
+                      <option value={year} selected={year === 1980}>
+                        {year}
+                      </option>
+                    ))
+                  }
+                </select>
+              </li>
+              &nbsp;
+              <li>
+                <select name="mm" onchange="javascript: daychange();" data-role="none">
+                  <option>月</option>
+                  {
+                    months.map((month) => (
+                      <option value={month}>{month}</option>
+                    ))
+                  }
+                </select>
+              </li>
+              &nbsp;
+              <li>
+                <select name="dd" id="day" onchange="javascript: daychange();" data-role="none">
+                  <option>日</option>
+                  {
+                    days.map((day) => (
+                      <option id={`day${Number(day)}`} value={day}>
+                        {day}
+                      </option>
+                    ))
+                  }
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-          <div class="select-area select-email">
-            <div class="form-ttl">
-              <h2 class="element-ttl">メールアドレス</h2>
-              <span class="required">必須</span>
-            </div>
-            <div class="input-area">
-              <ul class="input-menu email">
-                <li>
-                  <input
-                    type="text"
-                    class="fs-15"
-                    name="email"
-                    id="email"
-                    value=""
-                    placeholder="example@moratame.net"
-                    autocomplete="off"
-                    spellcheck="false"
-                    autocorrect="off"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    class="fs-15"
-                    name="email2"
-                    id="email2"
-                    value=""
-                    placeholder="確認のためもう一度入力して下さい"
-                    autocomplete="off"
-                    spellcheck="false"
-                    autocorrect="off"
-                  />
-                </li>
-              </ul>
-            </div>
+        <div class="select-area select-email">
+          <div class="form-ttl">
+            <h2 class="element-ttl">メールアドレス</h2>
+            <span class="required">必須</span>
           </div>
+          <div class="input-area">
+            <ul class="input-menu email">
+              <li>
+                <input
+                  type="text"
+                  class="fs-15"
+                  name="email"
+                  id="email"
+                  value=""
+                  placeholder="example@moratame.net"
+                  autocomplete="off"
+                  spellcheck="false"
+                  autocorrect="off"
+                />
+              </li>
+              <li>
+                <input
+                  type="text"
+                  class="fs-15"
+                  name="email2"
+                  id="email2"
+                  value=""
+                  placeholder="確認のためもう一度入力して下さい"
+                  autocomplete="off"
+                  spellcheck="false"
+                  autocorrect="off"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
 
-          <div class="select-area select-password">
-            <div class="form-ttl">
-              <h2 class="element-ttl">パスワード</h2>
-              <span class="required">必須</span>
-            </div>
-            <div class="input-area">
-              <ul class="input-menu password">
-                <li>
-                  <input
-                    type="password"
-                    name="pass"
-                    id="password1"
-                    placeholder="g10Asf31"
-                    autocomplete="off"
-                    spellcheck="false"
-                    autocorrect="off"
-                  />
-                </li>
-                <p class="side-text">※半角6文字以上16文字以下</p>
-              </ul>
-            </div>
+        <div class="select-area select-password">
+          <div class="form-ttl">
+            <h2 class="element-ttl">パスワード</h2>
+            <span class="required">必須</span>
           </div>
+          <div class="input-area">
+            <ul class="input-menu password">
+              <li>
+                <input
+                  type="password"
+                  name="pass"
+                  id="password1"
+                  placeholder="g10Asf31"
+                  autocomplete="off"
+                  spellcheck="false"
+                  autocorrect="off"
+                />
+              </li>
+              <p class="side-text">※半角6文字以上16文字以下</p>
+            </ul>
+          </div>
+        </div>
 
-          <div class="select-area select-nickname">
-            <div class="form-ttl">
-              <h2 class="element-ttl">ニックネーム</h2>
-              <span class="required">必須</span>
-            </div>
-            <div class="input-area">
-              <ul class="input-menu nickname">
-                <li>
-                  <input
-                    type="text"
-                    class="fs-15"
-                    name="disp_id"
-                    id="disp_id"
-                    value=""
-                    placeholder="ザック32694"
-                    onblur="javascript:return namecheck();"
-                  />
-                </li>
-                <div class="side-text">
-                  <span id="nickname"></span>
-                  <span id="nicknamealert"></span>
-                </div>
-              </ul>
-              <p class="side-text">※ニックネームは後から変更できます。</p>
-            </div>
+        <div class="select-area select-nickname">
+          <div class="form-ttl">
+            <h2 class="element-ttl">ニックネーム</h2>
+            <span class="required">必須</span>
           </div>
+          <div class="input-area">
+            <ul class="input-menu nickname">
+              <li>
+                <input
+                  type="text"
+                  class="fs-15"
+                  name="disp_id"
+                  id="disp_id"
+                  value=""
+                  placeholder="ザック32694"
+                  onblur="javascript:return namecheck();"
+                />
+              </li>
+              <div class="side-text">
+                <span id="nickname"></span>
+                <span id="nicknamealert"></span>
+              </div>
+            </ul>
+            <p class="side-text">※ニックネームは後から変更できます。</p>
+          </div>
+        </div>
 
-          <div class="select-area select-nickname">
-            <div class="form-ttl">
-              <h2 class="element-ttl">紹介コード</h2>
-            </div>
-            <div class="input-area">
-              <ul class="input-menu nickname">
-                <li>
-                  <input type="text" class="fs-15" name="refer_code" id="refer_code" value="" placeholder="" />
-                </li>
-                <div class="side-text">
-                  <span id="nickname"></span>
-                  <span id="nicknamealert"></span>
-                </div>
-              </ul>
-            </div>
+        <div class="select-area select-nickname">
+          <div class="form-ttl">
+            <h2 class="element-ttl">紹介コード</h2>
           </div>
+          <div class="input-area">
+            <ul class="input-menu nickname">
+              <li>
+                <input type="text" class="fs-15" name="refer_code" id="refer_code" value="" placeholder="" />
+              </li>
+              <div class="side-text">
+                <span id="nickname"></span>
+                <span id="nicknamealert"></span>
+              </div>
+            </ul>
+          </div>
+        </div>
 
-          <div class="submit-area">
-            <a class="iframe c_blue" href="https://www.moratame.net/s/contents/step01_guide.html">利用規約</a>に同意のうえ<br
-            />「入力内容確認へ」を押してください。
+        <div class="submit-area">
+          <a class="iframe c_blue" href="https://www.moratame.net/s/contents/step01_guide.html">利用規約</a>に同意のうえ<br
+          />「入力内容確認へ」を押してください。
+        </div>
+        <div class="submit-btn">
+          <div class="btn-wrapper">
+            <button type="submit" data-role="none">入力内容確認へ</button>
           </div>
-          <div class="submit-btn">
-            <div class="btn-wrapper">
-              <button type="submit" data-role="none">入力内容確認へ</button>
-            </div>
-          </div>
-        </form>
-      </section>
-    </div>
+        </div>
+      </form>
+    </section>
   </div>
 
   <Footer variant="simple" />

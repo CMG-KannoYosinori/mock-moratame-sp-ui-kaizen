@@ -63,6 +63,20 @@
   white-space: nowrap;
 }
 
+/* ページ本文
+   ------------------------------------------------------------ */
+.page-content {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-content {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}
+
 /* 汎用ページ見出し
    ------------------------------------------------------------ */
 .page-heading {
@@ -71,7 +85,7 @@
   width: 231px;
   height: 20px;
   margin: 0 auto 24px;
-  font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+  font-family: "Hiragino Kaku Gothic Pro", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
