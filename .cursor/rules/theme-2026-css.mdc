@@ -1,0 +1,32 @@
+---
+description: theme-2026.css の運用ルール
+alwaysApply: true
+---
+
+# theme-2026.css の運用
+
+`src/styles/theme-2026.css` は既存 CSS の上に重ねるスキン上書き用。命名は `modern-bem.mdc` に従う。
+
+## 読み込み対象
+
+- **jQM なし（no-jqm）ページにのみ** `<link>` で読み込む
+- `BaseLayout` や共通テンプレートへの一括追加は **しない**
+- 読み込み順: 本番 CSS → `theme-2026.css`
+
+## 接頭辞・スコープ
+
+現在はクラス名に接頭辞（`t26-` 等）やスコープセレクタ（`body.no-jqm`）を付けていない。jQM ありページには読み込まれない前提のため。
+
+以下のいずれかに該当する場合は接頭辞またはスコープセレクタの導入を検討すること:
+
+- jQM ありページにも読み込む必要が出た場合
+- PHP テンプレートで読み込み対象の制御が難しい場合
+- サイト全体のスキン置き換えとして拡大する場合
+
+詳細は `docs/theme-2026-caution.md` を参照。
+
+## Stylelint
+
+- `stylelint-config-recess-order` でプロパティ順を強制
+- `property-no-vendor-prefix: true`
+- 対象: `src/styles/**/*.css`

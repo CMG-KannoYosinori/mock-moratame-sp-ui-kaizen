@@ -1,0 +1,35 @@
+---
+description: jQM なしページの作成・管理ルール
+alwaysApply: true
+---
+
+# jQM なし（no-jqm）ページのルール
+
+jQM を外したページはファイル名末尾に `-no-jqm` を付ける（例: `signup01-no-jqm.astro`）。
+
+## BaseLayout props
+
+- `includeJqueryMobileJs` / `includeJqueryMobileCss` は **指定しない**（デフォルト `false`）
+- `fixSmartBannerOffsetToPage` を **指定する** — Smart Banner が `html` に `margin-top` を付けるのを防ぎ、`.page` に `top` で補正する
+
+## Drawer
+
+- `<Drawer engine="css" />` を使う（`HeaderApp` を使うページのみ）
+- `HeaderSimple` を使うページにはドロワーはない
+
+## Smart Banner 補正の仕組み
+
+`fixSmartBannerOffsetToPage` を有効にすると:
+
+1. `<meta name="smartbanner:disable-positioning" content="true" />` が出力され、Smart Banner の自動 positioning が無効になる
+2. `src/scripts/smartbanner-offset.js` が読み込まれ、`.page` に `position: relative` + `top: (バナー高さ)px` を付与する
+3. バナーを閉じると元の `position` / `top` に復帰する
+
+## エラー確認用ページの分離
+
+通常表示とエラー表示確認用は別ファイルにする（例: `signup01-no-jqm.astro` と `signup01-no-jqm-error.astro`）。通常版にはエラー要素（`.form_error`、`.error`）を含めない。
+
+## CSS
+
+- スタイルは `src/styles/theme-2026.css` に書く（`theme-2026-css.mdc` 参照）
+- `src/styles/drawer.css` はドロワー専用
