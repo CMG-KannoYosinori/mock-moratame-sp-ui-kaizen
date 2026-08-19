@@ -1,5 +1,5 @@
 ---
-description: git commit 時は gitmoji を使う
+description: git commit 時は gitmoji を使い、適切な粒度に分ける
 alwaysApply: true
 ---
 
@@ -10,6 +10,14 @@ alwaysApply: true
 - 1 行目: `絵文字 なぜその変更をしたか`（1〜2 文。What より Why）
 - 本文が必要なら空行のあと
 - 英語コード名（gitmoji の shortcode）ではなく絵文字そのものを使う
+
+## 粒度
+
+1 コミットに乗せるのは **同じ Why の変更だけ**。作業ツリーに独立した変更が複数あるときは、依頼が「commit」1 語でも分けてコミットする。
+
+- 同じ Why なら、実装・ルール・関連ドキュメントを 1 コミットにまとめてよい
+- 別の Why ならファイルが同じでも分ける（例: Smart Banner の補正先変更と、見出しの見た目調整）
+- メッセージの Why で説明できない差分は、そのコミットに入れない
 
 よく使うもの:
 
