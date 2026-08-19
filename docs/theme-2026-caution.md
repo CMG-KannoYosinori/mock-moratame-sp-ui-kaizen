@@ -56,5 +56,5 @@
 |---|---|
 | `src/styles/theme-2026.css` | スキン上書き用 CSS |
 | `src/styles/drawer.css` | jQM パネル代替のオフキャンバス CSS |
-| `src/scripts/smartbanner-offset.js` | no-jqm ページ用の Smart Banner オフセット補正 |
+| `src/scripts/smartbanner-offset.js` | no-jqm ページ用の Smart Banner オフセット補正（対象は `.smartbanner-offset`） |
 | `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM） |

@@ -2,33 +2,35 @@
  * no-jqm ページ向け Smart Banner オフセット補正。
  *
  * Smart Banner の自動 positioning を止めたページで、
- * バナーの高さ分だけ `.page` を top で下げる。
+ * バナーの高さ分だけ `.smartbanner-offset` を top で下げる。
+ * `.page` は本番 CSS の詳細度が高いため使わない。
  */
 (function () {
   var smartBannerOriginalPosition = '';
   var smartBannerOriginalTop = '';
+  var rootSelector = '.smartbanner-offset';
 
   function applySmartBannerOffsetToPage() {
-    var page = document.querySelector('.page');
+    var root = document.querySelector(rootSelector);
     var banner = document.querySelector('.js_smartbanner');
 
-    if (!page || !banner) {
+    if (!root || !banner) {
       return;
     }
 
     if (!smartBannerOriginalPosition) {
-      smartBannerOriginalPosition = page.style.position;
+      smartBannerOriginalPosition = root.style.position;
     }
 
     if (!smartBannerOriginalTop) {
-      smartBannerOriginalTop = page.style.top;
+      smartBannerOriginalTop = root.style.top;
     }
 
-    if (getComputedStyle(page).position === 'static') {
-      page.style.position = 'relative';
+    if (getComputedStyle(root).position === 'static') {
+      root.style.position = 'relative';
     }
 
-    page.style.top = banner.offsetHeight + 'px';
+    root.style.top = banner.offsetHeight + 'px';
     document.documentElement.style.marginTop = '';
   }
 
@@ -37,14 +39,14 @@
   }
 
   function resetSmartBannerOffset() {
-    var page = document.querySelector('.page');
+    var root = document.querySelector(rootSelector);
 
-    if (!page) {
+    if (!root) {
       return;
     }
 
-    page.style.position = smartBannerOriginalPosition;
-    page.style.top = smartBannerOriginalTop;
+    root.style.position = smartBannerOriginalPosition;
+    root.style.top = smartBannerOriginalTop;
   }
 
   window.addEventListener('load', queueSmartBannerOffset);

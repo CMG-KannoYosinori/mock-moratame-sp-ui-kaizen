@@ -10,7 +10,8 @@ jQM を外したページはファイル名末尾に `-no-jqm` を付ける（�
 ## BaseLayout props
 
 - `includeJqueryMobileJs` / `includeJqueryMobileCss` は **指定しない**（デフォルト `false`）
-- `fixSmartBannerOffsetToPage` を **指定する** — Smart Banner が `html` に `margin-top` を付けるのを防ぎ、`.page` に `top` で補正する
+- `data-role="page"` / `.page` は jQM ありのときだけ `BaseLayout` が出す（`.page` は本番 CSS の詳細度が高い）
+- `fixSmartBannerOffsetToPage` を **指定する** — Smart Banner が `html` に `margin-top` を付けるのを防ぎ、`.smartbanner-offset` に `top` で補正する
 
 ## Drawer
 
@@ -22,7 +23,7 @@ jQM を外したページはファイル名末尾に `-no-jqm` を付ける（�
 `fixSmartBannerOffsetToPage` を有効にすると:
 
 1. `<meta name="smartbanner:disable-positioning" content="true" />` が出力され、Smart Banner の自動 positioning が無効になる
-2. `src/scripts/smartbanner-offset.js` が読み込まれ、`.page` に `position: relative` + `top: (バナー高さ)px` を付与する
+2. `src/scripts/smartbanner-offset.js` が読み込まれ、`.smartbanner-offset` に `position: relative` + `top: (バナー高さ)px` を付与する
 3. バナーを閉じると元の `position` / `top` に復帰する
 
 ## エラー確認用ページの分離

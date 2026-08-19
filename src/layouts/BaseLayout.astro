@@ -225,7 +225,11 @@ const {
     <slot name="head" />
   </head>
   <body>
-    <div data-role="page" class="page" id={pageId}>
+    <div
+      class={includeJqueryMobileJs ? "page" : fixSmartBannerOffsetToPage ? "smartbanner-offset" : undefined}
+      id={pageId}
+      data-role={includeJqueryMobileJs ? "page" : undefined}
+    >
       <slot />
     </div>
     <slot name="after-page" />
