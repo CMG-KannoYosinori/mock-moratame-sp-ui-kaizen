@@ -15,6 +15,7 @@ const STYLES_DIR = path.join(process.cwd(), 'src', 'styles');
 const STYLE_ENTRIES = {
   'theme-2026.css': 'theme-2026.scss',
   'drawer.css': 'drawer.scss',
+  'ui.css': 'ui.scss',
 };
 
 function compileStyleEntry(cssName) {
