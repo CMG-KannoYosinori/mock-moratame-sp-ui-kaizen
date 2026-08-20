@@ -104,3 +104,20 @@
 .required-mark {
   color: #e60012;
 }
+
+/* フォーム項目見出し
+   ------------------------------------------------------------ */
+.field-header {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.field-heading {
+  margin: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  color: #333;
+}
