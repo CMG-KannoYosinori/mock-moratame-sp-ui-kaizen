@@ -1,0 +1,15 @@
+---
+description: theme-2026 のコンポーネントを作る・直すときは UI ライブラリーも更新する
+alwaysApply: true
+---
+
+# UI ライブラリー
+
+`theme-2026` の Block（`src/styles/blocks/`）を追加・変更・改名したら、見本を `src/pages/ui/index.astro` にも反映する。依頼がなくても更新する。
+
+## 見本の置き方
+
+- コンポーネント見本は「コンポーネント」見出しの下。色トークンは「基本デザイン」
+- 実ページと同じマークアップを `.paper` 内に置く
+- カタログ専用の見た目（`.paper` / `.paper-list` / `.color-box` など）は `src/styles/ui.scss` に書く
+- `/styles/ui.css` は `src/pages/ui/index.astro` だけが読む。`theme-2026.css` や他ページに足さない
