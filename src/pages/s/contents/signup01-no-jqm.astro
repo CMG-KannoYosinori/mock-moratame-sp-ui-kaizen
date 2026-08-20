@@ -1,11 +1,15 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import HeaderSimple from '../../../components/HeaderSimple.astro';
-import Footer from '../../../components/Footer.astro';
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../../components/HeaderSimple.astro"
+import Footer from "../../../components/Footer.astro"
 
-const years = Array.from({ length: 2021 - 1934 + 1 }, (_, i) => 1934 + i);
-const months = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'));
-const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
+const years = Array.from({ length: 2021 - 1934 + 1 }, (_, i) => 1934 + i)
+const months = Array.from({ length: 12 }, (_, i) =>
+  String(i + 1).padStart(2, "0"),
+)
+const days = Array.from({ length: 31 }, (_, i) =>
+  String(i + 1).padStart(2, "0"),
+)
 ---
 
 <BaseLayout
@@ -19,96 +23,121 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
     href="https://www.moratame.net/s/css/member-registration.css?2026061217"
   />
   <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
-  <link slot="head" rel="stylesheet" href="https://www.moratame.net/s/css/colorbox.css" />
-  <script slot="head" is:inline src="https://www.moratame.net/s/js/jquery.colorbox.js" charset="UTF-8"></script>
-  <script slot="head" is:inline src="https://www.moratame.net/s/js/hideShowPassword.js"></script>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://www.moratame.net/s/css/colorbox.css"
+  />
+  <script
+    slot="head"
+    is:inline
+    src="https://www.moratame.net/s/js/jquery.colorbox.js"
+    charset="UTF-8"></script>
+  <script
+    slot="head"
+    is:inline
+    src="https://www.moratame.net/s/js/hideShowPassword.js"></script>
 
   <script is:inline>
     $(document).ready(function () {
-      $('#nickname').html(
-        '<input type="submit" name="name_check" value="登録可能なニックネームかチェック" class="w200 nickname-check-btn" onclick="javascript:return namecheck();" />'
-      );
-      $('#zip1').html(
-        '<input type="submit" name="zip1_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(10);" />'
-      );
-      $('#zip2').html(
-        '<input type="submit" name="zip2_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(20);" />'
-      );
-    });
+      $("#nickname").html(
+        '<input type="submit" name="name_check" value="登録可能なニックネームかチェック" class="w200 nickname-check-btn" onclick="javascript:return namecheck();" />',
+      )
+      $("#zip1").html(
+        '<input type="submit" name="zip1_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(10);" />',
+      )
+      $("#zip2").html(
+        '<input type="submit" name="zip2_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(20);" />',
+      )
+    })
 
     function namecheck() {
-      $('#mode').val(1);
-      var url = 'profile_edit.exec.php';
-      var params = $('#new-signup-input').serialize();
+      $("#mode").val(1)
+      var url = "profile_edit.exec.php"
+      var params = $("#new-signup-input").serialize()
       $.post(
         url,
         { params: params },
         function (data, status) {
-          if (data.status == '0') {
-            $('#nicknamealert').html("<p class='message ng'>" + data.message + '<p />');
-          } else if (data.status == '1') {
-            $('#nicknamealert').html("<p class='message ok'>" + data.message + '<p />');
+          if (data.status == "0") {
+            $("#nicknamealert").html(
+              "<p class='message ng'>" + data.message + "<p />",
+            )
+          } else if (data.status == "1") {
+            $("#nicknamealert").html(
+              "<p class='message ok'>" + data.message + "<p />",
+            )
           }
         },
-        'json'
-      );
-      return false;
+        "json",
+      )
+      return false
     }
 
     function searchaddr(prefix) {
-      $('#mode').val(prefix);
-      var url = 'profile_edit.exec.php';
-      var params = $('#new-signup-input').serialize();
+      $("#mode").val(prefix)
+      var url = "profile_edit.exec.php"
+      var params = $("#new-signup-input").serialize()
       $.post(
         url,
         { params: params },
         function (data, status) {
-          if (data.status == '0') {
-            $('#zipalert' + prefix).html('<p class="message zip">' + data.message + '<p />');
-          } else if (data.status == '1') {
-            $('#warning').html(data.message);
-            $('#addr1' + prefix).val(data.addr1);
-            $('#addr2' + prefix).val(data.addr2 + data.addr3);
-            $('#zipalert' + prefix).html('');
+          if (data.status == "0") {
+            $("#zipalert" + prefix).html(
+              '<p class="message zip">' + data.message + "<p />",
+            )
+          } else if (data.status == "1") {
+            $("#warning").html(data.message)
+            $("#addr1" + prefix).val(data.addr1)
+            $("#addr2" + prefix).val(data.addr2 + data.addr3)
+            $("#zipalert" + prefix).html("")
           }
         },
-        'json'
-      );
-      return false;
+        "json",
+      )
+      return false
     }
 
     function daychange() {
-      $('#mode').val('lastday');
-      var url = 'profile_edit.exec.php';
-      var params = $('#new-signup-input').serialize();
+      $("#mode").val("lastday")
+      var url = "profile_edit.exec.php"
+      var params = $("#new-signup-input").serialize()
       $.post(
         url,
         { params: params },
         function (data, status) {
-          if (data.status == '1') {
-            var cur = $('#day').val();
+          if (data.status == "1") {
+            var cur = $("#day").val()
             for (var i = 28; i <= 31; i++) {
-              $('#day' + i).remove();
+              $("#day" + i).remove()
             }
-            var max = parseInt(data.day);
+            var max = parseInt(data.day)
             for (var i = 28; i <= max; i++) {
-              $('#day').append(
-                '<option id="day' + i + '" name="' + i + '" value="' + i + '">' + i + '</option>'
-              );
+              $("#day").append(
+                '<option id="day' +
+                  i +
+                  '" name="' +
+                  i +
+                  '" value="' +
+                  i +
+                  '">' +
+                  i +
+                  "</option>",
+              )
             }
             if (cur > max) {
-              cur = max;
+              cur = max
             }
-            $('#day').val(cur);
+            $("#day").val(cur)
           }
         },
-        'json'
-      );
+        "json",
+      )
     }
 
     $(function () {
-      $('[name="job[]"]').css('width', '270px').css('overflow', 'hidden');
-    });
+      $('[name="job[]"]').css("width", "270px").css("overflow", "hidden")
+    })
   </script>
 
   <div id="modal_wd">
@@ -123,24 +152,26 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
       <ol class="stepper">
         <li class="stepper__step stepper__step--active">
           <span class="stepper__dot"></span>
-          <span class="stepper__label">基本情報<br>入力</span>
+          <span class="stepper__label">基本情報<br />入力</span>
         </li>
         <li class="stepper__step">
           <span class="stepper__dot"></span>
-          <span class="stepper__label">入力内容<br>確認</span>
+          <span class="stepper__label">入力内容<br />確認</span>
         </li>
         <li class="stepper__step">
           <span class="stepper__dot"></span>
-          <span class="stepper__label">SMS<br>認証</span>
+          <span class="stepper__label">SMS<br />認証</span>
         </li>
         <li class="stepper__step">
           <span class="stepper__dot"></span>
-          <span class="stepper__label">会員登録<br>完了</span>
+          <span class="stepper__label">会員登録<br />完了</span>
         </li>
       </ol>
       <div class="page-heading">
         <h1 class="page-heading__title">基本情報入力</h1>
-        <p class="page-heading__legend">必須項目<span class="required-mark">＊</span></p>
+        <p class="page-heading__legend">
+          必須項目<span class="required-mark">＊</span>
+        </p>
       </div>
 
       <form
@@ -159,15 +190,29 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
           <div class="input-area">
             <ul class="radio-menu sexs">
               <li>
-                <input type="radio" name="sex[]" id="sex-1" value="11001" /><label for="sex-1">男性</label>
+                <input
+                  type="radio"
+                  name="sex[]"
+                  id="sex-1"
+                  value="11001"
+                /><label for="sex-1">男性</label>
               </li>
               <li>
-                <input type="radio" name="sex[]" id="sex-2" value="11002" checked /><label for="sex-2"
-                  >女性</label
-                >
+                <input
+                  type="radio"
+                  name="sex[]"
+                  id="sex-2"
+                  value="11002"
+                  checked
+                /><label for="sex-2">女性</label>
               </li>
               <li>
-                <input type="radio" name="sex[]" id="sex-3" value="11003" /><label for="sex-3">無回答</label>
+                <input
+                  type="radio"
+                  name="sex[]"
+                  id="sex-3"
+                  value="11003"
+                /><label for="sex-3">無回答</label>
               </li>
             </ul>
           </div>
@@ -181,7 +226,7 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
           <div class="input-area">
             <ul class="select-menu birthday">
               <li>
-                <select name="yyyy" onchange="javascript: daychange();" data-role="none">
+                <select name="yyyy" onchange="javascript: daychange();">
                   <option>年</option>
                   {
                     years.map((year) => (
@@ -194,7 +239,7 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
               </li>
               &nbsp;
               <li>
-                <select name="mm" onchange="javascript: daychange();" data-role="none">
+                <select name="mm" onchange="javascript: daychange();">
                   <option>月</option>
                   {
                     months.map((month) => (
@@ -205,7 +250,7 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
               </li>
               &nbsp;
               <li>
-                <select name="dd" id="day" onchange="javascript: daychange();" data-role="none">
+                <select name="dd" id="day" onchange="javascript: daychange();">
                   <option>日</option>
                   {
                     days.map((day) => (
@@ -314,7 +359,14 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
           <div class="input-area">
             <ul class="input-menu nickname">
               <li>
-                <input type="text" class="fs-15" name="refer_code" id="refer_code" value="" placeholder="" />
+                <input
+                  type="text"
+                  class="fs-15"
+                  name="refer_code"
+                  id="refer_code"
+                  value=""
+                  placeholder=""
+                />
               </li>
               <div class="side-text">
                 <span id="nickname"></span>
@@ -325,14 +377,13 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
         </div>
 
         <div class="submit-area">
-          <a class="iframe c_blue" href="https://www.moratame.net/s/contents/step01_guide.html">利用規約</a>に同意のうえ<br
-          />「入力内容確認へ」を押してください。
+          <a
+            class="iframe c_blue"
+            href="https://www.moratame.net/s/contents/step01_guide.html"
+            >利用規約</a
+          >に同意のうえ<br />「入力内容確認へ」を押してください。
         </div>
-        <div class="submit-btn">
-          <div class="btn-wrapper">
-            <button type="submit" data-role="none">入力内容確認へ</button>
-          </div>
-        </div>
+        <button type="submit" class="button button--green button--borderless">入力内容確認へ</button>
       </form>
     </section>
   </div>
@@ -340,18 +391,18 @@ const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0')
   <Footer variant="simple" />
 
   <script slot="after-page" is:inline>
-    $('#password-2').hidePassword('focus', {
-      toggle: { className: 'my-toggle' },
-    });
+    $("#password-2").hidePassword("focus", {
+      toggle: { className: "my-toggle" },
+    })
   </script>
   <script slot="after-page" is:inline>
     $(function () {
-      $('.iframe').colorbox({
+      $(".iframe").colorbox({
         iframe: true,
-        width: '90%',
-        height: '80%',
+        width: "90%",
+        height: "80%",
         opacity: 0.7,
-      });
-    });
+      })
+    })
   </script>
 </BaseLayout>

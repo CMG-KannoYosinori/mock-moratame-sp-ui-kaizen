@@ -169,7 +169,9 @@ const days = Array.from({ length: 31 }, (_, i) =>
       </ol>
       <div class="page-heading">
         <h1 class="page-heading__title">基本情報入力</h1>
-        <p class="page-heading__legend">必須項目<span class="required-mark">＊</span></p>
+        <p class="page-heading__legend">
+          必須項目<span class="required-mark">＊</span>
+        </p>
       </div>
       <div class="form_error">
         <div class="form_error_body">入力内容をご確認ください。</div>
@@ -230,11 +232,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <div class="input-area">
             <ul class="select-menu birthday">
               <li>
-                <select
-                  name="yyyy"
-                  onchange="javascript: daychange();"
-                  data-role="none"
-                >
+                <select name="yyyy" onchange="javascript: daychange();">
                   <option>年</option>
                   {
                     years.map((year) => (
@@ -247,11 +245,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               </li>
               &nbsp;
               <li>
-                <select
-                  name="mm"
-                  onchange="javascript: daychange();"
-                  data-role="none"
-                >
+                <select name="mm" onchange="javascript: daychange();">
                   <option>月</option>
                   {
                     months.map((month) => (
@@ -262,12 +256,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               </li>
               &nbsp;
               <li>
-                <select
-                  name="dd"
-                  id="day"
-                  onchange="javascript: daychange();"
-                  data-role="none"
-                >
+                <select name="dd" id="day" onchange="javascript: daychange();">
                   <option>日</option>
                   {
                     days.map((day) => (
@@ -404,11 +393,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             >利用規約</a
           >に同意のうえ<br />「入力内容確認へ」を押してください。
         </div>
-        <div class="submit-btn">
-          <div class="btn-wrapper">
-            <button type="submit" data-role="none">入力内容確認へ</button>
-          </div>
-        </div>
+        <button type="submit" class="button button--green button--borderless">入力内容確認へ</button>
       </form>
     </section>
   </div>
