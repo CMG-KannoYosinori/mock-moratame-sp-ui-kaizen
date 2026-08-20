@@ -148,7 +148,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
   <HeaderSimple />
 
   <div class="page-content page-content--muted">
-    <section class="new-signup-input">
+    <section class="">
       <ol class="stepper">
         <li class="stepper__step stepper__step--active">
           <span class="stepper__dot"></span>
@@ -181,6 +181,36 @@ const days = Array.from({ length: 31 }, (_, i) =>
         id="new-signup-input"
       >
         <input type="hidden" name="mode" id="mode" value="" />
+
+        <div class="select-area select-email">
+          <div class="field-header">
+            <h2 class="heading heading--s">メールアドレス</h2>
+            <span class="required-mark">＊</span>
+          </div>
+          <input
+            type="text"
+            class="input"
+            name="email"
+            id="email"
+            value=""
+            placeholder="example@moratame.net"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+          <input
+            type="text"
+            class="input"
+            name="email2"
+            id="email2"
+            value=""
+            placeholder="確認のためもう一度入力して下さい"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+        </div>
+        <!-- /メールアドレス -->
 
         <div class="select-area select-sex">
           <div class="field-header">
@@ -217,6 +247,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             </ul>
           </div>
         </div>
+        <!-- /性別 -->
 
         <div class="select-area select-birthday">
           <div class="field-header">
@@ -264,117 +295,66 @@ const days = Array.from({ length: 31 }, (_, i) =>
             </ul>
           </div>
         </div>
-
-        <div class="select-area select-email">
-          <div class="field-header">
-            <h2 class="heading heading--s">メールアドレス</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <div class="input-area">
-            <ul class="input-menu email">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="email"
-                  id="email"
-                  value=""
-                  placeholder="example@moratame.net"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="email2"
-                  id="email2"
-                  value=""
-                  placeholder="確認のためもう一度入力して下さい"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-            </ul>
-          </div>
-        </div>
+        <!-- /生年月日 -->
 
         <div class="select-area select-password">
           <div class="field-header">
             <h2 class="heading heading--s">パスワード</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="input-menu password">
-              <li>
-                <input
-                  type="password"
-                  name="pass"
-                  id="password1"
-                  placeholder="g10Asf31"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-              <p class="side-text">※半角6文字以上16文字以下</p>
-            </ul>
-          </div>
+          <input
+            type="password"
+            class="input"
+            name="pass"
+            id="password1"
+            placeholder="g10Asf31"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+          <p class="side-text">※半角6文字以上16文字以下</p>
         </div>
+        <!-- /パスワード -->
 
         <div class="select-area select-nickname">
           <div class="field-header">
             <h2 class="heading heading--s">ニックネーム</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="input-menu nickname">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="disp_id"
-                  id="disp_id"
-                  value=""
-                  placeholder="ザック32694"
-                  onblur="javascript:return namecheck();"
-                />
-              </li>
-              <div class="side-text">
-                <span id="nickname"></span>
-                <span id="nicknamealert"></span>
-              </div>
-            </ul>
-            <p class="side-text">※ニックネームは後から変更できます。</p>
+          <input
+            type="text"
+            class="input"
+            name="disp_id"
+            id="disp_id"
+            value=""
+            placeholder="ザック32694"
+            onblur="javascript:return namecheck();"
+          />
+          <div class="side-text">
+            <span id="nickname"></span>
+            <span id="nicknamealert"></span>
           </div>
+          <p class="side-text">※ニックネームは後から変更できます。</p>
         </div>
-
+        <!-- /ニックネーム -->
         <div class="select-area select-nickname">
           <div class="field-header">
             <h2 class="heading heading--s">紹介コード</h2>
           </div>
-          <div class="input-area">
-            <ul class="input-menu nickname">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="refer_code"
-                  id="refer_code"
-                  value=""
-                  placeholder=""
-                />
-              </li>
-              <div class="side-text">
-                <span id="nickname"></span>
-                <span id="nicknamealert"></span>
-              </div>
-            </ul>
+          <input
+            type="text"
+            class="input"
+            name="refer_code"
+            id="refer_code"
+            value=""
+            placeholder=""
+          />
+          <div class="side-text">
+            <span id="nickname"></span>
+            <span id="nicknamealert"></span>
           </div>
         </div>
+        <!-- /紹介コード -->
 
         <div class="submit-area">
           <a
@@ -383,7 +363,11 @@ const days = Array.from({ length: 31 }, (_, i) =>
             >利用規約</a
           >に同意のうえ<br />「入力内容確認へ」を押してください。
         </div>
-        <button type="submit" class="button button--green button--borderless">入力内容確認へ</button>
+        <!-- /利用規約 -->
+        <button type="submit" class="button button--green button--borderless"
+          >入力内容確認へ</button
+        >
+        <!-- /入力内容確認へ -->
       </form>
     </section>
   </div>

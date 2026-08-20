@@ -148,7 +148,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
   <HeaderSimple />
 
   <div class="page-content page-content--muted">
-    <section class="new-signup-input">
+    <section class="">
       <ol class="stepper">
         <li class="stepper__step stepper__step--active">
           <span class="stepper__dot"></span>
@@ -188,6 +188,37 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <p class="error">入力内容に不備があります。</p>
         </div>
 
+        <div class="select-area select-email">
+          <div class="field-header">
+            <h2 class="heading heading--s">メールアドレス</h2>
+            <span class="required-mark">＊</span>
+          </div>
+          <input
+            type="text"
+            class="input"
+            name="email"
+            id="email"
+            value=""
+            placeholder="example@moratame.net"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+          <input
+            type="text"
+            class="input"
+            name="email2"
+            id="email2"
+            value=""
+            placeholder="確認のためもう一度入力して下さい"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+          <p class="error">同一のE-mailアドレスが登録されています。<br /></p>
+        </div>
+        <!-- /メールアドレス -->
+
         <div class="select-area select-sex">
           <div class="field-header">
             <h2 class="heading heading--s">性別</h2>
@@ -223,6 +254,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             </ul>
           </div>
         </div>
+        <!-- /性別 -->
 
         <div class="select-area select-birthday">
           <div class="field-header">
@@ -270,121 +302,69 @@ const days = Array.from({ length: 31 }, (_, i) =>
             </ul>
           </div>
         </div>
-
-        <div class="select-area select-email">
-          <div class="field-header">
-            <h2 class="heading heading--s">メールアドレス</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <div class="input-area">
-            <ul class="input-menu email">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="email"
-                  id="email"
-                  value=""
-                  placeholder="example@moratame.net"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="email2"
-                  id="email2"
-                  value=""
-                  placeholder="確認のためもう一度入力して下さい"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-            </ul>
-            <p class="error">同一のE-mailアドレスが登録されています。<br /></p>
-          </div>
-        </div>
+        <!-- /生年月日 -->
 
         <div class="select-area select-password">
           <div class="field-header">
             <h2 class="heading heading--s">パスワード</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="input-menu password">
-              <li>
-                <input
-                  type="password"
-                  name="pass"
-                  id="password1"
-                  placeholder="g10Asf31"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-              <p class="side-text">※半角6文字以上16文字以下</p>
-            </ul>
-          </div>
+          <input
+            type="password"
+            class="input"
+            name="pass"
+            id="password1"
+            placeholder="g10Asf31"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+          <p class="side-text">※半角6文字以上16文字以下</p>
         </div>
+        <!-- /パスワード -->
 
         <div class="select-area select-nickname">
           <div class="field-header">
             <h2 class="heading heading--s">ニックネーム</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="input-menu nickname">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="disp_id"
-                  id="disp_id"
-                  value=""
-                  placeholder="ザック32694"
-                  onblur="javascript:return namecheck();"
-                />
-              </li>
-              <div class="side-text">
-                <span id="nickname"></span>
-                <span id="nicknamealert"></span>
-              </div>
-            </ul>
-            <p class="side-text">※ニックネームは後から変更できます。</p>
-            <p class="error">ニックネームは必須入力です。<br /></p>
-            <p class="error">同一のニックネームが登録されています。<br /></p>
+          <input
+            type="text"
+            class="input"
+            name="disp_id"
+            id="disp_id"
+            value=""
+            placeholder="ザック32694"
+            onblur="javascript:return namecheck();"
+          />
+          <div class="side-text">
+            <span id="nickname"></span>
+            <span id="nicknamealert"></span>
           </div>
+          <p class="side-text">※ニックネームは後から変更できます。</p>
+          <p class="error">ニックネームは必須入力です。<br /></p>
+          <p class="error">同一のニックネームが登録されています。<br /></p>
         </div>
-
+        <!-- /ニックネーム -->
         <div class="select-area select-nickname">
           <div class="field-header">
             <h2 class="heading heading--s">紹介コード</h2>
           </div>
-          <div class="input-area">
-            <ul class="input-menu nickname">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="refer_code"
-                  id="refer_code"
-                  value=""
-                  placeholder=""
-                />
-              </li>
-              <div class="side-text">
-                <span id="nickname"></span>
-                <span id="nicknamealert"></span>
-              </div>
-            </ul>
-            <p class="error">紹介コードが正しくありません。<br /></p>
+          <input
+            type="text"
+            class="input"
+            name="refer_code"
+            id="refer_code"
+            value=""
+            placeholder=""
+          />
+          <div class="side-text">
+            <span id="nickname"></span>
+            <span id="nicknamealert"></span>
           </div>
+          <p class="error">紹介コードが正しくありません。<br /></p>
         </div>
+        <!-- /紹介コード -->
 
         <div class="submit-area">
           <a

@@ -149,7 +149,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
   <HeaderSimple />
 
   <div class="page-content page-content--muted">
-    <section class="new-signup-input">
+    <section class="">
       <form
         action="https://www.moratame.net/s/contents/signup02p.php"
         method="post"
@@ -251,7 +251,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               <li>
                 <input
                   type="text"
-                  class="fs-15"
+                  class="input"
                   name="email"
                   id="email"
                   value=""
@@ -264,7 +264,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               <li>
                 <input
                   type="text"
-                  class="fs-15"
+                  class="input"
                   name="email2"
                   id="email2"
                   value=""
@@ -283,22 +283,17 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">パスワード</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="input-menu password">
-              <li>
-                <input
-                  type="password"
-                  name="pass"
-                  id="password1"
-                  placeholder="g10Asf31"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-              <p class="side-text">※半角6文字以上16文字以下</p>
-            </ul>
-          </div>
+          <input
+            type="password"
+            class="input"
+            name="pass"
+            id="password1"
+            placeholder="g10Asf31"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+          <p class="side-text">※半角6文字以上16文字以下</p>
         </div>
 
         <div class="select-area select-nickname">
@@ -306,49 +301,37 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">ニックネーム</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="input-menu nickname">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="disp_id"
-                  id="disp_id"
-                  value=""
-                  placeholder="ザック32694"
-                  onblur="javascript:return namecheck();"
-                />
-              </li>
-              <div class="side-text">
-                <span id="nickname"></span>
-                <span id="nicknamealert"></span>
-              </div>
-            </ul>
-            <p class="side-text">※ニックネームは後から変更できます。</p>
+          <input
+            type="text"
+            class="input"
+            name="disp_id"
+            id="disp_id"
+            value=""
+            placeholder="ザック32694"
+            onblur="javascript:return namecheck();"
+          />
+          <div class="side-text">
+            <span id="nickname"></span>
+            <span id="nicknamealert"></span>
           </div>
+          <p class="side-text">※ニックネームは後から変更できます。</p>
         </div>
 
         <div class="select-area select-nickname">
           <div class="field-header">
             <h2 class="heading heading--s">紹介コード</h2>
           </div>
-          <div class="input-area">
-            <ul class="input-menu nickname">
-              <li>
-                <input
-                  type="text"
-                  class="fs-15"
-                  name="refer_code"
-                  id="refer_code"
-                  value=""
-                  placeholder=""
-                />
-              </li>
-              <div class="side-text">
-                <span id="nickname"></span>
-                <span id="nicknamealert"></span>
-              </div>
-            </ul>
+          <input
+            type="text"
+            class="input"
+            name="refer_code"
+            id="refer_code"
+            value=""
+            placeholder=""
+          />
+          <div class="side-text">
+            <span id="nickname"></span>
+            <span id="nicknamealert"></span>
           </div>
         </div>
 
@@ -465,6 +448,21 @@ const days = Array.from({ length: 31 }, (_, i) =>
                         <h2 class="heading heading--s">性別</h2>
                         <span class="required-mark">＊</span>
                       </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 class="heading heading--s">入力</h3>
+                <ul class="paper-list">
+                  <li>
+                    <div class="paper">
+                      <input
+                        type="text"
+                        class="input"
+                        value=""
+                        placeholder="example@moratame.net"
+                      />
                     </div>
                   </li>
                 </ul>
