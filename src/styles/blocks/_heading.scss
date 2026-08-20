@@ -1,9 +1,16 @@
 @use "../foundation/tokens" as *;
 
-.field-heading {
+.heading {
   margin: 0;
-  font-size: 0.875rem;
   font-style: normal;
   font-weight: 600;
   color: $color-text;
+}
+
+.heading--s {
+  font-size: 0.875rem;
+}
+
+.heading--l {
+  font-size: 1.25rem;
 }
