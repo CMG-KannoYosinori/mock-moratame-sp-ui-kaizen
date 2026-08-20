@@ -77,6 +77,10 @@
   }
 }
 
+.page-content--muted {
+  background-color: #fafafa;
+}
+
 /* 汎用ページ見出し
    ------------------------------------------------------------ */
 .page-heading {
