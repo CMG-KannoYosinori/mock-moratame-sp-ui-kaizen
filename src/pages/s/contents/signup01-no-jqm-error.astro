@@ -167,7 +167,10 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <span class="stepper__label">会員登録<br />完了</span>
         </li>
       </ol>
-      <h1 class="page-heading">基本情報入力</h1>
+      <div class="page-heading">
+        <h1 class="page-heading__title">基本情報入力</h1>
+        <p class="page-heading__legend">必須項目<span class="required-mark">＊</span></p>
+      </div>
       <div class="form_error">
         <div class="form_error_body">入力内容をご確認ください。</div>
       </div>
@@ -186,7 +189,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
         <div class="select-area select-sex">
           <div class="form-ttl">
             <h2 class="element-ttl">性別</h2>
-            <span class="required">必須</span>
+            <span class="required-mark">＊</span>
           </div>
           <div class="input-area">
             <ul class="radio-menu sexs">
@@ -222,7 +225,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
         <div class="select-area select-birthday">
           <div class="form-ttl">
             <h2 class="element-ttl">生年月日</h2>
-            <span class="required">必須</span>
+            <span class="required-mark">＊</span>
           </div>
           <div class="input-area">
             <ul class="select-menu birthday">
@@ -282,7 +285,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
         <div class="select-area select-email">
           <div class="form-ttl">
             <h2 class="element-ttl">メールアドレス</h2>
-            <span class="required">必須</span>
+            <span class="required-mark">＊</span>
           </div>
           <div class="input-area">
             <ul class="input-menu email">
@@ -320,7 +323,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
         <div class="select-area select-password">
           <div class="form-ttl">
             <h2 class="element-ttl">パスワード</h2>
-            <span class="required">必須</span>
+            <span class="required-mark">＊</span>
           </div>
           <div class="input-area">
             <ul class="input-menu password">
@@ -343,7 +346,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
         <div class="select-area select-nickname">
           <div class="form-ttl">
             <h2 class="element-ttl">ニックネーム</h2>
-            <span class="required">必須</span>
+            <span class="required-mark">＊</span>
           </div>
           <div class="input-area">
             <ul class="input-menu nickname">

@@ -82,8 +82,25 @@
 .page-heading {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-heading__title {
+  margin: 0;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   color: #333;
+}
+
+.page-heading__legend {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1;
+  text-align: right;
+}
+
+.required-mark {
+  color: #e60012;
 }
