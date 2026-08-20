@@ -25,6 +25,21 @@ alwaysApply: true
 
 詳細は `docs/theme-2026-caution.md` を参照。
 
+## メディアクエリ
+
+セレクタ内に `@media` をネストする（このファイルはビルドで展開しない）。ネストはブロック末尾に置く。
+
+```css
+.page-content {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  @media (min-width: 48rem) {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}
+```
+
 ## Stylelint
 
 - `stylelint-config-recess-order` でプロパティ順を強制
