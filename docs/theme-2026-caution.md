@@ -2,7 +2,7 @@
 
 ## 概要
 
-`theme-2026.css` は、既存の CSS（`member-registration.css` 等）の上に重ねて読み込むスキン上書き用スタイルシートです。現在は jQuery Mobile（jQM）を使用しないページ（`no-jqm` 系）でのみ使用しています。
+`theme-2026.css` は、既存の CSS（`member-registration.css` 等）の上に重ねて読み込むスキン上書き用スタイルシートです。ソースは `src/styles/theme-2026.scss`（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）で、ページと PHP が読むのはコンパイル後の CSS です。現在は jQuery Mobile（jQM）を使用しないページ（`no-jqm` 系）でのみ使用しています。
 
 ## 現在の読み込み状況
 
@@ -54,7 +54,10 @@
 
 | ファイル | 役割 |
 |---|---|
-| `src/styles/theme-2026.css` | スキン上書き用 CSS |
-| `src/styles/drawer.css` | jQM パネル代替のオフキャンバス CSS |
+| `src/styles/theme-2026.scss` | スキン上書きの Sass エントリ（出力は `theme-2026.css`） |
+| `src/styles/blocks/` | 再利用 UI Block（1 ファイル = 1 Block） |
+| `src/styles/layout/` | 余白・配置などコンテキスト依存のスタイル |
+| `src/styles/foundation/_tokens.scss` | 色などのトークン |
+| `src/styles/drawer.scss` | ドロワー用エントリ（出力は `drawer.css`） |
 | `src/scripts/smartbanner-offset.js` | no-jqm ページ用の Smart Banner オフセット補正（対象は `.smartbanner-offset`） |
 | `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM） |

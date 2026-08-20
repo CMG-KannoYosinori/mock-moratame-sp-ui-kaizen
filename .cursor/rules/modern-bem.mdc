@@ -26,6 +26,10 @@
 - 余白や配置（`position` / `margin` など）は Block 内の Element（または layout 側のクラス）に閉じ込める
 - Block ルートにページコンテキスト依存の絶対配置を持たせない
 
+## ファイル構成
+
+`src/styles/` は [doc-modern-bem](https://github.com/YoshinoriKanno/doc-modern-bem) に従う。1 Block = 1 ファイル（`blocks/_button.scss` など）。エントリは `theme-2026.scss` と `drawer.scss`。
+
 ## 参考
 
 - https://github.com/YoshinoriKanno/doc-modern-bem

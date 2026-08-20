@@ -41,6 +41,6 @@ Live Server で見る場合は、**リポジトリ直下をルートのまま** 
 
 `/styles/`・`/scripts/`・モック同士の `/s/` はビルド時に各 HTML からの相対パスへ書き換えます。`http://127.0.0.1:5500/s/login/...` はワークスペース直下にそのパスが無いため 404（Cannot GET）になります。先に `npm run build` してください。
 
-jQM 排除ドロワー用の CSS / JS は `src/styles/`・`src/scripts/` がソースで、ビルド時に **`dist/styles/`・`dist/scripts/`** へそのままコピーされます。ソース上の参照は `/styles/drawer.css`・`/scripts/drawer.js` で、ビルド後の HTML では相対パスになります。
+jQM 排除ドロワー用の CSS / JS は `src/styles/`（Sass）・`src/scripts/` がソースです。ビルド時に Sass エントリが **`dist/styles/theme-2026.css`** と **`dist/styles/drawer.css`** へコンパイルされ、スクリプトは **`dist/scripts/`** へコピーされます。ソース上の参照は `/styles/theme-2026.css`・`/styles/drawer.css`・`/scripts/drawer.js` で、ビルド後の HTML では相対パスになります。
 
 CSS / JS は本番サイト（`www.moratame.net`）の資産を読み込みます。

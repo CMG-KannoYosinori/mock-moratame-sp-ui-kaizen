@@ -1,15 +1,15 @@
 ---
-description: theme-2026.css の運用ルール
+description: theme-2026 スキンの運用ルール
 alwaysApply: true
 ---
 
-# theme-2026.css の運用
+# theme-2026 の運用
 
-`src/styles/theme-2026.css` は既存 CSS の上に重ねるスキン上書き用。命名は `modern-bem.mdc` に従う。
+既存 CSS の上に重ねるスキン上書き。ソースは Sass（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）。ページが読むのはコンパイル後の `theme-2026.css`。命名は `modern-bem.mdc` に従う。
 
 ## 読み込み対象
 
-- **jQM なし（no-jqm）ページにのみ** `<link>` で読み込む
+- **jQM なし（no-jqm）ページにのみ** `<link href="/styles/theme-2026.css">` で読み込む
 - `BaseLayout` や共通テンプレートへの一括追加は **しない**
 - 読み込み順: 本番 CSS → `theme-2026.css`
 
@@ -27,9 +27,9 @@ alwaysApply: true
 
 ## メディアクエリ
 
-セレクタ内に `@media` をネストする（このファイルはビルドで展開しない）。ネストはブロック末尾に置く。ブレークポイントの単位は **px**（プロパティの長さは rem）。
+セレクタ内に `@media` をネストする。ネストはブロック末尾に置く。ブレークポイントの単位は **px**（プロパティの長さは rem）。Sass が納品 CSS ではフラット化する。
 
-```css
+```scss
 .page-content {
   padding-right: 1rem;
   padding-left: 1rem;
@@ -44,4 +44,4 @@ alwaysApply: true
 
 - `stylelint-config-recess-order` でプロパティ順を強制
 - `property-no-vendor-prefix: true`
-- 対象: `src/styles/**/*.css`
+- 対象: `src/styles/**/*.scss`

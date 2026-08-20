@@ -1,6 +1,7 @@
 /** @type {import('stylelint').Config} */
 export default {
   extends: ['stylelint-config-recess-order'],
+  customSyntax: 'postcss-scss',
   rules: {
     // 警告のみ（--fix では行削除されない）。標準プロパティがある場合はプレフィックスを書かない。
     'property-no-vendor-prefix': true,
@@ -9,6 +10,6 @@ export default {
     '**/node_modules/**',
     'dist/**',
     '**/*.css',
-    '!src/styles/**/*.css',
+    '!src/styles/**/*.scss',
   ],
 };

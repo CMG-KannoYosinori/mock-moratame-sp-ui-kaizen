@@ -1,0 +1,23 @@
+@use "../foundation/tokens" as *;
+
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.page-heading__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.page-heading__legend {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1;
+  text-align: right;
+}

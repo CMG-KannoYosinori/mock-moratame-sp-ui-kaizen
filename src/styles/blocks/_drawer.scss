@@ -46,7 +46,7 @@ body.js-drawer-open {
  * 開閉用のルール（上の .js-drawer-overlay / .js-drawer-panel / body.js-drawer-open）は触らない。
  * セレクタは .js-drawer-panel 配下に閉じる（例: .js-drawer-panel #drawerMenu）。
  * あり版の目安: 幅 17em、内側 15px（.ui-panel-inner）、data-theme="x" の背景。
- * 
+ *
  ========================================================================== */
 
 .js-drawer-panel h3 {

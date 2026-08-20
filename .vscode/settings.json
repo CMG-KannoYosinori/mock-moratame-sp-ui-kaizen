@@ -1,6 +1,6 @@
 {
   "css.validate": false,
-  "stylelint.validate": ["css", "postcss"],
+  "stylelint.validate": ["css", "postcss", "scss"],
   "stylelint.configFile": "stylelint.config.mjs",
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode",

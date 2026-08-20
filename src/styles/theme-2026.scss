@@ -1,0 +1,9 @@
+// 既存 CSS（member-registration.css 等）の上に重ねるスキン上書き用。
+// 読み込み順: 本番 CSS → このエントリをコンパイルした theme-2026.css
+@use "blocks/stepper";
+@use "layout/page-content";
+@use "blocks/page-heading";
+@use "blocks/required-mark";
+@use "blocks/field-header";
+@use "blocks/field-heading";
+@use "blocks/button";

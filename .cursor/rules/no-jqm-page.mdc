@@ -32,5 +32,5 @@ jQM を外したページはファイル名末尾に `-no-jqm` を付ける（�
 
 ## CSS
 
-- スタイルは `src/styles/theme-2026.css` に書く（`theme-2026-css.mdc` 参照）
-- `src/styles/drawer.css` はドロワー専用
+- スタイルは `src/styles/` の Sass に書く（`theme-2026-css.mdc` 参照）
+- ドロワーは `src/styles/blocks/_drawer.scss`（エントリ `drawer.scss`）

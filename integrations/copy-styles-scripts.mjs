@@ -2,15 +2,36 @@ import fs from 'node:fs';
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import * as sass from 'sass';
 
 const MIME = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
 };
 
+const STYLES_DIR = path.join(process.cwd(), 'src', 'styles');
+
+/** 公開する CSS 名 → Sass エントリ */
+const STYLE_ENTRIES = {
+  'theme-2026.css': 'theme-2026.scss',
+  'drawer.css': 'drawer.scss',
+};
+
+function compileStyleEntry(cssName) {
+  const scssName = STYLE_ENTRIES[cssName];
+  if (!scssName) {
+    return null;
+  }
+
+  return sass.compile(path.join(STYLES_DIR, scssName), {
+    loadPaths: [STYLES_DIR],
+    style: 'expanded',
+  }).css;
+}
+
 /**
- * src/styles → dist/styles、src/scripts → dist/scripts にそのまま出力する。
- * 開発時も /styles/* /scripts/* で src 配下を配信する。
+ * Sass エントリを CSS にコンパイルして /styles/*.css で配信する。
+ * src/scripts は開発時も /scripts/* でそのまま配信する。
  * ビルド後の HTML では /styles/ /scripts/ /s/ を相対パスにする（Live Server 用）。
  */
 export function copyStylesScriptsIntegration() {
@@ -24,9 +45,8 @@ export function copyStylesScriptsIntegration() {
               {
                 name: 'serve-src-styles-scripts',
                 configureServer(server) {
-                  for (const subdir of ['styles', 'scripts']) {
-                    server.middlewares.use(serveFromSrc(subdir));
-                  }
+                  server.middlewares.use(serveStyles());
+                  server.middlewares.use(serveFromSrc('scripts'));
                 },
               },
             ],
@@ -35,11 +55,16 @@ export function copyStylesScriptsIntegration() {
       },
       'astro:build:done': async ({ dir }) => {
         const outDir = fileURLToPath(dir);
-        for (const subdir of ['styles', 'scripts']) {
-          const src = path.join(process.cwd(), 'src', subdir);
-          const dest = path.join(outDir, subdir);
-          await fsPromises.cp(src, dest, { recursive: true });
+        const stylesDest = path.join(outDir, 'styles');
+        await fsPromises.mkdir(stylesDest, { recursive: true });
+
+        for (const cssName of Object.keys(STYLE_ENTRIES)) {
+          await fsPromises.writeFile(path.join(stylesDest, cssName), compileStyleEntry(cssName));
         }
+
+        await fsPromises.cp(path.join(process.cwd(), 'src', 'scripts'), path.join(outDir, 'scripts'), {
+          recursive: true,
+        });
         await rewriteLocalUrlsRelative(outDir);
       },
     },
@@ -80,6 +105,28 @@ async function collectHtml(dir) {
     }
   }
   return files;
+}
+
+function serveStyles() {
+  return (req, res, next) => {
+    const url = req.url?.split('?')[0] ?? '';
+    if (!url.startsWith('/styles/')) return next();
+
+    const name = decodeURIComponent(url.slice('/styles/'.length));
+    if (!name || name.includes('..') || name.includes('/')) return next();
+
+    if (!STYLE_ENTRIES[name]) return next();
+
+    try {
+      const css = compileStyleEntry(name);
+      res.setHeader('Content-Type', MIME['.css']);
+      res.end(css);
+    } catch (error) {
+      res.statusCode = 500;
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.end(error instanceof Error ? error.message : String(error));
+    }
+  };
 }
 
 function serveFromSrc(subdir) {

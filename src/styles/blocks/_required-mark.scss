@@ -1,0 +1,5 @@
+@use "../foundation/tokens" as *;
+
+.required-mark {
+  color: $color-danger;
+}

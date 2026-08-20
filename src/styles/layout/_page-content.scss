@@ -1,0 +1,18 @@
+@use "../foundation/tokens" as *;
+
+.page-content {
+  padding-top: 2rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  @media (min-width: 768px) {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+  }
+}
+
+.page-content--muted {
+  background-color: $color-surface-muted;
+}
