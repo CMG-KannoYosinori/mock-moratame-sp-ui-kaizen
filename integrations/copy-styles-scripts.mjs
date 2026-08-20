@@ -29,6 +29,14 @@ function compileStyleEntry(cssName) {
   }).css;
 }
 
+function prependDevMiddleware(server) {
+  // Vite の CSS 変換が /styles/*.css を先に掴んで 404 にするため、先頭に置く。
+  server.middlewares.stack.unshift(
+    { route: '', handle: serveFromSrc('scripts') },
+    { route: '', handle: serveStyles() },
+  );
+}
+
 /**
  * Sass エントリを CSS にコンパイルして /styles/*.css で配信する。
  * src/scripts は開発時も /scripts/* でそのまま配信する。
@@ -38,20 +46,8 @@ export function copyStylesScriptsIntegration() {
   return {
     name: 'copy-styles-scripts',
     hooks: {
-      'astro:config:setup': ({ updateConfig }) => {
-        updateConfig({
-          vite: {
-            plugins: [
-              {
-                name: 'serve-src-styles-scripts',
-                configureServer(server) {
-                  server.middlewares.use(serveStyles());
-                  server.middlewares.use(serveFromSrc('scripts'));
-                },
-              },
-            ],
-          },
-        });
+      'astro:server:setup': ({ server }) => {
+        prependDevMiddleware(server);
       },
       'astro:build:done': async ({ dir }) => {
         const outDir = fileURLToPath(dir);
@@ -107,9 +103,13 @@ async function collectHtml(dir) {
   return files;
 }
 
+function requestPath(req) {
+  return (req.originalUrl ?? req.url ?? '').split('?')[0];
+}
+
 function serveStyles() {
   return (req, res, next) => {
-    const url = req.url?.split('?')[0] ?? '';
+    const url = requestPath(req);
     if (!url.startsWith('/styles/')) return next();
 
     const name = decodeURIComponent(url.slice('/styles/'.length));
@@ -131,7 +131,7 @@ function serveStyles() {
 
 function serveFromSrc(subdir) {
   return (req, res, next) => {
-    const url = req.url?.split('?')[0] ?? '';
+    const url = requestPath(req);
     const prefix = `/${subdir}/`;
     if (!url.startsWith(prefix)) return next();
 
