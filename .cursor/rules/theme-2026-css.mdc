@@ -27,13 +27,13 @@ alwaysApply: true
 
 ## メディアクエリ
 
-セレクタ内に `@media` をネストする（このファイルはビルドで展開しない）。ネストはブロック末尾に置く。
+セレクタ内に `@media` をネストする（このファイルはビルドで展開しない）。ネストはブロック末尾に置く。ブレークポイントの単位は **px**（プロパティの長さは rem）。
 
 ```css
 .page-content {
   padding-right: 1rem;
   padding-left: 1rem;
-  @media (min-width: 48rem) {
+  @media (min-width: 768px) {
     padding-right: 2rem;
     padding-left: 2rem;
   }
