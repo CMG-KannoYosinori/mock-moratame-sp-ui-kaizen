@@ -219,6 +219,48 @@ const days = Array.from({ length: 31 }, (_, i) =>
         </div>
         <!-- /メールアドレス -->
 
+        <div class="select-area select-password">
+          <div class="field-header">
+            <h2 class="heading heading--s">パスワード</h2>
+            <span class="required-mark">＊</span>
+          </div>
+          <input
+            type="password"
+            class="input"
+            name="pass"
+            id="password1"
+            placeholder="半角6文字以上16文字以下、連番不可"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+          />
+        </div>
+        <!-- /パスワード -->
+
+        <div class="select-area select-nickname">
+          <div class="field-header">
+            <h2 class="heading heading--s">ニックネーム</h2>
+            <span class="required-mark">＊</span>
+          </div>
+          <input
+            type="text"
+            class="input"
+            name="disp_id"
+            id="disp_id"
+            value=""
+            placeholder="ザック32694"
+            onblur="javascript:return namecheck();"
+          />
+          <div class="side-text">
+            <span id="nickname"></span>
+            <span id="nicknamealert"></span>
+          </div>
+          <p class="side-text">※ニックネームは後から変更できます。</p>
+          <p class="error">ニックネームは必須入力です。<br /></p>
+          <p class="error">同一のニックネームが登録されています。<br /></p>
+        </div>
+        <!-- /ニックネーム -->
+
         <div class="select-area select-sex">
           <div class="field-header">
             <h2 class="heading heading--s">性別</h2>
@@ -304,48 +346,6 @@ const days = Array.from({ length: 31 }, (_, i) =>
         </div>
         <!-- /生年月日 -->
 
-        <div class="select-area select-password">
-          <div class="field-header">
-            <h2 class="heading heading--s">パスワード</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <input
-            type="password"
-            class="input"
-            name="pass"
-            id="password1"
-            placeholder="g10Asf31"
-            autocomplete="off"
-            spellcheck="false"
-            autocorrect="off"
-          />
-          <p class="side-text">※半角6文字以上16文字以下</p>
-        </div>
-        <!-- /パスワード -->
-
-        <div class="select-area select-nickname">
-          <div class="field-header">
-            <h2 class="heading heading--s">ニックネーム</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <input
-            type="text"
-            class="input"
-            name="disp_id"
-            id="disp_id"
-            value=""
-            placeholder="ザック32694"
-            onblur="javascript:return namecheck();"
-          />
-          <div class="side-text">
-            <span id="nickname"></span>
-            <span id="nicknamealert"></span>
-          </div>
-          <p class="side-text">※ニックネームは後から変更できます。</p>
-          <p class="error">ニックネームは必須入力です。<br /></p>
-          <p class="error">同一のニックネームが登録されています。<br /></p>
-        </div>
-        <!-- /ニックネーム -->
         <div class="select-area select-nickname">
           <div class="field-header">
             <h2 class="heading heading--s">紹介コード</h2>
