@@ -432,13 +432,13 @@ const days = Array.from({ length: 31 }, (_, i) =>
         </div>
         <!-- /紹介コード -->
 
-        <div class="submit-area">
+        <p class="form-consent">
           <a
-            class="iframe c_blue"
+            class="text-link js-colorbox"
             href="https://www.moratame.net/s/contents/step01_guide.html"
             >利用規約</a
           >に同意のうえ<br />「入力内容確認へ」を押してください。
-        </div>
+        </p>
         <!-- /利用規約 -->
         <button type="submit" class="button button--green button--borderless"
           >入力内容確認へ</button
@@ -458,7 +458,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
   </script>
   <script slot="after-page" is:inline>
     $(function () {
-      $(".iframe").colorbox({
+      $(".js-colorbox").colorbox({
         iframe: true,
         width: "90%",
         height: "80%",
