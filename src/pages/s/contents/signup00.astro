@@ -19,19 +19,6 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
 
   <div data-role="content" class="content">
     <script is:inline>
-      $(document).ready(function () {
-        $('a img').hover(
-          function () {
-            $(this).fadeTo('2000', 0.75);
-          },
-          function () {
-            $(this).fadeTo('2000', 1.0);
-          }
-        );
-      });
-    </script>
-
-    <script is:inline>
       function modeAttoosLogin(id) {
         $('#sns_id').val(id);
         $('#attoos-login').submit();

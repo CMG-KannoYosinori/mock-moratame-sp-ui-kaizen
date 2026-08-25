@@ -34,45 +34,8 @@ const days = Array.from({ length: 31 }, (_, i) =>
     is:inline
     src="https://www.moratame.net/s/js/jquery.colorbox.js"
     charset="UTF-8"></script>
-  <script
-    slot="head"
-    is:inline
-    src="https://www.moratame.net/s/js/hideShowPassword.js"></script>
 
   <script is:inline>
-    $(document).ready(function () {
-      $("#zip1").html(
-        '<input type="submit" name="zip1_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(10);" />',
-      )
-      $("#zip2").html(
-        '<input type="submit" name="zip2_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(20);" />',
-      )
-    })
-
-    function searchaddr(prefix) {
-      $("#mode").val(prefix)
-      var url = "profile_edit.exec.php"
-      var params = $("#new-signup-input").serialize()
-      $.post(
-        url,
-        { params: params },
-        function (data, status) {
-          if (data.status == "0") {
-            $("#zipalert" + prefix).html(
-              '<p class="message zip">' + data.message + "<p />",
-            )
-          } else if (data.status == "1") {
-            $("#warning").html(data.message)
-            $("#addr1" + prefix).val(data.addr1)
-            $("#addr2" + prefix).val(data.addr2 + data.addr3)
-            $("#zipalert" + prefix).html("")
-          }
-        },
-        "json",
-      )
-      return false
-    }
-
     function daychange() {
       $("#mode").val("lastday")
       var url = "profile_edit.exec.php"
@@ -109,16 +72,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
         "json",
       )
     }
-
-    $(function () {
-      $('[name="job[]"]').css("width", "270px").css("overflow", "hidden")
-    })
   </script>
-
-  <div id="modal_wd">
-    <div class="md_background"></div>
-    <div class="md_container"></div>
-  </div>
 
   <HeaderSimple />
 
@@ -433,11 +387,6 @@ const days = Array.from({ length: 31 }, (_, i) =>
   <Footer variant="simple" engine="css" />
 
   <script slot="after-page" is:inline src="/scripts/nickname-check.js"></script>
-  <script slot="after-page" is:inline>
-    $("#password-2").hidePassword("focus", {
-      toggle: { className: "my-toggle" },
-    })
-  </script>
   <script slot="after-page" is:inline>
     $(function () {
       $(".js-colorbox").colorbox({

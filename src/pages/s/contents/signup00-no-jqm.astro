@@ -17,20 +17,7 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
   <Drawer engine="css" />
   <HeaderApp showGuestNav />
 
-  <div data-role="content" class="content">
-    <script is:inline>
-      $(document).ready(function () {
-        $('a img').hover(
-          function () {
-            $(this).fadeTo('2000', 0.75);
-          },
-          function () {
-            $(this).fadeTo('2000', 1.0);
-          }
-        );
-      });
-    </script>
-
+  <div class="content">
     <script is:inline>
       function modeAttoosLogin(id) {
         $('#sns_id').val(id);
@@ -44,7 +31,7 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
         <div id="socialBtns" class="bl-8423-mx-auto bl-8423-max-w-md bl-8423-px-4">
           <div class="bl-8423-justify-center">
             <p class="bl-8423-box-border bl-8423-mt-6">
-              <a href="/s/contents/signup01-no-jqm.html" data-role="none" class="u-btn-sns u-btn-sns--mail">
+              <a href="/s/contents/signup01-no-jqm.html" class="u-btn-sns u-btn-sns--mail">
                 <i class="bi bi-envelope bl-8423-left-2"></i>
                 メールアドレスで登録
               </a>
@@ -67,7 +54,6 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
               <li class="bl-8423-box-border bl-8423-mt-6">
                 <a
                   href="#"
-                  data-role="none"
                   class="u-btn-sns u-btn-sns--apple"
                   onclick="javascript:return modeAttoosLogin(5);"
                 >
@@ -77,7 +63,6 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
               <li class="bl-8423-box-border bl-8423-mt-6">
                 <a
                   href="#"
-                  data-role="none"
                   class="u-btn-sns u-btn-sns--facebook"
                   onclick="javascript:return modeAttoosLogin(2);"
                 >
@@ -87,7 +72,6 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
               <li class="bl-8423-box-border bl-8423-mt-6">
                 <a
                   href="#"
-                  data-role="none"
                   class="u-btn-sns u-btn-sns--line"
                   onclick="javascript:return modeAttoosLogin(3);"
                 >
@@ -97,7 +81,6 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
               <li class="bl-8423-box-border bl-8423-mt-6">
                 <a
                   href="#"
-                  data-role="none"
                   class="u-btn-sns u-btn-sns--google"
                   onclick="javascript:return modeAttoosLogin(4);"
                 >
