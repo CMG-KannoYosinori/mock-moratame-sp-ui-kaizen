@@ -13,10 +13,17 @@
   padding: 0.3125rem 0.9375rem;
   margin-right: auto;
   margin-left: auto;
+  font-family: inherit;
+  font-size: 1rem;
+  text-decoration: none;
   appearance: none;
   cursor: pointer;
   border-radius: 3.125rem;
   box-shadow: none;
+}
+
+.button + .button {
+  margin-top: 0.75rem;
 }
 
 .button--green {
@@ -26,4 +33,10 @@
 
 .button--borderless {
   border: none;
+}
+
+.button--outline {
+  color: $color-brand;
+  background-color: #fff;
+  border: 1px solid $color-brand;
 }

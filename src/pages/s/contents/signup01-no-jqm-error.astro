@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro"
 import HeaderSimple from "../../../components/HeaderSimple.astro"
 import Footer from "../../../components/Footer.astro"
+import Stepper from "../../../components/Stepper.astro"
 
 const years = Array.from({ length: 2021 - 1934 + 1 }, (_, i) => 1934 + i)
 const months = Array.from({ length: 12 }, (_, i) =>
@@ -124,24 +125,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
   <div class="page-content page-content--muted">
     <div class="page-content__inner">
     <section>
-      <ol class="stepper">
-        <li class="stepper__step stepper__step--active">
-          <span class="stepper__dot"></span>
-          <span class="stepper__label">基本情報<br />入力</span>
-        </li>
-        <li class="stepper__step">
-          <span class="stepper__dot"></span>
-          <span class="stepper__label">入力内容<br />確認</span>
-        </li>
-        <li class="stepper__step">
-          <span class="stepper__dot"></span>
-          <span class="stepper__label">SMS<br />認証</span>
-        </li>
-        <li class="stepper__step">
-          <span class="stepper__dot"></span>
-          <span class="stepper__label">会員登録<br />完了</span>
-        </li>
-      </ol>
+      <Stepper activeStep={1} />
       <div class="page-heading">
         <h1 class="heading heading--l">基本情報入力</h1>
         <p class="page-heading__caption">

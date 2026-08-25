@@ -1,0 +1,9 @@
+@use "../foundation/tokens" as *;
+
+.form-note {
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $color-danger;
+  text-align: center;
+}

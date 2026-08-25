@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../../components/HeaderSimple.astro"
+import Footer from "../../../components/Footer.astro"
+import Stepper from "../../../components/Stepper.astro"
+---
+
+<BaseLayout
+  title="新規会員登録（内容確認・jQuery Mobile なし）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://www.moratame.net/s/css/member-registration.css?2026061217"
+  />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+      <section>
+        <Stepper activeStep={2} />
+        <div class="page-heading">
+          <h1 class="heading heading--l">入力内容確認</h1>
+        </div>
+
+        <form
+          action="/s/contents/signup04-no-jqm.html"
+          method="get"
+          name="new-signup-input"
+          id="new-signup-input"
+        >
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">メールアドレス</h2>
+            </div>
+            <p class="field-value">kanno-23@dohouse.co.jp</p>
+          </div>
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">パスワード</h2>
+            </div>
+            <p class="field-value">excrie</p>
+          </div>
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">ニックネーム</h2>
+            </div>
+            <p class="field-value">誰かが</p>
+          </div>
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">性別</h2>
+            </div>
+            <p class="field-value">女性</p>
+          </div>
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">生年月日</h2>
+            </div>
+            <p class="field-value">1980年01月01日</p>
+          </div>
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">紹介コード</h2>
+            </div>
+            <p class="field-value"></p>
+          </div>
+
+          <p class="form-note">
+            ※ 携帯メールアドレスをご登録いただく場合、<br
+            />moratame.netからのドメイン着信許可を設定<br />してください。
+          </p>
+
+          <button type="submit" class="button button--green button--borderless"
+            >電話番号認証を行う</button
+          >
+          <a
+            href="/s/contents/signup01-no-jqm.html"
+            class="button button--outline">内容を修正する</a
+          >
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+</BaseLayout>

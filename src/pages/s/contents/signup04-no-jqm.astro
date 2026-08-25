@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../../components/HeaderSimple.astro"
+import Footer from "../../../components/Footer.astro"
+import Stepper from "../../../components/Stepper.astro"
+---
+
+<BaseLayout
+  title="新規会員登録（SMS認証・jQuery Mobile なし）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://www.moratame.net/s/css/member-registration.css?2026061217"
+  />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+      <section>
+        <Stepper activeStep={3} />
+        <div class="page-heading">
+          <h1 class="heading heading--l">SMS認証</h1>
+        </div>
+
+        <p class="page-content__lead">
+          サービスの品質向上・セキュリティ対策の観点から、サービスご利用にあたり、電話番号認証を導入しました。<br
+          />ご自身の携帯番号を入力後、送信してください。
+        </p>
+
+        <form
+          action="/s/contents/signup-complete-no-jqm.html"
+          method="get"
+          id="authform"
+        >
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">電話番号</h2>
+              <span class="required-mark">＊</span>
+            </div>
+            <input
+              type="tel"
+              class="input"
+              id="mobilenumber"
+              name="mobilenumber"
+              value=""
+              placeholder="09012345678"
+              autocomplete="tel"
+            />
+          </div>
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">配信方法</h2>
+              <span class="required-mark">＊</span>
+            </div>
+            <ul class="radio">
+              <li class="radio__item">
+                <input
+                  class="radio__input"
+                  type="radio"
+                  name="deliveryKind"
+                  id="deliveryKindSms"
+                  value="1"
+                  checked
+                />
+                <label class="radio__label" for="deliveryKindSms">
+                  <span class="radio__dot" aria-hidden="true"></span>
+                  SMS配信
+                </label>
+              </li>
+              <li class="radio__item">
+                <input
+                  class="radio__input"
+                  type="radio"
+                  name="deliveryKind"
+                  id="deliveryKindVoice"
+                  value="2"
+                />
+                <label class="radio__label" for="deliveryKindVoice">
+                  <span class="radio__dot" aria-hidden="true"></span>
+                  音声ガイダンス
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <button type="submit" class="button button--green button--borderless"
+            >認証コードを送信</button
+          >
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+</BaseLayout>

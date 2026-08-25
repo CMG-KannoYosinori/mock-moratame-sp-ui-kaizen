@@ -1,0 +1,46 @@
+---
+interface Props {
+  activeStep: 1 | 2 | 3 | 4
+}
+
+const { activeStep } = Astro.props
+---
+
+<ol class="stepper">
+  <li
+    class:list={[
+      "stepper__step",
+      activeStep === 1 && "stepper__step--active",
+    ]}
+  >
+    <span class="stepper__dot"></span>
+    <span class="stepper__label">基本情報<br />入力</span>
+  </li>
+  <li
+    class:list={[
+      "stepper__step",
+      activeStep === 2 && "stepper__step--active",
+    ]}
+  >
+    <span class="stepper__dot"></span>
+    <span class="stepper__label">入力内容<br />確認</span>
+  </li>
+  <li
+    class:list={[
+      "stepper__step",
+      activeStep === 3 && "stepper__step--active",
+    ]}
+  >
+    <span class="stepper__dot"></span>
+    <span class="stepper__label">SMS<br />認証</span>
+  </li>
+  <li
+    class:list={[
+      "stepper__step",
+      activeStep === 4 && "stepper__step--active",
+    ]}
+  >
+    <span class="stepper__dot"></span>
+    <span class="stepper__label">会員登録<br />完了</span>
+  </li>
+</ol>

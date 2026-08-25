@@ -10,6 +10,10 @@
 |---|---|
 | `signup01-no-jqm.astro` | あり |
 | `signup01-no-jqm-error.astro` | あり |
+| `signup03-no-jqm.astro` | あり |
+| `signup04-no-jqm.astro` | あり |
+| `signup-complete-no-jqm.astro` | あり |
+| `ui/index.astro` | あり（`ui.css` も） |
 | その他全ページ（jQM あり含む） | **なし** |
 
 `BaseLayout` への共通読み込みは行っていません。ページ単位で `<link>` タグを記述する方式です。
@@ -131,6 +135,7 @@
 | `src/styles/drawer.scss` | ドロワー用エントリ（出力は `drawer.css`） |
 | `src/scripts/smartbanner-offset.js` | no-jqm ページ用の Smart Banner オフセット補正（対象は `.smartbanner-offset`） |
 | `src/scripts/nickname-check.js` | **モック専用。** 虫眼鏡で固定の結果ボックスを出すだけ。本番の Ajax には使わない |
+| `src/components/Stepper.astro` | 会員登録 4 ステップ。`activeStep` で現在地を指定 |
 | `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
 | `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |
 | `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス |

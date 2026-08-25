@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../../components/HeaderSimple.astro"
+import Footer from "../../../components/Footer.astro"
+import Stepper from "../../../components/Stepper.astro"
+---
+
+<BaseLayout
+  title="新規会員登録（完了・jQuery Mobile なし）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+      <section>
+        <Stepper activeStep={4} />
+        <div class="page-heading">
+          <h1 class="heading heading--l">会員登録完了</h1>
+        </div>
+
+        <p class="page-content__lead">
+          会員登録が完了しました。<br />ご登録のメールアドレスに確認メールをお送りしています。
+        </p>
+
+        <a
+          href="/s/login/index-no-jqm.html"
+          class="button button--green button--borderless">ログインする</a
+        >
+      </section>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+</BaseLayout>
