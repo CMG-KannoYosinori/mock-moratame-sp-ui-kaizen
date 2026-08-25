@@ -31,7 +31,18 @@
   background: $color-brand;
 }
 
+// 本番 style--sp.css の `.button:hover`（青グラデ）より詳細度を上げて打ち消す
+.button.button--green:hover {
+  color: #fff;
+  background: $color-brand-hover;
+  border-color: $color-brand-hover;
+}
+
 .button--borderless {
+  border: none;
+}
+
+.button.button--borderless:hover {
   border: none;
 }
 
@@ -39,4 +50,10 @@
   color: $color-brand;
   background-color: #fff;
   border: 1px solid $color-brand;
+}
+
+.button.button--outline:hover {
+  color: $color-brand;
+  background-color: $color-brand-hover;
+  border-color: $color-brand-hover;
 }
