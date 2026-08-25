@@ -75,7 +75,7 @@
 ### マークアップで守ること
 
 - テキスト入力のクラスは `input.input`（必要なら `input--with-action`）。本番 CSS の `input[type="text"]` より負けるため、要素名付きセレクタにしている
-- ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ）。項目下は `ul.field-error` > `li.field-error__item`（警告三角は `::before` の data URI。外部アイコン不要）。本番の `.form_error` / `.error` は使わない
+- ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ）。項目下は `ul.field-error` > `li.field-error__item`（警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない
 - エラー中のテキスト入力は `input.input.input--error`（赤枠 2px ＋ 薄ピンク背景）
 - エラー中のセレクトは `select.select__control.select__control--error`（同上）
 - 虫眼鏡ボタンは `type="button"`。フォーム送信や古い `name="name_check"` の submit にしない
