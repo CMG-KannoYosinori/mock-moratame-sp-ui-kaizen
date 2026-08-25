@@ -2,7 +2,7 @@
 
 ## 概要
 
-`theme-2026.css` は、既存の CSS（`member-registration.css` 等）の上に重ねて読み込むスキン上書き用スタイルシートです。ソースは `src/styles/theme-2026.scss`（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）で、ページと PHP が読むのはコンパイル後の CSS です。現在は jQuery Mobile（jQM）を使用しないページ（`no-jqm` 系）でのみ使用しています。
+`theme-2026.css` は、既存の CSS（`member-registration.css` 等）の上に重ねて読み込むスキン上書き用スタイルシートです。ソースは `src/styles/theme-2026.scss`（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）で、ページと PHP が読むのはコンパイル後の CSS です。現在は jQuery Mobile を使わない会員登録改善モック（`signup-form.astro` 等）と `/ui/` でのみ使用しています。
 
 ## 現在の読み込み状況
 
@@ -30,7 +30,7 @@
 
 ### 現在の設計では接頭辞・スコープを付けていない
 
-`theme-2026.css` 内のクラス名（`.stepper`、`.page-heading` 等）には、`t26-` などの接頭辞や `body.no-jqm` などのスコープセレクタを付けていません。これは現時点で `no-jqm` ページ限定の運用であり、jQM ありページには読み込まれない前提のためです。
+`theme-2026.css` 内のクラス名（`.stepper`、`.page-heading` 等）には、`t26-` などの接頭辞や `body.no-jqm` などのスコープセレクタを付けていません。これは現時点で改善モック（接尾辞なしの signup 系）と `/ui/` 限定の運用であり、`*-jqm` などには読み込まれない前提のためです。
 
 ### 将来対応が必要になるケース
 

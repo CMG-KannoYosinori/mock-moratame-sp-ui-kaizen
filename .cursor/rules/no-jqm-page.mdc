@@ -9,14 +9,27 @@ alwaysApply: true
 
 ## 会員登録のファイル名
 
+改善フロー（theme-2026）:
+
+| ファイル | URL | 内容 |
+|---|---|---|
+| `signup.astro` | `/s/contents/signup.html` | 登録方法選択 |
+| `signup-form.astro` | `/s/contents/signup-form.html` | 基本情報入力 |
+| `signup-form-error.astro` | `/s/contents/signup-form-error.html` | 基本情報入力（エラー確認） |
+| `signup-confirm.astro` | `/s/contents/signup-confirm.html` | 入力内容確認 |
+| `signup-verify.astro` | `/s/contents/signup-verify.html` | SMS / 電話番号認証 |
+| `signup-complete.astro` | `/s/contents/signup-complete.html` | 完了 |
+
+フロー: `signup` → `signup-form` → `signup-confirm` → `signup-verify` → `signup-complete`
+
+比較用:
+
 | ファイル | 内容 |
 |---|---|
-| `signup.astro` | 登録方法選択 |
-| `signup-form.astro` | 基本情報入力 |
-| `signup-form-error.astro` | 基本情報入力（エラー確認） |
-| `signup-confirm.astro` | 入力内容確認 |
-| `signup-verify.astro` | SMS / 電話番号認証 |
-| `signup-complete.astro` | 完了 |
+| `signup-jqm.astro` | 登録方法選択（jQM あり） |
+| `signup-form-jqm.astro` | 基本情報入力（jQM あり） |
+| `signup-error.astro` | エラー（jQM あり・旧 signup05） |
+| `signup-confirm-legacy.astro` | 内容確認の本番コピー（もともと jQM なし・マイルストーン画像） |
 
 ## BaseLayout props
 
@@ -47,5 +60,6 @@ alwaysApply: true
 
 ## CSS
 
-- スタイルは `src/styles/` の Sass に書く（`theme-2026-css.mdc` 参照）
+- スタイルは `src/styles/` の Sass に書く（`theme-2026-css.mdc`・`modern-bem.mdc` 参照）
 - ドロワーは `src/styles/blocks/_drawer.scss`（エントリ `drawer.scss`）
+- Block を細かく増やさない（`modern-bem.mdc` の粒度ルール）
