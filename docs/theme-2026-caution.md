@@ -104,7 +104,7 @@
 
 - 結果ボックス `.nickname-check__result` はブランド薄緑地（`$color-brand-surface`）。枠線なし
 - `.nickname-check__status--ok` / `--ng` ともブランド緑太字（使用済みも赤にしない。デザインどおり）
-- 候補は横並びピル（`.nickname-check__suggestion`）。先頭に `+`（`::before`）
+- 候補は横並びピル（`.nickname-check__suggestion`）。右端に `/icons/copy-x.svg`（`::after`）
 
 **残すもの（現行と同じ）**
 
