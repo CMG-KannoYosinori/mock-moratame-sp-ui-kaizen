@@ -18,6 +18,10 @@ jQM を外したページはファイル名末尾に `-no-jqm` を付ける（�
 - `<Drawer engine="css" />` を使う（`HeaderApp` を使うページのみ）
 - `HeaderSimple` を使うページにはドロワーはない
 
+## Footer
+
+- `<Footer engine="css" />` を使う（`data-role="footer"` / `.ui-footer` / `.ui-link` を出さない）
+
 ## Smart Banner 補正の仕組み
 
 `fixSmartBannerOffsetToPage` を有効にすると:

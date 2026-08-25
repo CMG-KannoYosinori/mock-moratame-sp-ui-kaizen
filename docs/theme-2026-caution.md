@@ -131,6 +131,7 @@
 | `src/styles/drawer.scss` | ドロワー用エントリ（出力は `drawer.css`） |
 | `src/scripts/smartbanner-offset.js` | no-jqm ページ用の Smart Banner オフセット補正（対象は `.smartbanner-offset`） |
 | `src/scripts/nickname-check.js` | **モック専用。** 虫眼鏡で固定の結果ボックスを出すだけ。本番の Ajax には使わない |
+| `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
 | `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |
 | `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス |
 | `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM） |
