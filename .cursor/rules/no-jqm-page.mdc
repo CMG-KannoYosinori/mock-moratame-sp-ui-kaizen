@@ -3,9 +3,20 @@ description: jQM なしページの作成・管理ルール
 alwaysApply: true
 ---
 
-# jQM なし（no-jqm）ページのルール
+# jQM なしページのルール
 
-jQM を外したページはファイル名末尾に `-no-jqm` を付ける（例: `signup01-no-jqm.astro`）。
+会員登録の改善モック（theme-2026）は内容に沿った慣用名（例: `signup-form.astro`）。jQuery Mobile ありの現行比較用は末尾に `-jqm`（例: `signup-form-jqm.astro`）。ログインの排除スパイクなど、他画面の `-no-jqm` はそのまま残している。
+
+## 会員登録のファイル名
+
+| ファイル | 内容 |
+|---|---|
+| `signup.astro` | 登録方法選択 |
+| `signup-form.astro` | 基本情報入力 |
+| `signup-form-error.astro` | 基本情報入力（エラー確認） |
+| `signup-confirm.astro` | 入力内容確認 |
+| `signup-verify.astro` | SMS / 電話番号認証 |
+| `signup-complete.astro` | 完了 |
 
 ## BaseLayout props
 
@@ -32,7 +43,7 @@ jQM を外したページはファイル名末尾に `-no-jqm` を付ける（�
 
 ## エラー確認用ページの分離
 
-通常表示とエラー表示確認用は別ファイルにする（例: `signup01-no-jqm.astro` と `signup01-no-jqm-error.astro`）。通常版にはエラー要素（`.form-error`、`.field-error`）を含めない。
+通常表示とエラー表示確認用は別ファイルにする（例: `signup-form.astro` と `signup-form-error.astro`）。通常版にはエラー要素（`.form-error`、`.field-error`）を含めない。
 
 ## CSS
 

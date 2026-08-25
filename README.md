@@ -18,9 +18,9 @@ npm run dev
 
 直接開く場合:
 
-- http://localhost:4321/s/contents/signup01.html
-- http://localhost:4321/s/contents/signup03.html
-- http://localhost:4321/s/contents/signup05.html
+- http://localhost:4321/s/contents/signup-form.html
+- http://localhost:4321/s/contents/signup-confirm.html
+- http://localhost:4321/s/contents/signup-error.html
 - http://localhost:4321/s/login/sms_auth_input.html
 - http://localhost:4321/s/login/sms_auth_confirm.html
 

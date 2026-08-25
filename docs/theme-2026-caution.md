@@ -8,13 +8,14 @@
 
 | ファイル | 読み込み |
 |---|---|
-| `signup01-no-jqm.astro` | あり |
-| `signup01-no-jqm-error.astro` | あり |
-| `signup03-no-jqm.astro` | あり |
-| `signup04-no-jqm.astro` | あり |
-| `signup-complete-no-jqm.astro` | あり |
+| `signup.astro` | あり（登録方法選択） |
+| `signup-form.astro` | あり |
+| `signup-form-error.astro` | あり |
+| `signup-confirm.astro` | あり |
+| `signup-verify.astro` | あり |
+| `signup-complete.astro` | あり |
 | `ui/index.astro` | あり（`ui.css` も） |
-| その他全ページ（jQM あり含む） | **なし** |
+| `*-jqm.astro` / `signup-confirm-legacy.astro` / `signup-error.astro` / その他 | **なし** |
 
 `BaseLayout` への共通読み込みは行っていません。ページ単位で `<link>` タグを記述する方式です。
 
@@ -68,7 +69,7 @@
 
 ### ページの分け方
 
-- 通常入力とバリデーションエラー表示は **別テンプレート** にする（モックの `signup01-no-jqm` と `signup01-no-jqm-error` に相当）
+- 通常入力とバリデーションエラー表示は **別テンプレート** にする（モックの `signup-form` と `signup-form-error` に相当）
 - 通常入力には `.form-error` と `.field-error` を出さない
 - ニックネーム欄は **1 つだけ**。モックは使用可 / 使用済みを見比べるため 2 つ並べている
 
@@ -82,7 +83,7 @@
 - 隠し欄 `#mode` はニックネームチェック・郵便番号・生年月日末日の Ajax で使う。見た目用ではない。削るなら関連 JS もセットで外す
 - `id="nickname"` / `id="nicknamealert"` はニックネームチェック結果の差し込み先。紹介コード欄には置かない（ページ内で重複させない）
 
-### エラー確認モック（`signup01-no-jqm-error`）の見本内容
+### エラー確認モック（`signup-form-error`）の見本内容
 
 デザインに合わせた固定例。本番テンプレートではサーバー応答に応じて出し分ける。
 

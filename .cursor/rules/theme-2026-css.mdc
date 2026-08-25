@@ -9,7 +9,7 @@ alwaysApply: true
 
 ## 読み込み対象
 
-- **jQM なし（no-jqm）ページにのみ** `<link href="/styles/theme-2026.css">` で読み込む
+- **jQM なしの改善モックにのみ** `<link href="/styles/theme-2026.css">` で読み込む（会員登録は `signup-form.astro` 等。比較用の `*-jqm` には載せない）
 - `BaseLayout` や共通テンプレートへの一括追加は **しない**
 - 読み込み順: 本番 CSS → `theme-2026.css`
 

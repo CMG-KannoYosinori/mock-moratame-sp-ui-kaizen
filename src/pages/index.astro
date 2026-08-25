@@ -48,7 +48,10 @@
       <h1>モラタメ SP UI モック</h1>
       <p>
         Astro で管理している静的モックです。jQuery Mobile
-        の是非はログイン画面のスパイクで比較します。フォーム改善は現行（あり）をベースに進めます。
+        の是非はログイン画面のスパイクで比較します。会員登録の改善案は
+        <code>signup</code> /
+        <code>signup-form</code> などの慣用名、現行比較用は
+        <code>-jqm</code> / <code>-legacy</code> です。
       </p>
 
       <h2>UI ライブラリー</h2>
@@ -62,7 +65,59 @@
         </li>
       </ul>
 
-      <h2>jQuery Mobile あり（現行）</h2>
+      <h2>会員登録（改善案・jQuery Mobile なし）</h2>
+      <p class="note">
+        theme-2026 を読むモック。フロー: signup → form → confirm → verify →
+        complete。
+      </p>
+      <ul class="mock-list">
+        <li>
+          <a href="/s/contents/signup.html">登録方法選択</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup.html<br />
+            ファイル: src/pages/s/contents/signup.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-form.html">基本情報入力</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-form.html<br />
+            ファイル: src/pages/s/contents/signup-form.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-form-error.html"
+            >基本情報入力（エラー確認）</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-form-error.html<br />
+            ファイル: src/pages/s/contents/signup-form-error.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-confirm.html">入力内容確認</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-confirm.html<br />
+            ファイル: src/pages/s/contents/signup-confirm.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-verify.html">SMS認証</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-verify.html<br />
+            ファイル: src/pages/s/contents/signup-verify.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-complete.html">会員登録完了</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-complete.html<br />
+            ファイル: src/pages/s/contents/signup-complete.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2>jQuery Mobile あり（現行比較）</h2>
       <ul class="mock-list">
         <li>
           <a href="/s/login/index.html">ログイン</a>
@@ -72,24 +127,24 @@
           </span>
         </li>
         <li>
-          <a href="/s/contents/signup00.html">新規会員登録（登録方法選択）</a>
+          <a href="/s/contents/signup-jqm.html">登録方法選択</a>
           <span class="mock-meta">
-            パス: /s/contents/signup00.html<br />
-            ファイル: src/pages/s/contents/signup00.astro
+            パス: /s/contents/signup-jqm.html<br />
+            ファイル: src/pages/s/contents/signup-jqm.astro
           </span>
         </li>
         <li>
-          <a href="/s/contents/signup01.html">新規会員登録（基本情報入力）</a>
+          <a href="/s/contents/signup-form-jqm.html">基本情報入力</a>
           <span class="mock-meta">
-            パス: /s/contents/signup01.html<br />
-            ファイル: src/pages/s/contents/signup01.astro
+            パス: /s/contents/signup-form-jqm.html<br />
+            ファイル: src/pages/s/contents/signup-form-jqm.astro
           </span>
         </li>
         <li>
-          <a href="/s/contents/signup05.html">新規会員登録（エラー）</a>
+          <a href="/s/contents/signup-error.html">エラー</a>
           <span class="mock-meta">
-            パス: /s/contents/signup05.html<br />
-            ファイル: src/pages/s/contents/signup05.astro
+            パス: /s/contents/signup-error.html<br />
+            ファイル: src/pages/s/contents/signup-error.astro
           </span>
         </li>
         <li>
@@ -108,78 +163,30 @@
         </li>
       </ul>
 
-      <h2>jQuery Mobile なし</h2>
+      <h2>現行コピー（jQM なし・マイルストーン画像）</h2>
       <p class="note">
-        排除可否の判断用。ログインと signup00 はドロワーを CSS
-        で動かしています。signup03 はもともと jQM を読んでいません。
+        もともと jQM を読んでいない本番コピー。改善案の signup-confirm
+        と並べて比較します。
       </p>
+      <ul class="mock-list">
+        <li>
+          <a href="/s/contents/signup-confirm-legacy.html"
+            >入力内容確認（現行）</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-confirm-legacy.html<br />
+            ファイル: src/pages/s/contents/signup-confirm-legacy.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2>ログイン（jQuery Mobile 排除スパイク）</h2>
       <ul class="mock-list">
         <li>
           <a href="/s/login/index-no-jqm.html">ログイン（排除スパイク）</a>
           <span class="mock-meta">
             パス: /s/login/index-no-jqm.html<br />
             ファイル: src/pages/s/login/index-no-jqm.astro
-          </span>
-        </li>
-        <li>
-          <a href="/s/contents/signup00-no-jqm.html"
-            >新規会員登録（登録方法選択・排除スパイク）</a
-          >
-          <span class="mock-meta">
-            パス: /s/contents/signup00-no-jqm.html<br />
-            ファイル: src/pages/s/contents/signup00-no-jqm.astro
-          </span>
-        </li>
-        <li>
-          <a href="/s/contents/signup01-no-jqm.html"
-            >新規会員登録（基本情報入力・排除スパイク）</a
-          >
-          <span class="mock-meta">
-            パス: /s/contents/signup01-no-jqm.html<br />
-            ファイル: src/pages/s/contents/signup01-no-jqm.astro
-          </span>
-        </li>
-        <li>
-          <a href="/s/contents/signup01-no-jqm-error.html"
-            >新規会員登録（基本情報入力・排除スパイク・エラー確認）</a
-          >
-          <span class="mock-meta">
-            パス: /s/contents/signup01-no-jqm-error.html<br />
-            ファイル: src/pages/s/contents/signup01-no-jqm-error.astro
-          </span>
-        </li>
-        <li>
-          <a href="/s/contents/signup03.html">新規会員登録（内容確認・現行）</a>
-          <span class="mock-meta">
-            パス: /s/contents/signup03.html<br />
-            ファイル: src/pages/s/contents/signup03.astro
-          </span>
-        </li>
-        <li>
-          <a href="/s/contents/signup03-no-jqm.html"
-            >新規会員登録（内容確認・排除スパイク）</a
-          >
-          <span class="mock-meta">
-            パス: /s/contents/signup03-no-jqm.html<br />
-            ファイル: src/pages/s/contents/signup03-no-jqm.astro
-          </span>
-        </li>
-        <li>
-          <a href="/s/contents/signup04-no-jqm.html"
-            >新規会員登録（SMS認証・排除スパイク）</a
-          >
-          <span class="mock-meta">
-            パス: /s/contents/signup04-no-jqm.html<br />
-            ファイル: src/pages/s/contents/signup04-no-jqm.astro
-          </span>
-        </li>
-        <li>
-          <a href="/s/contents/signup-complete-no-jqm.html"
-            >新規会員登録（完了・排除スパイク）</a
-          >
-          <span class="mock-meta">
-            パス: /s/contents/signup-complete-no-jqm.html<br />
-            ファイル: src/pages/s/contents/signup-complete-no-jqm.astro
           </span>
         </li>
       </ul>

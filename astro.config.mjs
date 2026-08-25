@@ -4,7 +4,7 @@ import { copyStylesScriptsIntegration } from './integrations/copy-styles-scripts
 
 export default defineConfig({
   integrations: [copyStylesScriptsIntegration()],
-  // preserve: signup00.astro → signup00.html、login/index.astro → login/index.html
+  // preserve: signup-form.astro → signup-form.html、login/index.astro → login/index.html
   trailingSlash: 'ignore',
   compressHTML: false,
   build: {
