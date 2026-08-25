@@ -163,35 +163,48 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">性別</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="radio-menu sexs">
-              <li>
-                <input
-                  type="radio"
-                  name="sex[]"
-                  id="sex-1"
-                  value="11001"
-                /><label for="sex-1">男性</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="sex[]"
-                  id="sex-2"
-                  value="11002"
-                  checked
-                /><label for="sex-2">女性</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="sex[]"
-                  id="sex-3"
-                  value="11003"
-                /><label for="sex-3">無回答</label>
-              </li>
-            </ul>
-          </div>
+          <ul class="radio">
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-1"
+                value="11001"
+              />
+              <label class="radio__label" for="sex-1">
+                <span class="radio__dot" aria-hidden="true"></span>
+                男性
+              </label>
+            </li>
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-2"
+                value="11002"
+                checked
+              />
+              <label class="radio__label" for="sex-2">
+                <span class="radio__dot" aria-hidden="true"></span>
+                女性
+              </label>
+            </li>
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-3"
+                value="11003"
+              />
+              <label class="radio__label" for="sex-3">
+                <span class="radio__dot" aria-hidden="true"></span>
+                無回答
+              </label>
+            </li>
+          </ul>
         </div>
 
         <div class="select-area select-birthday">
@@ -199,46 +212,44 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">生年月日</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="select-menu birthday">
-              <li>
-                <select name="yyyy" onchange="javascript: daychange();">
-                  <option>年</option>
-                  {
-                    years.map((year) => (
-                      <option value={year} selected={year === 1980}>
-                        {year}
-                      </option>
-                    ))
-                  }
-                </select>
-              </li>
-              &nbsp;
-              <li>
-                <select name="mm" onchange="javascript: daychange();">
-                  <option>月</option>
-                  {
-                    months.map((month) => (
-                      <option value={month}>{month}</option>
-                    ))
-                  }
-                </select>
-              </li>
-              &nbsp;
-              <li>
-                <select name="dd" id="day" onchange="javascript: daychange();">
-                  <option>日</option>
-                  {
-                    days.map((day) => (
-                      <option id={`day${Number(day)}`} value={day}>
-                        {day}
-                      </option>
-                    ))
-                  }
-                </select>
-              </li>
-            </ul>
-          </div>
+          <ul class="select-menu birthday">
+            <li>
+              <select name="yyyy" onchange="javascript: daychange();">
+                <option>年</option>
+                {
+                  years.map((year) => (
+                    <option value={year} selected={year === 1980}>
+                      {year}
+                    </option>
+                  ))
+                }
+              </select>
+            </li>
+            &nbsp;
+            <li>
+              <select name="mm" onchange="javascript: daychange();">
+                <option>月</option>
+                {
+                  months.map((month) => (
+                    <option value={month}>{month}</option>
+                  ))
+                }
+              </select>
+            </li>
+            &nbsp;
+            <li>
+              <select name="dd" id="day" onchange="javascript: daychange();">
+                <option>日</option>
+                {
+                  days.map((day) => (
+                    <option id={`day${Number(day)}`} value={day}>
+                      {day}
+                    </option>
+                  ))
+                }
+              </select>
+            </li>
+          </ul>
         </div>
 
         <div class="select-area select-email">
@@ -246,36 +257,34 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">メールアドレス</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="input-menu email">
-              <li>
-                <input
-                  type="text"
-                  class="input"
-                  name="email"
-                  id="email"
-                  value=""
-                  placeholder="example@moratame.net"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-              <li>
-                <input
-                  type="text"
-                  class="input"
-                  name="email2"
-                  id="email2"
-                  value=""
-                  placeholder="確認のためもう一度入力して下さい"
-                  autocomplete="off"
-                  spellcheck="false"
-                  autocorrect="off"
-                />
-              </li>
-            </ul>
-          </div>
+          <ul class="input-menu email">
+            <li>
+              <input
+                type="text"
+                class="input"
+                name="email"
+                id="email"
+                value=""
+                placeholder="example@moratame.net"
+                autocomplete="off"
+                spellcheck="false"
+                autocorrect="off"
+              />
+            </li>
+            <li>
+              <input
+                type="text"
+                class="input"
+                name="email2"
+                id="email2"
+                value=""
+                placeholder="確認のためもう一度入力して下さい"
+                autocomplete="off"
+                spellcheck="false"
+                autocorrect="off"
+              />
+            </li>
+          </ul>
         </div>
 
         <div class="select-area select-password">
@@ -472,6 +481,139 @@ const days = Array.from({ length: 31 }, (_, i) =>
                         value=""
                         placeholder="example@moratame.net"
                       />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="paper">
+                      <div class="input-search">
+                        <input
+                          type="text"
+                          class="input input--with-action"
+                          value=""
+                          placeholder="入力後、使用可能かチェック！"
+                        />
+                        <button
+                          type="button"
+                          class="input-search__button"
+                          aria-label="ニックネームをチェック"
+                        >
+                          <svg
+                            class="input-search__icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            aria-hidden="true"
+                          >
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.65 16.65"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 class="heading heading--s">ニックネームチェック</h3>
+                <ul class="paper-list">
+                  <li>
+                    <div class="paper">
+                      <div class="nickname-check">
+                        <div class="nickname-check__result">
+                          <p
+                            class="nickname-check__status nickname-check__status--ok"
+                          >
+                            使用可能なニックネームです。
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="paper">
+                      <div class="nickname-check">
+                        <div class="nickname-check__result">
+                          <p
+                            class="nickname-check__status nickname-check__status--ng"
+                          >
+                            同一のニックネームが登録されています。
+                          </p>
+                          <p class="nickname-check__heading">
+                            似たようなニックネーム
+                          </p>
+                          <ul class="nickname-check__list">
+                            <li>
+                              <button
+                                type="button"
+                                class="nickname-check__suggestion"
+                              >
+                                ポッケ1
+                              </button>
+                            </li>
+                            <li>
+                              <button
+                                type="button"
+                                class="nickname-check__suggestion"
+                              >
+                                ポッケ123456
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 class="heading heading--s">ラジオ</h3>
+                <ul class="paper-list">
+                  <li>
+                    <div class="paper">
+                      <ul class="radio">
+                        <li class="radio__item">
+                          <input
+                            class="radio__input"
+                            type="radio"
+                            name="ui-sex[]"
+                            id="ui-sex-1"
+                            value="11001"
+                          />
+                          <label class="radio__label" for="ui-sex-1">
+                            <span class="radio__dot" aria-hidden="true"></span>
+                            男性
+                          </label>
+                        </li>
+                        <li class="radio__item">
+                          <input
+                            class="radio__input"
+                            type="radio"
+                            name="ui-sex[]"
+                            id="ui-sex-2"
+                            value="11002"
+                            checked
+                          />
+                          <label class="radio__label" for="ui-sex-2">
+                            <span class="radio__dot" aria-hidden="true"></span>
+                            女性
+                          </label>
+                        </li>
+                        <li class="radio__item">
+                          <input
+                            class="radio__input"
+                            type="radio"
+                            name="ui-sex[]"
+                            id="ui-sex-3"
+                            value="11003"
+                          />
+                          <label class="radio__label" for="ui-sex-3">
+                            <span class="radio__dot" aria-hidden="true"></span>
+                            無回答
+                          </label>
+                        </li>
+                      </ul>
                     </div>
                   </li>
                 </ul>

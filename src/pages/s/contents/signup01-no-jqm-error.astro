@@ -40,9 +40,6 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
   <script is:inline>
     $(document).ready(function () {
-      $("#nickname").html(
-        '<input type="submit" name="name_check" value="登録可能なニックネームかチェック" class="w200 nickname-check-btn" onclick="javascript:return namecheck();" />',
-      )
       $("#zip1").html(
         '<input type="submit" name="zip1_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(10);" />',
       )
@@ -50,29 +47,6 @@ const days = Array.from({ length: 31 }, (_, i) =>
         '<input type="submit" name="zip2_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(20);" />',
       )
     })
-
-    function namecheck() {
-      $("#mode").val(1)
-      var url = "profile_edit.exec.php"
-      var params = $("#new-signup-input").serialize()
-      $.post(
-        url,
-        { params: params },
-        function (data, status) {
-          if (data.status == "0") {
-            $("#nicknamealert").html(
-              "<p class='message ng'>" + data.message + "<p />",
-            )
-          } else if (data.status == "1") {
-            $("#nicknamealert").html(
-              "<p class='message ok'>" + data.message + "<p />",
-            )
-          }
-        },
-        "json",
-      )
-      return false
-    }
 
     function searchaddr(prefix) {
       $("#mode").val(prefix)
@@ -184,9 +158,9 @@ const days = Array.from({ length: 31 }, (_, i) =>
         id="new-signup-input"
       >
         <input type="hidden" name="mode" id="mode" value="" />
-        <div class="input-area" style="margin-bottom: 15px;">
-          <p class="error">入力内容に不備があります。</p>
-        </div>
+        <p class="error" style="margin-bottom: 15px;">
+          入力内容に不備があります。
+        </p>
 
         <div class="select-area select-email">
           <div class="field-header">
@@ -243,21 +217,60 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <span class="required-mark">＊</span>
             <p class="field-header__caption">※後から変更できます</p>
           </div>
-          <input
-            type="text"
-            class="input"
-            name="disp_id"
-            id="disp_id"
-            value=""
-            placeholder="入力後、使用可能かチェック！"
-            onblur="javascript:return namecheck();"
-          />
-          <div class="side-text">
-            <span id="nickname"></span>
-            <span id="nicknamealert"></span>
+          <div class="nickname-check">
+            <div class="input-search">
+              <input
+                type="text"
+                class="input input--with-action"
+                name="disp_id"
+                id="disp_id"
+                value="ポッケ"
+                placeholder="入力後、使用可能かチェック！"
+                autocomplete="off"
+                spellcheck="false"
+                autocorrect="off"
+              />
+              <button
+                type="button"
+                class="input-search__button"
+                aria-label="ニックネームをチェック"
+                aria-expanded="true"
+                aria-controls="nickname-result-ng"
+              >
+                <svg
+                  class="input-search__icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="M20 20L16.65 16.65"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="nickname-check__result" id="nickname-result-ng">
+              <p class="nickname-check__status nickname-check__status--ng">
+                同一のニックネームが登録されています。
+              </p>
+              <p class="nickname-check__heading">似たようなニックネーム</p>
+              <ul class="nickname-check__list">
+                <li>
+                  <button type="button" class="nickname-check__suggestion">
+                    ポッケ1
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="nickname-check__suggestion">
+                    ポッケ123456
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
           <p class="error">ニックネームは必須入力です。<br /></p>
-          <p class="error">同一のニックネームが登録されています。<br /></p>
         </div>
         <!-- /ニックネーム -->
 
@@ -266,35 +279,48 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">性別</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="radio-menu sexs">
-              <li>
-                <input
-                  type="radio"
-                  name="sex[]"
-                  id="sex-1"
-                  value="11001"
-                /><label for="sex-1">男性</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="sex[]"
-                  id="sex-2"
-                  value="11002"
-                  checked
-                /><label for="sex-2">女性</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="sex[]"
-                  id="sex-3"
-                  value="11003"
-                /><label for="sex-3">無回答</label>
-              </li>
-            </ul>
-          </div>
+          <ul class="radio">
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-1"
+                value="11001"
+              />
+              <label class="radio__label" for="sex-1">
+                <span class="radio__dot" aria-hidden="true"></span>
+                男性
+              </label>
+            </li>
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-2"
+                value="11002"
+                checked
+              />
+              <label class="radio__label" for="sex-2">
+                <span class="radio__dot" aria-hidden="true"></span>
+                女性
+              </label>
+            </li>
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-3"
+                value="11003"
+              />
+              <label class="radio__label" for="sex-3">
+                <span class="radio__dot" aria-hidden="true"></span>
+                無回答
+              </label>
+            </li>
+          </ul>
         </div>
         <!-- /性別 -->
 
@@ -303,46 +329,44 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">生年月日</h2>
             <span class="required-mark">＊</span>
           </div>
-          <div class="input-area">
-            <ul class="select-menu birthday">
-              <li>
-                <select name="yyyy" onchange="javascript: daychange();">
-                  <option>年</option>
-                  {
-                    years.map((year) => (
-                      <option value={year} selected={year === 1980}>
-                        {year}
-                      </option>
-                    ))
-                  }
-                </select>
-              </li>
-              &nbsp;
-              <li>
-                <select name="mm" onchange="javascript: daychange();">
-                  <option>月</option>
-                  {
-                    months.map((month) => (
-                      <option value={month}>{month}</option>
-                    ))
-                  }
-                </select>
-              </li>
-              &nbsp;
-              <li>
-                <select name="dd" id="day" onchange="javascript: daychange();">
-                  <option>日</option>
-                  {
-                    days.map((day) => (
-                      <option id={`day${Number(day)}`} value={day}>
-                        {day}
-                      </option>
-                    ))
-                  }
-                </select>
-              </li>
-            </ul>
-          </div>
+          <ul class="select-menu birthday">
+            <li>
+              <select name="yyyy" onchange="javascript: daychange();">
+                <option>年</option>
+                {
+                  years.map((year) => (
+                    <option value={year} selected={year === 1980}>
+                      {year}
+                    </option>
+                  ))
+                }
+              </select>
+            </li>
+            &nbsp;
+            <li>
+              <select name="mm" onchange="javascript: daychange();">
+                <option>月</option>
+                {
+                  months.map((month) => (
+                    <option value={month}>{month}</option>
+                  ))
+                }
+              </select>
+            </li>
+            &nbsp;
+            <li>
+              <select name="dd" id="day" onchange="javascript: daychange();">
+                <option>日</option>
+                {
+                  days.map((day) => (
+                    <option id={`day${Number(day)}`} value={day}>
+                      {day}
+                    </option>
+                  ))
+                }
+              </select>
+            </li>
+          </ul>
         </div>
         <!-- /生年月日 -->
 
@@ -382,6 +406,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
   <Footer variant="simple" />
 
+  <script slot="after-page" is:inline src="/scripts/nickname-check.js"></script>
   <script slot="after-page" is:inline>
     $("#password-2").hidePassword("focus", {
       toggle: { className: "my-toggle" },

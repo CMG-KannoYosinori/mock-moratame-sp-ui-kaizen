@@ -1,0 +1,56 @@
+@use "../foundation/tokens" as *;
+
+.nickname-check {
+  width: 100%;
+  max-width: 100%;
+}
+
+.nickname-check__result {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #a4a4a4;
+  border-radius: 0.5rem;
+}
+
+.nickname-check__status {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.nickname-check__status--ok {
+  color: $color-brand;
+}
+
+.nickname-check__status--ng {
+  color: $color-danger;
+}
+
+.nickname-check__heading {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: $color-text;
+}
+
+.nickname-check__list {
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.nickname-check__suggestion {
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: $color-text;
+  text-decoration: underline;
+  appearance: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
