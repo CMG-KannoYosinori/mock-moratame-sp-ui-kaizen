@@ -16,3 +16,11 @@
 .page-content--muted {
   background-color: $color-surface-muted;
 }
+
+.page-content__inner {
+  @media (min-width: 768px) {
+    max-width: 44rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
