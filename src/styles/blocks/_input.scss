@@ -10,7 +10,7 @@ input.input {
   color: $color-text;
   appearance: none;
   background-color: #fff;
-  border: 1px solid #a4a4a4;
+  border: 1px solid $color-input-border;
   border-radius: 0.5rem;
   box-shadow: none;
 }
