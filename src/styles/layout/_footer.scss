@@ -1,0 +1,5 @@
+// 本番 style--sp.css の jQM フッター補正。
+// no-jqm では ui-footer 枠がないため負マージンは不要。
+#topscrollWrp {
+  margin-top: 0;
+}
