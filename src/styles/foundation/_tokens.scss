@@ -3,7 +3,11 @@
 $color-brand: #57c200;
 // 通常色を白で 30% 薄めた実色（透過は使わない）
 $color-brand-hover: color.mix(#fff, $color-brand, 30%);
+$color-brand-surface: color.mix(#fff, $color-brand, 90%);
 $color-danger: #e60012;
+// エラー面（透過なし。白との mix）
+$color-danger-surface: color.mix(#fff, $color-danger, 90%);
+$color-danger-surface-soft: color.mix(#fff, $color-danger, 95%);
 $color-link: #007aff;
 $color-surface-muted: #fafafa;
 $color-text: #333;

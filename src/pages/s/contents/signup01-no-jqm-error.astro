@@ -78,268 +78,295 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
   <div class="page-content page-content--muted">
     <div class="page-content__inner">
-    <section>
-      <Stepper activeStep={1} />
-      <div class="page-heading">
-        <h1 class="heading heading--l">基本情報入力</h1>
-        <p class="page-heading__caption">
-          必須項目<span class="required-mark">＊</span>
-        </p>
-      </div>
-      <p class="form-error" role="alert">入力内容をご確認ください。</p>
-
-      <form
-        action="https://www.moratame.net/s/contents/signup02p.php"
-        method="post"
-        name="new-signup-input"
-        id="new-signup-input"
-      >
-        <input type="hidden" name="mode" id="mode" value="" />
-        <p class="field-error">入力内容に不備があります。</p>
-
-        <div class="select-area select-email">
-          <div class="field-header">
-            <h2 class="heading heading--s">メールアドレス</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <input
-            type="text"
-            class="input input--error"
-            name="email"
-            id="email"
-            value=""
-            placeholder="example@moratame.net"
-            autocomplete="off"
-            spellcheck="false"
-            autocorrect="off"
-          />
-          <input
-            type="text"
-            class="input input--error"
-            name="email2"
-            id="email2"
-            value=""
-            placeholder="確認のためもう一度入力して下さい"
-            autocomplete="off"
-            spellcheck="false"
-            autocorrect="off"
-          />
-          <p class="field-error">同一のE-mailアドレスが登録されています。</p>
+      <section>
+        <Stepper activeStep={1} />
+        <div class="page-heading">
+          <h1 class="heading heading--l">基本情報入力</h1>
+          <p class="page-heading__caption">
+            必須項目<span class="required-mark">＊</span>
+          </p>
         </div>
-        <!-- /メールアドレス -->
+        <p class="form-error" role="alert">入力内容をご確認ください。</p>
 
-        <div class="select-area select-password">
-          <div class="field-header">
-            <h2 class="heading heading--s">パスワード</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <input
-            type="password"
-            class="input"
-            name="pass"
-            id="password1"
-            placeholder="半角6文字以上16文字以下、連番不可"
-            autocomplete="off"
-            spellcheck="false"
-            autocorrect="off"
-          />
-        </div>
-        <!-- /パスワード -->
-
-        <div class="select-area select-nickname">
-          <div class="field-header">
-            <h2 class="heading heading--s">ニックネーム</h2>
-            <span class="required-mark">＊</span>
-            <p class="field-header__caption">※後から変更できます</p>
-          </div>
-          <div class="nickname-check">
-            <div class="input-search">
-              <input
-                type="text"
-                class="input input--with-action input--error"
-                name="disp_id"
-                id="disp_id"
-                value="ポッケ"
-                placeholder="入力後、使用可能かチェック！"
-                autocomplete="off"
-                spellcheck="false"
-                autocorrect="off"
-              />
-              <button
-                type="button"
-                class="input-search__button"
-                aria-label="ニックネームをチェック"
-                aria-expanded="true"
-                aria-controls="nickname-result-ng"
-              >
-                <img
-                  class="input-search__icon"
-                  src="/icons/search.svg"
-                  alt=""
-                  width="21"
-                  height="22"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-            <div class="nickname-check__result" id="nickname-result-ng">
-              <p class="nickname-check__status nickname-check__status--ng">
-                同一のニックネームが登録されています。
-              </p>
-              <p class="nickname-check__heading">似たようなニックネーム</p>
-              <ul class="nickname-check__list">
-                <li>
-                  <button type="button" class="nickname-check__suggestion">
-                    ポッケ1
-                  </button>
-                </li>
-                <li>
-                  <button type="button" class="nickname-check__suggestion">
-                    ポッケ123456
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <p class="field-error">ニックネームは必須入力です。</p>
-        </div>
-        <!-- /ニックネーム -->
-
-        <div class="select-area select-sex">
-          <div class="field-header">
-            <h2 class="heading heading--s">性別</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <ul class="radio">
-            <li class="radio__item">
-              <input
-                class="radio__input"
-                type="radio"
-                name="sex[]"
-                id="sex-1"
-                value="11001"
-              />
-              <label class="radio__label" for="sex-1">
-                <span class="radio__dot" aria-hidden="true"></span>
-                男性
-              </label>
-            </li>
-            <li class="radio__item">
-              <input
-                class="radio__input"
-                type="radio"
-                name="sex[]"
-                id="sex-2"
-                value="11002"
-                checked
-              />
-              <label class="radio__label" for="sex-2">
-                <span class="radio__dot" aria-hidden="true"></span>
-                女性
-              </label>
-            </li>
-            <li class="radio__item">
-              <input
-                class="radio__input"
-                type="radio"
-                name="sex[]"
-                id="sex-3"
-                value="11003"
-              />
-              <label class="radio__label" for="sex-3">
-                <span class="radio__dot" aria-hidden="true"></span>
-                無回答
-              </label>
-            </li>
-          </ul>
-        </div>
-        <!-- /性別 -->
-
-        <div class="select-area select-birthday">
-          <div class="field-header">
-            <h2 class="heading heading--s">生年月日</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <ul class="select">
-            <li class="select__item">
-              <select
-                class="select__control"
-                name="yyyy"
-                onchange="javascript: daychange();"
-              >
-                <option>年</option>
-                {
-                  years.map((year) => (
-                    <option value={year} selected={year === 1980}>
-                      {year}
-                    </option>
-                  ))
-                }
-              </select>
-            </li>
-            <li class="select__item">
-              <select
-                class="select__control"
-                name="mm"
-                onchange="javascript: daychange();"
-              >
-                <option>月</option>
-                {
-                  months.map((month) => (
-                    <option value={month}>{month}</option>
-                  ))
-                }
-              </select>
-            </li>
-            <li class="select__item">
-              <select
-                class="select__control"
-                name="dd"
-                id="day"
-                onchange="javascript: daychange();"
-              >
-                <option>日</option>
-                {
-                  days.map((day) => (
-                    <option id={`day${Number(day)}`} value={day}>
-                      {day}
-                    </option>
-                  ))
-                }
-              </select>
-            </li>
-          </ul>
-        </div>
-        <!-- /生年月日 -->
-
-        <div class="select-area">
-          <div class="field-header">
-            <h2 class="heading heading--s">紹介コード</h2>
-          </div>
-          <input
-            type="text"
-            class="input input--error"
-            name="refer_code"
-            id="refer_code"
-            value=""
-            placeholder=""
-          />
-          <p class="field-error">紹介コードが正しくありません。</p>
-        </div>
-        <!-- /紹介コード -->
-
-        <p class="form-consent">
-          <a
-            class="text-link js-colorbox"
-            href="https://www.moratame.net/s/contents/step01_guide.html"
-            >利用規約</a
-          >に同意のうえ<br />「入力内容確認へ」を押してください。
-        </p>
-        <button type="submit" class="button button--green button--borderless"
-          >入力内容確認へ</button
+        <form
+          action="https://www.moratame.net/s/contents/signup02p.php"
+          method="post"
+          name="new-signup-input"
+          id="new-signup-input"
         >
-      </form>
-    </section>
+          <input type="hidden" name="mode" id="mode" value="" />
+
+          <div class="select-area select-email">
+            <div class="field-header">
+              <h2 class="heading heading--s">メールアドレス</h2>
+              <span class="required-mark">＊</span>
+            </div>
+            <input
+              type="text"
+              class="input input--error"
+              name="email"
+              id="email"
+              value="Example1"
+              placeholder="example@moratame.net"
+              autocomplete="off"
+              spellcheck="false"
+              autocorrect="off"
+            />
+            <input
+              type="text"
+              class="input input--error"
+              name="email2"
+              id="email2"
+              value="Example1"
+              placeholder="確認のためもう一度入力して下さい"
+              autocomplete="off"
+              spellcheck="false"
+              autocorrect="off"
+            />
+            <ul class="field-error">
+              <li class="field-error__item">E-mailは必須入力です。</li>
+              <li class="field-error__item">E-mailが正しくありません。</li>
+              <li class="field-error__item">
+                同一のE-mailアドレスが登録されています。
+              </li>
+            </ul>
+          </div>
+          <!-- /メールアドレス -->
+
+          <div class="select-area select-password">
+            <div class="field-header">
+              <h2 class="heading heading--s">パスワード</h2>
+              <span class="required-mark">＊</span>
+            </div>
+            <input
+              type="text"
+              class="input input--error"
+              name="pass"
+              id="password1"
+              value="Example1"
+              placeholder="半角6文字以上16文字以下、連番不可"
+              autocomplete="off"
+              spellcheck="false"
+              autocorrect="off"
+            />
+            <ul class="field-error">
+              <li class="field-error__item">パスワードは必須入力です。</li>
+              <li class="field-error__item">
+                パスワードは半角英数字で入力して下さい
+              </li>
+              <li class="field-error__item">
+                パスワードは6文字以上で入力して下さい
+              </li>
+              <li class="field-error__item">
+                パスワードは連番以外で入力してください。
+              </li>
+            </ul>
+          </div>
+          <!-- /パスワード -->
+
+          <div class="select-area select-nickname">
+            <div class="field-header">
+              <h2 class="heading heading--s">ニックネーム</h2>
+              <span class="required-mark">＊</span>
+              <p class="field-header__caption">※後から変更できます</p>
+            </div>
+            <div class="nickname-check">
+              <div class="input-search">
+                <input
+                  type="text"
+                  class="input input--with-action"
+                  name="disp_id"
+                  id="disp_id"
+                  value=""
+                  placeholder="入力後、使用可能かチェック！"
+                  autocomplete="off"
+                  spellcheck="false"
+                  autocorrect="off"
+                />
+                <button
+                  type="button"
+                  class="input-search__button"
+                  aria-label="ニックネームをチェック"
+                  aria-expanded="true"
+                  aria-controls="nickname-result-ng"
+                >
+                  <img
+                    class="input-search__icon"
+                    src="/icons/search.svg"
+                    alt=""
+                    width="21"
+                    height="22"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+              <div class="nickname-check__result" id="nickname-result-ng">
+                <p class="nickname-check__status nickname-check__status--ng">
+                  同一のニックネームが登録されています。
+                </p>
+                <p class="nickname-check__heading">似たようなニックネーム</p>
+                <ul class="nickname-check__list">
+                  <li>
+                    <button type="button" class="nickname-check__suggestion">
+                      ポッケ1
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="nickname-check__suggestion">
+                      ポッケ123456
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /ニックネーム -->
+
+          <div class="select-area select-sex">
+            <div class="field-header">
+              <h2 class="heading heading--s">性別</h2>
+              <span class="required-mark">＊</span>
+            </div>
+            <ul class="radio">
+              <li class="radio__item">
+                <input
+                  class="radio__input"
+                  type="radio"
+                  name="sex[]"
+                  id="sex-1"
+                  value="11001"
+                />
+                <label class="radio__label" for="sex-1">
+                  <span class="radio__dot" aria-hidden="true"></span>
+                  男性
+                </label>
+              </li>
+              <li class="radio__item">
+                <input
+                  class="radio__input"
+                  type="radio"
+                  name="sex[]"
+                  id="sex-2"
+                  value="11002"
+                  checked
+                />
+                <label class="radio__label" for="sex-2">
+                  <span class="radio__dot" aria-hidden="true"></span>
+                  女性
+                </label>
+              </li>
+              <li class="radio__item">
+                <input
+                  class="radio__input"
+                  type="radio"
+                  name="sex[]"
+                  id="sex-3"
+                  value="11003"
+                />
+                <label class="radio__label" for="sex-3">
+                  <span class="radio__dot" aria-hidden="true"></span>
+                  無回答
+                </label>
+              </li>
+            </ul>
+          </div>
+          <!-- /性別 -->
+
+          <div class="select-area select-birthday">
+            <div class="field-header">
+              <h2 class="heading heading--s">生年月日</h2>
+              <span class="required-mark">＊</span>
+            </div>
+            <ul class="select">
+              <li class="select__item">
+                <select
+                  class="select__control select__control--error"
+                  name="yyyy"
+                  onchange="javascript: daychange();"
+                >
+                  <option>年</option>
+                  {
+                    years.map((year) => (
+                      <option value={year} selected={year === 2000}>
+                        {year}
+                      </option>
+                    ))
+                  }
+                </select>
+              </li>
+              <li class="select__item">
+                <select
+                  class="select__control select__control--error"
+                  name="mm"
+                  onchange="javascript: daychange();"
+                >
+                  <option>月</option>
+                  {
+                    months.map((month) => (
+                      <option value={month} selected={month === "01"}>
+                        {month}
+                      </option>
+                    ))
+                  }
+                </select>
+              </li>
+              <li class="select__item">
+                <select
+                  class="select__control select__control--error"
+                  name="dd"
+                  id="day"
+                  onchange="javascript: daychange();"
+                >
+                  <option>日</option>
+                  {
+                    days.map((day) => (
+                      <option
+                        id={`day${Number(day)}`}
+                        value={day}
+                        selected={day === "01"}
+                      >
+                        {day}
+                      </option>
+                    ))
+                  }
+                </select>
+              </li>
+            </ul>
+            <ul class="field-error">
+              <li class="field-error__item">
+                生年月日を正しく選択してください。
+              </li>
+            </ul>
+          </div>
+          <!-- /生年月日 -->
+
+          <div class="select-area">
+            <div class="field-header">
+              <h2 class="heading heading--s">紹介コード</h2>
+            </div>
+            <input
+              type="text"
+              class="input"
+              name="refer_code"
+              id="refer_code"
+              value=""
+              placeholder=""
+            />
+          </div>
+          <!-- /紹介コード -->
+
+          <p class="form-consent">
+            <a
+              class="text-link js-colorbox"
+              href="https://www.moratame.net/s/contents/step01_guide.html"
+              >利用規約</a
+            >に同意のうえ<br />「入力内容確認へ」を押してください。
+          </p>
+          <button type="submit" class="button button--green button--borderless"
+            >入力内容確認へ</button
+          >
+        </form>
+      </section>
     </div>
   </div>
 

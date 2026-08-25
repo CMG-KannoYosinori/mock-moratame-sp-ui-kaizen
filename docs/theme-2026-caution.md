@@ -75,8 +75,8 @@
 ### マークアップで守ること
 
 - テキスト入力のクラスは `input.input`（必要なら `input--with-action`）。本番 CSS の `input[type="text"]` より負けるため、要素名付きセレクタにしている
-- バリデーションエラーの入力には `input--error` を足す
-- ページ全体のエラーは `.form-error`。項目下のエラーは `.field-error`。本番の `.form_error` / `.error` は使わない
+- ページ全体のエラーは `.form-error`（薄ピンク地・赤文字）。項目下のエラーは `.field-error`（警告アイコン付きリスト）。本番の `.form_error` / `.error` は使わない
+- エラー中の入力には `input--error`（赤枠＋薄ピンク背景）を足す
 - 虫眼鏡ボタンは `type="button"`。フォーム送信や古い `name="name_check"` の submit にしない
 - 隠し欄 `#mode` はニックネームチェック・郵便番号・生年月日末日の Ajax で使う。見た目用ではない。削るなら関連 JS もセットで外す
 - `id="nickname"` / `id="nicknamealert"` はニックネームチェック結果の差し込み先。紹介コード欄には置かない（ページ内で重複させない）

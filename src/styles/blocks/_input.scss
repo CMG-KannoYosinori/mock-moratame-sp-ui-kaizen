@@ -24,6 +24,7 @@ input.input + input.input {
   padding-right: 2.75rem;
 }
 
-input.input--error {
-  border-color: $color-danger;
+input.input.input--error {
+  background-color: $color-danger-surface-soft;
+  border: 2px solid $color-danger;
 }

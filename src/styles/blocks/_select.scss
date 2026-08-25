@@ -40,3 +40,8 @@ select.select__control:focus-visible {
   outline: 2px solid $color-brand;
   outline-offset: 2px;
 }
+
+select.select__control.select__control--error {
+  background-color: $color-danger-surface-soft;
+  border: 2px solid $color-danger;
+}
