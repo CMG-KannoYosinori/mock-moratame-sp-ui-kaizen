@@ -2,14 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import HeaderSimple from "../../components/HeaderSimple.astro"
 import Footer from "../../components/Footer.astro"
-
-const years = Array.from({ length: 2021 - 1934 + 1 }, (_, i) => 1934 + i)
-const months = Array.from({ length: 12 }, (_, i) =>
-  String(i + 1).padStart(2, "0"),
-)
-const days = Array.from({ length: 31 }, (_, i) =>
-  String(i + 1).padStart(2, "0"),
-)
 ---
 
 <BaseLayout
@@ -17,656 +9,346 @@ const days = Array.from({ length: 31 }, (_, i) =>
   pageId="registration-page"
   fixSmartBannerOffsetToPage
 >
-  <link
-    slot="head"
-    rel="stylesheet"
-    href="https://www.moratame.net/s/css/member-registration.css?2026061217"
-  />
   <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
   <link slot="head" rel="stylesheet" href="/styles/ui.css" />
-  <link
-    slot="head"
-    rel="stylesheet"
-    href="https://www.moratame.net/s/css/colorbox.css"
-  />
-  <script
-    slot="head"
-    is:inline
-    src="https://www.moratame.net/s/js/jquery.colorbox.js"
-    charset="UTF-8"></script>
-  <script
-    slot="head"
-    is:inline
-    src="https://www.moratame.net/s/js/hideShowPassword.js"></script>
-
-  <script is:inline>
-    $(document).ready(function () {
-      $("#nickname").html(
-        '<input type="submit" name="name_check" value="登録可能なニックネームかチェック" class="w200 nickname-check-btn" onclick="javascript:return namecheck();" />',
-      )
-      $("#zip1").html(
-        '<input type="submit" name="zip1_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(10);" />',
-      )
-      $("#zip2").html(
-        '<input type="submit" name="zip2_input" value="郵便番号を元に住所を記入する" class="w200" onclick="javascript:return searchaddr(20);" />',
-      )
-    })
-
-    function namecheck() {
-      $("#mode").val(1)
-      var url = "profile_edit.exec.php"
-      var params = $("#new-signup-input").serialize()
-      $.post(
-        url,
-        { params: params },
-        function (data, status) {
-          if (data.status == "0") {
-            $("#nicknamealert").html(
-              "<p class='message ng'>" + data.message + "<p />",
-            )
-          } else if (data.status == "1") {
-            $("#nicknamealert").html(
-              "<p class='message ok'>" + data.message + "<p />",
-            )
-          }
-        },
-        "json",
-      )
-      return false
-    }
-
-    function searchaddr(prefix) {
-      $("#mode").val(prefix)
-      var url = "profile_edit.exec.php"
-      var params = $("#new-signup-input").serialize()
-      $.post(
-        url,
-        { params: params },
-        function (data, status) {
-          if (data.status == "0") {
-            $("#zipalert" + prefix).html(
-              '<p class="message zip">' + data.message + "<p />",
-            )
-          } else if (data.status == "1") {
-            $("#warning").html(data.message)
-            $("#addr1" + prefix).val(data.addr1)
-            $("#addr2" + prefix).val(data.addr2 + data.addr3)
-            $("#zipalert" + prefix).html("")
-          }
-        },
-        "json",
-      )
-      return false
-    }
-
-    function daychange() {
-      $("#mode").val("lastday")
-      var url = "profile_edit.exec.php"
-      var params = $("#new-signup-input").serialize()
-      $.post(
-        url,
-        { params: params },
-        function (data, status) {
-          if (data.status == "1") {
-            var cur = $("#day").val()
-            for (var i = 28; i <= 31; i++) {
-              $("#day" + i).remove()
-            }
-            var max = parseInt(data.day)
-            for (var i = 28; i <= max; i++) {
-              $("#day").append(
-                '<option id="day' +
-                  i +
-                  '" name="' +
-                  i +
-                  '" value="' +
-                  i +
-                  '">' +
-                  i +
-                  "</option>",
-              )
-            }
-            if (cur > max) {
-              cur = max
-            }
-            $("#day").val(cur)
-          }
-        },
-        "json",
-      )
-    }
-
-    $(function () {
-      $('[name="job[]"]').css("width", "270px").css("overflow", "hidden")
-    })
-  </script>
-
-  <div id="modal_wd">
-    <div class="md_background"></div>
-    <div class="md_container"></div>
-  </div>
 
   <HeaderSimple />
 
   <div class="page-content page-content--muted">
-    <section class="">
-      <form
-        action="https://www.moratame.net/s/contents/signup02p.php"
-        method="post"
-        name="new-signup-input"
-        id="new-signup-input"
-      >
-        <input type="hidden" name="mode" id="mode" value="" />
-
-        <div class="select-area select-birthday">
-          <div class="field-header">
-            <h2 class="heading heading--s">生年月日</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <ul class="select">
-            <li class="select__item">
-              <select
-                class="select__control"
-                name="yyyy"
-                onchange="javascript: daychange();"
-              >
-                <option>年</option>
-                {
-                  years.map((year) => (
-                    <option value={year} selected={year === 1980}>
-                      {year}
-                    </option>
-                  ))
-                }
-              </select>
-            </li>
-            <li class="select__item">
-              <select
-                class="select__control"
-                name="mm"
-                onchange="javascript: daychange();"
-              >
-                <option>月</option>
-                {
-                  months.map((month) => (
-                    <option value={month}>{month}</option>
-                  ))
-                }
-              </select>
-            </li>
-            <li class="select__item">
-              <select
-                class="select__control"
-                name="dd"
-                id="day"
-                onchange="javascript: daychange();"
-              >
-                <option>日</option>
-                {
-                  days.map((day) => (
-                    <option id={`day${Number(day)}`} value={day}>
-                      {day}
-                    </option>
-                  ))
-                }
-              </select>
-            </li>
-          </ul>
-        </div>
-
-        <div class="select-area select-email">
-          <div class="field-header">
-            <h2 class="heading heading--s">メールアドレス</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <ul class="input-menu email">
-            <li>
-              <input
-                type="text"
-                class="input"
-                name="email"
-                id="email"
-                value=""
-                placeholder="example@moratame.net"
-                autocomplete="off"
-                spellcheck="false"
-                autocorrect="off"
-              />
-            </li>
-            <li>
-              <input
-                type="text"
-                class="input"
-                name="email2"
-                id="email2"
-                value=""
-                placeholder="確認のためもう一度入力して下さい"
-                autocomplete="off"
-                spellcheck="false"
-                autocorrect="off"
-              />
-            </li>
-          </ul>
-        </div>
-
-        <div class="select-area select-password">
-          <div class="field-header">
-            <h2 class="heading heading--s">パスワード</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <input
-            type="password"
-            class="input"
-            name="pass"
-            id="password1"
-            placeholder="g10Asf31"
-            autocomplete="off"
-            spellcheck="false"
-            autocorrect="off"
-          />
-          <p class="side-text">※半角6文字以上16文字以下</p>
-        </div>
-
-        <div class="select-area select-nickname">
-          <div class="field-header">
-            <h2 class="heading heading--s">ニックネーム</h2>
-            <span class="required-mark">＊</span>
-          </div>
-          <input
-            type="text"
-            class="input"
-            name="disp_id"
-            id="disp_id"
-            value=""
-            placeholder="ザック32694"
-            onblur="javascript:return namecheck();"
-          />
-          <div class="side-text">
-            <span id="nickname"></span>
-            <span id="nicknamealert"></span>
-          </div>
-          <p class="side-text">※ニックネームは後から変更できます。</p>
-        </div>
-
-        <div class="select-area select-nickname">
-          <div class="field-header">
-            <h2 class="heading heading--s">紹介コード</h2>
-          </div>
-          <input
-            type="text"
-            class="input"
-            name="refer_code"
-            id="refer_code"
-            value=""
-            placeholder=""
-          />
-          <div class="side-text">
-            <span id="nickname"></span>
-            <span id="nicknamealert"></span>
-          </div>
-        </div>
-
-        <p class="form-consent">
-          <a
-            class="text-link js-colorbox"
-            href="https://www.moratame.net/s/contents/step01_guide.html"
-            >利用規約</a
-          >に同意のうえ<br />「入力内容確認へ」を押してください。
-        </p>
-      </form>
-      <div>
+    <ul class="paper-list">
+      <li>
+        <h3 class="heading heading--l">基本デザイン</h3>
         <ul class="paper-list">
           <li>
-            <h3 class="heading heading--l">基本デザイン</h3>
+            <h3 class="heading heading--s">カラー</h3>
+            <div class="paper">
+              <ul class="color-list">
+                <li>
+                  <div class="color-box color-box--primary"></div>
+                </li>
+                <li>
+                  <div class="color-box color-box--danger"></div>
+                </li>
+                <li>
+                  <div class="color-box color-box--link"></div>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h3 class="heading heading--l">コンポーネント</h3>
+        <ul class="paper-list">
+          <li>
+            <h3 class="heading heading--s">ステッパー</h3>
             <ul class="paper-list">
               <li>
-                <h3 class="heading heading--s">カラー</h3>
                 <div class="paper">
-                  <ul class="color-list">
-                    <li>
-                      <div class="color-box color-box--primary"></div>
+                  <ol class="stepper">
+                    <li class="stepper__step stepper__step--active">
+                      <span class="stepper__dot"></span>
+                      <span class="stepper__label">基本情報<br />入力</span>
                     </li>
-                    <li>
-                      <div class="color-box color-box--danger"></div>
+                    <li class="stepper__step">
+                      <span class="stepper__dot"></span>
+                      <span class="stepper__label">入力内容<br />確認</span>
                     </li>
-                    <li>
-                      <div class="color-box color-box--link"></div>
+                    <li class="stepper__step">
+                      <span class="stepper__dot"></span>
+                      <span class="stepper__label">SMS<br />認証</span>
+                    </li>
+                    <li class="stepper__step">
+                      <span class="stepper__dot"></span>
+                      <span class="stepper__label">会員登録<br />完了</span>
+                    </li>
+                  </ol>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <h3 class="heading heading--s">見出し</h3>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">ページ見出し</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <div class="page-heading">
+                    <h1 class="heading heading--l">基本情報入力</h1>
+                    <p class="page-heading__caption">
+                      必須項目<span class="required-mark">＊</span>
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">見出し</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <h3 class="heading heading--l">大見出し</h3>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <h3 class="heading heading--s">見出し</h3>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">必須マーク</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <span class="required-mark">＊</span>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">項目ヘッダー</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <div class="field-header">
+                    <h2 class="heading heading--s">性別</h2>
+                    <span class="required-mark">＊</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <div class="field-header">
+                    <h2 class="heading heading--s">ニックネーム</h2>
+                    <span class="required-mark">＊</span>
+                    <p class="field-header__caption">※後から変更できます</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">入力</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <input
+                    type="text"
+                    class="input"
+                    value=""
+                    placeholder="example@moratame.net"
+                  />
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <div class="input-search">
+                    <input
+                      type="text"
+                      class="input input--with-action"
+                      value=""
+                      placeholder="入力後、使用可能かチェック！"
+                    />
+                    <button
+                      type="button"
+                      class="input-search__button"
+                      aria-label="ニックネームをチェック"
+                    >
+                      <img
+                        class="input-search__icon"
+                        src="/icons/search.svg"
+                        alt=""
+                        width="21"
+                        height="22"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">ニックネームチェック</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <div class="nickname-check">
+                    <div class="nickname-check__result">
+                      <p
+                        class="nickname-check__status nickname-check__status--ok"
+                      >
+                        使用可能なニックネームです。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <div class="nickname-check">
+                    <div class="nickname-check__result">
+                      <p
+                        class="nickname-check__status nickname-check__status--ng"
+                      >
+                        同一のニックネームが登録されています。
+                      </p>
+                      <p class="nickname-check__heading">
+                        似たようなニックネーム
+                      </p>
+                      <ul class="nickname-check__list">
+                        <li>
+                          <button
+                            type="button"
+                            class="nickname-check__suggestion"
+                          >
+                            ポッケ1
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            type="button"
+                            class="nickname-check__suggestion"
+                          >
+                            ポッケ123456
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">セレクト</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <ul class="select">
+                    <li class="select__item">
+                      <select class="select__control">
+                        <option>年</option>
+                        <option value="1980" selected>1980</option>
+                      </select>
+                    </li>
+                    <li class="select__item">
+                      <select class="select__control">
+                        <option>月</option>
+                        <option value="01">01</option>
+                      </select>
+                    </li>
+                    <li class="select__item">
+                      <select class="select__control">
+                        <option>日</option>
+                        <option value="01">01</option>
+                      </select>
                     </li>
                   </ul>
                 </div>
               </li>
             </ul>
           </li>
-
           <li>
-            <h3 class="heading heading--l">コンポーネント</h3>
+            <h3 class="heading heading--s">ラジオ</h3>
             <ul class="paper-list">
               <li>
-                <h3 class="heading heading--s">ステッパー</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <ol class="stepper">
-                        <li class="stepper__step stepper__step--active">
-                          <span class="stepper__dot"></span>
-                          <span class="stepper__label">基本情報<br />入力</span>
-                        </li>
-                        <li class="stepper__step">
-                          <span class="stepper__dot"></span>
-                          <span class="stepper__label">入力内容<br />確認</span>
-                        </li>
-                        <li class="stepper__step">
-                          <span class="stepper__dot"></span>
-                          <span class="stepper__label">SMS<br />認証</span>
-                        </li>
-                        <li class="stepper__step">
-                          <span class="stepper__dot"></span>
-                          <span class="stepper__label">会員登録<br />完了</span>
-                        </li>
-                      </ol>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="paper">
-                      <h3 class="heading heading--s">見出し</h3>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">ページ見出し</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <div class="page-heading">
-                        <h1 class="heading heading--l">基本情報入力</h1>
-                        <p class="page-heading__caption">
-                          必須項目<span class="required-mark">＊</span>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">見出し</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <h3 class="heading heading--l">大見出し</h3>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="paper">
-                      <h3 class="heading heading--s">見出し</h3>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">必須マーク</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <span class="required-mark">＊</span>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">項目ヘッダー</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <div class="field-header">
-                        <h2 class="heading heading--s">性別</h2>
-                        <span class="required-mark">＊</span>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="paper">
-                      <div class="field-header">
-                        <h2 class="heading heading--s">ニックネーム</h2>
-                        <span class="required-mark">＊</span>
-                        <p class="field-header__caption">※後から変更できます</p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">入力</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
+                <div class="paper">
+                  <ul class="radio">
+                    <li class="radio__item">
                       <input
-                        type="text"
-                        class="input"
-                        value=""
-                        placeholder="example@moratame.net"
+                        class="radio__input"
+                        type="radio"
+                        name="ui-sex[]"
+                        id="ui-sex-1"
+                        value="11001"
                       />
-                    </div>
-                  </li>
-                  <li>
-                    <div class="paper">
-                      <div class="input-search">
-                        <input
-                          type="text"
-                          class="input input--with-action"
-                          value=""
-                          placeholder="入力後、使用可能かチェック！"
-                        />
-                        <button
-                          type="button"
-                          class="input-search__button"
-                          aria-label="ニックネームをチェック"
-                        >
-                          <img
-                            class="input-search__icon"
-                            src="/icons/search.svg"
-                            alt=""
-                            width="21"
-                            height="22"
-                            aria-hidden="true"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                      <label class="radio__label" for="ui-sex-1">
+                        <span class="radio__dot" aria-hidden="true"></span>
+                        男性
+                      </label>
+                    </li>
+                    <li class="radio__item">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="ui-sex[]"
+                        id="ui-sex-2"
+                        value="11002"
+                        checked
+                      />
+                      <label class="radio__label" for="ui-sex-2">
+                        <span class="radio__dot" aria-hidden="true"></span>
+                        女性
+                      </label>
+                    </li>
+                    <li class="radio__item">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="ui-sex[]"
+                        id="ui-sex-3"
+                        value="11003"
+                      />
+                      <label class="radio__label" for="ui-sex-3">
+                        <span class="radio__dot" aria-hidden="true"></span>
+                        無回答
+                      </label>
+                    </li>
+                  </ul>
+                </div>
               </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">テキストリンク</h3>
+            <ul class="paper-list">
               <li>
-                <h3 class="heading heading--s">ニックネームチェック</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <div class="nickname-check">
-                        <div class="nickname-check__result">
-                          <p
-                            class="nickname-check__status nickname-check__status--ok"
-                          >
-                            使用可能なニックネームです。
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="paper">
-                      <div class="nickname-check">
-                        <div class="nickname-check__result">
-                          <p
-                            class="nickname-check__status nickname-check__status--ng"
-                          >
-                            同一のニックネームが登録されています。
-                          </p>
-                          <p class="nickname-check__heading">
-                            似たようなニックネーム
-                          </p>
-                          <ul class="nickname-check__list">
-                            <li>
-                              <button
-                                type="button"
-                                class="nickname-check__suggestion"
-                              >
-                                ポッケ1
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                type="button"
-                                class="nickname-check__suggestion"
-                              >
-                                ポッケ123456
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                <div class="paper">
+                  <a class="text-link" href="#">利用規約</a>
+                </div>
               </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">同意文</h3>
+            <ul class="paper-list">
               <li>
-                <h3 class="heading heading--s">セレクト</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <ul class="select">
-                        <li class="select__item">
-                          <select class="select__control">
-                            <option>年</option>
-                            <option value="1980" selected>1980</option>
-                          </select>
-                        </li>
-                        <li class="select__item">
-                          <select class="select__control">
-                            <option>月</option>
-                            <option value="01">01</option>
-                          </select>
-                        </li>
-                        <li class="select__item">
-                          <select class="select__control">
-                            <option>日</option>
-                            <option value="01">01</option>
-                          </select>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
+                <div class="paper">
+                  <p class="form-consent">
+                    <a class="text-link" href="#">利用規約</a
+                    >に同意のうえ<br />「入力内容確認へ」を押してください。
+                  </p>
+                </div>
               </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">ボタン</h3>
+            <ul class="paper-list">
               <li>
-                <h3 class="heading heading--s">ラジオ</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <ul class="radio">
-                        <li class="radio__item">
-                          <input
-                            class="radio__input"
-                            type="radio"
-                            name="ui-sex[]"
-                            id="ui-sex-1"
-                            value="11001"
-                          />
-                          <label class="radio__label" for="ui-sex-1">
-                            <span class="radio__dot" aria-hidden="true"></span>
-                            男性
-                          </label>
-                        </li>
-                        <li class="radio__item">
-                          <input
-                            class="radio__input"
-                            type="radio"
-                            name="ui-sex[]"
-                            id="ui-sex-2"
-                            value="11002"
-                            checked
-                          />
-                          <label class="radio__label" for="ui-sex-2">
-                            <span class="radio__dot" aria-hidden="true"></span>
-                            女性
-                          </label>
-                        </li>
-                        <li class="radio__item">
-                          <input
-                            class="radio__input"
-                            type="radio"
-                            name="ui-sex[]"
-                            id="ui-sex-3"
-                            value="11003"
-                          />
-                          <label class="radio__label" for="ui-sex-3">
-                            <span class="radio__dot" aria-hidden="true"></span>
-                            無回答
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">テキストリンク</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <a class="text-link" href="#">利用規約</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">同意文</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <p class="form-consent">
-                        <a class="text-link" href="#">利用規約</a
-                        >に同意のうえ<br />「入力内容確認へ」を押してください。
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h3 class="heading heading--s">ボタン</h3>
-                <ul class="paper-list">
-                  <li>
-                    <div class="paper">
-                      <button
-                        type="submit"
-                        class="button button--green button--borderless"
-                        >入力内容確認へ</button
-                      >
-                    </div>
-                  </li>
-                </ul>
+                <div class="paper">
+                  <button
+                    type="button"
+                    class="button button--green button--borderless"
+                    >入力内容確認へ</button
+                  >
+                </div>
               </li>
             </ul>
           </li>
         </ul>
-      </div>
-    </section>
+      </li>
+    </ul>
   </div>
 
   <Footer variant="simple" />
-
-  <script slot="after-page" is:inline>
-    $("#password-2").hidePassword("focus", {
-      toggle: { className: "my-toggle" },
-    })
-  </script>
-  <script slot="after-page" is:inline>
-    $(function () {
-      $(".js-colorbox").colorbox({
-        iframe: true,
-        width: "90%",
-        height: "80%",
-        opacity: 0.7,
-      })
-    })
-  </script>
 </BaseLayout>
