@@ -65,12 +65,14 @@
 ### ページの分け方
 
 - 通常入力とバリデーションエラー表示は **別テンプレート** にする（モックの `signup01-no-jqm` と `signup01-no-jqm-error` に相当）
-- 通常入力には `.form_error` と `.error` を出さない
+- 通常入力には `.form-error` と `.field-error` を出さない
 - ニックネーム欄は **1 つだけ**。モックは使用可 / 使用済みを見比べるため 2 つ並べている
 
 ### マークアップで守ること
 
 - テキスト入力のクラスは `input.input`（必要なら `input--with-action`）。本番 CSS の `input[type="text"]` より負けるため、要素名付きセレクタにしている
+- バリデーションエラーの入力には `input--error` を足す
+- ページ全体のエラーは `.form-error`。項目下のエラーは `.field-error`。本番の `.form_error` / `.error` は使わない
 - 虫眼鏡ボタンは `type="button"`。フォーム送信や古い `name="name_check"` の submit にしない
 - 隠し欄 `#mode` はニックネームチェック・郵便番号・生年月日末日の Ajax で使う。見た目用ではない。削るなら関連 JS もセットで外す
 - `id="nickname"` / `id="nicknamealert"` はニックネームチェック結果の差し込み先。紹介コード欄には置かない（ページ内で重複させない）

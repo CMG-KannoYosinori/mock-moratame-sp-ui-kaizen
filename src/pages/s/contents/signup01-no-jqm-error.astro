@@ -148,9 +148,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           必須項目<span class="required-mark">＊</span>
         </p>
       </div>
-      <div class="form_error">
-        <div class="form_error_body">入力内容をご確認ください。</div>
-      </div>
+      <p class="form-error" role="alert">入力内容をご確認ください。</p>
 
       <form
         action="https://www.moratame.net/s/contents/signup02p.php"
@@ -159,9 +157,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
         id="new-signup-input"
       >
         <input type="hidden" name="mode" id="mode" value="" />
-        <p class="error" style="margin-bottom: 15px;">
-          入力内容に不備があります。
-        </p>
+        <p class="field-error">入力内容に不備があります。</p>
 
         <div class="select-area select-email">
           <div class="field-header">
@@ -170,7 +166,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           </div>
           <input
             type="text"
-            class="input"
+            class="input input--error"
             name="email"
             id="email"
             value=""
@@ -181,7 +177,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           />
           <input
             type="text"
-            class="input"
+            class="input input--error"
             name="email2"
             id="email2"
             value=""
@@ -190,7 +186,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             spellcheck="false"
             autocorrect="off"
           />
-          <p class="error">同一のE-mailアドレスが登録されています。<br /></p>
+          <p class="field-error">同一のE-mailアドレスが登録されています。</p>
         </div>
         <!-- /メールアドレス -->
 
@@ -222,7 +218,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <div class="input-search">
               <input
                 type="text"
-                class="input input--with-action"
+                class="input input--with-action input--error"
                 name="disp_id"
                 id="disp_id"
                 value="ポッケ"
@@ -267,7 +263,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               </ul>
             </div>
           </div>
-          <p class="error">ニックネームは必須入力です。<br /></p>
+          <p class="field-error">ニックネームは必須入力です。</p>
         </div>
         <!-- /ニックネーム -->
 
@@ -384,13 +380,13 @@ const days = Array.from({ length: 31 }, (_, i) =>
           </div>
           <input
             type="text"
-            class="input"
+            class="input input--error"
             name="refer_code"
             id="refer_code"
             value=""
             placeholder=""
           />
-          <p class="error">紹介コードが正しくありません。<br /></p>
+          <p class="field-error">紹介コードが正しくありません。</p>
         </div>
         <!-- /紹介コード -->
 

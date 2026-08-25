@@ -28,7 +28,7 @@ jQM を外したページはファイル名末尾に `-no-jqm` を付ける（�
 
 ## エラー確認用ページの分離
 
-通常表示とエラー表示確認用は別ファイルにする（例: `signup01-no-jqm.astro` と `signup01-no-jqm-error.astro`）。通常版にはエラー要素（`.form_error`、`.error`）を含めない。
+通常表示とエラー表示確認用は別ファイルにする（例: `signup01-no-jqm.astro` と `signup01-no-jqm-error.astro`）。通常版にはエラー要素（`.form-error`、`.field-error`）を含めない。
 
 ## CSS
 

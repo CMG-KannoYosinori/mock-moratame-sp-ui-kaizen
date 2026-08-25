@@ -23,3 +23,7 @@ input.input + input.input {
   width: 100%;
   padding-right: 2.75rem;
 }
+
+input.input--error {
+  border-color: $color-danger;
+}
