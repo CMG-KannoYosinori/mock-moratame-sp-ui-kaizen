@@ -6,7 +6,7 @@ import Stepper from "../../../components/Stepper.astro"
 ---
 
 <BaseLayout
-  title="新規会員登録（SMS認証・jQuery Mobile なし）"
+  title="新規会員登録（SMS認証）"
   pageId="registration-page"
   fixSmartBannerOffsetToPage
 >
@@ -19,13 +19,18 @@ import Stepper from "../../../components/Stepper.astro"
       <section>
         <Stepper activeStep={3} />
         <div class="page-heading">
-          <h1 class="heading heading--l">SMS認証</h1>
+          <h1 class="heading heading--l">SMS（電話番号）認証</h1>
         </div>
 
-        <p class="page-content__lead">
-          サービスの品質向上・セキュリティ対策の観点から、サービスご利用にあたり、電話番号認証を導入しました。<br
-          />ご自身の携帯番号を入力後、送信してください。
-        </p>
+        <div class="page-content__lead">
+          <p>
+            ご自身の携帯番号を入力後、送信してください。<br />
+            携帯番号をお持ちでない場合、固定電話番号を入力していただき、音声ガイダンスを選択し送信してください。
+          </p>
+          <p>
+            送信後、SMSメッセージ、または音声ガイダンスにて配信された認証コードを入力してください。
+          </p>
+        </div>
 
         <form
           action="/s/contents/signup-complete.html"
@@ -35,7 +40,6 @@ import Stepper from "../../../components/Stepper.astro"
           <div class="field">
             <div class="field-header">
               <h2 class="heading heading--s">電話番号</h2>
-              <span class="required-mark">＊</span>
             </div>
             <input
               type="tel"
@@ -43,14 +47,13 @@ import Stepper from "../../../components/Stepper.astro"
               id="mobilenumber"
               name="mobilenumber"
               value=""
-              placeholder="09012345678"
+              placeholder="電話番号を入力してください"
               autocomplete="tel"
             />
           </div>
           <div class="field">
             <div class="field-header">
               <h2 class="heading heading--s">配信方法</h2>
-              <span class="required-mark">＊</span>
             </div>
             <ul class="radio">
               <li class="radio__item">
@@ -60,7 +63,6 @@ import Stepper from "../../../components/Stepper.astro"
                   name="deliveryKind"
                   id="deliveryKindSms"
                   value="1"
-                  checked
                 />
                 <label class="radio__label" for="deliveryKindSms">
                   <span class="radio__dot" aria-hidden="true"></span>
@@ -74,6 +76,7 @@ import Stepper from "../../../components/Stepper.astro"
                   name="deliveryKind"
                   id="deliveryKindVoice"
                   value="2"
+                  checked
                 />
                 <label class="radio__label" for="deliveryKindVoice">
                   <span class="radio__dot" aria-hidden="true"></span>
@@ -83,8 +86,17 @@ import Stepper from "../../../components/Stepper.astro"
             </ul>
           </div>
 
+          <p class="form-info">
+            モラタメでは、ご登録できるアカウントは、ご本人様かつお一人様1つまでとしています。詳しくは、<a
+              class="text-link"
+              href="https://www.moratame.net/contents/regulation.php"
+              target="_blank"
+              rel="noopener noreferrer">「ご利用にあたってのお約束ごと」</a
+            >をご確認ください。
+          </p>
+
           <button type="submit" class="button button--green button--borderless"
-            >認証コードを送信</button
+            >SMS認証コードを送信</button
           >
         </form>
       </section>

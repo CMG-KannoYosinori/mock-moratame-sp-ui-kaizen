@@ -173,6 +173,7 @@
 | `src/styles/blocks/_confirm-field.scss` | 確認画面のラベル＋値＋下線 |
 | `src/styles/blocks/_hanging.scss` | ※ / ・ など先頭マーカーのぶら下げインデント |
 | `src/styles/blocks/_form-note.scss` | 注記（灰面・赤文字。長い文は `hanging` を併用） |
+| `src/styles/blocks/_form-info.scss` | 案内（灰面・通常文字。リンク可） |
 | `src/styles/blocks/_form-error.scss` | ページ全体エラー |
 | `src/styles/blocks/_field-error.scss` | 項目エラーリスト |
 | `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM） |
