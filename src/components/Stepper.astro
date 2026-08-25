@@ -10,7 +10,7 @@ const { activeStep } = Astro.props
   <li
     class:list={[
       "stepper__step",
-      activeStep === 1 && "stepper__step--active",
+      activeStep >= 1 && "stepper__step--active",
     ]}
   >
     <span class="stepper__dot"></span>
@@ -19,7 +19,7 @@ const { activeStep } = Astro.props
   <li
     class:list={[
       "stepper__step",
-      activeStep === 2 && "stepper__step--active",
+      activeStep >= 2 && "stepper__step--active",
     ]}
   >
     <span class="stepper__dot"></span>
@@ -28,7 +28,7 @@ const { activeStep } = Astro.props
   <li
     class:list={[
       "stepper__step",
-      activeStep === 3 && "stepper__step--active",
+      activeStep >= 3 && "stepper__step--active",
     ]}
   >
     <span class="stepper__dot"></span>
@@ -37,7 +37,7 @@ const { activeStep } = Astro.props
   <li
     class:list={[
       "stepper__step",
-      activeStep === 4 && "stepper__step--active",
+      activeStep >= 4 && "stepper__step--active",
     ]}
   >
     <span class="stepper__dot"></span>

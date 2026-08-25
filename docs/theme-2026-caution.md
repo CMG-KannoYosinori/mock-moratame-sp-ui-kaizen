@@ -140,9 +140,10 @@
 
 エラー確認テンプレートでは、サーバーが既にエラーを持っているときだけ結果ボックスを最初から出す（`hidden` を付けない）。通常入力の初期表示では出さない。ニックネーム欄自体に `input--error` は付けない（結果ボックスで伝える）。
 
-### ボタン hover
+### ボタン
 
-- 本番 `style--sp.css` の `.button:hover`（青グラデ）が当たる。`.button.button--green:hover` で打ち消す
+- 本番 `style--sp.css` の `.button` は青グラデを `background` ショートハンドで指定する。`background-color` だけではグラデが残るので、打ち消しは `background` を使う
+- hover も同様。`.button.button--green:hover` / `.button.button--outline:hover` で詳細度を上げる
 - hover 色は `$color-brand-hover`（白と 30% mix。透過なし）
 - borderless は hover でも `border: none`
 
@@ -166,6 +167,10 @@
 | `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
 | `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |
 | `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス（緑面・候補ピル） |
+| `src/styles/blocks/_field-value.scss` | 確認画面の値テキスト |
+| `src/styles/blocks/_confirm-field.scss` | 確認画面のラベル＋値＋下線 |
+| `src/styles/blocks/_hanging.scss` | ※ / ・ など先頭マーカーのぶら下げインデント |
+| `src/styles/blocks/_form-note.scss` | 注記（灰面・赤文字。長い文は `hanging` を併用） |
 | `src/styles/blocks/_form-error.scss` | ページ全体エラー |
 | `src/styles/blocks/_field-error.scss` | 項目エラーリスト |
 | `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM） |

@@ -6,7 +6,7 @@
   justify-content: center;
   padding: 0;
   margin-right: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   margin-left: 1rem;
   list-style: none;
 }
@@ -45,6 +45,11 @@
 }
 
 .stepper__step--active .stepper__dot {
+  background: $color-brand;
+}
+
+/* アクティブな step の左側の線＝直前の完了区間 */
+.stepper__step--active::before {
   background: $color-brand;
 }
 
