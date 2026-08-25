@@ -75,15 +75,36 @@
 ### マークアップで守ること
 
 - テキスト入力のクラスは `input.input`（必要なら `input--with-action`）。本番 CSS の `input[type="text"]` より負けるため、要素名付きセレクタにしている
-- ページ全体のエラーは `.form-error`（薄ピンク地・赤文字）。項目下のエラーは `.field-error`（警告アイコン付きリスト）。本番の `.form_error` / `.error` は使わない
-- エラー中の入力には `input--error`（赤枠＋薄ピンク背景）を足す
+- ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ）。項目下は `ul.field-error` > `li.field-error__item`（警告三角は `::before` の data URI。外部アイコン不要）。本番の `.form_error` / `.error` は使わない
+- エラー中のテキスト入力は `input.input.input--error`（赤枠 2px ＋ 薄ピンク背景）
+- エラー中のセレクトは `select.select__control.select__control--error`（同上）
 - 虫眼鏡ボタンは `type="button"`。フォーム送信や古い `name="name_check"` の submit にしない
 - 隠し欄 `#mode` はニックネームチェック・郵便番号・生年月日末日の Ajax で使う。見た目用ではない。削るなら関連 JS もセットで外す
 - `id="nickname"` / `id="nicknamealert"` はニックネームチェック結果の差し込み先。紹介コード欄には置かない（ページ内で重複させない）
 
+### エラー確認モック（`signup01-no-jqm-error`）の見本内容
+
+デザインに合わせた固定例。本番テンプレートではサーバー応答に応じて出し分ける。
+
+| 項目 | input | 下の表示 |
+|---|---|---|
+| 全体 | — | `p.form-error`「入力内容をご確認ください。」 |
+| メール | `input--error` ×2（値 `Example1`） | `.field-error` 3 件 |
+| パスワード | `input--error`（値 `Example1`。モックは `type="text"` で値を見せる） | `.field-error` 4 件 |
+| ニックネーム | **通常**（灰枠） | `.nickname-check__result`（緑面・候補ピル）。`.field-error` ではない |
+| 性別 | 通常 | なし |
+| 生年月日 | `select__control--error` ×3（2000/01/01） | `.field-error` 1 件 |
+| 紹介コード | 通常 | なし |
+
 ### ニックネームチェック
 
 現行の「登録可能なニックネームかチェック」ボタン注入（`#nickname` への `html()`）と `onblur` の `namecheck()` は使わない。虫眼鏡クリックで既存 API を呼ぶ。
+
+**見た目（theme-2026）**
+
+- 結果ボックス `.nickname-check__result` はブランド薄緑地（`$color-brand-surface`）。枠線なし
+- `.nickname-check__status--ok` / `--ng` ともブランド緑太字（使用済みも赤にしない。デザインどおり）
+- 候補は横並びピル（`.nickname-check__suggestion`）。先頭に `+`（`::before`）
 
 **残すもの（現行と同じ）**
 
@@ -110,14 +131,20 @@
   <div class="input-search">
     <input type="text" class="input input--with-action" name="disp_id" id="disp_id" value="" placeholder="入力後、使用可能かチェック！" />
     <button type="button" class="input-search__button" aria-label="ニックネームをチェック" aria-expanded="false" aria-controls="nickname-result">
-      <!-- 虫眼鏡 SVG はモックと同じ -->
+      <!-- 虫眼鏡は /icons/search.svg -->
     </button>
   </div>
   <div class="nickname-check__result" id="nickname-result" hidden></div>
 </div>
 ```
 
-エラー確認テンプレートでは、サーバーが既にエラーを持っているときだけ結果ボックスを最初から出す（`hidden` を付けない）。通常入力の初期表示では出さない。
+エラー確認テンプレートでは、サーバーが既にエラーを持っているときだけ結果ボックスを最初から出す（`hidden` を付けない）。通常入力の初期表示では出さない。ニックネーム欄自体に `input--error` は付けない（結果ボックスで伝える）。
+
+### ボタン hover
+
+- 本番 `style--sp.css` の `.button:hover`（青グラデ）が当たる。`.button.button--green:hover` で打ち消す
+- hover 色は `$color-brand-hover`（白と 30% mix。透過なし）
+- borderless は hover でも `border: none`
 
 ### Smart Banner（jQM なし）
 
@@ -131,12 +158,14 @@
 | `src/styles/theme-2026.scss` | スキン上書きの Sass エントリ（出力は `theme-2026.css`） |
 | `src/styles/blocks/` | 再利用 UI Block（1 ファイル = 1 Block） |
 | `src/styles/layout/` | 余白・配置などコンテキスト依存のスタイル |
-| `src/styles/foundation/_tokens.scss` | 色などのトークン |
+| `src/styles/foundation/_tokens.scss` | 色などのトークン（brand / danger surface / input-border / link 等） |
 | `src/styles/drawer.scss` | ドロワー用エントリ（出力は `drawer.css`） |
 | `src/scripts/smartbanner-offset.js` | no-jqm ページ用の Smart Banner オフセット補正（対象は `.smartbanner-offset`） |
 | `src/scripts/nickname-check.js` | **モック専用。** 虫眼鏡で固定の結果ボックスを出すだけ。本番の Ajax には使わない |
 | `src/components/Stepper.astro` | 会員登録 4 ステップ。`activeStep` で現在地を指定 |
 | `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
 | `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |
-| `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス |
+| `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス（緑面・候補ピル） |
+| `src/styles/blocks/_form-error.scss` | ページ全体エラー |
+| `src/styles/blocks/_field-error.scss` | 項目エラーリスト |
 | `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM） |
