@@ -167,6 +167,7 @@
 | `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
 | `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |
 | `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス（緑面・候補ピル） |
+| `src/styles/blocks/_field.scss` | フォーム項目の縦余白（本番 `select-area` の代わり） |
 | `src/styles/blocks/_field-value.scss` | 確認画面の値テキスト |
 | `src/styles/blocks/_confirm-field.scss` | 確認画面のラベル＋値＋下線 |
 | `src/styles/blocks/_hanging.scss` | ※ / ・ など先頭マーカーのぶら下げインデント |

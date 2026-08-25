@@ -10,11 +10,6 @@ import Stepper from "../../../components/Stepper.astro"
   pageId="registration-page"
   fixSmartBannerOffsetToPage
 >
-  <link
-    slot="head"
-    rel="stylesheet"
-    href="https://www.moratame.net/s/css/member-registration.css?2026061217"
-  />
   <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
 
   <HeaderSimple />
@@ -37,7 +32,7 @@ import Stepper from "../../../components/Stepper.astro"
           method="get"
           id="authform"
         >
-          <div class="select-area">
+          <div class="field">
             <div class="field-header">
               <h2 class="heading heading--s">電話番号</h2>
               <span class="required-mark">＊</span>
@@ -52,7 +47,7 @@ import Stepper from "../../../components/Stepper.astro"
               autocomplete="tel"
             />
           </div>
-          <div class="select-area">
+          <div class="field">
             <div class="field-header">
               <h2 class="heading heading--s">配信方法</h2>
               <span class="required-mark">＊</span>

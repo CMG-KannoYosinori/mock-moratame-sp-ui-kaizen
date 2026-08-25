@@ -1,9 +1,8 @@
 @use "../foundation/tokens" as *;
 
 .field-value {
-  margin: 0;
   padding: 0 0.5rem;
+  margin: 0;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: $color-text-muted;
 }

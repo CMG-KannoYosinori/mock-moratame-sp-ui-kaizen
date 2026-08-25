@@ -134,6 +134,62 @@ import Stepper from "../../components/Stepper.astro"
             </ul>
           </li>
           <li>
+            <h3 class="heading heading--s">項目</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <div class="field">
+                    <div class="field-header">
+                      <h2 class="heading heading--s">電話番号</h2>
+                      <span class="required-mark">＊</span>
+                    </div>
+                    <input
+                      type="tel"
+                      class="input"
+                      value=""
+                      placeholder="09012345678"
+                    />
+                  </div>
+                  <div class="field">
+                    <div class="field-header">
+                      <h2 class="heading heading--s">配信方法</h2>
+                      <span class="required-mark">＊</span>
+                    </div>
+                    <ul class="radio">
+                      <li class="radio__item">
+                        <input
+                          class="radio__input"
+                          type="radio"
+                          name="ui-delivery"
+                          id="ui-delivery-sms"
+                          value="1"
+                          checked
+                        />
+                        <label class="radio__label" for="ui-delivery-sms">
+                          <span class="radio__dot" aria-hidden="true"></span>
+                          SMS配信
+                        </label>
+                      </li>
+                      <li class="radio__item">
+                        <input
+                          class="radio__input"
+                          type="radio"
+                          name="ui-delivery"
+                          id="ui-delivery-voice"
+                          value="2"
+                        />
+                        <label class="radio__label" for="ui-delivery-voice">
+                          <span class="radio__dot" aria-hidden="true"></span>
+                          音声ガイダンス
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
             <h3 class="heading heading--s">入力</h3>
             <ul class="paper-list">
               <li>
