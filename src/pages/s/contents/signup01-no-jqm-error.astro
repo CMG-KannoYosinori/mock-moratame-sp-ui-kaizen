@@ -325,9 +325,13 @@ const days = Array.from({ length: 31 }, (_, i) =>
             <h2 class="heading heading--s">生年月日</h2>
             <span class="required-mark">＊</span>
           </div>
-          <ul class="select-menu birthday">
-            <li>
-              <select name="yyyy" onchange="javascript: daychange();">
+          <ul class="select">
+            <li class="select__item">
+              <select
+                class="select__control"
+                name="yyyy"
+                onchange="javascript: daychange();"
+              >
                 <option>年</option>
                 {
                   years.map((year) => (
@@ -338,9 +342,12 @@ const days = Array.from({ length: 31 }, (_, i) =>
                 }
               </select>
             </li>
-            &nbsp;
-            <li>
-              <select name="mm" onchange="javascript: daychange();">
+            <li class="select__item">
+              <select
+                class="select__control"
+                name="mm"
+                onchange="javascript: daychange();"
+              >
                 <option>月</option>
                 {
                   months.map((month) => (
@@ -349,9 +356,13 @@ const days = Array.from({ length: 31 }, (_, i) =>
                 }
               </select>
             </li>
-            &nbsp;
-            <li>
-              <select name="dd" id="day" onchange="javascript: daychange();">
+            <li class="select__item">
+              <select
+                class="select__control"
+                name="dd"
+                id="day"
+                onchange="javascript: daychange();"
+              >
                 <option>日</option>
                 {
                   days.map((day) => (
