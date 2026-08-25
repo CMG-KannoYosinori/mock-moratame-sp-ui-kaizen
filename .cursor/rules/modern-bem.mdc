@@ -1,3 +1,8 @@
+---
+description: Modern BEM の命名・ファイル構成・Block 粒度
+alwaysApply: true
+---
+
 # Modern BEM coding rules
 
 このリポジトリの CSS は `Modern BEM`（Block / Element / Modifier）で命名・設計する。
@@ -30,7 +35,34 @@
 
 `src/styles/` は [doc-modern-bem](https://github.com/YoshinoriKanno/doc-modern-bem) に従う。1 Block = 1 ファイル（`blocks/_button.scss` など）。エントリは `theme-2026.scss` と `drawer.scss`。
 
+- 再利用 UI → `blocks/`
+- 配置・ぶら下げなどコンテキスト依存 → `layout/`
+- トークン → `foundation/`
+
+## Block の粒度（細かく分けすぎない）
+
+Block は **再利用する UI コンポーネントの単位**。見た目や役割が近いだけの断片を新規 Block にしない。
+
+### 新規 `blocks/_*.scss` を足す前に確認すること
+
+1. **既存 Block の Element / Modifier で足りないか** を先に検討する
+2. 足りるなら既存ファイルに足す（例: `.form-note--info`、`.field__error`）
+3. 次のようなものは **新規 Block にしない**
+   - 既存の灰面ボックスと色・文言だけ違う箱（→ Modifier）
+   - 既存項目のラベル行・値・項目エラーだけ（→ その Block の Element）
+   - `padding` / `margin` / ぶら下げインデントだけ（→ `layout/` または親 Element）
+4. 新規 Block にしてよいのは、**他ページでも独立して使い回す部品**（ボタン、ステッパー、ニックネームチェックなど）に限る
+
+### まとめ済みの例（踏襲すること）
+
+| Block | 含めているもの |
+|---|---|
+| `.field` | `__header` / `__caption` / `__value` / `__error`、確認行は `--confirm` |
+| `.form-note` | 警告注記（既定）／`--info`／`--consent`／`--hanging` |
+| `.hanging` | `layout/_hanging.scss`（Block ではない） |
+
+迷ったら **既存ファイルを増やす** 方を選ぶ。ファイルを増やさない。
+
 ## 参考
 
 - https://github.com/YoshinoriKanno/doc-modern-bem
-

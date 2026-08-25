@@ -70,13 +70,15 @@
 ### ページの分け方
 
 - 通常入力とバリデーションエラー表示は **別テンプレート** にする（モックの `signup-form` と `signup-form-error` に相当）
-- 通常入力には `.form-error` と `.field-error` を出さない
+- 通常入力には `.form-error` と `.field__error` を出さない
 - ニックネーム欄は **1 つだけ**。モックは使用可 / 使用済みを見比べるため 2 つ並べている
 
 ### マークアップで守ること
 
 - テキスト入力のクラスは `input.input`（必要なら `input--with-action`）。本番 CSS の `input[type="text"]` より負けるため、要素名付きセレクタにしている
-- ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ）。項目下は `ul.field-error` > `li.field-error__item`（警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない
+- ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ）。項目下は `ul.field__error` > `li.field__error-item`（警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない
+- 確認行は `.field.field--confirm`（ラベルは `__header`、値は `__value`）
+- 灰面注記は `.form-note`（警告・赤文字）。案内は `--info`、同意文は `--consent`、ぶら下げは `--hanging`
 - エラー中のテキスト入力は `input.input.input--error`（赤枠 2px ＋ 薄ピンク背景）
 - エラー中のセレクトは `select.select__control.select__control--error`（同上）
 - 虫眼鏡ボタンは `type="button"`。フォーム送信や古い `name="name_check"` の submit にしない
@@ -90,11 +92,11 @@
 | 項目 | input | 下の表示 |
 |---|---|---|
 | 全体 | — | `p.form-error`「入力内容をご確認ください。」 |
-| メール | `input--error` ×2（値 `Example1`） | `.field-error` 3 件 |
-| パスワード | `input--error`（値 `Example1`。モックは `type="text"` で値を見せる） | `.field-error` 4 件 |
-| ニックネーム | **通常**（灰枠） | `.nickname-check__result`（緑面・候補ピル）。`.field-error` ではない |
+| メール | `input--error` ×2（値 `Example1`） | `.field__error` 3 件 |
+| パスワード | `input--error`（値 `Example1`。モックは `type="text"` で値を見せる） | `.field__error` 4 件 |
+| ニックネーム | **通常**（灰枠） | `.nickname-check__result`（緑面・候補ピル）。`.field__error` ではない |
 | 性別 | 通常 | なし |
-| 生年月日 | `select__control--error` ×3（2000/01/01） | `.field-error` 1 件 |
+| 生年月日 | `select__control--error` ×3（2000/01/01） | `.field__error` 1 件 |
 | 紹介コード | 通常 | なし |
 
 ### ニックネームチェック
@@ -168,12 +170,8 @@
 | `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
 | `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |
 | `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス（緑面・候補ピル） |
-| `src/styles/blocks/_field.scss` | フォーム項目の縦余白（本番 `select-area` の代わり） |
-| `src/styles/blocks/_field-value.scss` | 確認画面の値テキスト |
-| `src/styles/blocks/_confirm-field.scss` | 確認画面のラベル＋値＋下線 |
-| `src/styles/blocks/_hanging.scss` | ※ / ・ など先頭マーカーのぶら下げインデント |
-| `src/styles/blocks/_form-note.scss` | 注記（灰面・赤文字。長い文は `hanging` を併用） |
-| `src/styles/blocks/_form-info.scss` | 案内（灰面・通常文字。リンク可） |
+| `src/styles/blocks/_field.scss` | フォーム項目（ヘッダー・値・項目エラー・確認行） |
+| `src/styles/blocks/_form-note.scss` | 注記・案内・同意（`--info` / `--consent` / `--hanging`） |
+| `src/styles/layout/_hanging.scss` | ※ / ・ のぶら下げインデント（layout） |
 | `src/styles/blocks/_form-error.scss` | ページ全体エラー |
-| `src/styles/blocks/_field-error.scss` | 項目エラーリスト |
-| `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM） |
+| `.cursor/rules/modern-bem.mdc` | CSS 命名規約（Modern BEM）と Block 粒度 |

@@ -43,7 +43,7 @@ alwaysApply: true
 
 ## エラー確認用ページの分離
 
-通常表示とエラー表示確認用は別ファイルにする（例: `signup-form.astro` と `signup-form-error.astro`）。通常版にはエラー要素（`.form-error`、`.field-error`）を含めない。
+通常表示とエラー表示確認用は別ファイルにする（例: `signup-form.astro` と `signup-form-error.astro`）。通常版にはエラー要素（`.form-error`、`.field__error`）を含めない。
 
 ## CSS
 

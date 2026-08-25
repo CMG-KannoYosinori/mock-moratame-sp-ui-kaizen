@@ -97,7 +97,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <input type="hidden" name="mode" id="mode" value="" />
 
           <div class="select-area select-email">
-            <div class="field-header">
+            <div class="field__header">
               <h2 class="heading heading--s">メールアドレス</h2>
               <span class="required-mark">＊</span>
             </div>
@@ -123,10 +123,10 @@ const days = Array.from({ length: 31 }, (_, i) =>
               spellcheck="false"
               autocorrect="off"
             />
-            <ul class="field-error">
-              <li class="field-error__item">E-mailは必須入力です。</li>
-              <li class="field-error__item">E-mailが正しくありません。</li>
-              <li class="field-error__item">
+            <ul class="field__error">
+              <li class="field__error-item">E-mailは必須入力です。</li>
+              <li class="field__error-item">E-mailが正しくありません。</li>
+              <li class="field__error-item">
                 同一のE-mailアドレスが登録されています。
               </li>
             </ul>
@@ -134,7 +134,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <!-- /メールアドレス -->
 
           <div class="select-area select-password">
-            <div class="field-header">
+            <div class="field__header">
               <h2 class="heading heading--s">パスワード</h2>
               <span class="required-mark">＊</span>
             </div>
@@ -149,15 +149,15 @@ const days = Array.from({ length: 31 }, (_, i) =>
               spellcheck="false"
               autocorrect="off"
             />
-            <ul class="field-error">
-              <li class="field-error__item">パスワードは必須入力です。</li>
-              <li class="field-error__item">
+            <ul class="field__error">
+              <li class="field__error-item">パスワードは必須入力です。</li>
+              <li class="field__error-item">
                 パスワードは半角英数字で入力して下さい
               </li>
-              <li class="field-error__item">
+              <li class="field__error-item">
                 パスワードは6文字以上で入力して下さい
               </li>
-              <li class="field-error__item">
+              <li class="field__error-item">
                 パスワードは連番以外で入力してください。
               </li>
             </ul>
@@ -165,10 +165,10 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <!-- /パスワード -->
 
           <div class="select-area select-nickname">
-            <div class="field-header">
+            <div class="field__header">
               <h2 class="heading heading--s">ニックネーム</h2>
               <span class="required-mark">＊</span>
-              <p class="field-header__caption">※後から変更できます</p>
+              <p class="field__caption">※後から変更できます</p>
             </div>
             <div class="nickname-check">
               <div class="input-search">
@@ -223,7 +223,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <!-- /ニックネーム -->
 
           <div class="select-area select-sex">
-            <div class="field-header">
+            <div class="field__header">
               <h2 class="heading heading--s">性別</h2>
               <span class="required-mark">＊</span>
             </div>
@@ -273,7 +273,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <!-- /性別 -->
 
           <div class="select-area select-birthday">
-            <div class="field-header">
+            <div class="field__header">
               <h2 class="heading heading--s">生年月日</h2>
               <span class="required-mark">＊</span>
             </div>
@@ -332,8 +332,8 @@ const days = Array.from({ length: 31 }, (_, i) =>
                 </select>
               </li>
             </ul>
-            <ul class="field-error">
-              <li class="field-error__item">
+            <ul class="field__error">
+              <li class="field__error-item">
                 生年月日を正しく選択してください。
               </li>
             </ul>
@@ -341,7 +341,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           <!-- /生年月日 -->
 
           <div class="select-area">
-            <div class="field-header">
+            <div class="field__header">
               <h2 class="heading heading--s">紹介コード</h2>
             </div>
             <input
@@ -355,7 +355,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
           </div>
           <!-- /紹介コード -->
 
-          <p class="form-consent">
+          <p class="form-note form-note--consent">
             <a
               class="text-link js-colorbox"
               href="https://www.moratame.net/s/contents/step01_guide.html"

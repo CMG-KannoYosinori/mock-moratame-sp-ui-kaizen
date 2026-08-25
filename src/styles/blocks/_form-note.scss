@@ -1,5 +1,6 @@
 @use "../foundation/tokens" as *;
 
+// フォーム周辺の文言・案内ボックス（色や配置の違いは Modifier）
 .form-note {
   box-sizing: border-box;
   padding: 0.75rem 1rem;
@@ -11,7 +12,21 @@
   border-radius: 0.5rem;
 }
 
-// ボックスの内側余白を保ったままぶら下げする
-.form-note.hanging {
+.form-note--info {
+  color: $color-text;
+}
+
+.form-note--consent {
+  padding: 0;
+  margin: 2rem 0 3rem;
+  color: $color-text;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+// ボックスの内側余白を保ったままぶら下げする（※ / ・）
+.form-note--hanging {
   padding-left: calc(1rem + 1em);
+  text-indent: -1em;
 }

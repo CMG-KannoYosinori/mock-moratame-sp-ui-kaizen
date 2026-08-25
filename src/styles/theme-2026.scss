@@ -3,9 +3,9 @@
 @use "blocks/stepper";
 @use "layout/page-content";
 @use "layout/footer";
+@use "layout/hanging";
 @use "blocks/page-heading";
 @use "blocks/required-mark";
-@use "blocks/field-header";
 @use "blocks/field";
 @use "blocks/heading";
 @use "blocks/button";
@@ -15,11 +15,5 @@
 @use "blocks/radio";
 @use "blocks/select";
 @use "blocks/text-link";
-@use "blocks/form-consent";
 @use "blocks/form-error";
-@use "blocks/field-error";
-@use "blocks/field-value";
-@use "blocks/confirm-field";
-@use "blocks/hanging";
 @use "blocks/form-note";
-@use "blocks/form-info";

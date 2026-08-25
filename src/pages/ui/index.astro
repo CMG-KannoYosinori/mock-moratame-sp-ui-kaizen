@@ -112,34 +112,12 @@ import Stepper from "../../components/Stepper.astro"
             </ul>
           </li>
           <li>
-            <h3 class="heading heading--s">項目ヘッダー</h3>
-            <ul class="paper-list">
-              <li>
-                <div class="paper">
-                  <div class="field-header">
-                    <h2 class="heading heading--s">性別</h2>
-                    <span class="required-mark">＊</span>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="paper">
-                  <div class="field-header">
-                    <h2 class="heading heading--s">ニックネーム</h2>
-                    <span class="required-mark">＊</span>
-                    <p class="field-header__caption">※後から変更できます</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <h3 class="heading heading--s">項目</h3>
+            <h3 class="heading heading--s">項目（field）</h3>
             <ul class="paper-list">
               <li>
                 <div class="paper">
                   <div class="field">
-                    <div class="field-header">
+                    <div class="field__header">
                       <h2 class="heading heading--s">電話番号</h2>
                       <span class="required-mark">＊</span>
                     </div>
@@ -147,43 +125,33 @@ import Stepper from "../../components/Stepper.astro"
                       type="tel"
                       class="input"
                       value=""
-                      placeholder="09012345678"
+                      placeholder="電話番号を入力してください"
                     />
                   </div>
                   <div class="field">
-                    <div class="field-header">
-                      <h2 class="heading heading--s">配信方法</h2>
+                    <div class="field__header">
+                      <h2 class="heading heading--s">ニックネーム</h2>
                       <span class="required-mark">＊</span>
+                      <p class="field__caption">※後から変更できます</p>
                     </div>
-                    <ul class="radio">
-                      <li class="radio__item">
-                        <input
-                          class="radio__input"
-                          type="radio"
-                          name="ui-delivery"
-                          id="ui-delivery-sms"
-                          value="1"
-                          checked
-                        />
-                        <label class="radio__label" for="ui-delivery-sms">
-                          <span class="radio__dot" aria-hidden="true"></span>
-                          SMS配信
-                        </label>
-                      </li>
-                      <li class="radio__item">
-                        <input
-                          class="radio__input"
-                          type="radio"
-                          name="ui-delivery"
-                          id="ui-delivery-voice"
-                          value="2"
-                        />
-                        <label class="radio__label" for="ui-delivery-voice">
-                          <span class="radio__dot" aria-hidden="true"></span>
-                          音声ガイダンス
-                        </label>
-                      </li>
-                    </ul>
+                    <input
+                      type="text"
+                      class="input"
+                      value=""
+                      placeholder="入力後、使用可能かチェック！"
+                    />
+                  </div>
+                  <div class="field field--confirm">
+                    <div class="field__header">
+                      <h2 class="heading heading--s">メールアドレス</h2>
+                    </div>
+                    <p class="field__value">makiko.okamura@excrie.co.jp</p>
+                  </div>
+                  <div class="field field--confirm">
+                    <div class="field__header">
+                      <h2 class="heading heading--s">ニックネーム</h2>
+                    </div>
+                    <p class="field__value">まこポッケ</p>
                   </div>
                 </div>
               </li>
@@ -236,8 +204,8 @@ import Stepper from "../../components/Stepper.astro"
                     value="Example1"
                     placeholder="example@moratame.net"
                   />
-                  <ul class="field-error">
-                    <li class="field-error__item">
+                  <ul class="field__error">
+                    <li class="field__error-item">
                       同一のE-mailアドレスが登録されています。
                     </li>
                   </ul>
@@ -346,8 +314,8 @@ import Stepper from "../../components/Stepper.astro"
                       </select>
                     </li>
                   </ul>
-                  <ul class="field-error">
-                    <li class="field-error__item">
+                  <ul class="field__error">
+                    <li class="field__error-item">
                       生年月日を正しく選択してください。
                     </li>
                   </ul>
@@ -407,27 +375,6 @@ import Stepper from "../../components/Stepper.astro"
             </ul>
           </li>
           <li>
-            <h3 class="heading heading--s">確認フィールド</h3>
-            <ul class="paper-list">
-              <li>
-                <div class="paper">
-                  <div class="confirm-field">
-                    <div class="field-header">
-                      <h2 class="heading heading--s">メールアドレス</h2>
-                    </div>
-                    <p class="field-value">makiko.okamura@excrie.co.jp</p>
-                  </div>
-                  <div class="confirm-field">
-                    <div class="field-header">
-                      <h2 class="heading heading--s">ニックネーム</h2>
-                    </div>
-                    <p class="field-value">まこポッケ</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
             <h3 class="heading heading--s">テキストリンク</h3>
             <ul class="paper-list">
               <li>
@@ -438,11 +385,29 @@ import Stepper from "../../components/Stepper.astro"
             </ul>
           </li>
           <li>
-            <h3 class="heading heading--s">同意文</h3>
+            <h3 class="heading heading--s">注記（form-note）</h3>
             <ul class="paper-list">
               <li>
                 <div class="paper">
-                  <p class="form-consent">
+                  <p class="form-note form-note--hanging">
+                    ※迷惑メールフィルタやドメイン指定受信を設定されている場合は、moratame.netからのメールが受信できるよう設定をお願いします。
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <p class="form-note form-note--info">
+                    モラタメでは、ご登録できるアカウントは、ご本人様かつお一人様1つまでとしています。詳しくは、<a
+                      class="text-link"
+                      href="https://www.moratame.net/contents/regulation.php"
+                      >「ご利用にあたってのお約束ごと」</a
+                    >をご確認ください。
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <p class="form-note form-note--consent">
                     <a class="text-link" href="#">利用規約</a
                     >に同意のうえ<br />「入力内容確認へ」を押してください。
                   </p>
@@ -470,34 +435,6 @@ import Stepper from "../../components/Stepper.astro"
             </ul>
           </li>
           <li>
-            <h3 class="heading heading--s">注記</h3>
-            <ul class="paper-list">
-              <li>
-                <div class="paper">
-                  <p class="form-note hanging">
-                    ※迷惑メールフィルタやドメイン指定受信を設定されている場合は、moratame.netからのメールが受信できるよう設定をお願いします。
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <h3 class="heading heading--s">案内</h3>
-            <ul class="paper-list">
-              <li>
-                <div class="paper">
-                  <p class="form-info">
-                    モラタメでは、ご登録できるアカウントは、ご本人様かつお一人様1つまでとしています。詳しくは、<a
-                      class="text-link"
-                      href="https://www.moratame.net/contents/regulation.php"
-                      >「ご利用にあたってのお約束ごと」</a
-                    >をご確認ください。
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>
             <h3 class="heading heading--s">フォームエラー</h3>
             <ul class="paper-list">
               <li>
@@ -514,11 +451,11 @@ import Stepper from "../../components/Stepper.astro"
             <ul class="paper-list">
               <li>
                 <div class="paper">
-                  <ul class="field-error">
-                    <li class="field-error__item">
+                  <ul class="field__error">
+                    <li class="field__error-item">
                       E-mailは必須入力です。
                     </li>
-                    <li class="field-error__item">
+                    <li class="field__error-item">
                       E-mailが正しくありません。
                     </li>
                   </ul>
