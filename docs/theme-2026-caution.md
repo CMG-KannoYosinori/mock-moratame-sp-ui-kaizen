@@ -13,6 +13,8 @@
 | `signup-form-error.astro` | あり |
 | `signup-confirm.astro` | あり |
 | `signup-verify.astro` | あり |
+| `signup-verify-error.astro` | あり |
+| `signup-verify-code.astro` | あり |
 | `signup-complete.astro` | あり |
 | `ui/index.astro` | あり（`ui.css` も） |
 | `*-jqm.astro` / `signup-confirm-legacy.astro` / `signup-error.astro` / その他 | **なし** |
