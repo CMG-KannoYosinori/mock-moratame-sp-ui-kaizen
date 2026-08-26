@@ -69,7 +69,7 @@
 
 ### ページの分け方
 
-- 通常入力とバリデーションエラー表示は **別テンプレート** にする（モックの `signup-form` と `signup-form-error` に相当）
+- 通常入力とバリデーションエラー表示は **別テンプレート** にする（モックの `signup-form` / `signup-form-error`、`signup-verify` / `signup-verify-error` に相当）
 - 通常入力には `.form-error` と `.field__error` を出さない
 - ニックネーム欄は **1 つだけ**。モックは使用可 / 使用済みを見比べるため 2 つ並べている
 

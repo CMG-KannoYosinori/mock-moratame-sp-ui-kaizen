@@ -9,7 +9,9 @@ alwaysApply: true
 
 ## 見本の置き方
 
-- コンポーネント見本は「コンポーネント」見出しの下。色トークンは「基本デザイン」
+- コンポーネント見本は「コンポーネント」見出しの下。色トークン・ユーティリティ（`.u-*`）は「基本デザイン」
 - 実ページと同じマークアップを `.paper` 内に置く
 - カタログ専用の見た目（`.paper` / `.paper-list` / `.color-box` など）は `src/styles/ui.scss` に書く
 - `/styles/ui.css` は `src/pages/ui/index.astro` だけが読む。`theme-2026.css` や他ページに足さない
+
+`theme-2026` の `utilities/` を追加・変更したら、見本も「基本デザイン」に足す。

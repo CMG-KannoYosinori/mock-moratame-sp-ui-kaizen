@@ -38,3 +38,18 @@
     }
   }
 }
+
+// 全体エラーと補足（.field__error など）をまとめて並べる
+.page-content__alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  // p.form-error の詳細度に負けないよう要素付きで打ち消す（:where は使わない）
+  > p.form-error,
+  > .field__error {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

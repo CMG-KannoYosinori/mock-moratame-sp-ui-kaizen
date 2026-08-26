@@ -37,8 +37,12 @@ alwaysApply: true
 
 - 再利用 UI → `blocks/`
 - 配置・ぶら下げなどコンテキスト依存 → `layout/`
+- 単一プロパティの汎用クラス → `utilities/`（例: `.u-bold`）
 - トークン → `foundation/`
 
+## ユーティリティ
+
+Block に閉じない単一責務の見た目（太字など）は `utilities/` に置き、接頭辞 `u-` を付ける。`blocks/` には置かない。
 ## Block の粒度（細かく分けすぎない）
 
 Block は **再利用する UI コンポーネントの単位**。見た目や役割が近いだけの断片を新規 Block にしない。

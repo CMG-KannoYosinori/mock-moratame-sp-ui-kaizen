@@ -40,6 +40,12 @@ import Stepper from "../../components/Stepper.astro"
               </ul>
             </div>
           </li>
+          <li>
+            <h3 class="heading heading--s">ユーティリティ</h3>
+            <div class="paper">
+              <p>通常のテキストと <span class="u-bold">太字（.u-bold）</span>。</p>
+            </div>
+          </li>
         </ul>
       </li>
 
@@ -442,6 +448,23 @@ import Stepper from "../../components/Stepper.astro"
                   <p class="form-error" role="alert">
                     入力内容をご確認ください。
                   </p>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <div class="page-content__alerts">
+                    <p class="form-error" role="alert">
+                      <span class="u-bold"
+                        >このお電話番号は、すでにSMS認証済みです。</span
+                      >
+                      00011112222
+                    </p>
+                    <ul class="field__error">
+                      <li class="field__error-item">
+                        他のアカウントで認証することはできません。モラタメでは複数のアカウントを保有されることは禁止事項です。認証済みアカウントをご利用ください。
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </li>
             </ul>
