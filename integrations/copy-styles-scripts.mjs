@@ -63,6 +63,7 @@ export function copyStylesScriptsIntegration() {
           recursive: true,
         });
         await rewriteLocalUrlsRelative(outDir);
+        await rewriteCssIconUrlsRelative(stylesDest);
       },
     },
   };
@@ -70,12 +71,13 @@ export function copyStylesScriptsIntegration() {
 
 /**
  * Live Server はワークスペース直下をルートにすることが多い。
- * `/styles/` などのサイトルート相対だと dist 配下の HTML から 404 になるので、
+ * GitHub Pages もリポジトリ名配下（/mock-moratame-sp-ui-kaizen/）がルートになる。
+ * `/styles/` などのサイトルート相対だと 404 になるので、
  * 各 HTML から見た相対パスに直す（astro preview でも問題ない）。
  */
 async function rewriteLocalUrlsRelative(outDir) {
   const htmlFiles = await collectHtml(outDir);
-  const localUrl = /(?:href|src)="(\/(?:styles|scripts|s)\/[^"]+)"/g;
+  const localUrl = /(?:href|src)="(\/(?:styles|scripts|s|ui|icons)\/[^"]+)"/g;
 
   for (const htmlFile of htmlFiles) {
     const htmlDir = path.dirname(htmlFile);
@@ -87,6 +89,20 @@ async function rewriteLocalUrlsRelative(outDir) {
       return match.replace(absPath, rel);
     });
     await fsPromises.writeFile(htmlFile, html);
+  }
+}
+
+/** dist/styles/*.css 内の /icons/ を styles からの相対パスにする（Pages 配下でも解決する） */
+async function rewriteCssIconUrlsRelative(stylesDest) {
+  const entries = await fsPromises.readdir(stylesDest);
+  for (const name of entries) {
+    if (!name.endsWith('.css')) continue;
+    const filePath = path.join(stylesDest, name);
+    let css = await fsPromises.readFile(filePath, 'utf8');
+    const next = css.replace(/url\((['"]?)\/icons\//g, 'url($1../icons/');
+    if (next !== css) {
+      await fsPromises.writeFile(filePath, next);
+    }
   }
 }
 

@@ -32,6 +32,18 @@ npm run build
 
 静的 HTML は `dist/` に出力されます。プレビューは `npm run preview`（http://localhost:4321/）です。
 
+## GitHub Pages
+
+`main` への push（または Actions の手動実行）で `dist/` が GitHub Pages にデプロイされます。
+
+公開 URL（想定）:
+
+- https://cmg-kannoyosinori.github.io/mock-moratame-sp-ui-kaizen/
+
+初回だけリポジトリの **Settings → Pages → Build and deployment → Source** で **GitHub Actions** を選んでください。
+
+ビルド後の HTML / CSS は `/styles` `/scripts` `/s` `/ui` `/icons` を相対パスに書き換えるので、リポジトリ名配下でもリンクが切れません（`base` は使っていません）。
+
 Live Server で見る場合は、**リポジトリ直下をルートのまま** `dist` 内の HTML を開いてください。
 
 - http://127.0.0.1:5500/dist/s/login/index-no-jqm.html
