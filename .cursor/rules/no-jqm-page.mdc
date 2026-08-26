@@ -20,6 +20,7 @@ alwaysApply: true
 | `signup-verify.astro` | `/s/contents/signup-verify.html` | SMS / 電話番号認証 |
 | `signup-verify-error.astro` | `/s/contents/signup-verify-error.html` | SMS / 電話番号認証（エラー確認） |
 | `signup-verify-code.astro` | `/s/contents/signup-verify-code.html` | SMS 認証コード入力 |
+| `signup-verify-code-error.astro` | `/s/contents/signup-verify-code-error.html` | SMS 認証コード入力（エラー確認） |
 | `signup-complete.astro` | `/s/contents/signup-complete.html` | 完了 |
 
 フロー: `signup` → `signup-form` → `signup-confirm` → `signup-verify` → `signup-verify-code` → `signup-complete`
@@ -58,7 +59,7 @@ alwaysApply: true
 
 ## エラー確認用ページの分離
 
-通常表示とエラー表示確認用は別ファイルにする（例: `signup-form.astro` / `signup-form-error.astro`、`signup-verify.astro` / `signup-verify-error.astro`）。通常版にはエラー要素（`.form-error`、`.field__error`）を含めない。
+通常表示とエラー表示確認用は別ファイルにする（例: `signup-form.astro` / `signup-form-error.astro`、`signup-verify.astro` / `signup-verify-error.astro`、`signup-verify-code.astro` / `signup-verify-code-error.astro`）。通常版にはエラー要素（`.form-error`、`.field__error`）を含めない。
 
 ## CSS
 
