@@ -1,6 +1,7 @@
 @use "../foundation/tokens" as *;
 
 .page-content {
+  flex-grow: 1;
   padding-top: 2rem;
   padding-right: 1rem;
   padding-bottom: 3rem;

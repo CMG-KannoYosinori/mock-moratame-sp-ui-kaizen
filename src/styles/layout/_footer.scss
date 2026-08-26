@@ -1,3 +1,16 @@
+// 短いページでもフッターを画面下に置く（theme-2026 / no-jqm）。
+// ページシェルは BaseLayout の .smartbanner-offset。
+.smartbanner-offset {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#footer {
+  flex-shrink: 0;
+}
+
 // 本番 style--sp.css の jQM フッター補正。
 // no-jqm では ui-footer 枠がないため負マージンは不要。
 #topscrollWrp {
