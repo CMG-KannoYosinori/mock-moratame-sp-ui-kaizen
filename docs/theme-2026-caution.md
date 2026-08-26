@@ -16,6 +16,7 @@
 | `signup-verify-error.astro` | あり |
 | `signup-verify-code.astro` | あり |
 | `signup-verify-code-error.astro` | あり |
+| `signup-verify-code-voice.astro` | あり |
 | `signup-complete.astro` | あり |
 | `ui/index.astro` | あり（`ui.css` も） |
 | `*-jqm.astro` / `signup-confirm-legacy.astro` / `signup-error.astro` / その他 | **なし** |

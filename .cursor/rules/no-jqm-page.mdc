@@ -19,8 +19,9 @@ alwaysApply: true
 | `signup-confirm.astro` | `/s/contents/signup-confirm.html` | 入力内容確認 |
 | `signup-verify.astro` | `/s/contents/signup-verify.html` | SMS / 電話番号認証 |
 | `signup-verify-error.astro` | `/s/contents/signup-verify-error.html` | SMS / 電話番号認証（エラー確認） |
-| `signup-verify-code.astro` | `/s/contents/signup-verify-code.html` | SMS 認証コード入力 |
+| `signup-verify-code.astro` | `/s/contents/signup-verify-code.html` | SMS 認証コード入力（SMS 配信） |
 | `signup-verify-code-error.astro` | `/s/contents/signup-verify-code-error.html` | SMS 認証コード入力（エラー確認） |
+| `signup-verify-code-voice.astro` | `/s/contents/signup-verify-code-voice.html` | SMS 認証コード入力（音声ガイダンス） |
 | `signup-complete.astro` | `/s/contents/signup-complete.html` | 完了 |
 
 フロー: `signup` → `signup-form` → `signup-confirm` → `signup-verify` → `signup-verify-code` → `signup-complete`

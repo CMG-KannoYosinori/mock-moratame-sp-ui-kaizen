@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../../components/HeaderSimple.astro"
+import Footer from "../../../components/Footer.astro"
+import Stepper from "../../../components/Stepper.astro"
+---
+
+<BaseLayout
+  title="新規会員登録（SMS認証コード入力・音声ガイダンス）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026.css" />
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+      <section>
+        <Stepper activeStep={3} />
+        <div class="page-heading">
+          <h1 class="heading heading--l">SMS認証コード入力</h1>
+        </div>
+
+        <p class="page-content__lead">
+          音声ガイダンスで届いた6桁の認証コードを入力してください
+        </p>
+
+        <form action="/s/contents/signup-complete.html" method="get">
+          <div class="field field--confirm">
+            <div class="field__header">
+              <h2 class="heading heading--s">電話番号</h2>
+            </div>
+            <p class="field__value">00011112222</p>
+          </div>
+
+          <div class="field">
+            <div class="field__header">
+              <h2 class="heading heading--s">認証コード</h2>
+            </div>
+            <input
+              type="text"
+              class="input"
+              name="authcode"
+              placeholder="認証コードを入力してください"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+            />
+          </div>
+
+          <button type="submit" class="button button--green button--borderless"
+            >認証</button
+          >
+          <a
+            href="/s/contents/signup-verify.html"
+            class="button button--outline">戻る</a
+          >
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+</BaseLayout>
