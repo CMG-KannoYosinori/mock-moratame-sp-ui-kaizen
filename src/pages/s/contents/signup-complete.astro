@@ -6,7 +6,7 @@ import Stepper from "../../../components/Stepper.astro"
 ---
 
 <BaseLayout
-  title="新規会員登録（完了・jQuery Mobile なし）"
+  title="新規会員登録（完了）"
   pageId="registration-page"
   fixSmartBannerOffsetToPage
 >
@@ -22,13 +22,19 @@ import Stepper from "../../../components/Stepper.astro"
           <h1 class="heading heading--l">会員登録完了</h1>
         </div>
 
-        <p class="page-content__lead">
-          会員登録が完了しました。<br />ご登録のメールアドレスに確認メールをお送りしています。
-        </p>
+        <div class="page-content__lead">
+          <p>makiko.okamura@excrie.co.jp にメールを送信しました。</p>
+          <p>
+            もしメールが届いていない場合、ご登録いただいたメールアドレスが誤っている可能性がありますので、<a
+              class="text-link"
+              href="https://www.moratame.net/s/mypage/">登録情報変更</a
+            >よりメールアドレスを変更ください。
+          </p>
+        </div>
 
         <a
-          href="/s/login/index-no-jqm.html"
-          class="button button--green button--borderless">ログインする</a
+          href="https://www.moratame.net/"
+          class="button button--green button--borderless">トップページへ戻る</a
         >
       </section>
     </div>
