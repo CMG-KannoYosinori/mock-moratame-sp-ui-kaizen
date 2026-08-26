@@ -4,7 +4,8 @@
 .form-note {
   box-sizing: border-box;
   padding: 0.75rem 1rem;
-  margin: 1.5rem 0 4rem;
+  // 下余白は後続の .button { margin-top: 3rem } に任せる
+  margin: 1.5rem 0 0;
   font-size: 0.875rem;
   line-height: 1.5;
   color: $color-danger;
@@ -18,7 +19,7 @@
 
 .form-note--consent {
   padding: 0;
-  margin: 2rem 0 3rem;
+  margin: 2rem 0 0;
   color: $color-text;
   text-align: center;
   background-color: transparent;

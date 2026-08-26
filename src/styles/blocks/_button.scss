@@ -11,6 +11,7 @@
   max-width: 100%;
   height: 3.125rem;
   padding: 0.3125rem 0.9375rem;
+  margin-top: 3rem;
   margin-right: auto;
   margin-left: auto;
   font-family: inherit;
@@ -26,6 +27,7 @@
     border-color 0.25s ease;
 }
 
+// 連続するボタン同士は狭くする（上の要素〜先頭ボタンは 3rem のまま）
 .button + .button {
   margin-top: 1rem;
 }
