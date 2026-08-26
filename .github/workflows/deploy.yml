@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # 作業ブランチでもデプロイできるよう、main 以外も対象にする
+    branches: [main, improve/signup-form]
   workflow_dispatch:
 
 permissions:

@@ -34,13 +34,19 @@ npm run build
 
 ## GitHub Pages
 
-`main` への push（または Actions の手動実行）で `dist/` が GitHub Pages にデプロイされます。
+`main` または `improve/signup-form` への push（または Actions の手動実行）で `dist/` が GitHub Pages にデプロイされます。
 
 公開 URL（想定）:
 
 - https://cmg-kannoyosinori.github.io/mock-moratame-sp-ui-kaizen/
 
-初回だけリポジトリの **Settings → Pages → Build and deployment → Source** で **GitHub Actions** を選んでください。
+**Settings → Pages の画面は自動では切り替わりません。** 初回だけ手で設定してください。
+
+1. [Settings → Pages](https://github.com/CMG-KannoYosinori/mock-moratame-sp-ui-kaizen/settings/pages)
+2. **Build and deployment → Source** で **GitHub Actions** を選んで Save
+3. [Actions](https://github.com/CMG-KannoYosinori/mock-moratame-sp-ui-kaizen/actions) で **Deploy to GitHub Pages** が成功するか確認
+
+※ ワークフローは `improve/signup-form` にあります（`main` には未マージ）。Source を GitHub Actions にしたあと、このブランチへ push するとデプロイが走ります。
 
 ビルド後の HTML / CSS は `/styles` `/scripts` `/s` `/ui` `/icons` を相対パスに書き換えるので、リポジトリ名配下でもリンクが切れません（`base` は使っていません）。
 
