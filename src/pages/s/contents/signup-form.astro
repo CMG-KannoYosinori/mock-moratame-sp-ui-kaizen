@@ -310,9 +310,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                 <option>年</option>
                 {
                   years.map((year) => (
-                    <option value={year} selected={year === 1980}>
-                      {year}
-                    </option>
+                    <option value={year}>{year}</option>
                   ))
                 }
               </select>
