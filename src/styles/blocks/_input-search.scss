@@ -1,3 +1,5 @@
+@use "../foundation/tokens" as *;
+
 .input-search {
   position: relative;
   width: 100%;
@@ -24,4 +26,11 @@
   display: block;
   width: 1.25rem;
   height: 1.25rem;
+  background-color: $color-line;
+  mask: url("/icons/search.svg") center / contain no-repeat;
+}
+
+// 入力あり（placeholder 非表示）のときブランド色
+.input-search:has(.input:not(:placeholder-shown)) .input-search__icon {
+  background-color: $color-brand;
 }
