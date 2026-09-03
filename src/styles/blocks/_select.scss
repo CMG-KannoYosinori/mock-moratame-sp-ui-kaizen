@@ -47,5 +47,6 @@ select.select__control.select__control--error {
 }
 
 select.select__control.select__control--error:focus {
-  border-color: $color-danger;
+  background-color: #fff;
+  border: 2px solid $color-brand;
 }

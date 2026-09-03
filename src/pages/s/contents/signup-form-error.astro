@@ -365,6 +365,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
   <Footer variant="simple" engine="css" />
 
+  <script slot="after-page" is:inline src="/scripts/clear-field-error.js"></script>
   <script slot="after-page" is:inline src="/scripts/nickname-check.js"></script>
   <script slot="after-page" is:inline>
     $(function () {

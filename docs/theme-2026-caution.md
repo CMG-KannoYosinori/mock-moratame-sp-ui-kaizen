@@ -83,7 +83,7 @@
 - ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ）。項目下は `ul.field__error` > `li.field__error-item`（警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない
 - 確認行は `.field.field--confirm`（ラベルは `__header`、値は `__value`）
 - 灰面注記は `.form-note`（警告・赤文字）。案内は `--info`、同意文は `--consent`、ぶら下げは `--hanging`
-- エラー中のテキスト入力は `input.input.input--error`（赤枠 2px ＋ 薄ピンク背景）
+- エラー中のテキスト入力は `input.input.input--error`（赤枠 2px ＋ 薄ピンク背景）。`:focus`（再入力中）は通常のフォーカス体裁。モックは `clear-field-error.js` でフォーカス時に既存値を消し、入力後に Modifier を外す
 - エラー中のセレクトは `select.select__control.select__control--error`（同上）
 - 虫眼鏡ボタンは `type="button"`。フォーム送信や古い `name="name_check"` の submit にしない
 - 隠し欄 `#mode` はニックネームチェック・郵便番号・生年月日末日の Ajax で使う。見た目用ではない。削るなら関連 JS もセットで外す

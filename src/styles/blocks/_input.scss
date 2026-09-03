@@ -34,6 +34,8 @@ input.input.input--error {
   border: 2px solid $color-danger;
 }
 
+// 再入力中（:focus。:active はクリック瞬間だけなので使わない）は通常のフォーカス体裁へ
 input.input.input--error:focus {
-  border-color: $color-danger;
+  background-color: #fff;
+  border: 2px solid $color-brand;
 }
