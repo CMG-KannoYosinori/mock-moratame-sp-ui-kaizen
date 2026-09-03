@@ -187,13 +187,13 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   type="button"
                   class="input-search__button"
                   aria-label="ニックネームをチェック"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   aria-controls="nickname-result-ng"
                 >
                   <span class="input-search__icon" aria-hidden="true"></span>
                 </button>
               </div>
-              <div class="nickname-check__result" id="nickname-result-ng">
+              <div class="nickname-check__result" id="nickname-result-ng" hidden>
                 <p class="nickname-check__status nickname-check__status--ng">
                   同一のニックネームが登録されています。
                 </p>
