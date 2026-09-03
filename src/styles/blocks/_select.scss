@@ -37,8 +37,8 @@ select.select__control {
 }
 
 select.select__control:focus {
-  border: 2px solid $color-brand;
   outline: none;
+  border: 2px solid $color-brand;
 }
 
 select.select__control.select__control--error {

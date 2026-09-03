@@ -16,8 +16,8 @@ input.input {
 }
 
 input.input:focus {
-  border: 2px solid $color-brand;
   outline: none;
+  border: 2px solid $color-brand;
 }
 
 input.input + input.input {
