@@ -15,6 +15,11 @@ input.input {
   box-shadow: none;
 }
 
+input.input:focus {
+  border: 2px solid $color-brand;
+  outline: none;
+}
+
 input.input + input.input {
   margin-top: 0.5rem;
 }
@@ -27,4 +32,8 @@ input.input + input.input {
 input.input.input--error {
   background-color: $color-danger-surface-soft;
   border: 2px solid $color-danger;
+}
+
+input.input.input--error:focus {
+  border-color: $color-danger;
 }
