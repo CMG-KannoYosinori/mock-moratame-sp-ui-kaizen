@@ -13,7 +13,7 @@
     "lint:css": "stylelint \"src/styles/**/*.scss\""
   },
   "dependencies": {
-    "astro": "^7.2.2"
+    "astro": "^7.2.10"
   },
   "devDependencies": {
     "postcss-scss": "^4.0.9",
