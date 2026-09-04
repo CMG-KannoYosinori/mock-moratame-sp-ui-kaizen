@@ -15,6 +15,10 @@ input.input {
   box-shadow: none;
 }
 
+input.input::placeholder {
+  color: $color-input-border;
+}
+
 input.input:focus {
   outline: none;
   border: 2px solid $color-brand;
