@@ -25,9 +25,9 @@
   top: 0.25rem;
   right: calc(50% + 0.3125rem);
   left: calc(-50% + 0.3125rem);
-  height: 0.125rem;
+  height: 0.1rem;
   content: "";
-  background: $color-line;
+  background: #ddd;
 }
 
 /* 最初の step には左側の横棒を出さない */
@@ -40,7 +40,7 @@
   display: block;
   width: 0.625rem;
   height: 0.625rem;
-  background: $color-line;
+  background: #ddd;
   border-radius: 50%;
 }
 
