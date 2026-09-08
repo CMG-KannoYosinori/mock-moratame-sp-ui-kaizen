@@ -74,7 +74,8 @@
 ### ページの分け方
 
 - 通常入力とバリデーションエラー表示は **別テンプレート** にする（モックの `signup-form` / `signup-form-error`、`signup-verify` / `signup-verify-error`、`signup-verify-code` / `signup-verify-code-error` に相当）
-- 通常入力には `.form-error` と `.field__error` を出さない
+- 通常入力の初期 HTML には `.form-error` と `.field__error` の中身を出さない（空の `ul.field__error[hidden]` はフロント検証用に置いてよい）
+- フロントの blur 検証（`signup-form-validate.js`）で出した項目エラーは、エラー確認モックと同じ見た目にする
 - ニックネーム欄は **1 つだけ**。モックは使用可 / 使用済みを見比べるため 2 つ並べている
 
 ### マークアップで守ること
@@ -170,6 +171,8 @@
 | `src/styles/drawer.scss` | ドロワー用エントリ（出力は `drawer.css`） |
 | `src/scripts/smartbanner-offset.js` | no-jqm ページ用の Smart Banner オフセット補正（対象は `.smartbanner-offset`） |
 | `src/scripts/nickname-check.js` | **モック専用。** 虫眼鏡で固定の結果ボックスを出すだけ。本番の Ajax には使わない |
+| `src/scripts/signup-form-validate.js` | **モック専用。** メール・パスワード・生年月日の blur 検証。サーバー判定（同一メール等）は扱わない |
+| `src/scripts/clear-field-error.js` | **エラー確認モック専用。** 再入力でエラー見た目を外す |
 | `src/components/Stepper.astro` | 会員登録 4 ステップ。`activeStep` で現在地を指定 |
 | `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
 | `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |

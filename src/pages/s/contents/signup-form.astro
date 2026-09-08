@@ -122,6 +122,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             spellcheck="false"
             autocorrect="off"
           />
+          <ul class="field__error" hidden></ul>
         </div>
         <!-- /メールアドレス -->
 
@@ -139,7 +140,9 @@ const days = Array.from({ length: 31 }, (_, i) =>
             autocomplete="off"
             spellcheck="false"
             autocorrect="off"
+            maxlength="16"
           />
+          <ul class="field__error" hidden></ul>
         </div>
         <!-- /パスワード -->
 
@@ -335,6 +338,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               </select>
             </li>
           </ul>
+          <ul class="field__error" hidden></ul>
         </div>
         <!-- /生年月日 -->
 
@@ -372,6 +376,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
   <Footer variant="simple" engine="css" />
 
+  <script slot="after-page" is:inline src="/scripts/signup-form-validate.js"></script>
   <script slot="after-page" is:inline src="/scripts/nickname-check.js"></script>
   <script slot="after-page" is:inline>
     $(function () {
