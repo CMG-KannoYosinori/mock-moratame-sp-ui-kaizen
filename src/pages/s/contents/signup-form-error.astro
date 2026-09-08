@@ -188,6 +188,43 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   class="input-search__button"
                   aria-label="ニックネームをチェック"
                   aria-expanded="false"
+                  aria-controls="nickname-result-ok"
+                >
+                  <span class="input-search__icon" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div class="nickname-check__result" id="nickname-result-ok" hidden>
+                <p class="nickname-check__status nickname-check__status--ok">
+                  使用可能なニックネームです。
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /ニックネーム（使用可能） -->
+
+          <div class="select-area select-nickname">
+            <div class="field__header">
+              <h2 class="heading heading--s">ニックネーム</h2>
+              <span class="required-mark">＊</span>
+              <p class="field__caption">※後から変更できます</p>
+            </div>
+            <div class="nickname-check">
+              <div class="input-search">
+                <input
+                  type="text"
+                  class="input input--with-action"
+                  id="disp_id-ng"
+                  value="ポッケ"
+                  placeholder="入力後、使用可能かチェック！"
+                  autocomplete="off"
+                  spellcheck="false"
+                  autocorrect="off"
+                />
+                <button
+                  type="button"
+                  class="input-search__button"
+                  aria-label="ニックネームをチェック"
+                  aria-expanded="false"
                   aria-controls="nickname-result-ng"
                 >
                   <span class="input-search__icon" aria-hidden="true"></span>
@@ -213,7 +250,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               </div>
             </div>
           </div>
-          <!-- /ニックネーム -->
+          <!-- /ニックネーム（使用済み） -->
 
           <div class="select-area select-sex">
             <div class="field__header">
@@ -365,7 +402,8 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
   <Footer variant="simple" engine="css" />
 
-  <script slot="after-page" is:inline src="/scripts/clear-field-error.js"></script>
+  <script slot="after-page" is:inline src="/scripts/clear-field-error.js"
+  ></script>
   <script slot="after-page" is:inline src="/scripts/nickname-check.js"></script>
   <script slot="after-page" is:inline>
     $(function () {

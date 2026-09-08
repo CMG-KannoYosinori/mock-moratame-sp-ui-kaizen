@@ -98,7 +98,7 @@
 | 全体 | — | `p.form-error`「入力内容をご確認ください。」 |
 | メール | `input--error` ×2（値 `Example1`） | `.field__error` 3 件 |
 | パスワード | `input--error`（値 `Example1`。モックは `type="text"` で値を見せる） | `.field__error` 4 件 |
-| ニックネーム | **通常**（灰枠） | 初期は非表示。虫眼鏡で `.nickname-check__result`（使用済み例）。`.field__error` ではない |
+| ニックネーム | **通常**（灰枠）×2 | 初期は非表示。上: 使用可／下: 使用済み（虫眼鏡で結果）。`.field__error` ではない |
 | 性別 | 通常 | なし |
 | 生年月日 | `select__control--error` ×3（2000/01/01） | `.field__error` 1 件 |
 | 紹介コード | 通常 | なし |
