@@ -330,6 +330,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   class="select__control select__control--error"
                   name="yyyy"
                   aria-label="年"
+                  autocomplete="off"
                   onchange="daychange()"
                 >
                   <option>年</option>
@@ -347,6 +348,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   class="select__control select__control--error"
                   name="mm"
                   aria-label="月"
+                  autocomplete="off"
                   onchange="daychange()"
                 >
                   <option>月</option>
@@ -365,6 +367,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   name="dd"
                   id="day"
                   aria-label="日"
+                  autocomplete="off"
                   onchange="daychange()"
                 >
                   <option>日</option>
