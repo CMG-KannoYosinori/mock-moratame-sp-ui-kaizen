@@ -5,6 +5,14 @@
   margin-bottom: 1.25rem;
 }
 
+// 複数コントロールのグルーピング（メール確認・性別・生年月日など）
+fieldset.field,
+fieldset.select-area {
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
+}
+
 .field--confirm {
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
@@ -18,6 +26,24 @@
   margin-bottom: 0.5rem;
 }
 
+// legend を field__header にしたとき、見た目の flex 行を保つ
+legend.field__header {
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+
+fieldset.field::after,
+fieldset.select-area::after {
+  clear: both;
+  display: table;
+  content: "";
+}
+
+// 項目名を label にしても heading 体裁を維持
+label.heading {
+  cursor: pointer;
+}
 .field__caption {
   margin: 0 0 0 auto;
   font-size: 0.75rem;

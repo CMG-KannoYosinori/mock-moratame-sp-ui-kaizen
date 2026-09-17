@@ -124,38 +124,44 @@ import Stepper from "../../components/Stepper.astro"
                 <div class="paper">
                   <div class="field">
                     <div class="field__header">
-                      <h2 class="heading heading--s">電話番号</h2>
+                      <label class="heading heading--s" for="ui-field-tel"
+                        >電話番号</label
+                      >
                       <span class="required-mark">＊</span>
                     </div>
                     <input
                       type="tel"
                       class="input"
+                      id="ui-field-tel"
                       value=""
                       placeholder="電話番号を入力してください"
                     />
                   </div>
                   <div class="field">
                     <div class="field__header">
-                      <h2 class="heading heading--s">ニックネーム</h2>
+                      <label class="heading heading--s" for="ui-field-nickname"
+                        >ニックネーム</label
+                      >
                       <span class="required-mark">＊</span>
                       <p class="field__caption">※後から変更できます</p>
                     </div>
                     <input
                       type="text"
                       class="input"
+                      id="ui-field-nickname"
                       value=""
                       placeholder="入力後、使用可能かチェック！"
                     />
                   </div>
                   <div class="field field--confirm">
                     <div class="field__header">
-                      <h2 class="heading heading--s">メールアドレス</h2>
+                      <span class="heading heading--s">メールアドレス</span>
                     </div>
                     <p class="field__value">makiko.okamura@excrie.co.jp</p>
                   </div>
                   <div class="field field--confirm">
                     <div class="field__header">
-                      <h2 class="heading heading--s">ニックネーム</h2>
+                      <span class="heading heading--s">ニックネーム</span>
                     </div>
                     <p class="field__value">まこポッケ</p>
                   </div>
@@ -288,55 +294,74 @@ import Stepper from "../../components/Stepper.astro"
             <ul class="paper-list">
               <li>
                 <div class="paper">
-                  <ul class="select">
-                    <li class="select__item">
-                      <select class="select__control">
-                        <option>年</option>
-                        <option value="1980" selected>1980</option>
-                      </select>
-                    </li>
-                    <li class="select__item">
-                      <select class="select__control">
-                        <option>月</option>
-                        <option value="01">01</option>
-                      </select>
-                    </li>
-                    <li class="select__item">
-                      <select class="select__control">
-                        <option>日</option>
-                        <option value="01">01</option>
-                      </select>
-                    </li>
-                  </ul>
+                  <fieldset class="field">
+                    <legend class="field__header">
+                      <span class="heading heading--s">生年月日</span>
+                    </legend>
+                    <ul class="select">
+                      <li class="select__item">
+                        <select class="select__control" aria-label="年">
+                          <option>年</option>
+                          <option value="1980" selected>1980</option>
+                        </select>
+                      </li>
+                      <li class="select__item">
+                        <select class="select__control" aria-label="月">
+                          <option>月</option>
+                          <option value="01">01</option>
+                        </select>
+                      </li>
+                      <li class="select__item">
+                        <select class="select__control" aria-label="日">
+                          <option>日</option>
+                          <option value="01">01</option>
+                        </select>
+                      </li>
+                    </ul>
+                  </fieldset>
                 </div>
               </li>
               <li>
                 <div class="paper">
-                  <ul class="select">
-                    <li class="select__item">
-                      <select class="select__control select__control--error">
-                        <option>年</option>
-                        <option value="2000" selected>2000</option>
-                      </select>
-                    </li>
-                    <li class="select__item">
-                      <select class="select__control select__control--error">
-                        <option>月</option>
-                        <option value="01" selected>01</option>
-                      </select>
-                    </li>
-                    <li class="select__item">
-                      <select class="select__control select__control--error">
-                        <option>日</option>
-                        <option value="01" selected>01</option>
-                      </select>
-                    </li>
-                  </ul>
-                  <ul class="field__error">
-                    <li class="field__error-item">
-                      生年月日を正しく選択してください。
-                    </li>
-                  </ul>
+                  <fieldset class="field">
+                    <legend class="field__header">
+                      <span class="heading heading--s">生年月日</span>
+                    </legend>
+                    <ul class="select">
+                      <li class="select__item">
+                        <select
+                          class="select__control select__control--error"
+                          aria-label="年"
+                        >
+                          <option>年</option>
+                          <option value="2000" selected>2000</option>
+                        </select>
+                      </li>
+                      <li class="select__item">
+                        <select
+                          class="select__control select__control--error"
+                          aria-label="月"
+                        >
+                          <option>月</option>
+                          <option value="01" selected>01</option>
+                        </select>
+                      </li>
+                      <li class="select__item">
+                        <select
+                          class="select__control select__control--error"
+                          aria-label="日"
+                        >
+                          <option>日</option>
+                          <option value="01" selected>01</option>
+                        </select>
+                      </li>
+                    </ul>
+                    <ul class="field__error">
+                      <li class="field__error-item">
+                        生年月日を正しく選択してください。
+                      </li>
+                    </ul>
+                  </fieldset>
                 </div>
               </li>
             </ul>

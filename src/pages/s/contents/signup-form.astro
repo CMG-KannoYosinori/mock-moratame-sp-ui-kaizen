@@ -95,11 +95,11 @@ const days = Array.from({ length: 31 }, (_, i) =>
       >
         <input type="hidden" name="mode" id="mode" value="" />
 
-        <div class="select-area select-email">
-          <div class="field__header">
-            <h2 class="heading heading--s">メールアドレス</h2>
+        <fieldset class="select-area select-email">
+          <legend class="field__header">
+            <span class="heading heading--s">メールアドレス</span>
             <span class="required-mark">＊</span>
-          </div>
+          </legend>
           <input
             type="text"
             class="input"
@@ -110,6 +110,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             autocomplete="off"
             spellcheck="false"
             autocorrect="off"
+            aria-label="メールアドレス"
           />
           <input
             type="text"
@@ -121,14 +122,15 @@ const days = Array.from({ length: 31 }, (_, i) =>
             autocomplete="off"
             spellcheck="false"
             autocorrect="off"
+            aria-label="メールアドレス（確認）"
           />
           <ul class="field__error" hidden></ul>
-        </div>
+        </fieldset>
         <!-- /メールアドレス -->
 
         <div class="select-area select-password">
           <div class="field__header">
-            <h2 class="heading heading--s">パスワード</h2>
+            <label class="heading heading--s" for="password1">パスワード</label>
             <span class="required-mark">＊</span>
           </div>
           <input
@@ -148,7 +150,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
         <div class="select-area select-nickname">
           <div class="field__header">
-            <h2 class="heading heading--s">ニックネーム</h2>
+            <label class="heading heading--s" for="disp_id">ニックネーム</label>
             <span class="required-mark">＊</span>
             <p class="field__caption">※後から変更できます</p>
           </div>
@@ -186,7 +188,9 @@ const days = Array.from({ length: 31 }, (_, i) =>
 
         <div class="select-area select-nickname">
           <div class="field__header">
-            <h2 class="heading heading--s">ニックネーム</h2>
+            <label class="heading heading--s" for="disp_id-ng"
+              >ニックネーム</label
+            >
             <span class="required-mark">＊</span>
             <p class="field__caption">※後から変更できます</p>
           </div>
@@ -234,11 +238,11 @@ const days = Array.from({ length: 31 }, (_, i) =>
         </div>
         <!-- /ニックネーム（使用済み） -->
 
-        <div class="select-area select-sex">
-          <div class="field__header">
-            <h2 class="heading heading--s">性別</h2>
+        <fieldset class="select-area select-sex">
+          <legend class="field__header">
+            <span class="heading heading--s">性別</span>
             <span class="required-mark">＊</span>
-          </div>
+          </legend>
           <ul class="radio">
             <li class="radio__item">
               <input
@@ -281,19 +285,20 @@ const days = Array.from({ length: 31 }, (_, i) =>
               </label>
             </li>
           </ul>
-        </div>
+        </fieldset>
         <!-- /性別 -->
 
-        <div class="select-area select-birthday">
-          <div class="field__header">
-            <h2 class="heading heading--s">生年月日</h2>
+        <fieldset class="select-area select-birthday">
+          <legend class="field__header">
+            <span class="heading heading--s">生年月日</span>
             <span class="required-mark">＊</span>
-          </div>
+          </legend>
           <ul class="select">
             <li class="select__item">
               <select
                 class="select__control"
                 name="yyyy"
+                aria-label="年"
                 onchange="javascript: daychange();"
               >
                 <option>年</option>
@@ -310,6 +315,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               <select
                 class="select__control"
                 name="mm"
+                aria-label="月"
                 onchange="javascript: daychange();"
               >
                 <option>月</option>
@@ -325,6 +331,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                 class="select__control"
                 name="dd"
                 id="day"
+                aria-label="日"
                 onchange="javascript: daychange();"
               >
                 <option>日</option>
@@ -339,12 +346,12 @@ const days = Array.from({ length: 31 }, (_, i) =>
             </li>
           </ul>
           <ul class="field__error" hidden></ul>
-        </div>
+        </fieldset>
         <!-- /生年月日 -->
 
         <div class="select-area">
           <div class="field__header">
-            <h2 class="heading heading--s">紹介コード</h2>
+            <label class="heading heading--s" for="refer_code">紹介コード</label>
           </div>
           <input
             type="text"

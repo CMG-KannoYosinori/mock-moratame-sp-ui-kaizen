@@ -39,7 +39,7 @@ import Stepper from "../../../components/Stepper.astro"
         >
           <div class="field">
             <div class="field__header">
-              <h2 class="heading heading--s">電話番号</h2>
+              <label class="heading heading--s" for="mobilenumber">電話番号</label>
             </div>
             <input
               type="tel"
@@ -51,10 +51,10 @@ import Stepper from "../../../components/Stepper.astro"
               autocomplete="tel"
             />
           </div>
-          <div class="field">
-            <div class="field__header">
-              <h2 class="heading heading--s">配信方法</h2>
-            </div>
+          <fieldset class="field">
+            <legend class="field__header">
+              <span class="heading heading--s">配信方法</span>
+            </legend>
             <ul class="radio">
               <li class="radio__item">
                 <input
@@ -84,7 +84,7 @@ import Stepper from "../../../components/Stepper.astro"
                 </label>
               </li>
             </ul>
-          </div>
+          </fieldset>
 
           <p class="form-note form-note--info">
             モラタメでは、ご登録できるアカウントは、ご本人様かつお一人様1つまでとしています。詳しくは、<a

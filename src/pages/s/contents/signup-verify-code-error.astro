@@ -29,19 +29,20 @@ import Stepper from "../../../components/Stepper.astro"
         <form action="/s/contents/signup-complete.html" method="get">
           <div class="field field--confirm">
             <div class="field__header">
-              <h2 class="heading heading--s">電話番号</h2>
+              <span class="heading heading--s">電話番号</span>
             </div>
             <p class="field__value">00011112222</p>
           </div>
 
           <div class="field">
             <div class="field__header">
-              <h2 class="heading heading--s">認証コード</h2>
+              <label class="heading heading--s" for="authcode">認証コード</label>
             </div>
             <input
               type="text"
               class="input input--error"
               name="authcode"
+              id="authcode"
               value="222222"
               placeholder="認証コードを入力してください"
               inputmode="numeric"
