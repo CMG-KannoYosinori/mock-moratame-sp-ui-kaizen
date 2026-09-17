@@ -82,6 +82,7 @@
 
 - テキスト入力のクラスは `input.input`（必要なら `input--with-action`）。本番 CSS の `input[type="text"]` より負けるため、要素名付きセレクタにしている
 - 単一入力の項目名は `label.heading.heading--s`（`for` で入力と紐づける）。項目ラベルに `h2` は使わない（ページ見出しの階層を汚さない）
+- 必須マークは項目側で `<span class="required-mark"><span class="u-sr-only">必須</span><span aria-hidden="true">＊</span></span>`（記号だけだと読み上げが意味を伝えない）。ページ見出しの「必須項目＊」は文言で足りるので `＊` に `aria-hidden="true"`
 - 複数コントロール（メール確認・性別・生年月日・配信方法など）は `fieldset` + `legend.field__header` でグルーピングする。生年月日の各 `select` には `aria-label`（年／月／日）
 - 確認行の項目名は操作対象がないので `span.heading.heading--s`
 - ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ）。項目下は `ul.field__error` > `li.field__error-item`（警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない

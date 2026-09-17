@@ -43,7 +43,13 @@ import Stepper from "../../components/Stepper.astro"
           <li>
             <h3 class="heading heading--s">ユーティリティ</h3>
             <div class="paper">
-              <p>通常のテキストと <span class="u-bold">太字（.u-bold）</span>。</p>
+              <p>
+                通常のテキストと <span class="u-bold">太字（.u-bold）</span>。
+              </p>
+              <p>
+                <span class="u-sr-only">この文言は視覚的に隠れ、読み上げのみ</span>
+                （.u-sr-only は視覚非表示・読み上げあり）
+              </p>
             </div>
           </li>
         </ul>
@@ -85,7 +91,9 @@ import Stepper from "../../components/Stepper.astro"
                   <div class="page-heading">
                     <h1 class="heading heading--l">基本情報入力</h1>
                     <p class="page-heading__caption">
-                      必須項目<span class="required-mark">＊</span>
+                      必須項目<span class="required-mark" aria-hidden="true"
+                        >＊</span
+                      >
                     </p>
                   </div>
                 </div>
@@ -112,7 +120,10 @@ import Stepper from "../../components/Stepper.astro"
             <ul class="paper-list">
               <li>
                 <div class="paper">
-                  <span class="required-mark">＊</span>
+                  <span class="required-mark"
+                    ><span class="u-sr-only">必須</span
+                    ><span aria-hidden="true">＊</span></span
+                  >
                 </div>
               </li>
             </ul>
@@ -127,7 +138,10 @@ import Stepper from "../../components/Stepper.astro"
                       <label class="heading heading--s" for="ui-field-tel"
                         >電話番号</label
                       >
-                      <span class="required-mark">＊</span>
+                      <span class="required-mark"
+                        ><span class="u-sr-only">必須</span
+                        ><span aria-hidden="true">＊</span></span
+                      >
                     </div>
                     <input
                       type="tel"
@@ -142,7 +156,10 @@ import Stepper from "../../components/Stepper.astro"
                       <label class="heading heading--s" for="ui-field-nickname"
                         >ニックネーム</label
                       >
-                      <span class="required-mark">＊</span>
+                      <span class="required-mark"
+                        ><span class="u-sr-only">必須</span
+                        ><span aria-hidden="true">＊</span></span
+                      >
                       <p class="field__caption">※後から変更できます</p>
                     </div>
                     <input
