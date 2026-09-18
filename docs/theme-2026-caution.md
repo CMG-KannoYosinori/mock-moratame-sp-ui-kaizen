@@ -87,7 +87,7 @@
 - 確認行の項目名は操作対象がないので `span.heading.heading--s`
 - ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ。`role="alert"` + `aria-live="assertive"` + `id`）。項目下は `ul.field__error` > `li.field__error-item`（`aria-live="polite"`。警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない
 - エラー中のコントロールには `aria-invalid="true"` と `aria-describedby`（ページ全体エラーの `id` があればそれと、対応する `.field__error` の `id`）を付ける。メールと確認メールはリストを分け、それぞれ紐づける。`aria-live` で発生時に読み上げ、`aria-describedby` でフォーカス時にも内容が伝わる
-- 確認行は `.field.field--confirm`（ラベルは `__header`、値は `__value`）
+- 確認行は `dl.field.field--confirm`（用語 `dt.field__header`、説明 `dd.field__value`）。ラベルと値を意味的に紐づける。1 項目 = 1 `dl`（入力欄と混在しても扱いやすい）
 - 灰面注記は `.form-note`（警告・赤文字）。案内は `--info`、同意文は `--consent`、ぶら下げは `--hanging`
 - エラー中のテキスト入力は `input.input.input--error`（赤枠 2px ＋ 薄ピンク背景）。`:focus`（再入力中）は通常のフォーカス体裁。モックは `clear-field-error.js` でフォーカス時に既存値を消し、入力後に Modifier を外す
 - エラー中のセレクトは `select.select__control.select__control--error`（同上）

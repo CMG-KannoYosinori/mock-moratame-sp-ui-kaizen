@@ -13,6 +13,11 @@ fieldset.select-area {
   border: 0;
 }
 
+// 確認行は用語リストでラベルと値を紐づける（UA の dl 余白を打ち消す）
+dl.field {
+  margin-top: 0;
+}
+
 .field--confirm {
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
@@ -24,6 +29,11 @@ fieldset.select-area {
   gap: 0.25rem;
   align-items: center;
   margin-bottom: 0.5rem;
+}
+
+// dt の UA 太字を見出しクラス側に任せる
+dt.field__header {
+  font-weight: inherit;
 }
 
 // legend を field__header にしたとき、見た目の flex 行を保つ
