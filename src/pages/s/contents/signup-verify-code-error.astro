@@ -50,7 +50,7 @@ import Stepper from "../../../components/Stepper.astro"
               aria-invalid="true"
               aria-describedby="authcode-error"
             />
-            <ul class="field__error" id="authcode-error">
+            <ul class="field__error" aria-live="polite" id="authcode-error">
               <li class="field__error-item">認証コードの形式が異なります</li>
             </ul>
           </div>

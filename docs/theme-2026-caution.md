@@ -85,8 +85,8 @@
 - 必須マークは項目側で `<span class="required-mark"><span class="u-sr-only">必須</span><span aria-hidden="true">＊</span></span>`（記号だけだと読み上げが意味を伝えない）。ページ見出しの「必須項目＊」は文言で足りるので `＊` に `aria-hidden="true"`
 - 複数コントロール（メール確認・性別・生年月日・配信方法など）は `fieldset` + `legend.field__header` でグルーピングする。生年月日の各 `select` には `aria-label`（年／月／日）
 - 確認行の項目名は操作対象がないので `span.heading.heading--s`
-- ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ。`role="alert"` + `id`）。項目下は `ul.field__error` > `li.field__error-item`（警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない
-- エラー中のコントロールには `aria-invalid="true"` と `aria-describedby`（ページ全体エラーの `id` があればそれと、対応する `.field__error` の `id`）を付ける。メールと確認メールはリストを分け、それぞれ紐づける
+- ページ全体のエラーは `p.form-error`（薄ピンク地・赤文字・中央寄せ。`role="alert"` + `aria-live="assertive"` + `id`）。項目下は `ul.field__error` > `li.field__error-item`（`aria-live="polite"`。警告三角は `::before` の `/icons/triangle-alert.svg`）。本番の `.form_error` / `.error` は使わない
+- エラー中のコントロールには `aria-invalid="true"` と `aria-describedby`（ページ全体エラーの `id` があればそれと、対応する `.field__error` の `id`）を付ける。メールと確認メールはリストを分け、それぞれ紐づける。`aria-live` で発生時に読み上げ、`aria-describedby` でフォーカス時にも内容が伝わる
 - 確認行は `.field.field--confirm`（ラベルは `__header`、値は `__value`）
 - 灰面注記は `.form-note`（警告・赤文字）。案内は `--info`、同意文は `--consent`、ぶら下げは `--hanging`
 - エラー中のテキスト入力は `input.input.input--error`（赤枠 2px ＋ 薄ピンク背景）。`:focus`（再入力中）は通常のフォーカス体裁。モックは `clear-field-error.js` でフォーカス時に既存値を消し、入力後に Modifier を外す

@@ -248,7 +248,7 @@ import Stepper from "../../components/Stepper.astro"
                     aria-invalid="true"
                     aria-describedby="ui-email-error-msg"
                   />
-                  <ul class="field__error" id="ui-email-error-msg">
+                  <ul class="field__error" aria-live="polite" id="ui-email-error-msg">
                     <li class="field__error-item">
                       同一のE-mailアドレスが登録されています。
                     </li>
@@ -382,7 +382,7 @@ import Stepper from "../../components/Stepper.astro"
                         </select>
                       </li>
                     </ul>
-                    <ul class="field__error" id="ui-birthday-error">
+                    <ul class="field__error" aria-live="polite" id="ui-birthday-error">
                       <li class="field__error-item">
                         生年月日を正しく選択してください。
                       </li>
@@ -508,7 +508,7 @@ import Stepper from "../../components/Stepper.astro"
             <ul class="paper-list">
               <li>
                 <div class="paper">
-                  <p class="form-error" role="alert">
+                  <p class="form-error" role="alert" aria-live="assertive">
                     入力内容をご確認ください。
                   </p>
                 </div>
@@ -516,13 +516,13 @@ import Stepper from "../../components/Stepper.astro"
               <li>
                 <div class="paper">
                   <div class="page-content__alerts">
-                    <p class="form-error" role="alert" id="ui-verify-form-error">
+                    <p class="form-error" role="alert" aria-live="assertive" id="ui-verify-form-error">
                       <span class="u-bold"
                         >このお電話番号は、すでにSMS認証済みです。</span
                       >
                       00011112222
                     </p>
-                    <ul class="field__error" id="ui-verify-phone-error">
+                    <ul class="field__error" aria-live="polite" id="ui-verify-phone-error">
                       <li class="field__error-item">
                         他のアカウントで認証することはできません。モラタメでは複数のアカウントを保有されることは禁止事項です。認証済みアカウントをご利用ください。
                       </li>
@@ -568,7 +568,7 @@ import Stepper from "../../components/Stepper.astro"
                       aria-invalid="true"
                       aria-describedby="ui-field-error-msg"
                     />
-                    <ul class="field__error" id="ui-field-error-msg">
+                    <ul class="field__error" aria-live="polite" id="ui-field-error-msg">
                       <li class="field__error-item">
                         E-mailは必須入力です。
                       </li>

@@ -23,11 +23,11 @@ import Stepper from "../../../components/Stepper.astro"
         </div>
 
         <div class="page-content__alerts">
-          <p class="form-error" role="alert" id="verify-form-error">
+          <p class="form-error" role="alert" aria-live="assertive" id="verify-form-error">
             <span class="u-bold">このお電話番号は、すでにSMS認証済みです。</span>
             00011112222
           </p>
-          <ul class="field__error" id="verify-phone-error">
+          <ul class="field__error" aria-live="polite" id="verify-phone-error">
             <li class="field__error-item">
               他のアカウントで認証することはできません。モラタメでは複数のアカウントを保有されることは禁止事項です。認証済みアカウントをご利用ください。
             </li>

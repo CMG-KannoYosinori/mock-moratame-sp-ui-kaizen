@@ -122,8 +122,8 @@ const days = Array.from({ length: 31 }, (_, i) =>
             autocorrect="off"
             aria-label="メールアドレス（確認）"
           />
-          <ul class="field__error" id="email-error" hidden></ul>
-          <ul class="field__error" id="email2-error" hidden></ul>
+          <ul class="field__error" aria-live="polite" id="email-error" hidden></ul>
+          <ul class="field__error" aria-live="polite" id="email2-error" hidden></ul>
         </fieldset>
         <!-- /メールアドレス -->
 
@@ -146,7 +146,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             autocorrect="off"
             maxlength="16"
           />
-          <ul class="field__error" id="password1-error" hidden></ul>
+          <ul class="field__error" aria-live="polite" id="password1-error" hidden></ul>
         </div>
         <!-- /パスワード -->
 
@@ -360,7 +360,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               </select>
             </li>
           </ul>
-          <ul class="field__error" id="birthday-error" hidden></ul>
+          <ul class="field__error" aria-live="polite" id="birthday-error" hidden></ul>
         </fieldset>
         <!-- /生年月日 -->
 

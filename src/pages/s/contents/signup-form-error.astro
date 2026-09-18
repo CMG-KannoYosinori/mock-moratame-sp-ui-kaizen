@@ -81,7 +81,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
             必須項目<span class="required-mark" aria-hidden="true">＊</span>
           </p>
         </div>
-        <p class="form-error" role="alert" id="signup-form-error">
+        <p class="form-error" role="alert" aria-live="assertive" id="signup-form-error">
           入力内容に不備があります。
         </p>
 
@@ -129,14 +129,14 @@ const days = Array.from({ length: 31 }, (_, i) =>
               aria-invalid="true"
               aria-describedby="signup-form-error email2-error"
             />
-            <ul class="field__error" id="email-error">
+            <ul class="field__error" aria-live="polite" id="email-error">
               <li class="field__error-item">E-mailは必須入力です。</li>
               <li class="field__error-item">E-mailが正しくありません。</li>
               <li class="field__error-item">
                 同一のE-mailアドレスが登録されています。
               </li>
             </ul>
-            <ul class="field__error" id="email2-error">
+            <ul class="field__error" aria-live="polite" id="email2-error">
               <li class="field__error-item">E-mailは必須入力です。</li>
               <li class="field__error-item">E-mailが正しくありません。</li>
             </ul>
@@ -164,7 +164,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               aria-invalid="true"
               aria-describedby="signup-form-error password1-error"
             />
-            <ul class="field__error" id="password1-error">
+            <ul class="field__error" aria-live="polite" id="password1-error">
               <li class="field__error-item">パスワードは必須入力です。</li>
               <li class="field__error-item">
                 パスワードは半角英数字で入力して下さい
@@ -399,7 +399,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                 </select>
               </li>
             </ul>
-            <ul class="field__error" id="birthday-error">
+            <ul class="field__error" aria-live="polite" id="birthday-error">
               <li class="field__error-item">
                 生年月日を正しく選択してください。
               </li>
