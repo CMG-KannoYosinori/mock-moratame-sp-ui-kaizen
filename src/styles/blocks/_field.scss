@@ -43,6 +43,12 @@ legend.field__header {
   padding: 0;
 }
 
+// float した legend の横に回り込ませない（幅 0 で画面外にはみ出すのを防ぐ）
+fieldset.field > :not(legend),
+fieldset.select-area > :not(legend) {
+  clear: both;
+}
+
 fieldset.field::after,
 fieldset.select-area::after {
   clear: both;
