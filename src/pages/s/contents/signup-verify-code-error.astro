@@ -47,8 +47,10 @@ import Stepper from "../../../components/Stepper.astro"
               placeholder="認証コードを入力してください"
               inputmode="numeric"
               autocomplete="one-time-code"
+              aria-invalid="true"
+              aria-describedby="authcode-error"
             />
-            <ul class="field__error">
+            <ul class="field__error" id="authcode-error">
               <li class="field__error-item">認証コードの形式が異なります</li>
             </ul>
           </div>

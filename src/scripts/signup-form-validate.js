@@ -1,7 +1,7 @@
 /**
  * 会員登録の基本情報入力（モック）用フロントバリデーション。
  * メール・パスワード・生年月日は blur（セレクトはエリア外へ focusout）で検証し、
- * signup-form-error と同じ .field__error / Modifier で出す。
+ * signup-form-error と同じ .field__error / Modifier / aria で出す。
  * 同一メール登録済みなどサーバー判定は扱わない。
  */
 (function () {
@@ -39,12 +39,7 @@
     }
   }
 
-  function renderErrors(root, messages, errorControls) {
-    var list = root.querySelector(".field__error");
-    if (!list) {
-      return;
-    }
-
+  function fillErrorList(list, messages) {
     list.innerHTML = "";
     var items = unique(messages);
     for (var i = 0; i < items.length; i++) {
@@ -54,21 +49,28 @@
       list.appendChild(li);
     }
     list.hidden = items.length === 0;
+    return items.length > 0;
+  }
 
-    var controls = root.querySelectorAll("input.input, select.select__control");
-    for (var c = 0; c < controls.length; c++) {
-      setControlError(controls[c], false);
-    }
-    if (items.length === 0) {
+  function bindControlErrors(control, listId, messages) {
+    var list = document.getElementById(listId);
+    if (!control || !list) {
       return;
     }
-    for (var e = 0; e < errorControls.length; e++) {
-      setControlError(errorControls[e], true);
+
+    var hasError = fillErrorList(list, messages);
+    setControlError(control, hasError);
+    if (hasError) {
+      control.setAttribute("aria-invalid", "true");
+      control.setAttribute("aria-describedby", listId);
+    } else {
+      control.removeAttribute("aria-invalid");
+      control.removeAttribute("aria-describedby");
     }
   }
 
-  function clearErrors(root) {
-    renderErrors(root, [], []);
+  function clearControlErrors(control, listId) {
+    bindControlErrors(control, listId, []);
   }
 
   function isEmailFormat(value) {
@@ -131,8 +133,8 @@
       return;
     }
 
-    var messages = [];
-    var errorControls = [];
+    var emailMessages = [];
+    var email2Messages = [];
     var emailValue = email.value.replace(/^\s+|\s+$/g, "");
     var email2Value = email2.value.replace(/^\s+|\s+$/g, "");
     var checkEmail = !focusTarget || focusTarget === email || emailValue !== "";
@@ -141,28 +143,32 @@
 
     if (checkEmail) {
       if (!emailValue) {
-        messages.push("E-mailは必須入力です。");
-        errorControls.push(email);
+        emailMessages.push("E-mailは必須入力です。");
       } else if (!isEmailFormat(emailValue)) {
-        messages.push("E-mailが正しくありません。");
-        errorControls.push(email);
+        emailMessages.push("E-mailが正しくありません。");
       }
     }
 
     if (checkEmail2) {
       if (!email2Value) {
-        messages.push("E-mailは必須入力です。");
-        errorControls.push(email2);
+        email2Messages.push("E-mailは必須入力です。");
       } else if (!isEmailFormat(email2Value)) {
-        messages.push("E-mailが正しくありません。");
-        errorControls.push(email2);
+        email2Messages.push("E-mailが正しくありません。");
       } else if (emailValue && email2Value && emailValue !== email2Value) {
-        messages.push("E-mailが正しくありません。");
-        errorControls.push(email2);
+        email2Messages.push("E-mailが正しくありません。");
       }
     }
 
-    renderErrors(root, messages, errorControls);
+    if (focusTarget === email) {
+      bindControlErrors(email, "email-error", emailMessages);
+      return;
+    }
+    if (focusTarget === email2) {
+      bindControlErrors(email2, "email2-error", email2Messages);
+      return;
+    }
+    bindControlErrors(email, "email-error", emailMessages);
+    bindControlErrors(email2, "email2-error", email2Messages);
   }
 
   function validatePasswordArea(root) {
@@ -173,19 +179,15 @@
 
     var value = input.value;
     var messages = [];
-    var errorControls = [];
 
     if (!value) {
       messages.push("パスワードは必須入力です。");
-      errorControls.push(input);
     } else {
       if (!isHalfWidthAlnum(value)) {
         messages.push("パスワードは半角英数字で入力して下さい");
-        errorControls.push(input);
       }
       if (value.length < 6) {
         messages.push("パスワードは6文字以上で入力して下さい");
-        errorControls.push(input);
       }
       if (
         isHalfWidthAlnum(value) &&
@@ -194,18 +196,18 @@
         hasSequentialRun(value)
       ) {
         messages.push("パスワードは連番以外で入力してください。");
-        errorControls.push(input);
       }
     }
 
-    renderErrors(root, messages, errorControls);
+    bindControlErrors(input, "password1-error", messages);
   }
 
   function validateBirthdayArea(root) {
     var year = root.querySelector('select[name="yyyy"]');
     var month = root.querySelector('select[name="mm"]');
     var day = root.querySelector('select[name="dd"]');
-    if (!year || !month || !day) {
+    var list = document.getElementById("birthday-error");
+    if (!year || !month || !day || !list) {
       return;
     }
 
@@ -213,14 +215,33 @@
     var m = selectValue(month);
     var d = selectValue(day);
     var messages = [];
-    var errorControls = [];
 
     if (!y || !m || !d || !isValidDate(y, m, d)) {
       messages.push("生年月日を正しく選択してください。");
-      errorControls.push(year, month, day);
     }
 
-    renderErrors(root, messages, errorControls);
+    var hasError = fillErrorList(list, messages);
+    var controls = [year, month, day];
+    for (var i = 0; i < controls.length; i++) {
+      setControlError(controls[i], hasError);
+      if (hasError) {
+        controls[i].setAttribute("aria-invalid", "true");
+        controls[i].setAttribute("aria-describedby", "birthday-error");
+      } else {
+        controls[i].removeAttribute("aria-invalid");
+        controls[i].removeAttribute("aria-describedby");
+      }
+    }
+  }
+
+  function clearEmailControl(target) {
+    if (target.id === "email") {
+      clearControlErrors(target, "email-error");
+      return;
+    }
+    if (target.id === "email2") {
+      clearControlErrors(target, "email2-error");
+    }
   }
 
   document.addEventListener("focusout", function (event) {
@@ -262,9 +283,12 @@
     if (!target || !target.classList || !target.classList.contains("input")) {
       return;
     }
-    var root = closest(target, ".select-email, .select-password");
-    if (root) {
-      clearErrors(root);
+    if (closest(target, ".select-email")) {
+      clearEmailControl(target);
+      return;
+    }
+    if (closest(target, ".select-password")) {
+      clearControlErrors(target, "password1-error");
     }
   });
 
@@ -278,8 +302,19 @@
       return;
     }
     var root = closest(target, ".select-birthday");
-    if (root && target.classList.contains("select__control--error")) {
-      clearErrors(root);
+    if (!root || !target.classList.contains("select__control--error")) {
+      return;
+    }
+    var list = document.getElementById("birthday-error");
+    if (list) {
+      list.hidden = true;
+      list.innerHTML = "";
+    }
+    var controls = root.querySelectorAll("select.select__control");
+    for (var i = 0; i < controls.length; i++) {
+      setControlError(controls[i], false);
+      controls[i].removeAttribute("aria-invalid");
+      controls[i].removeAttribute("aria-describedby");
     }
   });
 })();
