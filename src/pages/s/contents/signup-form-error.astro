@@ -81,7 +81,9 @@ const days = Array.from({ length: 31 }, (_, i) =>
             必須項目<span class="required-mark" aria-hidden="true">＊</span>
           </p>
         </div>
-        <p class="form-error" role="alert">入力内容に不備があります。</p>
+        <p class="form-error" role="alert" id="signup-form-error">
+          入力内容に不備があります。
+        </p>
 
         <form
           action="https://www.moratame.net/s/contents/signup02p.php"
@@ -111,7 +113,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               autocorrect="off"
               aria-label="メールアドレス"
               aria-invalid="true"
-              aria-describedby="email-error"
+              aria-describedby="signup-form-error email-error"
             />
             <input
               type="text"
@@ -125,7 +127,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               autocorrect="off"
               aria-label="メールアドレス（確認）"
               aria-invalid="true"
-              aria-describedby="email2-error"
+              aria-describedby="signup-form-error email2-error"
             />
             <ul class="field__error" id="email-error">
               <li class="field__error-item">E-mailは必須入力です。</li>
@@ -160,7 +162,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
               spellcheck="false"
               autocorrect="off"
               aria-invalid="true"
-              aria-describedby="password1-error"
+              aria-describedby="signup-form-error password1-error"
             />
             <ul class="field__error" id="password1-error">
               <li class="field__error-item">パスワードは必須入力です。</li>
@@ -342,7 +344,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   aria-label="年"
                   autocomplete="off"
                   aria-invalid="true"
-                  aria-describedby="birthday-error"
+                  aria-describedby="signup-form-error birthday-error"
                   onchange="daychange()"
                 >
                   <option>年</option>
@@ -362,7 +364,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   aria-label="月"
                   autocomplete="off"
                   aria-invalid="true"
-                  aria-describedby="birthday-error"
+                  aria-describedby="signup-form-error birthday-error"
                   onchange="daychange()"
                 >
                   <option>月</option>
@@ -383,7 +385,7 @@ const days = Array.from({ length: 31 }, (_, i) =>
                   aria-label="日"
                   autocomplete="off"
                   aria-invalid="true"
-                  aria-describedby="birthday-error"
+                  aria-describedby="signup-form-error birthday-error"
                   onchange="daychange()"
                 >
                   <option>日</option>

@@ -14,13 +14,17 @@
     return null;
   }
 
-  function hideErrorList(listId) {
-    if (!listId) {
+  function hideFieldErrorLists(describedby) {
+    if (!describedby) {
       return;
     }
-    var list = document.getElementById(listId);
-    if (list) {
-      list.hidden = true;
+    var ids = describedby.replace(/^\s+|\s+$/g, "").split(/\s+/);
+    for (var i = 0; i < ids.length; i++) {
+      var list = document.getElementById(ids[i]);
+      // ページ全体の .form-error は残し、項目エラーだけ隠す
+      if (list && list.classList.contains("field__error")) {
+        list.hidden = true;
+      }
     }
   }
 
@@ -31,7 +35,7 @@
     var describedby = control.getAttribute("aria-describedby");
     control.removeAttribute("aria-invalid");
     control.removeAttribute("aria-describedby");
-    hideErrorList(describedby);
+    hideFieldErrorLists(describedby);
 
     // 生年月日のように同じエラーリストを共有する兄弟もまとめて戻す
     if (!describedby) {
@@ -43,17 +47,35 @@
       return;
     }
     var siblings = root.querySelectorAll(
-      'input[aria-describedby="' +
-        describedby +
-        '"], select[aria-describedby="' +
-        describedby +
-        '"]',
+      "input.input--error, select.select__control--error",
     );
     for (var i = 0; i < siblings.length; i++) {
-      siblings[i].classList.remove("input--error");
-      siblings[i].classList.remove("select__control--error");
-      siblings[i].removeAttribute("aria-invalid");
-      siblings[i].removeAttribute("aria-describedby");
+      var sibling = siblings[i];
+      if (sibling === control) {
+        continue;
+      }
+      var siblingDescribedby = sibling.getAttribute("aria-describedby") || "";
+      var sharesList = false;
+      var controlIds = describedby.replace(/^\s+|\s+$/g, "").split(/\s+/);
+      for (var j = 0; j < controlIds.length; j++) {
+        if (
+          siblingDescribedby.indexOf(controlIds[j]) !== -1 &&
+          document.getElementById(controlIds[j]) &&
+          document
+            .getElementById(controlIds[j])
+            .classList.contains("field__error")
+        ) {
+          sharesList = true;
+          break;
+        }
+      }
+      if (!sharesList) {
+        continue;
+      }
+      sibling.classList.remove("input--error");
+      sibling.classList.remove("select__control--error");
+      sibling.removeAttribute("aria-invalid");
+      sibling.removeAttribute("aria-describedby");
     }
   }
 
