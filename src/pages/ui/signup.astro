@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../components/HeaderSimple.astro"
+import Footer from "../../components/Footer.astro"
+import Stepper from "../../components/Stepper.astro"
+---
+
+<BaseLayout
+  title="UI ライブラリー（会員登録）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026-components.css" />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026-signup.css" />
+  <link slot="head" rel="stylesheet" href="/styles/ui.css" />
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+
+      <nav class="ui-nav" aria-label="UI ライブラリー">
+        <a href="/ui/components.html">コンポーネント</a>
+        <a href="/ui/signup.html" aria-current="page">会員登録</a>
+      </nav>
+
+    <ul class="paper-list">
+      <li>
+        <h3 class="heading heading--l">会員登録</h3>
+        <ul class="paper-list">
+          <li>
+            <h3 class="heading heading--s">ステッパー</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <Stepper activeStep={1} />
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <Stepper activeStep={2} />
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <Stepper activeStep={3} />
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <Stepper activeStep={4} />
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">ニックネームチェック</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <div class="nickname-check">
+                    <div class="nickname-check__result">
+                      <p
+                        class="nickname-check__status nickname-check__status--ok"
+                      >
+                        使用可能なニックネームです。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <div class="nickname-check">
+                    <div class="nickname-check__result">
+                      <p
+                        class="nickname-check__status nickname-check__status--ng"
+                      >
+                        同一のニックネームが登録されています。
+                      </p>
+                      <p class="nickname-check__heading">
+                        似たようなニックネーム
+                      </p>
+                      <ul class="nickname-check__list">
+                        <li>
+                          <button
+                            type="button"
+                            class="nickname-check__suggestion"
+                          >
+                            ポッケ1
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            type="button"
+                            class="nickname-check__suggestion"
+                          >
+                            ポッケ123456
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <div class="nickname-check">
+                    <div class="nickname-check__result">
+                      <p
+                        class="nickname-check__status nickname-check__status--ok"
+                      >
+                        使用可能なニックネームです。
+                      </p>
+                      <p class="nickname-check__heading">
+                        似たようなニックネーム
+                      </p>
+                      <ul class="nickname-check__list">
+                        <li>
+                          <button
+                            type="button"
+                            class="nickname-check__suggestion"
+                          >
+                            ポッケ1
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            type="button"
+                            class="nickname-check__suggestion"
+                          >
+                            ポッケ123456
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+</BaseLayout>

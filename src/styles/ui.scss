@@ -1,5 +1,25 @@
 @use "foundation/tokens" as *;
 
+.ui-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+
+  a {
+    color: $color-link;
+    text-decoration: underline;
+
+    &[aria-current="page"] {
+      font-weight: 700;
+      color: $color-text;
+      text-decoration: none;
+    }
+  }
+}
+
 .paper-list {
   display: flex;
   flex-direction: column;
