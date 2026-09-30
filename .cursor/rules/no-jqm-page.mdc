@@ -1,0 +1,69 @@
+---
+description: jQM なしページの作成・管理ルール
+alwaysApply: true
+---
+
+# jQM なしページのルール
+
+会員登録の改善モック（theme-2026）は内容に沿った慣用名（例: `signup-form.astro`）。jQuery Mobile ありの現行比較用は末尾に `-jqm`（例: `signup-form-jqm.astro`）。ログインの排除スパイクなど、他画面の `-no-jqm` はそのまま残している。
+
+## 会員登録のファイル名
+
+改善フロー（theme-2026）:
+
+| ファイル | URL | 内容 |
+|---|---|---|
+| `signup.astro` | `/s/contents/signup.html` | 登録方法選択 |
+| `signup-form.astro` | `/s/contents/signup-form.html` | 基本情報入力 |
+| `signup-form-error.astro` | `/s/contents/signup-form-error.html` | 基本情報入力（エラー確認） |
+| `signup-confirm.astro` | `/s/contents/signup-confirm.html` | 入力内容確認 |
+| `signup-verify.astro` | `/s/contents/signup-verify.html` | SMS / 電話番号認証 |
+| `signup-verify-error.astro` | `/s/contents/signup-verify-error.html` | SMS / 電話番号認証（エラー確認） |
+| `signup-verify-code.astro` | `/s/contents/signup-verify-code.html` | SMS 認証コード入力（SMS 配信） |
+| `signup-verify-code-error.astro` | `/s/contents/signup-verify-code-error.html` | SMS 認証コード入力（エラー確認） |
+| `signup-verify-code-voice.astro` | `/s/contents/signup-verify-code-voice.html` | SMS 認証コード入力（音声ガイダンス） |
+| `signup-complete.astro` | `/s/contents/signup-complete.html` | 完了 |
+
+フロー: `signup` → `signup-form` → `signup-confirm` → `signup-verify` → `signup-verify-code` → `signup-complete`
+
+比較用:
+
+| ファイル | 内容 |
+|---|---|
+| `signup-jqm.astro` | 登録方法選択（jQM あり） |
+| `signup-form-jqm.astro` | 基本情報入力（jQM あり） |
+| `signup-error.astro` | エラー（jQM あり・旧 signup05） |
+| `signup-confirm-legacy.astro` | 内容確認の本番コピー（もともと jQM なし・マイルストーン画像） |
+
+## BaseLayout props
+
+- `includeJqueryMobileJs` / `includeJqueryMobileCss` は **指定しない**（デフォルト `false`）
+- `data-role="page"` / `.page` は jQM ありのときだけ `BaseLayout` が出す（`.page` は本番 CSS の詳細度が高い）
+- `fixSmartBannerOffsetToPage` を **指定する** — Smart Banner が `html` に `margin-top` を付けるのを防ぎ、`.smartbanner-offset` に `top` で補正する
+
+## Drawer
+
+- `<Drawer engine="css" />` を使う（`HeaderApp` を使うページのみ）
+- `HeaderSimple` を使うページにはドロワーはない
+
+## Footer
+
+- `<Footer engine="css" />` を使う（`data-role="footer"` / `.ui-footer` / `.ui-link` を出さない）
+
+## Smart Banner 補正の仕組み
+
+`fixSmartBannerOffsetToPage` を有効にすると:
+
+1. `<meta name="smartbanner:disable-positioning" content="true" />` が出力され、Smart Banner の自動 positioning が無効になる
+2. `src/scripts/smartbanner-offset.js` が読み込まれ、`.smartbanner-offset` に `position: relative` + `top: (バナー高さ)px` を付与する
+3. バナーを閉じると元の `position` / `top` に復帰する
+
+## エラー確認用ページの分離
+
+通常表示とエラー表示確認用は別ファイルにする（例: `signup-form.astro` / `signup-form-error.astro`、`signup-verify.astro` / `signup-verify-error.astro`、`signup-verify-code.astro` / `signup-verify-code-error.astro`）。通常版にはエラー要素（`.form-error`、`.field__error`）を含めない。
+
+## CSS
+
+- スタイルは `src/styles/` の Sass に書く（`theme-2026-css.mdc`・`modern-bem.mdc` 参照）
+- ドロワーは `src/styles/blocks/_drawer.scss`（エントリ `drawer.scss`）
+- Block を細かく増やさない（`modern-bem.mdc` の粒度ルール）

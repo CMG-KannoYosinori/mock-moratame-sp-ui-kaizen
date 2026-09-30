@@ -1,0 +1,66 @@
+.ui-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.ui-nav a {
+  color: #007aff;
+  text-decoration: underline;
+}
+.ui-nav a[aria-current=page] {
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+}
+
+.paper-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.paper {
+  padding: 1.25rem;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.625rem;
+}
+
+.color-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.color-box {
+  box-sizing: border-box;
+  width: 3.75rem;
+  height: 3.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.color-box--primary {
+  background-color: #57c200;
+}
+
+.color-box--danger {
+  background-color: #e60012;
+}
+
+.color-box--link {
+  background-color: #007aff;
+}
+
+.color-box--input-border {
+  background-color: #a4a4a4;
+}

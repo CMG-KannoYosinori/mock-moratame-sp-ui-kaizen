@@ -1,0 +1,66 @@
+@use "../foundation/tokens" as *;
+
+.button {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  width: 20.9375rem;
+  max-width: 100%;
+  height: 3.125rem;
+  padding: 0.3125rem 0.9375rem;
+  margin-top: 3rem;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: inherit;
+  font-size: 1rem;
+  text-decoration: none;
+  appearance: none;
+  cursor: pointer;
+  border-radius: 3.125rem;
+  box-shadow: none;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+// 連続するボタン同士は狭くする（上の要素〜先頭ボタンは 3rem のまま）
+.button + .button {
+  margin-top: 1rem;
+}
+
+.button--green {
+  color: #fff;
+  background: $color-brand;
+}
+
+// 本番 style--sp.css の `.button:hover`（青グラデ）より詳細度を上げて打ち消す
+.button.button--green:hover {
+  color: #fff;
+  background: $color-brand-hover;
+  border-color: $color-brand-hover;
+}
+
+.button--borderless {
+  border: none;
+}
+
+.button.button--borderless:hover {
+  border: none;
+}
+
+.button--outline {
+  color: $color-brand;
+  // 本番 `.button` の青グラデ（background ショートハンド）を消す
+  background: #fff;
+  border: 1px solid $color-brand;
+}
+
+.button.button--outline:hover {
+  color: $color-brand-hover;
+  background: #fff;
+  border-color: $color-brand-hover;
+}

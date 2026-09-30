@@ -1,0 +1,28 @@
+---
+description: theme-2026 のコンポーネントを作る・直すときは UI ライブラリーも更新する
+alwaysApply: true
+---
+
+# UI ライブラリー
+
+`theme-2026` の Block（`src/styles/blocks/`）を追加・変更・改名したら、見本を UI ライブラリーにも反映する。依頼がなくても更新する。
+
+## ページ構成
+
+| パス | ファイル | 内容 | 読む CSS |
+|---|---|---|---|
+| `/ui/` | `src/pages/ui/index.astro` | 索引 | components + ui |
+| `/ui/components.html` | `src/pages/ui/components.astro` | 基本デザイン＋共通コンポーネント | components + ui |
+| `/ui/signup.html` | `src/pages/ui/signup.astro` | 会員登録固有（ステッパー・ニックネームチェック） | components + signup + ui |
+
+- 共通 Block（button / input / field など）の見本 → `components.astro`
+- 登録フロー固有（stepper / nickname-check）の見本 → `signup.astro`
+- 色トークン・ユーティリティ（`.u-*`）は `components.astro` の「基本デザイン」
+
+## 見本の置き方
+
+- 実ページと同じマークアップを `.paper` 内に置く
+- カタログ専用の見た目（`.paper` / `.paper-list` / `.color-box` / `.ui-nav` など）は `src/styles/ui.scss` に書く
+- `/styles/ui.css` は `/ui/` 配下だけが読む。`theme-2026-*.css` や他ページに足さない
+
+`theme-2026` の `utilities/` を追加・変更したら、見本も「基本デザイン」に足す。

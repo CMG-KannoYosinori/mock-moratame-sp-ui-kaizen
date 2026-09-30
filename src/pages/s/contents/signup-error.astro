@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Drawer from '../../../components/Drawer.astro';
+import HeaderApp from '../../../components/HeaderApp.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout title="エラー" includeJqueryMobileJs includeJqueryMobileCss>
+  <Drawer loggedIn />
+  <HeaderApp />
+  <div data-role="content" class="content">
+    <div class="container">
+      <div class="block">
+        <div class="title">エラー</div>
+        <form action="https://www.moratame.net/s/login/index2.php" method="post">
+          <div class="form">
+            <div class="error">
+              登録情報が見つかりませんでした。<br />お手数ですが再度最初からお試しください。
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <Footer variant="app" />
+</BaseLayout>

@@ -1,0 +1,5 @@
+// ※ / ・ など先頭1文字をぶら下げ、折り返し行を1文字分インデントする
+.hanging {
+  padding-left: 1em;
+  text-indent: -1em;
+}

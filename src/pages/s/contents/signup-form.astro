@@ -1,0 +1,414 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../../components/HeaderSimple.astro"
+import Footer from "../../../components/Footer.astro"
+import Stepper from "../../../components/Stepper.astro"
+
+const years = Array.from({ length: 2021 - 1934 + 1 }, (_, i) => 1934 + i)
+const months = Array.from({ length: 12 }, (_, i) =>
+  String(i + 1).padStart(2, "0"),
+)
+const days = Array.from({ length: 31 }, (_, i) =>
+  String(i + 1).padStart(2, "0"),
+)
+---
+
+<BaseLayout
+  title="新規会員登録（jQuery Mobile なし）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://www.moratame.net/s/css/member-registration.css?2026061217"
+  />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026-components.css" />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026-signup.css" />
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://www.moratame.net/s/css/colorbox.css"
+  />
+  <script
+    slot="head"
+    is:inline
+    src="https://www.moratame.net/s/js/jquery.colorbox.js"
+    charset="UTF-8"></script>
+
+  <script is:inline>
+    function daychange() {
+      $("#mode").val("lastday")
+      var url = "profile_edit.exec.php"
+      var params = $("#new-signup-input").serialize()
+      $.post(
+        url,
+        { params: params },
+        function (data, status) {
+          if (data.status == "1") {
+            var $day = $("#day")
+            var cur = $day.val()
+            for (var i = 28; i <= 31; i++) {
+              var value = String(i).padStart(2, "0")
+              $day.find('option[value="' + value + '"]').remove()
+            }
+            var max = parseInt(data.day, 10)
+            for (var i = 28; i <= max; i++) {
+              var value = String(i).padStart(2, "0")
+              $day.append(
+                $("<option></option>").attr("value", value).text(value),
+              )
+            }
+            if (cur > max) {
+              cur = String(max).padStart(2, "0")
+            }
+            $day.val(cur)
+          }
+        },
+        "json",
+      )
+    }
+  </script>
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+    <section>
+      <Stepper activeStep={1} />
+      <div class="page-heading">
+        <h1 class="heading heading--l">基本情報入力</h1>
+        <p class="page-heading__caption">
+          必須項目<span class="required-mark" aria-hidden="true">＊</span>
+        </p>
+      </div>
+
+      <form
+        action="/s/contents/signup-confirm.html"
+        method="get"
+        name="new-signup-input"
+        id="new-signup-input"
+      >
+        <input type="hidden" name="mode" id="mode" value="" />
+
+        <fieldset class="select-area select-email">
+          <legend class="field__header">
+            <span class="heading heading--s">メールアドレス</span>
+            <span class="required-mark"
+              ><span class="u-sr-only">必須</span
+              ><span aria-hidden="true">＊</span></span
+            >
+          </legend>
+          <input
+            type="text"
+            class="input"
+            name="email"
+            id="email"
+            value=""
+            placeholder="example@moratame.net"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+            aria-label="メールアドレス"
+          />
+          <input
+            type="text"
+            class="input"
+            name="email2"
+            id="email2"
+            value=""
+            placeholder="確認のためもう一度入力して下さい"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+            aria-label="メールアドレス（確認）"
+          />
+          <ul class="field__error" aria-live="polite" id="email-error" hidden></ul>
+          <ul class="field__error" aria-live="polite" id="email2-error" hidden></ul>
+        </fieldset>
+        <!-- /メールアドレス -->
+
+        <div class="select-area select-password">
+          <div class="field__header">
+            <label class="heading heading--s" for="password1">パスワード</label>
+            <span class="required-mark"
+              ><span class="u-sr-only">必須</span
+              ><span aria-hidden="true">＊</span></span
+            >
+          </div>
+          <input
+            type="password"
+            class="input"
+            name="pass"
+            id="password1"
+            placeholder="半角6文字以上16文字以下、連番不可"
+            autocomplete="off"
+            spellcheck="false"
+            autocorrect="off"
+            maxlength="16"
+          />
+          <ul class="field__error" aria-live="polite" id="password1-error" hidden></ul>
+        </div>
+        <!-- /パスワード -->
+
+        <div class="select-area select-nickname">
+          <div class="field__header">
+            <label class="heading heading--s" for="disp_id">ニックネーム</label>
+            <span class="required-mark"
+              ><span class="u-sr-only">必須</span
+              ><span aria-hidden="true">＊</span></span
+            >
+            <p class="field__caption">※後から変更できます</p>
+          </div>
+          <div class="nickname-check">
+            <div class="input-search">
+              <input
+                type="text"
+                class="input input--with-action"
+                name="disp_id"
+                id="disp_id"
+                value=""
+                placeholder="入力後、使用可能かチェック！"
+                autocomplete="off"
+                spellcheck="false"
+                autocorrect="off"
+              />
+              <button
+                type="button"
+                class="input-search__button"
+                aria-label="ニックネームをチェック"
+                aria-expanded="false"
+                aria-controls="nickname-result-ok"
+              >
+                <span class="input-search__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="nickname-check__result" id="nickname-result-ok" hidden>
+              <p class="nickname-check__status nickname-check__status--ok">
+                使用可能なニックネームです。
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /ニックネーム（使用可能） -->
+
+        <div class="select-area select-nickname">
+          <div class="field__header">
+            <label class="heading heading--s" for="disp_id-ng"
+              >ニックネーム</label
+            >
+            <span class="required-mark"
+              ><span class="u-sr-only">必須</span
+              ><span aria-hidden="true">＊</span></span
+            >
+            <p class="field__caption">※後から変更できます</p>
+          </div>
+          <div class="nickname-check">
+            <div class="input-search">
+              <input
+                type="text"
+                class="input input--with-action"
+                id="disp_id-ng"
+                value="ポッケ"
+                placeholder="入力後、使用可能かチェック！"
+                autocomplete="off"
+                spellcheck="false"
+                autocorrect="off"
+              />
+              <button
+                type="button"
+                class="input-search__button"
+                aria-label="ニックネームをチェック"
+                aria-expanded="false"
+                aria-controls="nickname-result-ng"
+              >
+                <span class="input-search__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="nickname-check__result" id="nickname-result-ng" hidden>
+              <p class="nickname-check__status nickname-check__status--ng">
+                同一のニックネームが登録されています。
+              </p>
+              <p class="nickname-check__heading">似たようなニックネーム</p>
+              <ul class="nickname-check__list">
+                <li>
+                  <button type="button" class="nickname-check__suggestion"
+                    >ポッケ1</button
+                  >
+                </li>
+                <li>
+                  <button type="button" class="nickname-check__suggestion"
+                    >ポッケ123456</button
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /ニックネーム（使用済み） -->
+
+        <fieldset class="select-area select-sex">
+          <legend class="field__header">
+            <span class="heading heading--s">性別</span>
+            <span class="required-mark"
+              ><span class="u-sr-only">必須</span
+              ><span aria-hidden="true">＊</span></span
+            >
+          </legend>
+          <ul class="radio">
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-1"
+                value="11001"
+              />
+              <label class="radio__label" for="sex-1">
+                <span class="radio__dot" aria-hidden="true"></span>
+                男性
+              </label>
+            </li>
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-2"
+                value="11002"
+                checked
+              />
+              <label class="radio__label" for="sex-2">
+                <span class="radio__dot" aria-hidden="true"></span>
+                女性
+              </label>
+            </li>
+            <li class="radio__item">
+              <input
+                class="radio__input"
+                type="radio"
+                name="sex[]"
+                id="sex-3"
+                value="11003"
+              />
+              <label class="radio__label" for="sex-3">
+                <span class="radio__dot" aria-hidden="true"></span>
+                無回答
+              </label>
+            </li>
+          </ul>
+        </fieldset>
+        <!-- /性別 -->
+
+        <fieldset class="select-area select-birthday">
+          <legend class="field__header">
+            <span class="heading heading--s">生年月日</span>
+            <span class="required-mark"
+              ><span class="u-sr-only">必須</span
+              ><span aria-hidden="true">＊</span></span
+            >
+          </legend>
+          <ul class="select">
+            <li class="select__item">
+              <select
+                class="select__control"
+                name="yyyy"
+                aria-label="年"
+                autocomplete="off"
+                onchange="daychange()"
+              >
+                <option>年</option>
+                {
+                  years.map((year) => (
+                    <option value={year} selected={year === 1980}>
+                      {year}
+                    </option>
+                  ))
+                }
+              </select>
+            </li>
+            <li class="select__item">
+              <select
+                class="select__control"
+                name="mm"
+                aria-label="月"
+                autocomplete="off"
+                onchange="daychange()"
+              >
+                <option>月</option>
+                {
+                  months.map((month) => (
+                    <option value={month}>{month}</option>
+                  ))
+                }
+              </select>
+            </li>
+            <li class="select__item">
+              <select
+                class="select__control"
+                name="dd"
+                id="day"
+                aria-label="日"
+                autocomplete="off"
+                onchange="daychange()"
+              >
+                <option>日</option>
+                {
+                  days.map((day) => (
+                    <option value={day}>{day}</option>
+                  ))
+                }
+              </select>
+            </li>
+          </ul>
+          <ul class="field__error" aria-live="polite" id="birthday-error" hidden></ul>
+        </fieldset>
+        <!-- /生年月日 -->
+
+        <div class="select-area">
+          <div class="field__header">
+            <label class="heading heading--s" for="refer_code">紹介コード</label>
+          </div>
+          <input
+            type="text"
+            class="input"
+            name="refer_code"
+            id="refer_code"
+            value=""
+            placeholder=""
+          />
+        </div>
+        <!-- /紹介コード -->
+
+        <p class="form-note form-note--consent">
+          <a
+            class="text-link js-colorbox"
+            href="https://www.moratame.net/s/contents/step01_guide.html"
+            >利用規約</a
+          >に同意のうえ<br />「入力内容確認へ」を押してください。
+        </p>
+        <!-- /利用規約 -->
+        <button type="submit" class="button button--green button--borderless"
+          >入力内容確認へ</button
+        >
+        <!-- /入力内容確認へ -->
+      </form>
+    </section>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+
+  <script slot="after-page" is:inline src="/scripts/signup-form-validate.js"></script>
+  <script slot="after-page" is:inline src="/scripts/nickname-check.js"></script>
+  <script slot="after-page" is:inline>
+    $(function () {
+      $(".js-colorbox").colorbox({
+        iframe: true,
+        width: "90%",
+        height: "80%",
+        opacity: 0.7,
+      })
+    })
+  </script>
+</BaseLayout>

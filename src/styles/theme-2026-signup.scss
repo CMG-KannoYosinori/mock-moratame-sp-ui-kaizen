@@ -1,0 +1,4 @@
+// 会員登録フロー固有（ニックネームチェック・ステッパー）。
+// 登録ページだけが読む。共通コンポーネントは theme-2026-components.css。
+@use "blocks/stepper";
+@use "blocks/nickname-check";

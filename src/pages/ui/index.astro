@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../components/HeaderSimple.astro"
+import Footer from "../../components/Footer.astro"
+---
+
+<BaseLayout
+  title="UI ライブラリー"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026-components.css" />
+  <link slot="head" rel="stylesheet" href="/styles/ui.css" />
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+      <div class="page-heading">
+        <h1 class="heading heading--l">UI ライブラリー</h1>
+      </div>
+      <p class="page-content__lead">
+        theme-2026 の見本です。共通コンポーネントと会員登録固有を分けています。
+      </p>
+      <ul class="paper-list">
+        <li>
+          <div class="paper">
+            <h2 class="heading heading--s">
+              <a class="text-link" href="/ui/components.html">コンポーネント</a>
+            </h2>
+            <p>
+              基本デザイン（色・ユーティリティ）と、button / input / field
+              など共通 Block の見本。
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="paper">
+            <h2 class="heading heading--s">
+              <a class="text-link" href="/ui/signup.html">会員登録</a>
+            </h2>
+            <p>ステッパー・ニックネームチェックなど、登録フロー固有の見本。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+</BaseLayout>

@@ -1,0 +1,73 @@
+@use "../foundation/tokens" as *;
+
+.nickname-check {
+  width: 100%;
+  max-width: 100%;
+}
+
+.nickname-check__result {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background-color: $color-brand-surface;
+  border-radius: 0.5rem;
+}
+
+.nickname-check__status {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.nickname-check__status--ok {
+  color: $color-brand;
+}
+
+.nickname-check__status--ng {
+  color: $color-brand;
+}
+
+.nickname-check__heading {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $color-text;
+}
+
+.nickname-check__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nickname-check__suggestion {
+  display: inline-flex;
+  gap: 0.625rem;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $color-text;
+  text-decoration: none;
+  appearance: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
+}
+
+.nickname-check__suggestion::after {
+  display: block;
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  content: "";
+  background: url("/icons/copy-x.svg") center / contain no-repeat;
+}

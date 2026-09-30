@@ -1,0 +1,13 @@
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.page-heading__caption {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1;
+  text-align: right;
+}

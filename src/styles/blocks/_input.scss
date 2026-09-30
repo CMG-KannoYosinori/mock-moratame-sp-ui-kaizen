@@ -1,0 +1,45 @@
+@use "../foundation/tokens" as *;
+
+input.input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 3rem;
+  padding: 0.75rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: $color-text;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid $color-input-border;
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+input.input::placeholder {
+  color: $color-input-border;
+}
+
+input.input:focus {
+  outline: none;
+  border: 2px solid $color-brand;
+}
+
+input.input + input.input {
+  margin-top: 0.5rem;
+}
+
+.input--with-action {
+  width: 100%;
+  padding-right: 2.75rem;
+}
+
+input.input.input--error {
+  background-color: $color-danger-surface-soft;
+  border: 2px solid $color-danger;
+}
+
+// 再入力中（:focus。:active はクリック瞬間だけなので使わない）は通常のフォーカス体裁へ
+input.input.input--error:focus {
+  background-color: #fff;
+  border: 2px solid $color-brand;
+}

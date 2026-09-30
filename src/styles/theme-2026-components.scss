@@ -1,0 +1,19 @@
+// 共通コンポーネント（button / input / field など）。
+// 改善モックの各フローで読む。体裁変更は全フローに意図的に波及する。
+// 読み込み順: 本番 CSS → theme-2026-components.css →（必要なら）フロー固有 CSS
+@use "layout/page-content";
+@use "layout/footer";
+@use "layout/hanging";
+@use "blocks/page-heading";
+@use "blocks/required-mark";
+@use "blocks/field";
+@use "blocks/heading";
+@use "blocks/button";
+@use "blocks/input";
+@use "blocks/input-search";
+@use "blocks/radio";
+@use "blocks/select";
+@use "blocks/text-link";
+@use "blocks/form-error";
+@use "blocks/form-note";
+@use "utilities/text";

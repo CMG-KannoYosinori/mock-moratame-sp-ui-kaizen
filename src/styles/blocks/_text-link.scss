@@ -1,0 +1,10 @@
+@use "../foundation/tokens" as *;
+
+.text-link {
+  color: $color-link;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

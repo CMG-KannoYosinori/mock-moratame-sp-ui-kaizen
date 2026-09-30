@@ -1,0 +1,247 @@
+---
+
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>モラタメ SP UI モック</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.5;
+        max-width: 40rem;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+      }
+      h2 {
+        font-size: 1.05rem;
+        margin-top: 1.75rem;
+      }
+      .note {
+        color: #555;
+        font-size: 0.9rem;
+      }
+      .mock-list {
+        padding-left: 1.25rem;
+      }
+      .mock-list li {
+        margin-bottom: 1rem;
+      }
+      .mock-list a {
+        font-weight: 600;
+      }
+      .mock-meta {
+        display: block;
+        margin-top: 0.2rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: #555;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>モラタメ SP UI モック</h1>
+      <p>
+        Astro で管理している静的モックです。jQuery Mobile
+        の是非はログイン画面のスパイクで比較します。会員登録の改善案は
+        <code>signup</code> /
+        <code>signup-form</code> などの慣用名、現行比較用は
+        <code>-jqm</code> / <code>-legacy</code> です。
+      </p>
+
+      <h2>UI ライブラリー</h2>
+      <ul class="mock-list">
+        <li>
+          <a href="/ui/index.html">UI ライブラリー（索引）</a>
+          <span class="mock-meta">
+            パス: /ui/index.html<br />
+            ファイル: src/pages/ui/index.astro
+          </span>
+        </li>
+        <li>
+          <a href="/ui/components.html">コンポーネント</a>
+          <span class="mock-meta">
+            パス: /ui/components.html<br />
+            ファイル: src/pages/ui/components.astro<br />
+            CSS: theme-2026-components + ui
+          </span>
+        </li>
+        <li>
+          <a href="/ui/signup.html">会員登録</a>
+          <span class="mock-meta">
+            パス: /ui/signup.html<br />
+            ファイル: src/pages/ui/signup.astro<br />
+            CSS: theme-2026-components + theme-2026-signup + ui
+          </span>
+        </li>
+      </ul>
+
+      <h2>会員登録（改善案・jQuery Mobile なし）</h2>
+      <p class="note">
+        theme-2026-components + theme-2026-signup を読むモック。フロー: signup →
+        form → confirm → verify → verify-code → complete。
+      </p>
+      <ul class="mock-list">
+        <li>
+          <a href="/s/contents/signup.html">登録方法選択</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup.html<br />
+            ファイル: src/pages/s/contents/signup.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-form.html">基本情報入力</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-form.html<br />
+            ファイル: src/pages/s/contents/signup-form.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-form-error.html"
+            >基本情報入力（エラー確認）</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-form-error.html<br />
+            ファイル: src/pages/s/contents/signup-form-error.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-confirm.html">入力内容確認</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-confirm.html<br />
+            ファイル: src/pages/s/contents/signup-confirm.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-verify.html">SMS認証</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-verify.html<br />
+            ファイル: src/pages/s/contents/signup-verify.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-verify-error.html"
+            >SMS認証（エラー確認）</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-verify-error.html<br />
+            ファイル: src/pages/s/contents/signup-verify-error.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-verify-code.html"
+            >SMS認証コード入力</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-verify-code.html<br />
+            ファイル: src/pages/s/contents/signup-verify-code.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-verify-code-error.html"
+            >SMS認証コード入力（エラー確認）</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-verify-code-error.html<br />
+            ファイル: src/pages/s/contents/signup-verify-code-error.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-verify-code-voice.html"
+            >SMS認証コード入力（音声ガイダンス）</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-verify-code-voice.html<br />
+            ファイル: src/pages/s/contents/signup-verify-code-voice.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-complete.html">会員登録完了</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-complete.html<br />
+            ファイル: src/pages/s/contents/signup-complete.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2>jQuery Mobile あり（現行比較）</h2>
+      <ul class="mock-list">
+        <li>
+          <a href="/s/login/index.html">ログイン</a>
+          <span class="mock-meta">
+            パス: /s/login/index.html<br />
+            ファイル: src/pages/s/login/index.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-jqm.html">登録方法選択</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-jqm.html<br />
+            ファイル: src/pages/s/contents/signup-jqm.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-form-jqm.html">基本情報入力</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-form-jqm.html<br />
+            ファイル: src/pages/s/contents/signup-form-jqm.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/contents/signup-error.html">エラー</a>
+          <span class="mock-meta">
+            パス: /s/contents/signup-error.html<br />
+            ファイル: src/pages/s/contents/signup-error.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/login/sms_auth_input.html">SMS認証 電話番号入力</a>
+          <span class="mock-meta">
+            パス: /s/login/sms_auth_input.html<br />
+            ファイル: src/pages/s/login/sms_auth_input.astro
+          </span>
+        </li>
+        <li>
+          <a href="/s/login/sms_auth_confirm.html">SMS認証 コード入力</a>
+          <span class="mock-meta">
+            パス: /s/login/sms_auth_confirm.html<br />
+            ファイル: src/pages/s/login/sms_auth_confirm.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2>現行コピー（jQM なし・マイルストーン画像）</h2>
+      <p class="note">
+        もともと jQM を読んでいない本番コピー。改善案の signup-confirm
+        と並べて比較します。
+      </p>
+      <ul class="mock-list">
+        <li>
+          <a href="/s/contents/signup-confirm-legacy.html"
+            >入力内容確認（現行）</a
+          >
+          <span class="mock-meta">
+            パス: /s/contents/signup-confirm-legacy.html<br />
+            ファイル: src/pages/s/contents/signup-confirm-legacy.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2>ログイン（jQuery Mobile 排除スパイク）</h2>
+      <ul class="mock-list">
+        <li>
+          <a href="/s/login/index-no-jqm.html">ログイン（排除スパイク）</a>
+          <span class="mock-meta">
+            パス: /s/login/index-no-jqm.html<br />
+            ファイル: src/pages/s/login/index-no-jqm.astro
+          </span>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

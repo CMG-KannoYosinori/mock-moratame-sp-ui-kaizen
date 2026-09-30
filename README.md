@@ -1,1 +1,64 @@
 # mock-moratame-sp-ui-kaizen
+
+モラタメ SP 会員登録まわりの静的 UI モックです。共通のヘッダー・フッター・ドロワーは Astro の Layout / コンポーネントで管理しています。
+
+## セットアップ
+
+```bash
+npm install
+```
+
+## 開発サーバ
+
+```bash
+npm run dev
+```
+
+ブラウザで http://localhost:4321/ を開き、モック一覧から各ページへ移動します。
+
+直接開く場合:
+
+- http://localhost:4321/s/contents/signup-form.html
+- http://localhost:4321/s/contents/signup-confirm.html
+- http://localhost:4321/s/contents/signup-error.html
+- http://localhost:4321/s/login/sms_auth_input.html
+- http://localhost:4321/s/login/sms_auth_confirm.html
+
+## ビルド
+
+```bash
+npm run build
+```
+
+静的 HTML は `dist/` に出力されます。プレビューは `npm run preview`（http://localhost:4321/）です。
+
+## GitHub Pages
+
+`main` または `improve/signup-form` への push（または Actions の手動実行）で `dist/` が GitHub Pages にデプロイされます。
+
+公開 URL（想定）:
+
+- https://cmg-kannoyosinori.github.io/mock-moratame-sp-ui-kaizen/
+
+**Settings → Pages の画面は自動では切り替わりません。** 初回だけ手で設定してください。
+
+1. [Settings → Pages](https://github.com/CMG-KannoYosinori/mock-moratame-sp-ui-kaizen/settings/pages)
+2. **Build and deployment → Source** で **GitHub Actions** を選んで Save
+3. [Actions](https://github.com/CMG-KannoYosinori/mock-moratame-sp-ui-kaizen/actions) で **Deploy to GitHub Pages** が成功するか確認
+
+※ ワークフローは `improve/signup-form` にあります（`main` には未マージ）。Source を GitHub Actions にしたあと、このブランチへ push するとデプロイが走ります。
+
+ビルド後の HTML / CSS は `/styles` `/scripts` `/s` `/ui` `/icons` を相対パスに書き換えるので、リポジトリ名配下でもリンクが切れません（`base` は使っていません）。
+
+Live Server で見る場合は、**リポジトリ直下をルートのまま** `dist` 内の HTML を開いてください。
+
+- http://127.0.0.1:5500/dist/s/login/index-no-jqm.html
+- http://127.0.0.1:5500/dist/s/login/index.html
+
+`.astro` の `<style>`（Layout 内の追加スタイルなど）はビルド時に HTML へ埋め込みます。`dist/_astro` のハッシュ付き CSS は出さないので、PHP 組み込み時にそのフォルダを配る必要はありません。
+
+`/styles/`・`/scripts/`・モック同士の `/s/` はビルド時に各 HTML からの相対パスへ書き換えます。`http://127.0.0.1:5500/s/login/...` はワークスペース直下にそのパスが無いため 404（Cannot GET）になります。先に `npm run build` してください。
+
+jQM 排除ドロワー用の CSS / JS は `src/styles/`（Sass）・`src/scripts/` がソースです。ビルド時に Sass エントリが **`dist/styles/theme-2026-components.css`**・**`theme-2026-signup.css`** と **`dist/styles/drawer.css`** へコンパイルされ、スクリプトは **`dist/scripts/`** へコピーされます。ソース上の参照は `/styles/theme-2026-components.css`・`/styles/theme-2026-signup.css`・`/styles/drawer.css`・`/scripts/drawer.js` で、ビルド後の HTML では相対パスになります。
+
+CSS / JS は本番サイト（`www.moratame.net`）の資産を読み込みます。
