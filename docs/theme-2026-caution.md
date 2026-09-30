@@ -1,48 +1,72 @@
-# theme-2026.css 実装時の注意事項
+# theme-2026 実装時の注意事項
 
 ## 概要
 
-`theme-2026.css` は、既存の CSS（`member-registration.css` 等）の上に重ねて読み込むスキン上書き用スタイルシートです。ソースは `src/styles/theme-2026.scss`（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）で、ページと PHP が読むのはコンパイル後の CSS です。現在は jQuery Mobile を使わない会員登録改善モック（`signup-form.astro` 等）と `/ui/` でのみ使用しています。
+theme-2026 は、既存の CSS（`member-registration.css` 等）の上に重ねて読み込むスキン上書きです。ソースは `src/styles/`（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）で、ページと PHP が読むのはコンパイル後の CSS です。現在は jQuery Mobile を使わない会員登録改善モック（`signup-form.astro` 等）と `/ui/` でのみ使用しています。
+
+### エントリの分け方（共通 / ページ固有）
+
+| 出力 CSS | Sass エントリ | 役割 |
+|---|---|---|
+| `theme-2026-components.css` | `theme-2026-components.scss` | 再利用コンポーネント（`.button` / `.input` / `.field` など）。各フローで共通して読む。体裁変更は全フローに意図的に波及する |
+| `theme-2026-signup.css` | `theme-2026-signup.scss` | 会員登録フロー固有（`.nickname-check` / `.stepper`）。登録ページだけが読む |
+
+ログイン／購入などを足すときは `theme-2026-login.scss` のようなフロー固有エントリを追加し、固有 Block だけ `@use` する。components は触らずに同じファイルを読む。
+
+**運用**
+
+1. 共通コンポーネントの変更は全フローに効く（ボタン・入力の体裁統一が目的）
+2. ページ固有のセレクタを components に書かない（例: 登録完了だけの余白を `.button` に直書きしない）
+3. フロー固有 CSS は該当ページだけ `<link>`（login ページで signup.css を読まない）
+4. システム開発への納品は「components + そのフローの page CSS」。components を更新したら登録 PHP 側も同じ components を差し替える
 
 ## 現在の読み込み状況
 
 | ファイル | 読み込み |
 |---|---|
-| `signup.astro` | あり（登録方法選択） |
-| `signup-form.astro` | あり |
-| `signup-form-error.astro` | あり |
-| `signup-confirm.astro` | あり |
-| `signup-verify.astro` | あり |
-| `signup-verify-error.astro` | あり |
-| `signup-verify-code.astro` | あり |
-| `signup-verify-code-error.astro` | あり |
-| `signup-verify-code-voice.astro` | あり |
-| `signup-complete.astro` | あり |
-| `ui/index.astro` | あり（`ui.css` も） |
+| `signup.astro` | **なし**（登録方法選択。現行スキンのまま） |
+| `signup-form.astro` | components + signup |
+| `signup-form-error.astro` | components + signup |
+| `signup-confirm.astro` | components + signup |
+| `signup-verify.astro` | components + signup |
+| `signup-verify-error.astro` | components + signup |
+| `signup-verify-code.astro` | components + signup |
+| `signup-verify-code-error.astro` | components + signup |
+| `signup-verify-code-voice.astro` | components + signup |
+| `signup-complete.astro` | components + signup |
+| `ui/index.astro` | components（`ui.css` も。索引） |
+| `ui/components.astro` | components（`ui.css` も） |
+| `ui/signup.astro` | components + signup（`ui.css` も） |
 | `*-jqm.astro` / `signup-confirm-legacy.astro` / `signup-error.astro` / その他 | **なし** |
 
 `BaseLayout` への共通読み込みは行っていません。ページ単位で `<link>` タグを記述する方式です。
+
+```html
+<!-- 本番 CSS のあと -->
+<link rel="stylesheet" href="/styles/theme-2026-components.css" />
+<link rel="stylesheet" href="/styles/theme-2026-signup.css" />
+```
 
 ## 懸念事項：既存ページへの混入リスク
 
 ### 何が起きるか
 
-`theme-2026.css` を jQM ありページや既存テンプレートに誤って読み込んだ場合、以下の問題が発生する可能性があります。
+theme-2026 の CSS を jQM ありページや既存テンプレートに誤って読み込んだ場合、以下の問題が発生する可能性があります。
 
 1. **スタイルの上書き** — `.page-heading` など汎用的なクラス名が、既存 HTML 内の同名クラスと衝突し、意図しない見た目の変更が起きる
-2. **レイアウト崩れ** — jQM が管理する要素に対して `theme-2026.css` のスタイルが適用され、jQM のレイアウト制御と競合する
+2. **レイアウト崩れ** — jQM が管理する要素に対して theme-2026 のスタイルが適用され、jQM のレイアウト制御と競合する
 
 ### 現在の設計では接頭辞・スコープを付けていない
 
-`theme-2026.css` 内のクラス名（`.stepper`、`.page-heading` 等）には、`t26-` などの接頭辞や `body.no-jqm` などのスコープセレクタを付けていません。これは現時点で改善モック（接尾辞なしの signup 系）と `/ui/` 限定の運用であり、`*-jqm` などには読み込まれない前提のためです。
+クラス名（`.stepper`、`.page-heading` 等）には、`t26-` などの接頭辞や `body.no-jqm` などのスコープセレクタを付けていません。これは現時点で改善モック（接尾辞なしの signup 系）と `/ui/` 限定の運用であり、`*-jqm` などには読み込まれない前提のためです。
 
 ### 将来対応が必要になるケース
 
 以下のいずれかに該当する場合、接頭辞またはスコープセレクタの導入を検討してください。
 
-- `theme-2026.css` を jQM ありページにも読み込む必要が出た場合
+- theme-2026 を jQM ありページにも読み込む必要が出た場合
 - PHP テンプレートへの組み込み時に、読み込み対象ページの制御が難しい場合（共通ヘッダーで一括読み込みするなど）
-- サイト全体のスキン置き換えとして `theme-2026.css` を拡大する場合
+- サイト全体のスキン置き換えとして拡大する場合
 
 ### 対策の選択肢
 
@@ -55,9 +79,9 @@
 
 ## PHP 組み込み時のルール
 
-- `theme-2026.css` は **jQM を読み込んでいないページにのみ** `<link>` で追加してください
+- theme-2026 の CSS は **jQM を読み込んでいないページにのみ** `<link>` で追加してください
 - `BaseLayout` や共通ヘッダーテンプレートへの一括追加は **行わないでください**
-- 読み込み順は「本番 CSS → `theme-2026.css`」です。`theme-2026.css` は既存スタイルを上書きする前提で書かれています
+- 読み込み順は「本番 CSS → `theme-2026-components.css` → フロー固有（登録なら `theme-2026-signup.css`）」です。既存スタイルを上書きする前提で書かれています
 
 ## 本番実装時の指示
 
@@ -67,9 +91,11 @@
 
 | 載せる | 載せない |
 |---|---|
-| コンパイル後の `theme-2026.css` | Sass ソース（`src/styles/`）そのもの。ビルドして CSS を配置する |
+| コンパイル後の `theme-2026-components.css` + フロー固有（登録は `theme-2026-signup.css`） | Sass ソース（`src/styles/`）そのもの。ビルドして CSS を配置する |
 | 対象ページのマークアップ（クラス名はモックと同じ） | `/ui/` の UI ライブラリーページ |
 | 既存の `profile_edit.exec.php` など本番 Ajax | `src/scripts/nickname-check.js`（結果を固定表示するだけ） |
+
+ログイン等を足すときは components + 新フロー固有の CSS を使うこと。
 
 ### ページの分け方
 
@@ -113,7 +139,7 @@
 
 現行の「登録可能なニックネームかチェック」ボタン注入（`#nickname` への `html()`）と `onblur` の `namecheck()` は使わない。虫眼鏡クリックで既存 API を呼ぶ。
 
-**見た目（theme-2026）**
+**見た目（theme-2026-signup）**
 
 - 結果ボックス `.nickname-check__result` はブランド薄緑地（`$color-brand-surface`）。枠線なし
 - `.nickname-check__status--ok` / `--ng` ともブランド緑太字（使用済みも赤にしない。デザインどおり）
@@ -170,7 +196,8 @@
 
 | ファイル | 役割 |
 |---|---|
-| `src/styles/theme-2026.scss` | スキン上書きの Sass エントリ（出力は `theme-2026.css`） |
+| `src/styles/theme-2026-components.scss` | 共通コンポーネントの Sass エントリ（出力は `theme-2026-components.css`） |
+| `src/styles/theme-2026-signup.scss` | 会員登録フロー固有の Sass エントリ（出力は `theme-2026-signup.css`） |
 | `src/styles/blocks/` | 再利用 UI Block（1 ファイル = 1 Block） |
 | `src/styles/layout/` | 余白・配置などコンテキスト依存のスタイル |
 | `src/styles/foundation/_tokens.scss` | 色などのトークン（brand / danger surface / input-border / link 等） |
@@ -181,8 +208,9 @@
 | `src/scripts/clear-field-error.js` | **エラー確認モック専用。** 再入力でエラー見た目を外す |
 | `src/components/Stepper.astro` | 会員登録 4 ステップ。`activeStep` で現在地を指定 |
 | `src/components/Footer.astro` | no-jqm では `engine="css"`（`data-role="footer"` / `.ui-footer` を出さない） |
-| `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡） |
-| `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス（緑面・候補ピル） |
+| `src/styles/blocks/_input-search.scss` | 入力欄＋右側アクション（虫眼鏡）。components 側 |
+| `src/styles/blocks/_nickname-check.scss` | ニックネームチェックの結果ボックス。signup 側 |
+| `src/styles/blocks/_stepper.scss` | 登録ステッパー。signup 側（他フローで使うなら components へ移す） |
 | `src/styles/blocks/_field.scss` | フォーム項目（ヘッダー・値・項目エラー・確認行） |
 | `src/styles/blocks/_form-note.scss` | 注記・案内・同意（`--info` / `--consent` / `--hanging`） |
 | `src/styles/layout/_hanging.scss` | ※ / ・ のぶら下げインデント（layout） |

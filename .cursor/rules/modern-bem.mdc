@@ -33,7 +33,7 @@ alwaysApply: true
 
 ## ファイル構成
 
-`src/styles/` は [doc-modern-bem](https://github.com/YoshinoriKanno/doc-modern-bem) に従う。1 Block = 1 ファイル（`blocks/_button.scss` など）。エントリは `theme-2026.scss` と `drawer.scss`。
+`src/styles/` は [doc-modern-bem](https://github.com/YoshinoriKanno/doc-modern-bem) に従う。1 Block = 1 ファイル（`blocks/_button.scss` など）。エントリは `theme-2026-components.scss`（共通）、`theme-2026-signup.scss`（登録固有）、`drawer.scss`。
 
 - 再利用 UI → `blocks/`
 - 配置・ぶら下げなどコンテキスト依存 → `layout/`

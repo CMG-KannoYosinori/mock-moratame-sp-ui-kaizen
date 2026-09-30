@@ -13,7 +13,8 @@ const STYLES_DIR = path.join(process.cwd(), 'src', 'styles');
 
 /** 公開する CSS 名 → Sass エントリ */
 const STYLE_ENTRIES = {
-  'theme-2026.css': 'theme-2026.scss',
+  'theme-2026-components.css': 'theme-2026-components.scss',
+  'theme-2026-signup.css': 'theme-2026-signup.scss',
   'drawer.css': 'drawer.scss',
   'ui.css': 'ui.scss',
 };

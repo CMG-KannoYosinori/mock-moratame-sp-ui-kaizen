@@ -5,13 +5,25 @@ alwaysApply: true
 
 # theme-2026 の運用
 
-既存 CSS の上に重ねるスキン上書き。ソースは Sass（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）。ページが読むのはコンパイル後の `theme-2026.css`。命名は `modern-bem.mdc` に従う。
+既存 CSS の上に重ねるスキン上書き。ソースは Sass（[Modern BEM の構成](https://github.com/YoshinoriKanno/doc-modern-bem)）。ページが読むのはコンパイル後の CSS。命名は `modern-bem.mdc` に従う。
+
+## エントリ（共通 / ページ固有）
+
+| 出力 | 役割 |
+|---|---|
+| `theme-2026-components.css` | 再利用コンポーネント（button / input / field など）。各フローで共通して読む |
+| `theme-2026-signup.css` | 会員登録フロー固有（nickname-check / stepper）。登録ページだけ |
+
+- 共通コンポーネントの体裁変更は全フローに意図的に波及させる
+- ページ固有のセレクタを components に書かない
+- ログイン等を足すときは `theme-2026-login.scss` のようなフロー固有エントリを追加する
 
 ## 読み込み対象
 
-- **jQM なしの改善モックにのみ** `<link href="/styles/theme-2026.css">` で読み込む（会員登録は `signup-form.astro` 等。比較用の `*-jqm` には載せない）
+- **jQM なしの改善モックにのみ** ページ単位で `<link>` する（比較用の `*-jqm` には載せない）
+- 登録系の例: components → signup の順
 - `BaseLayout` や共通テンプレートへの一括追加は **しない**
-- 読み込み順: 本番 CSS → `theme-2026.css`
+- 読み込み順: 本番 CSS → `theme-2026-components.css` → フロー固有 CSS
 
 ## 接頭辞・スコープ
 

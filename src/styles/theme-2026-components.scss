@@ -1,6 +1,6 @@
-// 既存 CSS（member-registration.css 等）の上に重ねるスキン上書き用。
-// 読み込み順: 本番 CSS → このエントリをコンパイルした theme-2026.css
-@use "blocks/stepper";
+// 共通コンポーネント（button / input / field など）。
+// 改善モックの各フローで読む。体裁変更は全フローに意図的に波及する。
+// 読み込み順: 本番 CSS → theme-2026-components.css →（必要なら）フロー固有 CSS
 @use "layout/page-content";
 @use "layout/footer";
 @use "layout/hanging";
@@ -11,7 +11,6 @@
 @use "blocks/button";
 @use "blocks/input";
 @use "blocks/input-search";
-@use "blocks/nickname-check";
 @use "blocks/radio";
 @use "blocks/select";
 @use "blocks/text-link";
