@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja" data-astro-cid-lcdefpme>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>モラタメ SP UI モック</title>
+  <style>body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  max-width: 40rem;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+h2[data-astro-cid-lcdefpme] {
+  font-size: 1.05rem;
+  margin-top: 1.75rem;
+}
+
+.note[data-astro-cid-lcdefpme] {
+  color: #555;
+  font-size: .9rem;
+}
+
+.mock-list[data-astro-cid-lcdefpme] {
+  padding-left: 1.25rem;
+}
+
+.mock-list[data-astro-cid-lcdefpme] li[data-astro-cid-lcdefpme] {
+  margin-bottom: 1rem;
+}
+
+.mock-list[data-astro-cid-lcdefpme] a[data-astro-cid-lcdefpme] {
+  font-weight: 600;
+}
+
+.mock-meta[data-astro-cid-lcdefpme] {
+  display: block;
+  margin-top: .2rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .75rem;
+  line-height: 1.45;
+  color: #555;
+  word-break: break-all;
+}
+</style></head>
+  <body data-astro-cid-lcdefpme>
+    <main data-astro-cid-lcdefpme>
+      <h1 data-astro-cid-lcdefpme>モラタメ SP UI モック</h1>
+      <p data-astro-cid-lcdefpme>
+        Astro で管理している静的モックです。jQuery Mobile
+        の是非はログイン画面のスパイクで比較します。会員登録の改善案は
+        <code data-astro-cid-lcdefpme>signup</code> /
+        <code data-astro-cid-lcdefpme>signup-form</code> などの慣用名、現行比較用は
+        <code data-astro-cid-lcdefpme>-jqm</code> / <code data-astro-cid-lcdefpme>-legacy</code> です。
+      </p>
+
+      <h2 data-astro-cid-lcdefpme>UI ライブラリー</h2>
+      <ul class="mock-list" data-astro-cid-lcdefpme>
+        <li data-astro-cid-lcdefpme>
+          <a href="./ui/index.html" data-astro-cid-lcdefpme>UI ライブラリー（索引）</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /ui/index.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/ui/index.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./ui/components.html" data-astro-cid-lcdefpme>コンポーネント</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /ui/components.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/ui/components.astro<br data-astro-cid-lcdefpme>
+            CSS: theme-2026-components + ui
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./ui/signup.html" data-astro-cid-lcdefpme>会員登録</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /ui/signup.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/ui/signup.astro<br data-astro-cid-lcdefpme>
+            CSS: theme-2026-components + theme-2026-signup + ui
+          </span>
+        </li>
+      </ul>
+
+      <h2 data-astro-cid-lcdefpme>会員登録（改善案・jQuery Mobile なし）</h2>
+      <p class="note" data-astro-cid-lcdefpme>
+        theme-2026-components + theme-2026-signup を読むモック。フロー: signup →
+        form → confirm → verify → verify-code → complete。
+      </p>
+      <ul class="mock-list" data-astro-cid-lcdefpme>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup.html" data-astro-cid-lcdefpme>登録方法選択</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-form.html" data-astro-cid-lcdefpme>基本情報入力</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-form.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-form.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-form-error.html" data-astro-cid-lcdefpme>基本情報入力（エラー確認）</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-form-error.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-form-error.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-confirm.html" data-astro-cid-lcdefpme>入力内容確認</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-confirm.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-confirm.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-verify.html" data-astro-cid-lcdefpme>SMS認証</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-verify.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-verify.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-verify-error.html" data-astro-cid-lcdefpme>SMS認証（エラー確認）</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-verify-error.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-verify-error.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-verify-code.html" data-astro-cid-lcdefpme>SMS認証コード入力</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-verify-code.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-verify-code.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-verify-code-error.html" data-astro-cid-lcdefpme>SMS認証コード入力（エラー確認）</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-verify-code-error.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-verify-code-error.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-verify-code-voice.html" data-astro-cid-lcdefpme>SMS認証コード入力（音声ガイダンス）</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-verify-code-voice.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-verify-code-voice.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-complete.html" data-astro-cid-lcdefpme>会員登録完了</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-complete.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-complete.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2 data-astro-cid-lcdefpme>jQuery Mobile あり（現行比較）</h2>
+      <ul class="mock-list" data-astro-cid-lcdefpme>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/login/index.html" data-astro-cid-lcdefpme>ログイン</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/login/index.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/login/index.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-jqm.html" data-astro-cid-lcdefpme>登録方法選択</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-jqm.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-jqm.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-form-jqm.html" data-astro-cid-lcdefpme>基本情報入力</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-form-jqm.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-form-jqm.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-error.html" data-astro-cid-lcdefpme>エラー</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-error.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-error.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/login/sms_auth_input.html" data-astro-cid-lcdefpme>SMS認証 電話番号入力</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/login/sms_auth_input.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/login/sms_auth_input.astro
+          </span>
+        </li>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/login/sms_auth_confirm.html" data-astro-cid-lcdefpme>SMS認証 コード入力</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/login/sms_auth_confirm.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/login/sms_auth_confirm.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2 data-astro-cid-lcdefpme>現行コピー（jQM なし・マイルストーン画像）</h2>
+      <p class="note" data-astro-cid-lcdefpme>
+        もともと jQM を読んでいない本番コピー。改善案の signup-confirm
+        と並べて比較します。
+      </p>
+      <ul class="mock-list" data-astro-cid-lcdefpme>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/contents/signup-confirm-legacy.html" data-astro-cid-lcdefpme>入力内容確認（現行）</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/contents/signup-confirm-legacy.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/contents/signup-confirm-legacy.astro
+          </span>
+        </li>
+      </ul>
+
+      <h2 data-astro-cid-lcdefpme>ログイン（jQuery Mobile 排除スパイク）</h2>
+      <ul class="mock-list" data-astro-cid-lcdefpme>
+        <li data-astro-cid-lcdefpme>
+          <a href="./s/login/index-no-jqm.html" data-astro-cid-lcdefpme>ログイン（排除スパイク）</a>
+          <span class="mock-meta" data-astro-cid-lcdefpme>
+            パス: /s/login/index-no-jqm.html<br data-astro-cid-lcdefpme>
+            ファイル: src/pages/s/login/index-no-jqm.astro
+          </span>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
