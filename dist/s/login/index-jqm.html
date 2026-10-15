@@ -480,106 +480,106 @@
   </header>
 </div>
   <div class="content" data-role="content">
-  <h1 class="title title_other">ログイン</h1>
-  <div class="container">
-    <div class="block">
-      <p>メールアドレスでログイン</p>
-      <form action="https://www.moratame.net/s/login/index2.php" method="post">
-        <div class="block_inner">
-          <div data-role="fieldcontain">
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" placeholder="メールアドレス" autocomplete="email" data-theme="d">
-          </div>
-          <div data-role="fieldcontain">
-            <label for="pass">パスワード</label>
-            <input type="password" name="pass" id="pass" placeholder="パスワード" autocomplete="current-password" data-theme="d">
-          </div>
-          <input type="hidden" name="url" value="">
-        </div>
-
-        <div class="answer13">
-          <ul class="answerListUl">
-            <li class="answerListLi">
-              <div class="answerListLiPd">
-                <label class="cbxbd c_on" for="auto-login">
-                  <input id="auto-login" class="answer" type="checkbox" name="check" value="on" checked data-role="none">
-                </label>
-                <div class="answerListTxt">
-                  <p id="flowTxtColor3">
-                    <label for="auto-login">次回から自動ログインする</label>
-                    <a href="https://www.moratame.net/wp/cs/?p=466" target="_blank" rel="noopener noreferrer">詳細</a>
-                  </p>
-                </div>
-                <br class="flowBrClear">
+      <h1 class="title title_other">ログイン</h1>
+      <div class="container">
+        <div class="block">
+          <p>メールアドレスでログイン</p>
+          <form action="https://www.moratame.net/s/login/index2.php" method="post">
+            <div class="block_inner">
+              <div data-role="fieldcontain">
+                <label for="email" class="ui-hidden-accessible">メールアドレス</label>
+                <input type="email" name="email" id="email" placeholder="メールアドレス" autocomplete="email" data-theme="d">
               </div>
-            </li>
-          </ul>
-        </div>
+              <div data-role="fieldcontain">
+                <label for="pass" class="ui-hidden-accessible">パスワード</label>
+                <input type="password" name="pass" id="pass" placeholder="パスワード" autocomplete="current-password" data-theme="d">
+              </div>
+              <input type="hidden" name="url" value="">
+            </div>
 
-        <div class="block_inner" data-mini="true">
-          <button type="submit">ログインする</button>
-          <p class="btnGry mt-20px">
-            <a href="https://www.moratame.net/s/login/pass.php">パスワードを忘れた方はこちら</a>
-          </p>
-        </div>
-      </form>
+            <div class="answer13">
+              <ul class="answerListUl">
+                <li class="answerListLi">
+                  <div class="answerListLiPd">
+                    <label class="cbxbd c_on" for="auto-login">
+                      <input id="auto-login" class="answer" type="checkbox" name="check" value="on" checked data-role="none">
+                    </label>
+                    <div class="answerListTxt">
+                      <p id="flowTxtColor3">
+                        <label for="auto-login">次回から自動ログインする</label>
+                        <a href="https://www.moratame.net/wp/cs/?p=466" target="_blank" rel="noopener noreferrer">詳細</a>
+                      </p>
+                    </div>
+                    <br class="flowBrClear">
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-      <script>
-        function modeAttoosLogin(id) {
-          $("#sns_id").val(id)
-          $("#attoos-login").submit()
-          return false
-        }
-      </script><div class="p-social_login">
-        <div class="bl-8423-max-w-md bl-8423-px-4 bl-8423-mx-auto">
-          <p class="p-social_login__lead bl-8423-font-bold bl-8423-mt-4 bl-8423-text-center bl-8423-bg-yellow-50 bl-8423-leading-snug bl-8423-pt-2 bl-8423-pb-4 bl-8423-relative" style="font-size: 16px">
-            ソーシャルアカウントでログイン
-          </p>
-          <form action="https://auth.attoos.jp/uauth/receive" method="post" id="attoos-login">
-            <input type="hidden" name="iv" value="TVlPbTEyN3JPVXI0NGhIUGY5Q3JJTVlqYWd2UlFsaXNGSUp1NEhGb1hrRT0=">
-            <input type="hidden" id="site_id" name="site_id" value="NWVwblNuZUFLRit5N3VMdTJXaElHZz09">
-            <input type="hidden" name="return_path" value="https://www.moratame.net/login/after_attoos.php">
-            <input type="hidden" name="sns_id" id="sns_id" value="">
-            <ul class="bl-8423-list-none" style="margin-bottom: 24px;">
-              <li class="bl-8423-mt-4">
-                <a href="https://www.moratame.net/?redirect_yahoo_auth_end_point=1" class="u-btn-sns u-btn-sns--yahoo" data-role="none">
-                  <img src="https://image.moratame.net/images/common/yahoo_japan_icon_w_64.png" alt="" width="64" height="36" class="bl-8423-left-2">Yahoo! JAPAN IDでログイン
-                </a>
-              </li>
-              <li class="bl-8423-mt-4">
-                <a href="#" class="u-btn-sns u-btn-sns--apple bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(5);">
-                  <i class="bi bi-apple bl-8423-left-2"></i>Sign in with Apple
-                </a>
-              </li>
-              <li class="bl-8423-mt-4">
-                <a href="#" class="u-btn-sns u-btn-sns--facebook bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(2);">
-                  <i class="bi bi-facebook bl-8423-left-2"></i>Facebookでログイン
-                </a>
-              </li>
-              <li class="bl-8423-mt-4">
-                <a href="#" class="u-btn-sns u-btn-sns--line bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(3);">
-                  <i class="bi bi-line bl-8423-left-2"></i>Lineでログイン
-                </a>
-              </li>
-              <li class="bl-8423-mt-4">
-                <a href="#" class="u-btn-sns u-btn-sns--google bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(4);">
-                  <i class="bi bi-google bl-8423-left-2"></i>Googleでログイン
-                </a>
-              </li>
-            </ul>
+            <div class="block_inner" data-mini="true">
+              <button type="submit">ログインする</button>
+              <p class="btnGry mt-20px">
+                <a href="https://www.moratame.net/s/login/pass.php">パスワードを忘れた方はこちら</a>
+              </p>
+            </div>
           </form>
+
+          <script>
+            function modeAttoosLogin(id) {
+              $("#sns_id").val(id)
+              $("#attoos-login").submit()
+              return false
+            }
+          </script><div class="p-social_login">
+            <div class="bl-8423-max-w-md bl-8423-px-4 bl-8423-mx-auto">
+              <p class="p-social_login__lead bl-8423-font-bold bl-8423-mt-4 bl-8423-text-center bl-8423-bg-yellow-50 bl-8423-leading-snug bl-8423-pt-2 bl-8423-pb-4 bl-8423-relative" style="font-size: 16px">
+                ソーシャルアカウントでログイン
+              </p>
+              <form action="https://auth.attoos.jp/uauth/receive" method="post" id="attoos-login">
+                <input type="hidden" name="iv" value="TVlPbTEyN3JPVXI0NGhIUGY5Q3JJTVlqYWd2UlFsaXNGSUp1NEhGb1hrRT0=">
+                <input type="hidden" id="site_id" name="site_id" value="NWVwblNuZUFLRit5N3VMdTJXaElHZz09">
+                <input type="hidden" name="return_path" value="https://www.moratame.net/login/after_attoos.php">
+                <input type="hidden" name="sns_id" id="sns_id" value="">
+                <ul class="bl-8423-list-none" style="margin-bottom: 24px;">
+                  <li class="bl-8423-mt-4">
+                    <a href="https://www.moratame.net/?redirect_yahoo_auth_end_point=1" class="u-btn-sns u-btn-sns--yahoo" data-role="none">
+                      <img src="https://image.moratame.net/images/common/yahoo_japan_icon_w_64.png" alt="" width="64" height="36" class="bl-8423-left-2">Yahoo! JAPAN IDでログイン
+                    </a>
+                  </li>
+                  <li class="bl-8423-mt-4">
+                    <a href="#" class="u-btn-sns u-btn-sns--apple bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(5);">
+                      <i class="bi bi-apple bl-8423-left-2"></i>Sign in with Apple
+                    </a>
+                  </li>
+                  <li class="bl-8423-mt-4">
+                    <a href="#" class="u-btn-sns u-btn-sns--facebook bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(2);">
+                      <i class="bi bi-facebook bl-8423-left-2"></i>Facebookでログイン
+                    </a>
+                  </li>
+                  <li class="bl-8423-mt-4">
+                    <a href="#" class="u-btn-sns u-btn-sns--line bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(3);">
+                      <i class="bi bi-line bl-8423-left-2"></i>Lineでログイン
+                    </a>
+                  </li>
+                  <li class="bl-8423-mt-4">
+                    <a href="#" class="u-btn-sns u-btn-sns--google bl-8423-text-left" data-role="none" onclick="return modeAttoosLogin(4);">
+                      <i class="bi bi-google bl-8423-left-2"></i>Googleでログイン
+                    </a>
+                  </li>
+                </ul>
+              </form>
+            </div>
+          </div>
+
+          <p style="margin: 0 15px 20px; text-align: right;">
+            <a href="../contents/signup.html">新規会員登録はこちらから</a>
+          </p>
+          <p style="margin: 0 15px 20px; text-align: right;">
+            <a href="https://www.moratame.net/s/contents/about.php">モラタメ.net について詳しくはこちら</a>
+          </p>
         </div>
       </div>
-
-      <p style="margin: 0 15px 20px; text-align: right;">
-        <a href="../contents/signup.html">新規会員登録はこちらから</a>
-      </p>
-      <p style="margin: 0 15px 20px; text-align: right;">
-        <a href="https://www.moratame.net/s/contents/about.php">モラタメ.net について詳しくはこちら</a>
-      </p>
     </div>
-  </div>
-</div>
   <div id="footer" data-role="footer" data-theme="x" class="ui-footer ui-bar-x" role="contentinfo">
   <footer>
     <div id="topscrollWrp" class="bdt_1_ccc">

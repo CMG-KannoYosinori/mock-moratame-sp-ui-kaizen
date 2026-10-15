@@ -15,6 +15,7 @@ const STYLES_DIR = path.join(process.cwd(), 'src', 'styles');
 const STYLE_ENTRIES = {
   'theme-2026-components.css': 'theme-2026-components.scss',
   'theme-2026-signup.css': 'theme-2026-signup.scss',
+  'theme-2026-login.css': 'theme-2026-login.scss',
   'drawer.css': 'drawer.scss',
   'ui.css': 'ui.scss',
 };

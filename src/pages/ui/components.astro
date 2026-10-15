@@ -20,6 +20,7 @@ import Footer from "../../components/Footer.astro"
       <nav class="ui-nav" aria-label="UI ライブラリー">
         <a href="/ui/components.html" aria-current="page">コンポーネント</a>
         <a href="/ui/signup.html">会員登録</a>
+        <a href="/ui/login.html">ログイン</a>
       </nav>
 
     <ul class="paper-list">
@@ -369,6 +370,30 @@ import Footer from "../../components/Footer.astro"
                       </label>
                     </li>
                   </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="heading heading--s">チェック</h3>
+            <ul class="paper-list">
+              <li>
+                <div class="paper">
+                  <div class="check">
+                    <input
+                      id="ui-auto-login"
+                      class="check__input"
+                      type="checkbox"
+                      name="ui-check"
+                      value="on"
+                      checked
+                    />
+                    <label class="check__label" for="ui-auto-login">
+                      <span class="check__box" aria-hidden="true"></span>
+                      次回から自動ログインする
+                    </label>
+                    <a class="text-link" href="#">詳細</a>
+                  </div>
                 </div>
               </li>
             </ul>

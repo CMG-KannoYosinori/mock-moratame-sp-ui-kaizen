@@ -14,9 +14,11 @@ alwaysApply: true
 | `/ui/` | `src/pages/ui/index.astro` | 索引 | components + ui |
 | `/ui/components.html` | `src/pages/ui/components.astro` | 基本デザイン＋共通コンポーネント | components + ui |
 | `/ui/signup.html` | `src/pages/ui/signup.astro` | 会員登録固有（ステッパー・ニックネームチェック） | components + signup + ui |
+| `/ui/login.html` | `src/pages/ui/login.astro` | ログイン固有（SNS 配置・フッターリンク） | components + login + ui |
 
-- 共通 Block（button / input / field など）の見本 → `components.astro`
+- 共通 Block（button / input / field / check など）の見本 → `components.astro`
 - 登録フロー固有（stepper / nickname-check）の見本 → `signup.astro`
+- ログインフロー固有（login-social / login-links）の見本 → `login.astro`
 - 色トークン・ユーティリティ（`.u-*`）は `components.astro` の「基本デザイン」
 
 ## 見本の置き方

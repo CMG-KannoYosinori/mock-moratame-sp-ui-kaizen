@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import HeaderSimple from "../../components/HeaderSimple.astro"
+import Footer from "../../components/Footer.astro"
+---
+
+<BaseLayout
+  title="UI ライブラリー（ログイン）"
+  pageId="registration-page"
+  fixSmartBannerOffsetToPage
+>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://www.moratame.net/s/css/contents/about.css"
+  />
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+  />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026-components.css" />
+  <link slot="head" rel="stylesheet" href="/styles/theme-2026-login.css" />
+  <link slot="head" rel="stylesheet" href="/styles/ui.css" />
+
+  <HeaderSimple />
+
+  <div class="page-content page-content--muted">
+    <div class="page-content__inner">
+      <nav class="ui-nav" aria-label="UI ライブラリー">
+        <a href="/ui/">索引</a>
+        <a href="/ui/components.html">コンポーネント</a>
+        <a href="/ui/signup.html">会員登録</a>
+        <a href="/ui/login.html" aria-current="page">ログイン</a>
+      </nav>
+
+      <div class="page-heading">
+        <h1 class="heading heading--l">ログイン</h1>
+      </div>
+      <p class="page-content__lead">
+        ログインフロー固有（login-social / login-links）の見本です。チェックや
+        button / input はコンポーネント頁を参照してください。
+      </p>
+
+      <ul class="paper-list">
+        <li>
+          <h3 class="heading heading--s">セクション見出し</h3>
+          <div class="paper">
+            <h2 class="heading heading--s login-section-title"
+              >メールアドレスでログイン</h2
+            >
+          </div>
+        </li>
+        <li>
+          <h3 class="heading heading--s">SNS ログイン</h3>
+          <div class="paper">
+            <div class="login-social">
+              <p class="login-social__lead">ソーシャルアカウントでログイン</p>
+              <ul class="login-social__list">
+                <li>
+                  <a href="#" class="u-btn-sns u-btn-sns--yahoo">
+                    <img
+                      src="https://image.moratame.net/images/common/yahoo_japan_icon_w_64.png"
+                      alt=""
+                      width="64"
+                      height="36"
+                      class="bl-8423-left-2"
+                    />Yahoo! JAPAN IDでログイン
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="u-btn-sns u-btn-sns--apple">
+                    <i class="bi bi-apple bl-8423-left-2"></i>Sign in with Apple
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="heading heading--s">フッターリンク</h3>
+          <div class="paper">
+            <ul class="login-links">
+              <li class="login-links__item">
+                <a class="text-link" href="#">新規会員登録はこちらから</a>
+              </li>
+              <li class="login-links__item">
+                <a class="text-link" href="#"
+                  >モラタメ.net について詳しくはこちら</a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <Footer variant="simple" engine="css" />
+</BaseLayout>

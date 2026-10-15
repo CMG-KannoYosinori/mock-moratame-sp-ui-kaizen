@@ -1,0 +1,15 @@
+// ログインフロー固有（リンク一覧・SNS 配置）。
+// ログインページだけが読む。共通コンポーネントは theme-2026-components.css。
+@use "layout/login-credentials";
+@use "layout/login-links";
+@use "layout/login-social";
+
+
+.login-section-title {
+  margin: 0;
+}
+
+// 見出し〜メールログインフォームの間隔
+.login-section-title + form {
+  margin-top: 1rem;
+}

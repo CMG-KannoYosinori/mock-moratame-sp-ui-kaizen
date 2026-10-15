@@ -8,10 +8,11 @@ theme-2026 は、既存の CSS（`member-registration.css` 等）の上に重ね
 
 | 出力 CSS | Sass エントリ | 役割 |
 |---|---|---|
-| `theme-2026-components.css` | `theme-2026-components.scss` | 再利用コンポーネント（`.button` / `.input` / `.field` など）。各フローで共通して読む。体裁変更は全フローに意図的に波及する |
+| `theme-2026-components.css` | `theme-2026-components.scss` | 再利用コンポーネント（`.button` / `.input` / `.field` / `.check` など）。各フローで共通して読む。体裁変更は全フローに意図的に波及する |
 | `theme-2026-signup.css` | `theme-2026-signup.scss` | 会員登録フロー固有（`.nickname-check` / `.stepper`）。登録ページだけが読む |
+| `theme-2026-login.css` | `theme-2026-login.scss` | ログインフロー固有（`.login-social` / `.login-links`）。ログインページだけが読む |
 
-ログイン／購入などを足すときは `theme-2026-login.scss` のようなフロー固有エントリを追加し、固有 Block だけ `@use` する。components は触らずに同じファイルを読む。
+購入などを足すときは同様にフロー固有エントリを追加し、固有 Block だけ `@use` する。components は触らずに同じファイルを読む。
 
 **運用**
 
@@ -34,9 +35,11 @@ theme-2026 は、既存の CSS（`member-registration.css` 等）の上に重ね
 | `signup-verify-code-error.astro` | components + signup |
 | `signup-verify-code-voice.astro` | components + signup |
 | `signup-complete.astro` | components + signup |
+| `login/index.astro` | components + login（SNS 用に本番 `about.css` も） |
 | `ui/index.astro` | components（`ui.css` も。索引） |
 | `ui/components.astro` | components（`ui.css` も） |
 | `ui/signup.astro` | components + signup（`ui.css` も） |
+| `ui/login.astro` | components + login（`ui.css` も。SNS 用に本番 `about.css` も） |
 | `*-jqm.astro` / `signup-confirm-legacy.astro` / `signup-error.astro` / その他 | **なし** |
 
 `BaseLayout` への共通読み込みは行っていません。ページ単位で `<link>` タグを記述する方式です。
