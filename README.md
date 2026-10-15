@@ -52,8 +52,8 @@ npm run build
 
 Live Server で見る場合は、**リポジトリ直下をルートのまま** `dist` 内の HTML を開いてください。
 
-- http://127.0.0.1:5500/dist/s/login/index-no-jqm.html
 - http://127.0.0.1:5500/dist/s/login/index.html
+- http://127.0.0.1:5500/dist/s/login/index-jqm.html
 
 `.astro` の `<style>`（Layout 内の追加スタイルなど）はビルド時に HTML へ埋め込みます。`dist/_astro` のハッシュ付き CSS は出さないので、PHP 組み込み時にそのフォルダを配る必要はありません。
 

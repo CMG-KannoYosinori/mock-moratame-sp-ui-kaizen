@@ -7,16 +7,16 @@ import NimatomeCart from '../../../components/NimatomeCart.astro';
 import LoginContent from '../../../components/LoginContent.astro';
 ---
 
-<BaseLayout title="ログイン（jQuery Mobile なし）" fixSmartBannerOffsetToPage>
+<BaseLayout title="ログイン（jQuery Mobile あり）" includeJqueryMobileJs includeJqueryMobileCss>
   <link
     slot="head"
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
   />
 
-  <Drawer engine="css" />
+  <Drawer />
   <HeaderApp showGuestNav />
   <LoginContent />
-  <Footer variant="app" engine="css" />
+  <Footer variant="app" />
   <NimatomeCart />
 </BaseLayout>
