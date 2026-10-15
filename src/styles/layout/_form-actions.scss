@@ -1,0 +1,12 @@
+// フォーム末尾の CTA 群。上余白はここ（.button では持たない）
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.form-actions--compact {
+  margin-top: 2rem;
+}

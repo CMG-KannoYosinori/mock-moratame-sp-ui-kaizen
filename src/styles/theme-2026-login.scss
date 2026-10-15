@@ -3,6 +3,8 @@
 @use "layout/login-credentials";
 @use "layout/login-links";
 @use "layout/login-social";
+@use "blocks/captcha-mock";
+
 
 
 .login-section-title {

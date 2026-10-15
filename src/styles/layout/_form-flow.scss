@@ -1,0 +1,26 @@
+// フォームまわりの縦リズム。
+// 再利用 Block（form-note / form-error / captcha-mock / stepper 等）の外側余白はここに置く。
+
+.stepper + .page-heading {
+  margin-top: 2rem;
+}
+
+.page-heading + p.form-error {
+  margin-bottom: 1.5rem;
+}
+
+.field + .form-note,
+.select-area + .form-note,
+dl.field + .form-note {
+  margin-top: 1.5rem;
+}
+
+.field + .form-note--consent,
+.select-area + .form-note--consent,
+.form-actions + .form-note--consent {
+  margin-top: 2rem;
+}
+
+.field + .captcha-mock {
+  margin-top: 1rem;
+}

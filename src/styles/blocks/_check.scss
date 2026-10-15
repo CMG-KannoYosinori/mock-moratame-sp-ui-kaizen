@@ -2,7 +2,7 @@
 
 .check {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.125rem;
   align-items: flex-start;
   margin: 0;
   font-size: 0.875rem;
@@ -44,14 +44,37 @@
 
 .check__input:checked + .check__label .check__box {
   background-color: $color-brand;
-  border-color: $color-brand;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5L6.5 11.5L12.5 4.5' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0.875rem;
+  border-color: $color-brand;
 }
 
 .check__input:focus-visible + .check__label {
   outline: 2px solid $color-brand;
   outline-offset: 2px;
+}
+
+.check__help {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: $color-link;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.check__help-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  mask: url("/icons/exclamation-circle.svg") center / contain no-repeat;
 }

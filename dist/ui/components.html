@@ -429,7 +429,9 @@
                       <span class="check__box" aria-hidden="true"></span>
                       次回から自動ログインする
                     </label>
-                    <a class="text-link" href="#">詳細</a>
+                    <a class="check__help" href="#" aria-label="詳細">
+                      <span class="check__help-icon" aria-hidden="true"></span>
+                    </a>
                   </div>
                 </div>
               </li>
@@ -557,6 +559,17 @@
               <li>
                 <div class="paper">
                   <a href="#" class="button button--outline">内容を修正する</a>
+                </div>
+              </li>
+              <li>
+                <div class="paper">
+                  <p class="page-content__lead">
+                    上余白は .form-actions（既定 3rem / --compact で 2rem）
+                  </p>
+                  <div class="form-actions form-actions--compact">
+                    <button type="button" class="button button--green button--borderless">電話番号認証を行う</button>
+                    <a href="#" class="button button--outline">内容を修正する</a>
+                  </div>
                 </div>
               </li>
             </ul>
