@@ -35,11 +35,11 @@ theme-2026 は、既存の CSS（`member-registration.css` 等）の上に重ね
 | `signup-verify-code-error.astro` | components + signup |
 | `signup-verify-code-voice.astro` | components + signup |
 | `signup-complete.astro` | components + signup |
-| `login/index.astro` | components + login（SNS 用に本番 `about.css` も） |
+| `login/index.astro` | components + login |
 | `ui/index.astro` | components（`ui.css` も。索引） |
 | `ui/components.astro` | components（`ui.css` も） |
 | `ui/signup.astro` | components + signup（`ui.css` も） |
-| `ui/login.astro` | components + login（`ui.css` も。SNS 用に本番 `about.css` も） |
+| `ui/login.astro` | components + login（`ui.css` も） |
 | `*-jqm.astro` / `signup-confirm-legacy.astro` / `signup-error.astro` / その他 | **なし** |
 
 `BaseLayout` への共通読み込みは行っていません。ページ単位で `<link>` タグを記述する方式です。

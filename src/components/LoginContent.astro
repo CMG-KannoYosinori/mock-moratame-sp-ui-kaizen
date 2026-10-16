@@ -329,57 +329,81 @@ const { jqm = false } = Astro.props
               <ul class="login-social__list">
                 <li>
                   <a
-                    href="https://www.moratame.net/?redirect_yahoo_auth_end_point=1"
-                    class="u-btn-sns u-btn-sns--yahoo"
-                  >
-                    <img
-                      src="https://image.moratame.net/images/common/yahoo_japan_icon_w_64.png"
-                      alt=""
-                      width="64"
-                      height="36"
-                      class="bl-8423-left-2"
-                    />
-                    Yahoo! JAPAN IDでログイン
-                  </a>
-                </li>
-                <li>
-                  <a
                     href="#"
-                    class="u-btn-sns u-btn-sns--apple"
-                    onclick="return modeAttoosLogin(5);"
-                  >
-                    <i class="bi bi-apple bl-8423-left-2" />
-                    Sign in with Apple
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="u-btn-sns u-btn-sns--facebook"
-                    onclick="return modeAttoosLogin(2);"
-                  >
-                    <i class="bi bi-facebook bl-8423-left-2" />
-                    Facebookでログイン
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="u-btn-sns u-btn-sns--line"
+                    class="login-social__link"
+                    aria-label="Lineでログイン"
                     onclick="return modeAttoosLogin(3);"
                   >
-                    <i class="bi bi-line bl-8423-left-2" />
-                    Lineでログイン
+                    <img
+                      class="login-social__icon"
+                      src="/icons/icon-line.svg"
+                      alt=""
+                      width="30"
+                      height="30"
+                    />
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    class="u-btn-sns u-btn-sns--google"
+                    class="login-social__link"
+                    aria-label="Googleでログイン"
                     onclick="return modeAttoosLogin(4);"
                   >
-                    <i class="bi bi-google bl-8423-left-2" />
-                    Googleでログイン
+                    <img
+                      class="login-social__icon"
+                      src="/icons/icon-google.svg"
+                      alt=""
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.moratame.net/?redirect_yahoo_auth_end_point=1"
+                    class="login-social__link"
+                    aria-label="Yahoo! JAPAN IDでログイン"
+                  >
+                    <img
+                      class="login-social__icon"
+                      src="/icons/icon-yahoo.svg"
+                      alt=""
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="login-social__link"
+                    aria-label="Sign in with Apple"
+                    onclick="return modeAttoosLogin(5);"
+                  >
+                    <img
+                      class="login-social__icon"
+                      src="/icons/icon-apple.svg"
+                      alt=""
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="login-social__link"
+                    aria-label="Facebookでログイン"
+                    onclick="return modeAttoosLogin(2);"
+                  >
+                    <img
+                      class="login-social__icon"
+                      src="/icons/icon-facebook.svg"
+                      alt=""
+                      width="30"
+                      height="30"
+                    />
                   </a>
                 </li>
               </ul>
